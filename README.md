@@ -22,6 +22,8 @@ which are all often well captured in clinical routine practice.
 
 ## Requirements
 
+## Environment variables
+
 ## How to run
 
 ## References
