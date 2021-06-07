@@ -8,3 +8,16 @@ services:
       - POSTGRES_DB=postgresdb
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=12345
+  rdf_store:
+    image: jvsoest/graphdb-free:fairstation
+    ports:
+      - "7200:7200"
+    environment:
+      - GDB_HEAP_SIZE=2g
+      - GDB_MIN_MEM=1g
+      - GDB_MAX_MEM=2g
+  r2rml:
+    image: jvsoest/r2rml
+    links:
+      - data_postgres:dbhost
+      - rdf_store:graphdb

@@ -58,7 +58,7 @@ class ManageDB:
         table : str
             Table name
         columns : dict
-            Dictionary with column names as keys and their types as values
+            Dictionary with column names as keys and their data types as values
         """
         try:
             # Open cursor to perform database operation
