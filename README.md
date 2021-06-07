@@ -26,6 +26,32 @@ which are all often well captured in clinical routine practice.
 
 ## How to run
 
+### Setting up the infrastructure
+
+Before running the infrastructure, a few things have to be set up.
+First of all, copy the sample `.env` file (and make any changes to passwords):
+
+```bash
+cp .env.example .env
+```
+
+Next, do the same to the `r2rml.properties` file. This file can be used
+as-is if uploading new data through CSV files. If new data is provided through
+a database, (un)comment the apropriate lines.
+
+```bash
+cp airflow/r2rml/r2rml.properties.example airflow/r2rml/r2rml.properties
+```
+
+### Running the infrastructure
+
+After everything has been set up, the infrastructure can be run using the
+following command:
+
+```bash
+docker compose up
+```
+
 ## References
 
 [1] T. M. Deist et al., “Distributed learning on 20 000+ lung cancer patients – 
