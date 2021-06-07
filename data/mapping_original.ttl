@@ -1,0 +1,318 @@
+# 20kChallenge mapping from csv to triples
+#
+# Notes
+# -Parameters: patient, TNM, stage, date of diagnosis, date of last follow-up or death, vital status
+# -The CSV location should be set in the block under CSV connection (line 28)
+# -The CSV filename should be "20kChallenge_data.csv", if you want to use a different filename you have to change every occurence of "20kChallenge_data" in this file
+# -Execute the mapping by running the "csv_to_rdf_dump.bat" file (make sure to edit it in Notepad so that the paths are correct)
+#
+# Version history:
+# -March 2017	Frank Dankers				adapted for duCAT from design Johan van Soest
+# -August 2017	Frank Dankers & Timo Deist	updated for duCAT/Erasmus
+# -June 2018	Andre Dekker				adapted for 20kChallenge and CSV data source
+# -August 2018	Frank Dankers				cleaned and updated for consistency in naming/comments
+
+
+@prefix map: <> .
+@prefix roo:<http://www.cancerdata.org/roo/>.
+@prefix ncit:<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix jdbc: <http://d2rq.org/terms/jdbc/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+
+
+############################################
+# CSV connection
+############################################
+
+map:database a d2rq:Database;
+	d2rq:jdbcDriver "org.relique.jdbc.csv.CsvDriver";
+	# fill in the directory of the CSV file, use forward slashes!
+	d2rq:jdbcDSN "jdbc:relique:csv:[[full path to csv directory (not the file)]]";
+	.
+
+
+############################################
+# patient
+############################################
+
+# define patient classmap
+map:patient a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "patient/@@20kChallenge_data.id|urlify@@";
+    d2rq:class ncit:C16960;															# Patient
+	.
+
+
+############################################
+# disease
+############################################
+
+# define disease classmap
+	map:disease a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "disease/@@20kChallenge_data.id|urlify@@";
+	d2rq:class ncit:C2926;															# Non-Small Cell Lung Carcinoma
+	.
+
+# link patient and disease via patientHasDisease
+map:patientHasDisease a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:patient;
+	d2rq:property roo:P100008;														# has_neoplasm
+	d2rq:refersToClassMap map:disease;
+	.
+
+
+############################################
+# overall stage
+############################################
+
+# define overallStage classmap
+map:overallStage a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "overallStage/@@20kChallenge_data.id|urlify@@";
+  	d2rq:class ncit:C28108;															# Disease Stage Qualifier
+	.
+
+# link disease and overallStage via diseaseHasOverallStage
+    map:diseaseHasOverallStage a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:disease;
+	d2rq:property roo:P100025;														# has_stage
+	d2rq:refersToClassMap map:overallStage;
+	.
+
+# link overallStage and overallStageMapping translation table via overallStageHasMapping
+map:overallStageHasMapping a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:overallStage;
+	d2rq:property rdf:type;
+	d2rq:uriColumn "20kChallenge_data.stage";
+	d2rq:translateWith map:overallStageMapping;
+	.
+
+# define overallStageMapping translation table
+map:overallStageMapping a d2rq:TranslationTable;
+    d2rq:translation [ d2rq:databaseValue "0";		d2rq:rdfValue ncit:C28051; ];	# Stage 0
+	d2rq:translation [ d2rq:databaseValue "Occult";	d2rq:rdfValue ncit:C141461; ];	# Occult Stage
+	d2rq:translation [ d2rq:databaseValue "I";		d2rq:rdfValue ncit:C27966; ];	# Stage I
+    d2rq:translation [ d2rq:databaseValue "IA";		d2rq:rdfValue ncit:C27975; ];	# Stage IA
+    d2rq:translation [ d2rq:databaseValue "IA1";	d2rq:rdfValue ncit:C27983; ];	# Stage IA1
+    d2rq:translation [ d2rq:databaseValue "IA2";	d2rq:rdfValue ncit:C27984; ];	# Stage IA2
+    d2rq:translation [ d2rq:databaseValue "IA3";	d2rq:rdfValue ncit:C136485; ];	# Stage IA3
+	d2rq:translation [ d2rq:databaseValue "IB"; 	d2rq:rdfValue ncit:C27976; ];	# Stage IB
+    d2rq:translation [ d2rq:databaseValue "II";		d2rq:rdfValue ncit:C28054; ];	# Stage II
+    d2rq:translation [ d2rq:databaseValue "IIA";	d2rq:rdfValue ncit:C27967; ];	# Stage IIA
+	d2rq:translation [ d2rq:databaseValue "IIB";	d2rq:rdfValue ncit:C27968; ];	# Stage IIB
+	d2rq:translation [ d2rq:databaseValue "III";	d2rq:rdfValue ncit:C27970; ];	# Stage III
+    d2rq:translation [ d2rq:databaseValue "IIIA";	d2rq:rdfValue ncit:C27977; ]; 	# Stage IIIA
+    d2rq:translation [ d2rq:databaseValue "IIIB";	d2rq:rdfValue ncit:C27978; ];	# Stage IIIB
+	d2rq:translation [ d2rq:databaseValue "IIIC";	d2rq:rdfValue ncit:C27982; ];	# Stage IIIC
+	d2rq:translation [ d2rq:databaseValue "IV";		d2rq:rdfValue ncit:C27971; ];	# Stage IV
+    d2rq:translation [ d2rq:databaseValue "IVA";	d2rq:rdfValue ncit:C27979; ]; 	# Stage IVA
+    d2rq:translation [ d2rq:databaseValue "IVB";	d2rq:rdfValue ncit:C27980; ];	# Stage IVB
+	.
+
+
+############################################
+# clinical T stage
+############################################
+
+# define clinT classmap
+map:clinT a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "clinT/@@20kChallenge_data.id|urlify@@";
+  	d2rq:class ncit:C48885;															# Generic Primary Tumor TNM Finding
+	.
+
+# link disease and clinT via diseaseHasClinT
+    map:diseaseHasClinT a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:disease;
+	d2rq:property roo:P100244;														# has_clinical_t_stage
+	d2rq:refersToClassMap map:clinT;
+	.
+
+# link clinT and clinTmapping translation table via clinThasMapping
+map:clinThasMapping a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:clinT;
+	d2rq:property rdf:type;
+	d2rq:uriColumn "20kChallenge_data.t";
+	d2rq:translateWith map:clinTmapping;
+	.
+
+# define clinTmapping translation table
+map:clinTmapping a d2rq:TranslationTable;
+    d2rq:translation [ d2rq:databaseValue "T0";   d2rq:rdfValue ncit:C48719; ];		# T0 Stage Finding
+	d2rq:translation [ d2rq:databaseValue "Tis";  d2rq:rdfValue ncit:C48738; ];		# Tis Stage Finding
+	d2rq:translation [ d2rq:databaseValue "T1";   d2rq:rdfValue ncit:C48720; ];		# T1 Stage Finding
+    d2rq:translation [ d2rq:databaseValue "T1a";  d2rq:rdfValue ncit:C48721; ];		# T1a Stage Finding
+    d2rq:translation [ d2rq:databaseValue "T1b";  d2rq:rdfValue ncit:C48722; ];		# T1b Stage Finding
+    d2rq:translation [ d2rq:databaseValue "T1c";  d2rq:rdfValue ncit:C48723; ];		# T1c Stage Finding
+    d2rq:translation [ d2rq:databaseValue "T1mi"; d2rq:rdfValue ncit:C95805; ];		# T1mi Stage Finding
+	d2rq:translation [ d2rq:databaseValue "T2";   d2rq:rdfValue ncit:C48724; ];		# T2 Stage Finding
+    d2rq:translation [ d2rq:databaseValue "T2a";  d2rq:rdfValue ncit:C48725; ];		# T2a Stage Finding
+    d2rq:translation [ d2rq:databaseValue "T2b";  d2rq:rdfValue ncit:C48726; ];		# T2b Stage Finding
+	d2rq:translation [ d2rq:databaseValue "T3";   d2rq:rdfValue ncit:C48728; ];		# T3 Stage Finding
+	d2rq:translation [ d2rq:databaseValue "T4";   d2rq:rdfValue ncit:C48732; ];		# T4 Stage Finding
+    d2rq:translation [ d2rq:databaseValue "Tx";   d2rq:rdfValue ncit:C48737; ];		# TX Stage Finding
+    .
+
+
+############################################
+# clinical N stage
+############################################
+
+# define clinN classmap
+map:clinN a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "clinN/@@20kChallenge_data.id|urlify@@";
+  	d2rq:class ncit:C48884;															# Generic Regional Lymph Nodes TNM Finding
+	.
+
+# link disease and clinN via diseaseHasClinN
+map:diseaseHasClinN a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:disease;
+	d2rq:property roo:P100242;														# has_clinical_n_stage
+	d2rq:refersToClassMap map:clinN;
+	.
+
+# link clinN and clinNmapping translation table via clinNhasMapping
+map:clinNhasMapping a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:clinN;
+	d2rq:property rdf:type;
+	d2rq:uriColumn "20kChallenge_data.n";
+	d2rq:translateWith map:clinNmapping;
+	.
+
+# define clinNmapping translation table
+map:clinNmapping a d2rq:TranslationTable;
+	d2rq:translation [ d2rq:databaseValue "N0"; d2rq:rdfValue ncit:C48705; ];		# N0 Stage Finding
+	d2rq:translation [ d2rq:databaseValue "N1"; d2rq:rdfValue ncit:C48706; ];		# N1 Stage Finding
+	d2rq:translation [ d2rq:databaseValue "N2"; d2rq:rdfValue ncit:C48786; ];		# N2 Stage Finding
+	d2rq:translation [ d2rq:databaseValue "N3"; d2rq:rdfValue ncit:C48714; ];		# N3 Stage Finding
+	d2rq:translation [ d2rq:databaseValue "Nx"; d2rq:rdfValue ncit:C48718; ];		# NX Stage Finding
+    .
+
+
+############################################
+# clinical M stage
+############################################
+
+# define clinM classmap
+map:clinM a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "clinM/@@20kChallenge_data.id|urlify@@";
+    d2rq:class ncit:C48883;															# Generic Distant Metastasis TNM Finding
+	.
+
+# link disease and clinM via diseaseHasClinM
+map:diseaseHasClinM a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:disease;
+	d2rq:property roo:P100241;														# has_clinical_m_stage
+	d2rq:refersToClassMap map:clinM;
+	.
+
+# link clinM and clinMmapping translation table via clinMhasMapping
+map:clinMhasMapping a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:clinM;
+	d2rq:property rdf:type;
+	d2rq:uriColumn "20kChallenge_data.m";
+    d2rq:translateWith map:clinMmapping;
+	.
+
+# define clinMmapping translation table
+map:clinMmapping a d2rq:TranslationTable;
+	d2rq:translation [ d2rq:databaseValue "M0";  d2rq:rdfValue ncit:C48699; ];		# M0 Stage Finding
+	d2rq:translation [ d2rq:databaseValue "M1";  d2rq:rdfValue ncit:C48700; ];		# M1 Stage Finding
+	d2rq:translation [ d2rq:databaseValue "M1a"; d2rq:rdfValue ncit:C48701; ];		# M1a Stage Finding
+	d2rq:translation [ d2rq:databaseValue "M1b"; d2rq:rdfValue ncit:C48702; ];		# M1b Stage Finding
+	d2rq:translation [ d2rq:databaseValue "M1c"; d2rq:rdfValue ncit:C48703; ];		# M1c Stage Finding
+	d2rq:translation [ d2rq:databaseValue "Mx";  d2rq:rdfValue ncit:C48704; ];		# MX Stage Finding
+	.
+
+
+############################################
+# date of diagnosis
+############################################
+
+# define diagnosisDate classmap
+map:diagnosisDate a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "diagnosisDate/@@20kChallenge_data.id|urlify@@";
+	d2rq:class ncit:C25164;															# Date
+	.
+
+# link disease and diagnosisDate via diseaseHasDiagnosisDate
+map:diseaseHasDiagnosisDate a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:disease;
+	d2rq:property roo:P100251;														# has_date_of_diagnosis
+	d2rq:refersToClassMap map:diagnosisDate;
+	.
+
+# value diagnosisDate
+map:diagnosisDateValue a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:diagnosisDate;
+	d2rq:property roo:P100041;														# at_date_time
+	d2rq:column "20kChallenge_data.date_of_diagnosis";
+	d2rq:datatype xsd:date;
+	.
+
+
+############################################
+# vital status
+############################################
+
+# define vitalStatus classmap
+map:vitalStatus a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "vitalStatus/@@20kChallenge_data.id|urlify@@";
+	d2rq:class ncit:C25717;															# Vital Status
+	.
+
+# link patient and vitalStatus via patientHasVitalStatus
+map:patientHasVitalStatus a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:patient;
+	d2rq:property roo:P100028;														# has_vital_status
+	d2rq:refersToClassMap map:vitalStatus;
+	.
+
+# link vitalStatus and vitalStatusMapping translation table via vitalStatusHasMapping
+map:vitalStatusHasMapping a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:vitalStatus;
+	d2rq:property rdf:type;
+	d2rq:uriColumn "20kChallenge_data.vital_status";
+	d2rq:translateWith map:vitalStatusMapping;
+	.
+
+# define vitalStatusMapping translation table
+map:vitalStatusMapping a d2rq:TranslationTable;
+    d2rq:translation [ d2rq:databaseValue "alive"; d2rq:rdfValue ncit:C37987; ];	# Alive
+	d2rq:translation [ d2rq:databaseValue "dead";  d2rq:rdfValue ncit:C28554; ];	# Dead
+	.
+
+
+############################################
+# date of vital status
+############################################
+
+# define vitalStatusDate classmap
+map:vitalStatusDate a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "vitalStatusDate/@@20kChallenge_data.id|urlify@@";
+	d2rq:class ncit:C25164;															# Date
+	.
+
+# link vitalStatus and vitalStatusDate via vitalStatusHasDate
+map:vitalStatusHasDate a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:vitalStatus;
+	d2rq:property roo:P100228;														# has_date
+	d2rq:refersToClassMap map:vitalStatusDate;
+	.
+
+# value vitalStatusDate
+map:vitalStatusDateValue a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:vitalStatusDate;
+	d2rq:property roo:P100041;														# at_date_time
+	d2rq:column "20kChallenge_data.date_of_fu";
+	d2rq:datatype xsd:date;
+	.
