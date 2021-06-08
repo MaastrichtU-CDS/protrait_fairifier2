@@ -27,7 +27,7 @@
 
 map:basicQuery a rr:LogicalTable;
 	rr:sqlQuery """SELECT id as id, t as t, n as n, m as m, stage as stage,
-    date_of_diagnosis of date_of_diagnosis, date_of_fu as date_of_fu,
+    date_of_diagnosis as date_of_diagnosis, date_of_fu as date_of_fu,
     vital_status as vital_status FROM CORALDATA;""";
 	rdfs:label """Every row should correspond to a unique patient.<br/>
 	The target variables have the following name and specific meaning:
@@ -248,7 +248,7 @@ map:diagnosisDate a rr:TriplesMap;
 		rr:predicate roo:local_value;
 		rr:objectMap [
 			rr:column "date_of_diagnosis";
-			rr:datatype xsd:date;       # TODO: or leave as string?
+			rr:datatype xsd:string;       # TODO: or leave as string?
 		];
 	].
 
@@ -298,6 +298,6 @@ map:vitalStatusDate a rr:TriplesMap;
         rr:predicate roo:local_value;
         rr:objectMap [
             rr:column "date_of_fu";
-            rr:datatype xsd:date;       # TODO: or leave as string?
+            rr:datatype xsd:string;       # TODO: or leave as string?
         ];
     ].
