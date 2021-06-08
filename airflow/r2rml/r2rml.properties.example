@@ -1,6 +1,5 @@
 # connectionURL = jdbc:postgresql://postgres/postgres
 # user = foo
 # password = bar
-mappingFile = ./r2rml.ttl
-outputFile = ./output.ttl
+mappingFile = ./mapping.ttl
 format = TURTLE
