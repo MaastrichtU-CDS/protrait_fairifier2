@@ -1,0 +1,303 @@
+# 20kChallenge mapping from csv to triples
+#
+# Notes
+# -Parameters: patient, TNM, stage, date of diagnosis, date of last follow-up or death, vital status
+#
+# Version history:
+# -March 2017	Frank Dankers				adapted for duCAT from design Johan van Soest
+# -August 2017	Frank Dankers & Timo Deist	updated for duCAT/Erasmus
+# -June 2018	Andre Dekker				adapted for 20kChallenge and CSV data source
+# -August 2018	Frank Dankers				cleaned and updated for consistency in naming/comments
+# -June 2021	Aiara Lobo Gomes			adapted for CORAL
+
+
+@prefix map: <http://mapping.local/>.
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix ncit:<http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>.
+@prefix roo:<http://www.cancerdata.org/roo/>.
+@prefix skos: <http://www.w3.org/2008/05/skos#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+############################################
+# SQL query
+############################################
+
+map:basicQuery a rr:LogicalTable;
+	rr:sqlQuery """SELECT id as id, t as t, n as n, m as m, stage as stage,
+    date_of_diagnosis of date_of_diagnosis, date_of_fu as date_of_fu,
+    vital_status as vital_status FROM CORALDATA;""";
+	rdfs:label """Every row should correspond to a unique patient.<br/>
+	The target variables have the following name and specific meaning:
+	id, t, n, m, stage, date_of_diagnosis, date_of_fu, vital_status.<br/>
+	<ul>
+	<li>id: local anonymized ID</li>
+	<li>t: T stage [Tx, Tis, T0, T1, T1mi, T1a, T1b, T1c, T2, T2a, T2b, T3,
+	T4]</li>
+	<li>n: N stage [Nx, N0, N1, N2, N3]</li>
+	<li>m: M stage [Mx, M0, M1, M1a, M1b, M1c]</li>
+	<li>stage: overall stage [0, Occult, I, IA, IA1, IA2, IA3, IB, II, IIA,
+	IIB, III, IIIA, IIIB, IIIC, IV, IVA, IVB]</li>
+	<li>date_of_diagnosis: date of diagnosis [e.g."2012-01-25"]</li>
+	<li>date_of_fu: date of follow-up or death [e.g."2016-01-25"], this is
+	the date of last follow-up of an alive patient or the date of death of a
+	deceased person</li>
+	<li>vital_status: vital status at follow-up [dead, alive]</li>
+	</ul>""";
+	skos:definition "id,t,n,m,stage,date_of_diagnosis,date_of_fu,vital_status".
+
+
+############################################
+# patient
+############################################
+
+# define patient classmap
+map:patient a rr:TriplesMap;
+	rr:logicalTable map:basicQuery;
+	rr:subjectMap [
+		rr:template "patient/{id}";
+		rr:class ncit:C16960;			# Patient
+	];
+	rr:predicateObjectMap [
+	    rr:predicate rdfs:label;
+	    rr:objectMap [
+	        rr:column "id";
+	        rr:datatype xsd:string;
+	    ];
+	];
+	rr:predicateObjectMap [
+	    rr:predicate roo:P100008;		# has_neoplasm
+	    rr:objectMap [
+	        rr:parentTriplesMap map:disease;
+	        rr:joinCondition [
+				rr:child "id";
+	            rr:parent "id";
+	        ];
+	    ];
+	];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100028;		# has_vital_status
+        rr:objectMap [
+            rr:parentTriplesMap map:vitalStatus;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+
+############################################
+# disease
+############################################
+
+# define disease classmap
+map:disease a rr:TriplesMap;
+	rr:logicalTable map:basicQuery;
+	rr:subjectMap [
+		rr:template "patient/{id}/disease";
+		rr:class ncit:C2926;			# Non-Small Cell Lung Carcinoma
+	];
+	rr:predicateObjectMap [
+		rr:predicate roo:P100025;		# has_stage
+		rr:objectMap [
+			rr:parentTriplesMap map:overallStage;
+			rr:joinCondition [
+				rr:child "id";			# TODO: see meaning of joinCondition
+				rr:parent "id";
+		   ];
+	   ];
+    ];
+	rr:predicateObjectMap [
+		rr:predicate roo:P100244;		# has_clinical_t_stage
+		rr:objectMap [
+  			rr:parentTriplesMap map:clinT;
+			rr:joinCondition [
+				rr:child "id";
+				rr:parent "id";
+			];
+		];
+    ];
+	rr:predicateObjectMap [
+		rr:predicate roo:P100242;		# has_clinical_n_stage
+		rr:objectMap [
+			rr:parentTriplesMap map:clinN;
+			rr:joinCondition [
+				rr:child "id";
+				rr:parent "id";
+			];
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicate roo:P100241;		# has_clinical_m_stage
+		rr:objectMap [
+			rr:parentTriplesMap map:clinM;
+			rr:joinCondition [
+				rr:child "id";
+				rr:parent "id";
+			];
+		];
+	];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100251;		# has_date_of_diagnosis
+        rr:objectMap [
+            rr:parentTriplesMap map:diagnosisDate;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+
+############################################
+# overall stage
+############################################
+
+# define overallStage classmap
+# TODO: see with Johan or Matthijs when to use local_value or translation
+map:overallStage a rr:TriplesMap;
+	rr:logicalTable map:basicQuery;
+	rr:subjectMap [
+		rr:template "patient/{id}/disease/stage";
+		rr:class ncit:C28108;			# Disease Stage Qualifier
+	];
+	rr:predicateObjectMap [
+		rr:predicate roo:local_value;
+		rr:objectMap [
+			rr:column "stage";
+			rr:datatype xsd:string;
+	    ];
+	].
+
+
+############################################
+# clinical T stage
+############################################
+
+# define clinT classmap
+map:clinT a rr:TriplesMap;
+	rr:logicalTable map:basicQuery;
+	rr:subjectMap [
+		rr:template "patient/{id}/disease/t";
+		rr:class ncit:C48885;			# Generic Primary Tumor TNM Finding
+	];
+	rr:predicateObjectMap [
+		rr:predicate roo:local_value;
+		rr:objectMap [
+			rr:column "t";
+			rr:datatype xsd:string;
+		];
+   ].
+
+
+############################################
+# clinical N stage
+############################################
+
+# define clinN classmap
+map:clinN a rr:TriplesMap;
+	rr:logicalTable map:basicQuery;
+	rr:subjectMap [
+		rr:template "patient/{id}/disease/n";
+		rr:class ncit:C48884;			# Generic Regional Lymph Nodes TNM Finding
+	];
+	rr:predicateObjectMap [
+		rr:predicate roo:local_value;
+		rr:objectMap [
+			rr:column "n";
+			rr:datatype xsd:string;
+		];
+	].
+
+
+############################################
+# clinical M stage
+############################################
+
+# define clinM classmap
+map:clinM a rr:TriplesMap;
+	rr:logicalTable map:basicQuery;
+	rr:subjectMap [
+		rr:template "patient/{id}/disease/m";
+		rr:class ncit:C48883;			# Generic Distant Metastasis TNM Finding
+	];
+	rr:predicateObjectMap [
+		rr:predicate roo:local_value;
+		rr:objectMap [
+			rr:column "m";
+			rr:datatype xsd:string;
+		];
+	].
+
+
+############################################
+# date of diagnosis
+############################################
+
+# define diagnosisDate classmap
+map:diagnosisDate a rr:TriplesMap;
+	rr:logicalTable map:basicQuery;
+	rr:subjectMap [
+		rr:template "patient/{id}/disease/date_of_diagnosis";
+		rr:class ncit:C25164;			# Date
+	];
+	rr:predicateObjectMap [
+		rr:predicate roo:local_value;
+		rr:objectMap [
+			rr:column "date_of_diagnosis";
+			rr:datatype xsd:date;       # TODO: or leave as string?
+		];
+	].
+
+
+############################################
+# vital status
+############################################
+
+# define vitalStatus classmap
+map:vitalStatus a rr:TriplesMap;
+    rr:logicalTable map:basicQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/vital_status";
+        rr:class ncit:C25717;			# Vital Status
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "vital_status";
+            rr:datatype xsd:string;
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100228;		# has_date
+        rr:objectMap [
+            rr:parentTriplesMap map:vitalStatusDate;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+
+############################################
+# date of vital status
+############################################
+
+# define vitalStatusDate classmap
+map:vitalStatusDate a rr:TriplesMap;
+    rr:logicalTable map:basicQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/vital_status/date_of_fu";
+        rr:class ncit:C25164;			# Date
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "date_of_fu";
+            rr:datatype xsd:date;       # TODO: or leave as string?
+        ];
+    ].
