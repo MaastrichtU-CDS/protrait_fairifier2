@@ -18,9 +18,11 @@ services:
                 max-size: 10m
                 max-file: "3"
         volumes:
-            - ./airflow/2021-05-v1.2.4:${R2RML_CLI_DIR}
+            - ./airflow/r2rml_cli:${R2RML_CLI_DIR}
             - ./airflow/dags:/usr/local/airflow/dags
-            - ./airflow/r2rml:${R2RML_DATA_DIR}
+            - ./airflow/r2rml:${R2RML_DATA_DIR}/settings
+            - ./input:${R2RML_DATA_DIR}/input
+            - ./output:${R2RML_DATA_DIR}/output
         ports:
             - "8080:8080"
         command: webserver
