@@ -35,13 +35,8 @@ First of all, copy the sample `.env` file (and make any changes to passwords):
 cp .env.example .env
 ```
 
-Next, do the same to the `r2rml.properties` file. This file can be used
-as-is if uploading new data through CSV files. If new data is provided through
-a database, (un)comment the apropriate lines.
-
-```bash
-cp airflow/r2rml/r2rml.properties.example airflow/r2rml/r2rml.properties
-```
+Next upload a mapping file `mapping.ttl` to the `airflow/r2rml` directory, 
+which will be used to map tabular data to triples.
 
 ### Running the infrastructure
 
@@ -51,6 +46,10 @@ following command:
 ```bash
 docker compose up
 ```
+
+To upload data, put a zip with your CSV files in the `input` directory. Within
+a few seconds the data should be picked up and processed to triples, which
+can be found in the `output` directory.
 
 ## References
 

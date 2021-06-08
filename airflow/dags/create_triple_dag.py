@@ -22,6 +22,8 @@ class ZipSensor(BaseSensorOperator):
     """
     def __init__(self, *, filepath, **kwargs):
         super().__init__(**kwargs)
+
+        # Look just for zips
         self.filepath = filepath / '*.zip'
 
     def poke(self, context):
@@ -62,17 +64,19 @@ def extract_files(input_dir, work_dir, **kwargs):
         input_dir (Path): Where to find the zip to extract
         work_dir (Path): What working dir to put the csv files in
     """
+    # Make sure we have a clean working dir
     work_dir.mkdir(parents=True, exist_ok=True)
     shutil.rmtree(str(work_dir.resolve()))
     work_dir.mkdir(parents=True, exist_ok=False)
 
-
+    # Take the archive file and unzip it
     file = input_dir / kwargs['ti'].xcom_pull(task_ids='move_to_in_progress', key='archive_name')
     archive = zipfile.ZipFile(file)
     archive.extractall(path=work_dir)
     filenames = archive.namelist()
     filenames = [str(work_dir / name) for name in filenames if not '/' in name]
 
+    # Generate the filenames for the r2rml tool
     kwargs['ti'].xcom_push(key='source_csv_files', value=';'.join(filenames))
 
 def cleanup(input_dir, work_dir, output_dir, **kwargs):
