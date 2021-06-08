@@ -151,7 +151,7 @@ class ManageDB:
             cursor = self.conn.cursor()
 
             # Query table
-            query = f'SELECT * FROM %s;' % table
+            query = 'SELECT * FROM %s;' % table
             cursor.execute(query)
             results = cursor.fetchall()
 
