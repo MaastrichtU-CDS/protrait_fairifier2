@@ -1,16 +1,15 @@
-version: "3"
+version: "2" 
 services: 
+###########################################
+###### Clinical data Workflow        ######
+###########################################
   data_postgres:
     image: postgres
-    ports:
-      - "5432:5432"
     environment:
-      - POSTGRES_DB=postgresdb
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=12345
+      - POSTGRES_PASSWORD=postgres
   rdf_store:
     image: jvsoest/graphdb-free:fairstation
-    ports:
+    ports: 
       - "7200:7200"
     environment:
       - GDB_HEAP_SIZE=2g
@@ -21,3 +20,35 @@ services:
     links:
       - data_postgres:dbhost
       - rdf_store:graphdb
+  notebook:
+    image: jvsoest/notebook:pbdw
+    ports:
+      - "8888:8888"
+      - "8088:8088"
+    volumes:
+      - ./notebooks:/queries/
+    links:
+      - data_postgres:postgresdb
+      - rdf_store:graphdb
+  oraw:
+    image: jvsoest/oraw
+    volumes:
+      - ./dicom/:/data/
+    links:
+      - rdf_store:graphdb
+    environment:
+      - RDF4J_URL=http://graphdb:7200
+      - EXCLUDE_STRUCTURE_REGEX="(Patient.*|BODY.*|Body.*|NS.*|Couch.*|Isocenter.*)"
+###########################################################
+# Dummy containers already downloaded for convenience
+###########################################################
+#  dummy_download_matlab_code:
+#    image: jvsoest/svm_site
+###########################################################
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet:  192.169.230.1/24
