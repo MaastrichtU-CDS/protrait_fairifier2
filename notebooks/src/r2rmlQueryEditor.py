@@ -1,10 +1,10 @@
 from __future__ import print_function
 from SPARQLWrapper import SPARQLWrapper, JSON
 import ipywidgets as widgets
-from IPython.display import clear_output
 import pandas as pd
 
 from comparisonEngine import ComparisonEngine
+
 
 class R2RMLQueryEditor:
     def __init__(self, repoUrl, dbEngine):

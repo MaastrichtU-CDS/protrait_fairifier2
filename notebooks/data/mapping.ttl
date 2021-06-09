@@ -248,7 +248,7 @@ map:diagnosisDate a rr:TriplesMap;
 		rr:predicate roo:local_value;
 		rr:objectMap [
 			rr:column "date_of_diagnosis";
-			rr:datatype xsd:string;       # TODO: or leave as string?
+			rr:datatype xsd:date;       # TODO: or leave as string?
 		];
 	].
 
@@ -298,6 +298,6 @@ map:vitalStatusDate a rr:TriplesMap;
         rr:predicate roo:local_value;
         rr:objectMap [
             rr:column "date_of_fu";
-            rr:datatype xsd:string;       # TODO: or leave as string?
+            rr:datatype xsd:date;       # TODO: or leave as string?
         ];
     ].

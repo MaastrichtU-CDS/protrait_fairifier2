@@ -39,7 +39,7 @@ class ManageR2RML:
             endpoint.method = 'POST'
             endpoint.query()
         except Exception as e:
-            raise Exception(f'Unable to drop RDF mappings: {e}')
+            raise Exception('Unable to drop RDF mappings: {e}')
 
     def load_rdf_mapping(self):
         """ Load RDF mapping file
@@ -49,7 +49,7 @@ class ManageR2RML:
             g.parse(self.mapping_file, format='n3')
             self.rdf_string = g.serialize(format='nt')
         except Exception as e:
-            raise Exception(f'Unable to load RDF mapping: {e}')
+            raise Exception('Unable to load RDF mapping: {e}')
 
     def insert_rdf_mapping(self):
         """ Insert RDF mapping to R2RML endpoint
@@ -62,4 +62,4 @@ class ManageR2RML:
             endpoint.method = 'POST'
             endpoint.query()
         except Exception as e:
-            raise Exception(f'Unable to insert RDF mapping: {e}')
+            raise Exception('Unable to insert RDF mapping: {e}')

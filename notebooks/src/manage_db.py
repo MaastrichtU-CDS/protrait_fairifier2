@@ -13,13 +13,11 @@ class ManageDB:
     """ Class for interaction with database
     """
 
-    def __init__(self, dbname, host, port, user, password):
+    def __init__(self, host, port, user, password):
         """ Initialisation method of ManageDB class
 
         Parameters
         ----------
-        dbname : str
-            Database name
         host : str
             Host address
         port : int
@@ -29,18 +27,22 @@ class ManageDB:
         password : str
             User's password
         """
-        self.dbname = dbname
         self.host = host
         self.port = port
         self.user = user
         self.password = password
 
-    def connect(self):
-        """ Connect to database
+    def connect(self, dbname=None):
+        """ Connect to postgres
+
+        Parameters
+        ----------
+        dbname : str
+            Optional database name
         """
         try:
             self.conn = connect(
-                dbname=self.dbname,
+                dbname=dbname,
                 host=self.host,
                 port=self.port,
                 user=self.user,
@@ -48,7 +50,25 @@ class ManageDB:
             )
             self.conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         except Exception as e:
-            raise Exception(f'Unable to connect to the database: {e}')
+            raise Exception('Unable to connect to the database: {e}')
+
+    def create_db(self, dbname):
+        """ Create new database
+
+        Parameters
+        ----------
+        dbname : str
+            Database name
+        """
+        try:
+            # Open cursor to perform database operation
+            cursor = self.conn.cursor()
+
+            # Create database
+            create_db = 'CREATE DATABASE %s;' % dbname
+            cursor.execute(create_db)
+        except Exception as e:
+            raise Exception('Unable to create database: {e}')
 
     def create_table(self, table, columns):
         """ Create a new table
@@ -68,10 +88,10 @@ class ManageDB:
             columns = ','.join(map(' '.join, columns.items()))
 
             # Create table
-            create_table = f'CREATE TABLE %s (%s);' % (table, columns)
+            create_table = 'CREATE TABLE %s (%s);' % (table, columns)
             cursor.execute(create_table)
         except Exception as e:
-            raise Exception(f'Unable to create table: {e}')
+            raise Exception('Unable to create table: {e}')
 
     def prepare_data(self, file_path, columns, rename=None):
         """ Prepare data from CSV input
@@ -125,7 +145,7 @@ class ManageDB:
             # TODO: retrieve column names automatically?
             cols = ', '.join(columns)
             values = ', '.join(['%s']*df.shape[1])
-            insert = f'INSERT INTO %s (%s) VALUES (%s)' % (table, cols, values)
+            insert = 'INSERT INTO %s (%s) VALUES (%s)' % (table, cols, values)
 
             # Insert new data
             for index, row in df.iterrows():
@@ -134,7 +154,7 @@ class ManageDB:
             # Commit data insertion
             self.conn.commit()
         except Exception as e:
-            raise Exception(f'Unable to insert new data: {e}')
+            raise Exception('Unable to insert new data: {e}')
 
     def show_table(self, table, n=10):
         """ Display top n rows of a table
@@ -159,7 +179,7 @@ class ManageDB:
             for row in results[:n]:
                 print(row)
         except Exception as e:
-            raise Exception(f'Unable to display table: {e}')
+            raise Exception('Unable to display table: {e}')
 
     def close(self):
         """ Close database connection
