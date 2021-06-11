@@ -3,6 +3,8 @@ services:
     postgres:
         image: postgres
         env_file: .env
+        volumes:
+            - ./postgres/create_second_db.sql:/docker-entrypoint-initdb.d/create_second_db.sql
 
     webserver:
         build: ./airflow
