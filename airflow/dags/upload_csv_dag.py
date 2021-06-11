@@ -68,7 +68,7 @@ default_args = {
 r2rml_dir = Path(os.environ['R2RML_DATA_DIR'])
 
 with DAG(
-    'create_triples',
+    'upload_csv',
     default_args=default_args,
     description='Generates triples files from R2RML scripts and CSV files',
     # schedule_interval=timedelta(minutes=1),
