@@ -39,6 +39,15 @@ class ZipSensor(BaseSensorOperator):
         return False
 
 def extract_and_upload(input_dir, success_dir, error_dir, **kwargs):
+    """Take in a zip of CSV files and upload them to the database
+        TODO: implement error dir
+
+    Args:
+        input_dir (Path): Path to the directory containing incoming zips
+        success_dir (Path): Directory where successfully parsed zips should go
+        error_dir (Path): Directory where failed parsed zips should go
+
+    """
     file = list(input_dir.glob('*.zip'))[0]
 
     success_dir.mkdir(parents=True, exist_ok=True)

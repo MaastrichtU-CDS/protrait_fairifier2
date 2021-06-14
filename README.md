@@ -35,6 +35,12 @@ First of all, copy the sample `.env` file (and make any changes to passwords):
 cp .env.example .env
 ```
 
+Do the same for the `r2rml.properties` file under `airflow/r2rml`:
+
+```bash
+cp airflow/r2rml/r2rml.properties.example airflow/r2rml/r2rml.properties
+```
+
 Next upload a mapping file `mapping.ttl` to the `airflow/r2rml` directory, 
 which will be used to map tabular data to triples.
 
