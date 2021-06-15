@@ -1,10 +1,41 @@
 from datetime import timedelta, datetime
 from glob import glob
+from pathlib import Path
+import os
 
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
+from airflow.operators.python_operator import PythonOperator
 from airflow.utils.dates import days_ago
 
+import rdflib as rdf
+from SPARQLWrapper import SPARQLWrapper
+
+
+def upload_triples(input_path, sparql_endpoint, **kwargs):
+    sparql = SPARQLWrapper(sparql_endpoint + '/statements')
+
+    for file in input_path.glob('*.nt'):
+        g = rdf.Graph()
+        g.load(str(file.resolve()), format='nt')
+
+        deleteQuery = """
+            CLEAR GRAPH <http://localhost/%s>
+        """ % (file.name)
+
+        sparql.setQuery(deleteQuery)
+        sparql.query()
+
+        query = """
+        INSERT DATA {
+            GRAPH <http://localhost/%s> {
+                %s
+            } 
+        }
+        """ % (file.name ,g.serialize(format='nt').decode())
+
+        sparql.setQuery(query)
+        sparql.query()
 
 default_args = {
     'owner': 'airflow',
@@ -31,3 +62,14 @@ with DAG(
         "-f ntriples " +
         "-o ${R2RML_DATA_DIR}/output/output.ttl "
     )
+
+    upload_triples_op = PythonOperator(
+        task_id='upload_triples',
+        python_callable=upload_triples,
+        op_kwargs={
+            'input_path': Path(os.environ['R2RML_DATA_DIR']) / 'output', 
+            'sparql_endpoint': os.environ['SPARQL_ENDPOINT']
+            }
+    )
+
+    generate_triples_op >> upload_triples_op

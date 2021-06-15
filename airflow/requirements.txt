@@ -1,0 +1,4 @@
+rdflib
+sparqlwrapper
+pandas
+sqlalchemy

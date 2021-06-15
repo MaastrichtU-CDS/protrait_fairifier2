@@ -26,10 +26,19 @@ services:
             - ./input:${R2RML_DATA_DIR}/input
             - ./output:${R2RML_DATA_DIR}/output
         ports:
-            - "8080:8080"
+            - 8080:8080
         command: webserver
         healthcheck:
             test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
             interval: 30s
             timeout: 30s
             retries: 3
+
+    graphdb:
+        image: jvsoest/graphdb-free:fairstation
+        ports: 
+            - 7200:7200
+        environment:
+            - GDB_HEAP_SIZE=2g
+            - GDB_MIN_MEM=1g
+            - GDB_MAX_MEM=2g
