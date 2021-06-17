@@ -38,7 +38,7 @@ class ZipSensor(BaseSensorOperator):
 
         return False
 
-def extract_and_upload(input_dir, success_dir, error_dir, **kwargs):
+def extract_and_upload(input_dir, success_dir, error_dir, append, **kwargs):
     """Take in a zip of CSV files and upload them to the database
         TODO: implement error dir
 
@@ -63,7 +63,7 @@ def extract_and_upload(input_dir, success_dir, error_dir, **kwargs):
         if '/' not in name and name.endswith('.csv'):
             df = pd.read_csv(archive.open(name))
 
-            df.to_sql(name.split('.')[0], eng, if_exists='replace')
+            df.to_sql(name.split('.')[0], eng, if_exists='append' if append else 'replace')
 
     shutil.move(str(file.resolve()), str((success_dir / (file.name + '.' + kwargs['ts_nodash'])).resolve()))
 
@@ -102,7 +102,8 @@ with DAG(
         op_kwargs={
             'input_dir': r2rml_dir / 'input',
             'success_dir': r2rml_dir / 'input' / 'done',
-            'error_dir': r2rml_dir / 'input' / 'error'
+            'error_dir': r2rml_dir / 'input' / 'error',
+            'append': os.environ.get('APPEND_CSV', 0)
         },
         provide_context=True
     )
