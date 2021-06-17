@@ -8,6 +8,7 @@ from glob import glob
 from airflow import DAG
 from airflow.sensors.base_sensor_operator import BaseSensorOperator
 from airflow.operators.python_operator import PythonOperator
+from airflow.operators.dagrun_operator import TriggerDagRunOperator
 from airflow.utils.dates import days_ago
 
 import pandas as pd
@@ -108,4 +109,9 @@ with DAG(
         provide_context=True
     )
 
-    sense_input >> extract_and_upload_op 
+    trigger_triples_op = TriggerDagRunOperator(
+        task_id="trigger_triples",
+        trigger_dag_id='generate_triples'
+    )
+
+    sense_input >> extract_and_upload_op >> trigger_triples_op
