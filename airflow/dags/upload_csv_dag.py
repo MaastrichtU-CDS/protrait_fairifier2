@@ -103,7 +103,7 @@ with DAG(
             'input_dir': r2rml_dir / 'input',
             'success_dir': r2rml_dir / 'input' / 'done',
             'error_dir': r2rml_dir / 'input' / 'error',
-            'append': os.environ.get('APPEND_CSV', 0)
+            'append': int(os.environ.get('APPEND_CSV', 0))
         },
         provide_context=True
     )
