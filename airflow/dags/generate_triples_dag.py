@@ -21,7 +21,7 @@ def upload_triples(input_path, sparql_endpoint, **kwargs):
 
         deleteQuery = """
             CLEAR GRAPH <http://localhost/%s>
-        """ % (file.name)
+        """ % (file.with_suffix('').name)
 
         sparql.setQuery(deleteQuery)
         sparql.query()
@@ -32,7 +32,7 @@ def upload_triples(input_path, sparql_endpoint, **kwargs):
                 %s
             } 
         }
-        """ % (file.name ,g.serialize(format='nt').decode())
+        """ % (file.with_suffix('').name ,g.serialize(format='nt').decode())
 
         sparql.setQuery(query)
         sparql.query()
