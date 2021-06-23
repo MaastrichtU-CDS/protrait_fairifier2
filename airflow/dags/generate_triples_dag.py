@@ -9,7 +9,7 @@ from airflow.operators.python_operator import PythonOperator
 from airflow.utils.dates import days_ago
 
 import rdflib as rdf
-from SPARQLWrapper import SPARQLWrapper
+from SPARQLWrapper import SPARQLWrapper, POSTDIRECTLY
 
 
 def upload_triples(input_path, sparql_endpoint, **kwargs):
@@ -34,6 +34,7 @@ def upload_triples(input_path, sparql_endpoint, **kwargs):
         }
         """ % (file.with_suffix('').name ,g.serialize(format='nt').decode())
 
+        sparql.setRequestMethod(POSTDIRECTLY)
         sparql.setQuery(query)
         sparql.query()
 
