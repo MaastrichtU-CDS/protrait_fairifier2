@@ -58,7 +58,7 @@ with DAG(
         task_id="generate_triples",
         bash_command="${R2RML_CLI_DIR}/ontop materialize " +
         "-m ${R2RML_DATA_DIR}/settings/mapping.ttl " +
-        "-p ${R2RML_DATA_DIR}/settings/r2rml.properties " +
+        "--db-url jdbc:${R2RML_DB_URL}" +
         "-f ntriples " +
         "-o ${R2RML_DATA_DIR}/output/output.ttl "
     )

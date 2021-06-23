@@ -57,7 +57,7 @@ def extract_and_upload(input_dir, success_dir, error_dir, append, **kwargs):
     archive = zipfile.ZipFile(file)
     csv_names = archive.namelist()
 
-    eng = create_engine(f'postgresql://{os.environ["POSTGRES_USER"]}:{os.environ["POSTGRES_PASSWORD"]}@postgres:5432/data')
+    eng = create_engine(os.environ['R2RML_DB_URL'])
 
     # TODO better checking of filetypes
     for name in csv_names:

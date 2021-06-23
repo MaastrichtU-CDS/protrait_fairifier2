@@ -1,4 +1,0 @@
-jdbc.name=data
-jdbc.url=jdbc\:postgresql\://postgres\:5432/data
-jdbc.user=postgres
-jdbc.password=postgres
