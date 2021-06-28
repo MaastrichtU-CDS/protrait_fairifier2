@@ -12,7 +12,8 @@ import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
 
-from dash.dependencies import Input, Output
+from dash.dependencies import Input
+from dash.dependencies import Output
 from collections import OrderedDict
 
 
@@ -20,7 +21,8 @@ from collections import OrderedDict
 # Start app
 # ------------------------------------------------------------------------------
 app_title = 'CORAL portal'
-app = dash.Dash(external_stylesheets=[dbc.themes.MINTY])
+#app = dash.Dash(external_stylesheets=[dbc.themes.MINTY])
+app = dash.Dash(__name__)
 
 # ------------------------------------------------------------------------------
 # Sidebar
@@ -41,10 +43,10 @@ sidebar = html.Div(
         html.Hr(),
         dbc.Nav(
             [
-                dbc.NavLink('Home', href='/', active='exact'),
-                dbc.NavLink('Annotations', href='/annotations', active='exact')
+                dbc.NavItem(dbc.NavLink('Home', href='/', active='exact')),
+                dbc.NavItem(dbc.NavLink('Annotations', href='/annotations', active='exact'))
             ],
-            vertical=True,
+            vertical='md',
             pills=True,
         ),
     ],
@@ -62,9 +64,52 @@ CONTENT_STYLE = {
 
 content = html.Div(id='page-content', style=CONTENT_STYLE)
 
+# ------------------------------------------------------------------------------
+# Layout
+# ------------------------------------------------------------------------------
 app.layout = html.Div([dcc.Location(id='url'), sidebar, content])
 
+# ------------------------------------------------------------------------------
+# Annotation page
+# ------------------------------------------------------------------------------
+df = pd.DataFrame(OrderedDict([
+    ('climate', ['Sunny', 'Snowy', 'Sunny', 'Rainy']),
+    ('temperature', [13, 43, 50, 30]),
+    ('city', ['NYC', 'Montreal', 'Miami', 'NYC'])
+]))
 
+annotation = html.Div([
+    dash_table.DataTable(
+        id='table-dropdown',
+        data=df.to_dict('records'),
+        columns=[
+            {'id': 'climate', 'name': 'climate', 'presentation': 'dropdown'},
+            {'id': 'temperature', 'name': 'temperature'},
+            {'id': 'city', 'name': 'city', 'presentation': 'dropdown'},
+        ],
+        editable=True,
+        dropdown={
+            'climate': {
+                'options': [
+                    {'label': i, 'value': i}
+                    for i in df['climate'].unique()
+                ]
+            },
+            'city': {
+                 'options': [
+                    {'label': i, 'value': i}
+                    for i in df['city'].unique()
+                ]
+            }
+        }
+    ),
+    html.Div(id='table-dropdown-container')
+])
+
+
+# ------------------------------------------------------------------------------
+# Render page
+# ------------------------------------------------------------------------------
 @app.callback(Output('page-content', 'children'), [Input('url', 'pathname')])
 def render_page_content(pathname):
     if pathname == '/':
@@ -80,44 +125,10 @@ def render_page_content(pathname):
         ]
     )
 
-# ------------------------------------------------------------------------------
-# Annotation page
-# ------------------------------------------------------------------------------
-df = pd.DataFrame(OrderedDict([
-    ('climate', ['Sunny', 'Snowy', 'Sunny', 'Rainy']),
-    ('temperature', [13, 43, 50, 30]),
-    ('city', ['NYC', 'Montreal', 'Miami', 'NYC'])
-]))
-
-annotation = dash_table.DataTable(
-    id='table-dropdown',
-    data=df.to_dict('records'),
-    columns=[
-            {'id': 'climate', 'name': 'climate',
-             'presentation': 'dropdown'},
-            {'id': 'temperature', 'name': 'temperature'},
-            {'id': 'city', 'name': 'city', 'presentation': 'dropdown'},
-        ],
-    editable=True,
-    dropdown={
-            'climate': {
-                'options': [
-                    {'label': i, 'value': i}
-                    for i in df['climate'].unique()
-                ]
-            },
-            'city': {
-                'options': [
-                    {'label': i, 'value': i}
-                    for i in df['city'].unique()
-                ]
-            }
-        }
-)
-
 
 # ------------------------------------------------------------------------------
 # Run app
 # ------------------------------------------------------------------------------
 if __name__ == '__main__':
-    app.run_server(port=5050, debug=True)
+    app.run_server(debug=True, port=5050)
+
