@@ -168,21 +168,21 @@ def update_data_upload(contents, filenames):
 # ------------------------------------------------------------------------------
 annotation = html.Div([
     html.P('Terminology mapping'),
+    dbc.DropdownMenu(
+        id='input-filename',
+        label='Select a file:',
+        children=[
+            dbc.DropdownMenuItem('Test1'),
+            dbc.DropdownMenuItem('Test2')
+        ],
+    ),
     html.Div(id='output-annotation'),
 ])
 
 
 @app.callback(Output('output-annotation', 'children'),
-              Input('A', 'value'))
-def update_annotations(value):
-    #dbc.DropdownMenu(
-    #    label='Select a file:',
-    #    children=[
-    #        dbc.DropdownMenuItem("Item 1"),
-    #        dbc.DropdownMenuItem("Item 2"),
-    #        dbc.DropdownMenuItem("Item 3"),
-    #    ],
-    #)
+              Input('input-filename', 'value'))
+def update_annotations(filename):
     # TODO: implement multiple files option
     if inputs is not None:
         df = inputs[list(inputs.keys())[0]]
