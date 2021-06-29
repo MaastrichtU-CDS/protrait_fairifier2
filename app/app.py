@@ -169,8 +169,8 @@ def update_data_upload(contents, filenames):
 annotation = html.Div([
     html.P('Terminology mapping'),
     dbc.DropdownMenu(
-        id='input-filename',
-        label='Select a file:',
+        id='input-column',
+        label='Select a column:',
         children=[
             dbc.DropdownMenuItem('Test1'),
             dbc.DropdownMenuItem('Test2')
@@ -181,27 +181,42 @@ annotation = html.Div([
 
 
 @app.callback(Output('output-annotation', 'children'),
-              Input('input-filename', 'value'))
-def update_annotations(filename):
+              Input('input-column', 'value'))
+def update_annotations(column):
     # TODO: implement multiple files option
     if inputs is not None:
-        df = inputs[list(inputs.keys())[0]]
+        df2 = inputs[list(inputs.keys())[0]]
+        local_terms = df2['vital_status'].unique()
+        df = pd.DataFrame({
+            'Local term': local_terms,
+            'Target class:': ['alive']*len(local_terms),
+            'Super class': ['vital status']*len(local_terms),
+        })
 
         return html.Div([
             dash_table.DataTable(
                 id='table-dropdown',
                 data=df.to_dict('records'),
                 columns=[
-                    {'id': i, 'name': i, 'presentation': 'dropdown'}
-                    for i in df.columns
+                    {'id': 'Local term', 'name': 'Local term'},
+                    {'id': 'Target class', 'name': 'Target class',
+                     'presentation': 'dropdown'},
+                    {'id': 'Super class', 'name': 'Super class',
+                     'presentation': 'dropdown'}
                 ],
                 editable=True,
                 dropdown={
-                    j: {
+                    'Target class': {
                         'options': [
-                            {'label': i, 'value': i} for i in df[j].unique()
+                            {'label': i, 'value': i} for i in ['alive', 'dead']
                         ]
-                    } for j in df.columns
+                    },
+                    'Super class': {
+                        'options': [
+                            {'label': i, 'value': i}
+                            for i in ['vital status', 'B']
+                        ]
+                    }
                 }
             ),
             html.Div(id='table-dropdown-container')
