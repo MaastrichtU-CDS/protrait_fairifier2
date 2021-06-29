@@ -4,19 +4,19 @@
 FAIRifier's user interface
 """
 
-import base64
-import io
 import dash
 import dash_table
 
+import pandas as pd
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
-import pandas as pd
 
 from dash.dependencies import Input
 from dash.dependencies import Output
 from dash.dependencies import State
+from input_data import parse_content
+from input_data import display_data
 
 
 # ------------------------------------------------------------------------------
@@ -43,7 +43,7 @@ SIDEBAR_STYLE = {
 
 sidebar = html.Div(
     [
-        html.H2(app_title, className='display-8'),
+        html.H1(app_title, className='display-8'),
         html.Hr(),
         dbc.Nav(
             [
@@ -72,7 +72,7 @@ CONTENT_STYLE = {
 content = html.Div(id='page-content', style=CONTENT_STYLE)
 
 # ------------------------------------------------------------------------------
-# Layout
+# Layout & configuration
 # ------------------------------------------------------------------------------
 app.layout = html.Div([dcc.Location(id='url'), sidebar, content])
 app.config.suppress_callback_exceptions = True
@@ -81,6 +81,9 @@ app.config.suppress_callback_exceptions = True
 # Input data page
 # ------------------------------------------------------------------------------
 input_data = html.Div([
+    html.H1('Upload your data'),
+    html.Hr(),
+    html.P(),
     dcc.Upload(
         id='upload-data',
         children=html.Div(['Drag and Drop or ', html.A('Select Files')]),
@@ -98,40 +101,6 @@ input_data = html.Div([
     ),
     html.Div(id='output-data-upload'),
 ])
-
-
-def parse_content(content, filename):
-
-    # Decode content
-    content_type, content_string = content.split(',')
-    decoded = base64.b64decode(content_string)
-
-    # Read input data
-    try:
-        if 'csv' in filename:
-            # Assume that the user uploaded a CSV file
-            df = pd.read_csv(io.StringIO(decoded.decode('utf-8')))
-        elif 'xls' in filename:
-            # Assume that the user uploaded an excel file
-            df = pd.read_excel(io.BytesIO(decoded))
-    except:
-        # TODO: not catching exception properly
-        df = None
-
-    return df
-
-
-def display_data(filename, df):
-    if df is None:
-        return html.Div(['Not able to parse the file: %s' % filename])
-    else:
-        return html.Div([
-            html.H5('Uploaded file: %s' % filename),
-            dash_table.DataTable(
-                data=df.to_dict('records'),
-                columns=[{'name': i, 'id': i} for i in df.columns]
-            )
-        ])
 
 
 @app.callback(Output('output-data-upload', 'children'),
@@ -152,22 +121,13 @@ def update_data_upload(contents, filenames):
         return children
 
 
-#@app.callback(Output('output-data-upload', 'children'),
-#              Input('input-data', 'data'))
-#def update_display_data(data):
-#    global inputs
-#    if inputs is not None:
-#        children = [
-#            display_data(filename, df) for filename, df in inputs.items()
-#        ]
-#        return children
-
-
 # ------------------------------------------------------------------------------
 # Annotation page
 # ------------------------------------------------------------------------------
 annotation = html.Div([
-    html.P('Terminology mapping'),
+    html.H1('Terminology mapping'),
+    html.Hr(),
+    html.P(),
     dbc.DropdownMenu(
         id='input-column',
         label='Select a column:',
@@ -194,6 +154,7 @@ def update_annotations(column):
         })
 
         return html.Div([
+            html.P(),
             dash_table.DataTable(
                 id='table-dropdown',
                 data=df.to_dict('records'),
@@ -228,10 +189,15 @@ def update_annotations(column):
 # ------------------------------------------------------------------------------
 # Render page
 # ------------------------------------------------------------------------------
-@app.callback(Output('page-content', 'children'), [Input('url', 'pathname')])
+@app.callback(Output('page-content', 'children'),
+              [Input('url', 'pathname')])
 def render_page_content(pathname):
     if pathname == '/':
-        return html.P('Welcome to the CORAL portal!')
+        return html.Div([
+            html.H1('Home'),
+            html.Hr(),
+            html.P('Welcome to the CORAL portal!')
+        ])
     elif pathname == '/input':
         return input_data
     elif pathname == '/annotations':
