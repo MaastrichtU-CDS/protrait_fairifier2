@@ -6,7 +6,6 @@ FAIRifier's user interface
 
 import base64
 import io
-import datetime
 import dash
 import dash_table
 
@@ -18,13 +17,14 @@ import pandas as pd
 from dash.dependencies import Input
 from dash.dependencies import Output
 from dash.dependencies import State
-from collections import OrderedDict
 
 
 # ------------------------------------------------------------------------------
 # Start app
 # ------------------------------------------------------------------------------
 app_title = 'CORAL portal'
+inputs = None
+children = None
 #app = dash.Dash(external_stylesheets=[dbc.themes.MINTY])
 app = dash.Dash(__name__)
 
@@ -75,6 +75,7 @@ content = html.Div(id='page-content', style=CONTENT_STYLE)
 # Layout
 # ------------------------------------------------------------------------------
 app.layout = html.Div([dcc.Location(id='url'), sidebar, content])
+app.config.suppress_callback_exceptions = True
 
 # ------------------------------------------------------------------------------
 # Input data page
@@ -82,7 +83,7 @@ app.layout = html.Div([dcc.Location(id='url'), sidebar, content])
 input_data = html.Div([
     dcc.Upload(
         id='upload-data',
-        children=html.Div(['Drag and Drop or ', html.A('Select File')]),
+        children=html.Div(['Drag and Drop or ', html.A('Select Files')]),
         style={
             'width': '100%',
             'height': '60px',
@@ -99,13 +100,13 @@ input_data = html.Div([
 ])
 
 
-def parse_contents(contents, filename, date):
+def parse_content(content, filename):
 
-    # Parse filename
-    content_type, content_string = contents.split(',')
+    # Decode content
+    content_type, content_string = content.split(',')
     decoded = base64.b64decode(content_string)
 
-    # Read data
+    # Read input data
     try:
         if 'csv' in filename:
             # Assume that the user uploaded a CSV file
@@ -113,80 +114,100 @@ def parse_contents(contents, filename, date):
         elif 'xls' in filename:
             # Assume that the user uploaded an excel file
             df = pd.read_excel(io.BytesIO(decoded))
-    except Exception as e:
-        print(e)
-        return html.Div(['There was an error processing this file.'])
+    except:
+        # TODO: not catching exception properly
+        df = None
 
-    return html.Div([
-        html.H5(filename),
-        html.H6(datetime.datetime.fromtimestamp(date)),
+    return df
 
-        dash_table.DataTable(
-            data=df.to_dict('records'),
-            columns=[{'name': i, 'id': i} for i in df.columns]
-        ),
 
-        html.Hr(),  # horizontal line
-
-        # For debugging, display the raw contents provided by the web browser
-        html.Div('Raw Content'),
-        html.Pre(contents[0:200] + '...', style={
-            'whiteSpace': 'pre-wrap',
-            'wordBreak': 'break-all'
-        })
-    ])
+def display_data(filename, df):
+    if df is None:
+        return html.Div(['Not able to parse the file: %s' % filename])
+    else:
+        return html.Div([
+            html.H5('Uploaded file: %s' % filename),
+            dash_table.DataTable(
+                data=df.to_dict('records'),
+                columns=[{'name': i, 'id': i} for i in df.columns]
+            )
+        ])
 
 
 @app.callback(Output('output-data-upload', 'children'),
               Input('upload-data', 'contents'),
-              State('upload-data', 'filename'),
-              State('upload-data', 'last_modified'),
-              suppress_callback_exceptions=True)
-def update_output(list_of_contents, list_of_names, list_of_dates):
-    if list_of_contents is not None:
+              State('upload-data', 'filename'))
+def update_data_upload(contents, filenames):
+    global inputs
+    global children
+    if contents is not None:
+        inputs = {
+            filename: parse_content(content, filename)
+            for content, filename in zip(contents, filenames)
+        }
+    if inputs is not None:
         children = [
-            parse_contents(c, n, d) for c, n, d in
-            zip(list_of_contents, list_of_names, list_of_dates)
+            display_data(filename, df) for filename, df in inputs.items()
         ]
         return children
+
+
+#@app.callback(Output('output-data-upload', 'children'),
+#              Input('input-data', 'data'))
+#def update_display_data(data):
+#    global inputs
+#    if inputs is not None:
+#        children = [
+#            display_data(filename, df) for filename, df in inputs.items()
+#        ]
+#        return children
 
 
 # ------------------------------------------------------------------------------
 # Annotation page
 # ------------------------------------------------------------------------------
-df2 = pd.DataFrame(OrderedDict([
-    ('climate', ['Sunny', 'Snowy', 'Sunny', 'Rainy']),
-    ('temperature', [13, 43, 50, 30]),
-    ('city', ['NYC', 'Montreal', 'Miami', 'NYC'])
-]))
-
 annotation = html.Div([
-    dash_table.DataTable(
-        id='table-dropdown',
-        data=df2.to_dict('records'),
-        columns=[
-            {'id': 'climate', 'name': 'climate', 'presentation': 'dropdown'},
-            {'id': 'temperature', 'name': 'temperature'},
-            {'id': 'city', 'name': 'city', 'presentation': 'dropdown'},
-        ],
-        editable=True,
-        dropdown={
-            'climate': {
-                'options': [
-                    {'label': i, 'value': i}
-                    for i in df2['climate'].unique()
-                ]
-            },
-            'city': {
-                 'options': [
-                    {'label': i, 'value': i}
-                    for i in df2['city'].unique()
-                ]
-            }
-        }
-    ),
-    html.Div(id='table-dropdown-container')
+    html.P('Terminology mapping'),
+    html.Div(id='output-annotation'),
 ])
+
+
+@app.callback(Output('output-annotation', 'children'),
+              Input('A', 'value'))
+def update_annotations(value):
+    #dbc.DropdownMenu(
+    #    label='Select a file:',
+    #    children=[
+    #        dbc.DropdownMenuItem("Item 1"),
+    #        dbc.DropdownMenuItem("Item 2"),
+    #        dbc.DropdownMenuItem("Item 3"),
+    #    ],
+    #)
+    # TODO: implement multiple files option
+    if inputs is not None:
+        df = inputs[list(inputs.keys())[0]]
+
+        return html.Div([
+            dash_table.DataTable(
+                id='table-dropdown',
+                data=df.to_dict('records'),
+                columns=[
+                    {'id': i, 'name': i, 'presentation': 'dropdown'}
+                    for i in df.columns
+                ],
+                editable=True,
+                dropdown={
+                    j: {
+                        'options': [
+                            {'label': i, 'value': i} for i in df[j].unique()
+                        ]
+                    } for j in df.columns
+                }
+            ),
+            html.Div(id='table-dropdown-container')
+        ])
+    else:
+        return html.P('Please upload a file!')
 
 
 # ------------------------------------------------------------------------------
