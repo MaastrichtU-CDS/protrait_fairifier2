@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Module with input data functionalities
+Module with data processing functionalities
 """
 
 import io
