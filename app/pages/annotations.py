@@ -14,9 +14,9 @@ from dash.dependencies import Input
 from dash.dependencies import Output
 
 from app import app
-from pages.data import inputs
 
 
+inputs = None
 # ------------------------------------------------------------------------------
 # Annotations page layout
 # ------------------------------------------------------------------------------
