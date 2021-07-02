@@ -62,7 +62,7 @@ content = html.Div(id='page-content', style=CONTENT_STYLE)
 # ------------------------------------------------------------------------------
 # Layout
 # ------------------------------------------------------------------------------
-app.layout = html.Div([dcc.Location(id='url', refresh=False), sidebar, content])
+app.layout = html.Div([dcc.Location(id='url', refresh=True), sidebar, content])
 
 
 # ------------------------------------------------------------------------------
