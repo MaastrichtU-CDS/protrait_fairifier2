@@ -31,22 +31,3 @@ def parse_content(content, filename):
         df = None
 
     return df
-
-
-def display_data(filename, df):
-    if df is None:
-        return html.Div([
-            html.P(),
-            html.P('Not able to parse the file: %s' % filename),
-            html.Hr()
-        ])
-    else:
-        return html.Div([
-            html.P(),
-            html.H5('Uploaded file: %s' % filename),
-            dash_table.DataTable(
-                data=df.to_dict('records'),
-                columns=[{'name': i, 'id': i} for i in df.columns]
-            ),
-            html.Hr()
-        ])

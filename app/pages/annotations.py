@@ -14,7 +14,7 @@ from dash.dependencies import Input
 from dash.dependencies import Output
 
 from app import app
-from pages.input_data import inputs
+from pages.data import inputs
 
 
 # ------------------------------------------------------------------------------

@@ -13,7 +13,7 @@ from dash.dependencies import Output
 
 from app import app
 from pages import home
-from pages import input_data
+from pages import data
 from pages import annotations
 
 
@@ -37,8 +37,7 @@ sidebar = html.Div(
         dbc.Nav(
             [
                 dbc.NavItem(dbc.NavLink('Home', href='/', active='exact')),
-                dbc.NavItem(dbc.NavLink('Data', href='/input_data',
-                                        active='exact')),
+                dbc.NavItem(dbc.NavLink('Data', href='/data', active='exact')),
                 dbc.NavItem(dbc.NavLink('Annotations', href='/annotations',
                                         active='exact'))
             ],
@@ -73,8 +72,8 @@ app.layout = html.Div([dcc.Location(id='url', refresh=False), sidebar, content])
 def render_page_content(pathname):
     if pathname == '/':
         return home.layout
-    elif pathname == '/input_data':
-        return input_data.layout
+    elif pathname == '/data':
+        return data.layout
     elif pathname == '/annotations':
         return annotations.layout
     # If the user tries to reach a different page, return a 404 message
