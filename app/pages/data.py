@@ -5,13 +5,9 @@ FAIRifier's input data page
 """
 
 import os
-import json
-import dash
-import datetime
 import dash_table
 
 import dash_core_components as dcc
-import dash_bootstrap_components as dbc
 import dash_html_components as html
 import pandas as pd
 
@@ -30,7 +26,7 @@ layout = html.Div([
     html.H1('Data'),
     html.Hr(),
     html.P(),
-    html.H2('Upload new data'),
+    html.H2('Upload new tables'),
     html.P(),
     dcc.Upload(
         id='data-upload',
@@ -49,7 +45,7 @@ layout = html.Div([
     ),
     html.Div(id='output-data-upload'),
     html.P(),
-    html.H2('Visualise data'),
+    html.H2('Visualise tables'),
     html.P(),
     dcc.Dropdown(
         id='tables-dropdown',
@@ -59,7 +55,7 @@ layout = html.Div([
     html.P(),
     html.Div(id='display-data'),
     html.P(),
-    html.H2('Delete data'),
+    html.H2('Delete tables'),
     html.P(),
     dcc.Checklist(
         id='data-delete-input',
@@ -73,6 +69,10 @@ layout = html.Div([
             message='Are you sure you want to delete?'
         ),
         href='/data'
+    ),
+    html.Div(
+        id='hidden-div',
+        style={'display':'none'}
     )
 ])
 
@@ -83,11 +83,9 @@ layout = html.Div([
 @app.callback([Output('output-data-upload', 'children'),
                Output('tables-dropdown', 'options'),
                Output('data-delete-input', 'options')],
-              [Input('data-upload', 'contents'),
-               Input('data-delete-button', 'submit_n_clicks')],
-              [State('data-upload', 'filename'),
-               State('data-delete-input', 'value')])
-def update_data_page(contents, delete, filenames, delfiles):
+              [Input('data-upload', 'contents')],
+              [State('data-upload', 'filename')])
+def upload_tables(contents, filenames):
 
     # Upload new tables
     if contents:
@@ -111,12 +109,6 @@ def update_data_page(contents, delete, filenames, delfiles):
     else:
         children = html.P()
 
-    # Delete files
-    if delete:
-        if delfiles:
-            for filename in delfiles:
-                os.remove(os.path.join('data', filename))
-
     # List of saved tables for visualisation and deletion
     options = [{'label': o, 'value': o} for o in os.listdir('data')] \
         if os.path.exists('data') else []
@@ -126,7 +118,7 @@ def update_data_page(contents, delete, filenames, delfiles):
 
 @app.callback(Output('display-data', 'children'),
               Input('tables-dropdown', 'value'))
-def display_data(filename):
+def display_table(filename):
     if filename is not None:
         # Read data
         filepath = os.path.join('data', filename)
@@ -141,3 +133,13 @@ def display_data(filename):
         ])
     else:
         return html.P()
+
+
+@app.callback(Output('hidden-div', 'children'),
+              [Input('data-delete-button', 'submit_n_clicks')],
+              [State('data-delete-input', 'value')])
+def delete_tables(delete, filenames):
+    if (delete is not None) & (filenames is not None):
+        for filename in filenames:
+            os.remove(os.path.join('data', filename))
+    return ''
