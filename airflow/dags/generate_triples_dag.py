@@ -57,11 +57,13 @@ with DAG(
     # ./ontop materialize -m ../data/settings/mapping.ttl  -p ../data/settings/r2rml.properties.example -f ntriples -o ../data/output/triples.ttl
     generate_triples_op = BashOperator(
         task_id="generate_triples",
-        bash_command="${R2RML_CLI_DIR}/ontop materialize " +
-        "-m ${R2RML_DATA_DIR}/settings/mapping.ttl " +
+        bash_command="for file in `basename ${R2RML_DATA_DIR}/settings/*.ttl`; do \n" +
+        "${R2RML_CLI_DIR}/ontop materialize " +
+        "-m ${R2RML_DATA_DIR}/settings/$file " +
         "-f ntriples " +
         "-p ${R2RML_DATA_DIR}/settings/r2rml.properties " +
-        "-o ${R2RML_DATA_DIR}/output/output.ttl "
+        "-o ${R2RML_DATA_DIR}/output/$file \n" + 
+        "done"
     )
 
     upload_triples_op = PythonOperator(
