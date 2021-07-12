@@ -1,5 +1,4 @@
 from datetime import timedelta, datetime
-from glob import glob
 from pathlib import Path
 import os
 
@@ -23,20 +22,27 @@ def upload_triples(input_path, sparql_endpoint, **kwargs):
     sparql.query()
 
     for file in input_path.glob('*.nt'):
-        g = rdf.Graph()
-        g.load(str(file.resolve()), format='nt')
+        with open(file, 'r') as f:
+            filedata = f.readlines()
 
-        query = """
-        INSERT DATA {
-            GRAPH <http://localhost/%s> {
-                %s
-            } 
-        }
-        """ % (file.with_suffix('').name ,g.serialize(format='nt').decode())
+        for i in range(0, len(filedata), 100000):
+            g = rdf.Graph()
+            g.parse(
+                data='\n'.join(filedata[i:(i + 100000 if (i+100000) < len(filedata) else len(filedata))]), 
+                format='nt'
+            )
 
-        sparql.setRequestMethod(POSTDIRECTLY)
-        sparql.setQuery(query)
-        sparql.query()
+            query = """
+            INSERT DATA {
+                GRAPH <http://localhost/%s> {
+                    %s
+                } 
+            }
+            """ % (file.with_suffix('').name ,g.serialize(format='nt').decode())
+
+            sparql.setRequestMethod(POSTDIRECTLY)
+            sparql.setQuery(query)
+            sparql.query()
 
 default_args = {
     'owner': 'airflow',
