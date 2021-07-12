@@ -3,7 +3,7 @@ FROM puckel/docker-airflow
 # Install Java
 USER root
 RUN mkdir -p /usr/share/man/man1
-RUN apt-get update && apt-get install -y default-jdk && apt-get clean
+RUN apt-get update && apt-get install -y default-jdk && apt-get install -y git && apt-get clean
 USER airflow
 
 COPY ./requirements.txt ./requirements.txt
