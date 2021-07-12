@@ -15,16 +15,16 @@ from SPARQLWrapper import SPARQLWrapper, POSTDIRECTLY
 def upload_triples(input_path, sparql_endpoint, **kwargs):
     sparql = SPARQLWrapper(sparql_endpoint + '/statements')
 
+    deleteQuery = """
+            DELETE {?s ?p ?o} WHERE {?s ?p ?o}
+        """
+
+    sparql.setQuery(deleteQuery)
+    sparql.query()
+
     for file in input_path.glob('*.nt'):
         g = rdf.Graph()
         g.load(str(file.resolve()), format='nt')
-
-        deleteQuery = """
-            CLEAR GRAPH <http://localhost/%s>
-        """ % (file.with_suffix('').name)
-
-        sparql.setQuery(deleteQuery)
-        sparql.query()
 
         query = """
         INSERT DATA {
