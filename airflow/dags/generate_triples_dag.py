@@ -76,6 +76,62 @@ def upload_triples_file(filename, sparql_endpoint, empty_db=True, **kwargs):
         sparql.setQuery(query)
         sparql.query()
 
+class GitBashOperator(BashOperator):
+    """Clones/pulls a repo, extracts all/a subdir of the files, and copies them to a target dir.
+
+    Args:
+        repo_name (str): the name under which to store the repository data
+        repo_url (str): the URL for the repo to be cloned
+        target_dir (str): the directory to which data from the repo needs to be cloned
+        sub_dir (str): the directory that contains the data to be copied, if not the root dir
+    """
+
+    template_fields = ('repo_name', 'repo_url', 'sub_dir', 'target_dir')
+
+    @apply_defaults
+    def __init__(
+            self,
+            repo_name,
+            repo_url,
+            target_dir,
+            sub_dir = '.',
+            *args, **kwargs):
+
+        self.repo_name = repo_name
+        self.repo_path = Path.home() / f'gitrepos/{self.repo_name}/'
+        self.repo_url = repo_url
+        self.target_dir = target_dir
+        self.sub_dir = sub_dir
+        
+        super().__init__(bash_command='', *args, **kwargs)
+
+    def execute(self, context):
+        """First checks that all the correct dirs are in place. Checks if cloning is necessary
+        or only (re-)pulling the existing repo. Then forms a bash command, handled by
+        BashOperator which updates the repo, clears out the target dir, and copied in the
+        data from the repo
+        """
+        command = ''
+
+        # Check if repo already exists and update command accordingly
+        if not (self.repo_path / '.git').exists():
+            self.repo_path.mkdir(parents=True, exist_ok=True)
+            command = command + f'git clone {self.repo_url} {str(self.repo_path)} && '
+
+        # Check if target dir exists
+        if not self.target_dir.exists():
+            self.target_dir.mkdir(parents=True, exist_ok=True)
+
+        self.bash_command = command + f'cd {str(self.repo_path)} && ' \
+            'git checkout -- . && ' \
+            'git pull && ' \
+            f'cd {self.sub_dir} && ' \
+            f'rm -rf {str(self.target_dir)}/* && ' \
+            f'cp -Rf * {str(self.target_dir)}'
+        
+        # Have BashOperator actually execute the command
+        return super().execute(context)
+
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
@@ -92,12 +148,20 @@ with DAG(
     max_active_runs=1
 ) as dag:
 
+    fetch_r2rml_op = GitBashOperator(
+        repo_name='r2rml_files_git',
+        repo_url='https://gitlab.com/UM-CDS/protrait/mapping-unifications.git',
+        target_dir=Path(os.environ['R2RML_DATA_DIR']) / 'settings/r2rml/',
+        sub_dir='GenericList2',
+        task_id='git',
+    )
+
     # ./ontop materialize -m ../data/settings/mapping.ttl  -p ../data/settings/r2rml.properties.example -f ntriples -o ../data/output/triples.ttl
     generate_triples_op = BashOperator(
         task_id="generate_triples",
-        bash_command="for file in `basename ${R2RML_DATA_DIR}/settings/*.ttl`; do \n" +
+        bash_command="for file in `basename ${R2RML_DATA_DIR}/settings/r2rml/*.ttl`; do \n" +
         "${R2RML_CLI_DIR}/ontop materialize " +
-        "-m ${R2RML_DATA_DIR}/settings/$file " +
+        "-m ${R2RML_DATA_DIR}/settings/r2rml/$file " +
         "-f ntriples " +
         "-p ${R2RML_DATA_DIR}/settings/r2rml.properties " +
         "-o ${R2RML_DATA_DIR}/output/$file \n" + 
@@ -113,4 +177,4 @@ with DAG(
             }
     )
 
-    generate_triples_op >> upload_triples_op
+    fetch_r2rml_op >> generate_triples_op >> upload_triples_op
