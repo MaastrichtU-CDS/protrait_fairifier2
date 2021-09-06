@@ -70,7 +70,7 @@ def upload_triples_file(filename, sparql_endpoint, empty_db=True, **kwargs):
                 %s
             } 
         }
-        """ % (filename.with_suffix('').name ,g.serialize(format='nt').decode())
+        """ % (filename.with_suffix('').name ,g.serialize(format='nt'))
 
         sparql.setRequestMethod(POSTDIRECTLY)
         sparql.setQuery(query)
