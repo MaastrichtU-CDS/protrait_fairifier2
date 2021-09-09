@@ -159,7 +159,8 @@ with DAG(
     # ./ontop materialize -m ../data/settings/mapping.ttl  -p ../data/settings/r2rml.properties.example -f ntriples -o ../data/output/triples.ttl
     generate_triples_op = BashOperator(
         task_id="generate_triples",
-        bash_command="for file in `basename ${R2RML_DATA_DIR}/settings/r2rml/*.ttl`; do \n" +
+        bash_command= "if [ -f ${R2RML_DATA_DIR}/output/*.nt ]; then rm ${R2RML_DATA_DIR}/output/*.nt; fi \n" +
+        "for file in `basename ${R2RML_DATA_DIR}/settings/r2rml/*.ttl`; do \n" +
         "${R2RML_CLI_DIR}/ontop materialize " +
         "-m ${R2RML_DATA_DIR}/settings/r2rml/$file " +
         "-f ntriples " +
