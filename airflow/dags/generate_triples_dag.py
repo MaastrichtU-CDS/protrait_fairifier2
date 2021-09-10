@@ -1,6 +1,7 @@
 from datetime import timedelta, datetime
 from pathlib import Path
 import os
+import logging
 
 from airflow import DAG
 from airflow.utils.decorators import apply_defaults
@@ -20,11 +21,14 @@ def upload_triples_dir(input_path, sparql_endpoint, empty_db=True, **kwargs):
         input_path (pathlib.Path): The location for the triples files
         sparql_endpoint (str): The sparql endpoint (without /statements at the end)
         empty_db (bool, optional): Indicates whether the db should be emptied before inserting. Defaults to True.
-    """    
+    """   
+    LOGGER = logging.getLogger("airflow.task")
+    LOGGER.info(f'uploading dir {str(input_path)} to {sparql_endpoint}')
 
     sparql = SPARQLWrapper(sparql_endpoint + '/statements')
 
     if empty_db:
+        LOGGER.info("Dropping all existing graphs")
         deleteQuery = """
                 DELETE {?s ?p ?o} WHERE {?s ?p ?o}
             """
@@ -43,10 +47,14 @@ def upload_triples_file(filename, sparql_endpoint, empty_db=True, **kwargs):
         sparql_endpoint (str): The sparql endpoint (without /statements at the end) 
         empty_db (bool, optional): Indicates whether the db should be emptied before inserting. Defaults to True.
     """    
+    LOGGER = logging.getLogger("airflow.task")
+    LOGGER.info(f'uploading file {str(filename)} to {sparql_endpoint}')
+
 
     sparql = SPARQLWrapper(sparql_endpoint + '/statements')
 
     if empty_db:
+        LOGGER.info("Dropping all existing graphs")
         deleteQuery = """
                 DELETE {?s ?p ?o} WHERE {?s ?p ?o}
             """
@@ -56,6 +64,8 @@ def upload_triples_file(filename, sparql_endpoint, empty_db=True, **kwargs):
 
     with open(filename, 'r') as f:
         filedata = f.readlines()
+        LOGGER.info(f'Found {len(filedata)} lines (triples) in file {str(filename)}')
+
 
     for i in range(0, len(filedata), 100000):
         g = rdf.Graph()
@@ -63,6 +73,8 @@ def upload_triples_file(filename, sparql_endpoint, empty_db=True, **kwargs):
             data='\n'.join(filedata[i:(i + 100000 if (i+100000) < len(filedata) else len(filedata))]), 
             format='nt'
         )
+
+        LOGGER.info(f'uploading {100000 if i + 100000 < len(filedata) else len(filedata) % 100000} triples')
 
         query = """
         INSERT DATA {
@@ -111,15 +123,20 @@ class GitBashOperator(BashOperator):
         BashOperator which updates the repo, clears out the target dir, and copied in the
         data from the repo
         """
+        LOGGER = logging.getLogger("airflow.task")
+        LOGGER.info(f'preparing to pull {self.repo_url}')
+
         command = ''
 
         # Check if repo already exists and update command accordingly
         if not (self.repo_path / '.git').exists():
+            LOGGER.info(f'repo does not exist yet - cloning it')
             self.repo_path.mkdir(parents=True, exist_ok=True)
             command = command + f'git clone {self.repo_url} {str(self.repo_path)} && '
 
         # Check if target dir exists
         if not self.target_dir.exists():
+            LOGGER.info(f'target dir {str(self.target_dir)} does not exist yet - creating it')
             self.target_dir.mkdir(parents=True, exist_ok=True)
 
         self.bash_command = command + f'cd {str(self.repo_path)} && ' \
