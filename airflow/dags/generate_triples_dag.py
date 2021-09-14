@@ -30,7 +30,7 @@ def upload_triples_dir(input_path, sparql_endpoint, empty_db=True, **kwargs):
     if empty_db:
         LOGGER.info("Dropping all existing graphs")
         deleteQuery = """
-                DELETE {?s ?p ?o} WHERE {?s ?p ?o}
+                DROP NAMED
             """
 
         sparql.setQuery(deleteQuery)
@@ -56,7 +56,7 @@ def upload_triples_file(filename, sparql_endpoint, empty_db=True, **kwargs):
     if empty_db:
         LOGGER.info("Dropping all existing graphs")
         deleteQuery = """
-                DELETE {?s ?p ?o} WHERE {?s ?p ?o}
+                DROP NAMED
             """
 
         sparql.setQuery(deleteQuery)
