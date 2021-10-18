@@ -1,0 +1,111 @@
+generic_list:
+  study_oid: S_DEFAULTS1
+  event_oid: SE_GENERIC_COLLECTION
+  form_oid: F_PROTRAIT_GEN_2
+  item_group_oid: IG_PROTR_GEN
+  identifier_colname: GEN_IDNUMBER
+  item_prefix: I_PROTR_
+  query: |
+    prefix rr: <http://www.w3.org/ns/r2rml#>
+    prefix ex: <http://example.com/ns#>
+    prefix map: <http://mapping.local/>
+    prefix sty: <http://purl.bioontology.org/ontology/STY/>
+    prefix sio: <http://semanticscience.org/resource/SIO_>
+    prefix foaf: <http://xmlns.com/foaf/0.1/>
+    prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+    prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+    prefix roo: <http://www.cancerdata.org/roo/>
+    prefix icd: <http://purl.bioontology.org/ontology/ICD10/>
+    prefix skos: <http://www.w3.org/2008/05/skos#>
+    prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    prefix uo: <http://purl.obolibrary.org/obo/UO_>
+    prefix time: <http://www.w3.org/2006/time#>
+    
+
+    select  
+    ?GEN_IDNUMBER 
+    ?GEN_ALCOHOL 
+    ?GEN_ALCOHOL_GLASS 
+    ?GEN_ALCOHOL_DAYS
+    ?GEN_TREAT_CENTRE
+    ?GEN_DATE_REGISTR
+    ?GEN_REFER_CENTRE
+    ?GEN_GENDER
+    ?GEN_AGE
+    ?GEN_YEAR_BIRTH
+    ?GEN_HEIGHT
+    ?GEN_WEIGHT
+    ?GEN_EDUCATION
+    ?GEN_DATE_DIAGN
+    ?GEN_TUMOURSITE
+    ?GEN_RT_TREATMENT
+    
+
+    where {
+      #patient ID
+      ?Patient rdf:type ncit:C16960;
+          roo:P100061 ?id.
+      ?id roo:P100042 ?GEN_IDNUMBER.
+
+      
+      #alcohol history
+      ?Patient rdf:type ncit:C16960;
+          roo:P100022 ?alcUseHist.
+      ?alcUseHist roo:local_value ?GEN_ALCOHOL.
+      ?alcUseHist roo:P100423 ?alcGlass.
+      ?alcUseHist roo:P100423 ?alcDays.
+      ?alcGlass rdf:type roo:numberOfGlasses;
+          roo:P100042 ?GEN_ALCOHOL_GLASS.
+      ?alcDays rdf:type roo:daysWithMoreThan1Glass;
+          roo:P100042 ?GEN_ALCOHOL_DAYS.
+
+      #treating centre
+      ?Patient rdf:type ncit:C16960;
+          roo:P100039 ?treatCentre.
+      ?treatCentre roo:local_value ?GEN_TREAT_CENTRE.
+      ?treatCentre roo:has_registration_date ?regDate.
+      ?regDate roo:P100042 ?GEN_DATE_REGISTR.
+      ?treatCentre roo:referred_by ?refCentre.
+      ?refCentre roo:P100042 ?GEN_REFER_CENTRE.
+
+      #Gender
+      ?Patient rdf:type ncit:C16960;
+          roo:P100018 ?gender.
+      ?gender roo:P100042 ?GEN_GENDER.
+
+      #Age
+      ?Patient rdf:type ncit:C16960;
+          roo:P100016 ?age.
+      ?age roo:P100042 ?GEN_AGE.
+
+      #Birthyear
+      ?Patient rdf:type ncit:C16960;
+          roo:is_born ?bYear.
+      ?bYear roo:P100027 ?GEN_YEAR_BIRTH.   
+
+      #height
+      ?Patient rdf:type ncit:C16960;
+          roo:P100248 ?height.
+      ?height roo:P100042 ?GEN_HEIGHT.   
+
+      #weight
+      ?Patient rdf:type ncit:C16960;
+          roo:P100249 ?weight.
+      ?weight roo:P100042 ?GEN_WEIGHT.   
+
+      #educational level
+      ?Patient rdf:type ncit:C16960;
+          roo:has_education_level ?educ.
+      ?educ roo:local_value ?GEN_EDUCATION.   
+
+      #neoplasm diagnosis
+      ?Patient rdf:type ncit:C16960;
+          roo:P100020 ?neoplasm.
+      ?neoplasm roo:P100251 ?dateOfDiag. 
+      ?dateOfDiag roo:P100042 ?GEN_DATE_DIAGN.
+      ?neoplasm roo:P100202 ?location.
+      ?location roo:local_value ?GEN_TUMOURSITE.
+      ?neoplasm roo:P100403 ?treatmentTech.
+      ?treatmentTech roo:local_value ?GEN_RT_TREATMENT.
+    }
