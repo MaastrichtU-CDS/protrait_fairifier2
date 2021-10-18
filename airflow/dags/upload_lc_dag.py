@@ -20,6 +20,9 @@ from sparql.query_engine import QueryEngine
 
 
 def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_oid, ss_label):
+    LOGGER = logging.getLogger("airflow.task")
+    LOGGER.info(f'Trying to get SS_OID for {ss_label}')
+
     # Check if subject exists
     check_data = f'''
         <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/studySubject/v1" xmlns:bean="http://openclinica.org/ws/beans">
@@ -48,8 +51,11 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_oid, ss_label):
     ret = requests.post(lc_endpoint + 'studySubject/v1/studySubjectWsdl.wsdl', data=check_data, headers={'Content-Type': 'text/xml'})
     retxml = et.fromstring(ret.text)
     if retxml[1][0][0].text == 'Success':
+        LOGGER.info('Found existing SS_OID {retxml[1][0][1].text}')
         return retxml[1][0][1].text
     else:
+        LOGGER.info('No existing SS_OID found, querying new one')
+
         create_data = f'''
             <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/studySubject/v1" xmlns:bean="http://openclinica.org/ws/beans">
             <soapenv:Header>
@@ -114,9 +120,11 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_oid, ss_label):
 
 
 def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, study_oid, event_oid, form_oid, item_group_oid, identifier_colname, item_prefix, alternative_item_oids={}, **kwargs):
-    
+    LOGGER = logging.getLogger("airflow.task")
+    LOGGER.info(f'Retrieving triples from {sparql_endpoint}')
     sparql = QueryEngine(sparql_endpoint + '/statements')
     df: pd.DataFrame = sparql.get_sparql_dataframe(query)
+    LOGGER.info(f'Received {len(df)} rows of data')
 
     df = df.rename(columns=alternative_item_oids)
 
@@ -124,9 +132,11 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
 
     for _, row in df.iterrows():
         id = row[identifier_colname]
+        LOGGER.debug(f'Adding subject {id}')
 
         # Get SS OID
         ss_id = get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_oid, id)
+        LOGGER.debug(f'Got SS_OID {ss_id}')
 
         # Make sure the event is scheduled
         schedule_body = f'''
@@ -157,6 +167,7 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
         '''
 
         ret = requests.post(lc_endpoint + 'event/v1/eventWsdl.wsdl', data=schedule_body, headers={'Content-Type': 'text/xml'})
+        LOGGER.debug(f'Got return code {ret.status_code} for scheduling the event')
 
         items = ''
         for name in df.columns.names:
@@ -176,6 +187,8 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
             </SubjectData>
         '''
         subjects.append(subject)
+
+    LOGGER.info(f'Starting upload for {len(subjects)} subjects')
 
     newline='\n'
     submit_data = f'''
@@ -205,6 +218,8 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
     '''
 
     ret = requests.post(lc_endpoint + 'data/v1/dataWsdl.wsdl', data=submit_data, headers={'Content-Type': 'text/xml'})
+    LOGGER.info(f'Got return code {ret.status_code} for upload')
+
 
 def create_dag(dag_id,
                schedule,
