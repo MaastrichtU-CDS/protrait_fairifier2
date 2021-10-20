@@ -137,7 +137,7 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
 
     df = df.rename(columns=alternative_item_oids)
 
-    LOGGER.info(f'Have columns {df.columns.names}')
+    LOGGER.info(f'Have columns {df.columns}')
 
     subjects = []
 
