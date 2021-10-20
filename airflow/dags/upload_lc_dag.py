@@ -50,7 +50,9 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_oid, ss_label):
     # Create the studysubject
     ret = requests.post(lc_endpoint + 'studySubject/v1/studySubjectWsdl.wsdl', data=check_data, headers={'Content-Type': 'text/xml'})
     retxml = et.fromstring(ret.text)
-    if retxml[1][0][0].text == 'Success':
+    retval = retxml[1][0][0].text
+    LOGGER.info(f'Got return message {retval} on existance check')
+    if retval == 'Success':
         LOGGER.info('Found existing SS_OID {retxml[1][0][1].text}')
         return retxml[1][0][1].text
     else:
@@ -58,30 +60,36 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_oid, ss_label):
 
         create_data = f'''
             <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/studySubject/v1" xmlns:bean="http://openclinica.org/ws/beans">
-            <soapenv:Header>
-            <wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-            <wsse:UsernameToken wsu:Id="UsernameToken-27777511" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-            <wsse:Username>{lc_user}</wsse:Username>
-            <wsse:Password type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
-            </wsse:UsernameToken>
-            </wsse:Security>
+                <soapenv:Header>
+                <wsse:Security soapenv:mustUnderstand="1"
+                xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+                <wsse:UsernameToken wsu:Id="UsernameToken-27777511"
+                xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+                <wsse:Username>{lc_user}</wsse:Username>
+                <wsse:Password
+                type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
+                </wsse:UsernameToken>
+                </wsse:Security>
             </soapenv:Header>
+
             <soapenv:Body>
                 <v1:createRequest>
                     <v1:studySubject>
+                        <!--Optional:-->
                         <bean:label>{ss_label}</bean:label>
                         <bean:enrollmentDate>2021-08-31</bean:enrollmentDate>
                         <bean:subject>
-                            <bean:uniqueIdentifier>{ss_label}</bean:uniqueIdentifier>
-                            <bean:gender>f</bean:gender>
-                            <bean:dateOfBirth>1994-09-21</bean:yearOfBirth>
+                        <!--Optional:-->
+                        <bean:uniqueIdentifier>{ss_label}</bean:uniqueIdentifier>
+                        <bean:gender>m</bean:gender>
+                        <!--You have a CHOICE of the next 2 items at this level-->
+                        <bean:dateOfBirth>1994-09-21</bean:dateOfBirth>
                         </bean:subject>
                         <bean:studyRef>
-                            <bean:identifier>{study_oid}</bean:identifier>
+                        <bean:identifier>{study_oid}</bean:identifier>
                         </bean:studyRef>
                     </v1:studySubject>
                 </v1:createRequest>
-
             </soapenv:Body>
             </soapenv:Envelope>
         '''
