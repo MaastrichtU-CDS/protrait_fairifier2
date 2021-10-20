@@ -123,7 +123,7 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_oid, ss_label):
 def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, study_oid, event_oid, form_oid, item_group_oid, identifier_colname, item_prefix, alternative_item_oids={}, **kwargs):
     LOGGER = logging.getLogger("airflow.task")
     LOGGER.info(f'Retrieving triples from {sparql_endpoint}')
-    sparql = QueryEngine(sparql_endpoint + '/statements')
+    sparql = QueryEngine(sparql_endpoint)
     df: pd.DataFrame = sparql.get_sparql_dataframe(query)
     LOGGER.info(f'Received {len(df)} rows of data')
 
