@@ -86,37 +86,38 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_oid, ss_label):
             </soapenv:Envelope>
         '''
         ret = requests.post(lc_endpoint + 'studySubject/v1/studySubjectWsdl.wsdl', data=create_data, headers={'Content-Type': 'text/xml'})
-
-        retxml = et.fromstring(ret.text)
-        if retxml[1][0][0].text == 'Success':
-            # now get the actual ID...
-            check_data = f'''
-                <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/studySubject/v1" xmlns:bean="http://openclinica.org/ws/beans">
-                <soapenv:Header>
-                <wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-                <wsse:UsernameToken wsu:Id="UsernameToken-27777511" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-                <wsse:Username>{lc_user}</wsse:Username>
-                <wsse:Password type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
-                </wsse:UsernameToken>
-                </wsse:Security>
-                </soapenv:Header>
-                <soapenv:Body>
-                    <v1:isStudySubjectRequest>
-                        <v1:studySubject>
-                            <bean:label>{ss_label}</bean:label>
-                            <bean:studyRef>
-                            <bean:identifier>{study_oid}</bean:identifier>
-                            </bean:studyRef>
-                        </v1:studySubject>
-                    </v1:isStudySubjectRequest>
-                </soapenv:Body>
-                </soapenv:Envelope>
-            '''
-
-            ret = requests.post(lc_endpoint + 'studySubject/v1/studySubjectWsdl.wsdl', data=check_data, headers={'Content-Type': 'text/xml'})
+        print(f'Status code {ret.status_code}')
+        if ret.status_code == 200:
             retxml = et.fromstring(ret.text)
             if retxml[1][0][0].text == 'Success':
-                return retxml[1][0][1].text
+                # now get the actual ID...
+                check_data = f'''
+                    <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/studySubject/v1" xmlns:bean="http://openclinica.org/ws/beans">
+                    <soapenv:Header>
+                    <wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+                    <wsse:UsernameToken wsu:Id="UsernameToken-27777511" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+                    <wsse:Username>{lc_user}</wsse:Username>
+                    <wsse:Password type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
+                    </wsse:UsernameToken>
+                    </wsse:Security>
+                    </soapenv:Header>
+                    <soapenv:Body>
+                        <v1:isStudySubjectRequest>
+                            <v1:studySubject>
+                                <bean:label>{ss_label}</bean:label>
+                                <bean:studyRef>
+                                <bean:identifier>{study_oid}</bean:identifier>
+                                </bean:studyRef>
+                            </v1:studySubject>
+                        </v1:isStudySubjectRequest>
+                    </soapenv:Body>
+                    </soapenv:Envelope>
+                '''
+
+                ret = requests.post(lc_endpoint + 'studySubject/v1/studySubjectWsdl.wsdl', data=check_data, headers={'Content-Type': 'text/xml'})
+                retxml = et.fromstring(ret.text)
+                if retxml[1][0][0].text == 'Success':
+                    return retxml[1][0][1].text
 
 
 def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, study_oid, event_oid, form_oid, item_group_oid, identifier_colname, item_prefix, alternative_item_oids={}, **kwargs):
