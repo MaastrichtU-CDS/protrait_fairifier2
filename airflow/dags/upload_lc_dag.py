@@ -19,7 +19,7 @@ import yaml
 from sparql.query_engine import QueryEngine
 
 
-def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label):
+def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label, rerun=False):
     LOGGER = logging.getLogger("airflow.task")
     LOGGER.info(f'Trying to get SS_OID for {ss_label}')
 
@@ -49,83 +49,61 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label)
 
     # Create the studysubject
     ret = requests.post(lc_endpoint + 'studySubject/v1/studySubjectWsdl.wsdl', data=check_data, headers={'Content-Type': 'text/xml'})
-    retxml = et.fromstring(ret.text)
-    retval = retxml[1][0][0].text
-    LOGGER.info(f'Got return message {retval} on existance check')
-    if retval == 'Success':
-        LOGGER.info('Found existing SS_OID {retxml[1][0][1].text}')
-        return retxml[1][0][1].text
-    else:
-        LOGGER.info('No existing SS_OID found, querying new one')
+    LOGGER.debug(f'Status code {ret.status_code} on existence check')
+    if ret.status_code == 200:
+        retxml = et.fromstring(ret.text)
+        retval = retxml[1][0][0].text
+        LOGGER.info(f'Got return message {retval} on existence check')
+        if retval == 'Success':
+            LOGGER.info('Found existing SS_OID {retxml[1][0][1].text}')
+            return retxml[1][0][1].text
+        elif not rerun:
+            LOGGER.info('No existing SS_OID found, querying new one')
 
-        create_data = f'''
-            <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/studySubject/v1" xmlns:bean="http://openclinica.org/ws/beans">
-                <soapenv:Header>
-                <wsse:Security soapenv:mustUnderstand="1"
-                xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-                <wsse:UsernameToken wsu:Id="UsernameToken-27777511"
-                xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-                <wsse:Username>{lc_user}</wsse:Username>
-                <wsse:Password
-                type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
-                </wsse:UsernameToken>
-                </wsse:Security>
-            </soapenv:Header>
-
-            <soapenv:Body>
-                <v1:createRequest>
-                    <v1:studySubject>
-                        <!--Optional:-->
-                        <bean:label>{ss_label}</bean:label>
-                        <bean:enrollmentDate>2021-08-31</bean:enrollmentDate>
-                        <bean:subject>
-                        <!--Optional:-->
-                        <bean:uniqueIdentifier>{ss_label}</bean:uniqueIdentifier>
-                        <bean:gender>m</bean:gender>
-                        <!--You have a CHOICE of the next 2 items at this level-->
-                        <bean:dateOfBirth>1994-09-21</bean:dateOfBirth>
-                        </bean:subject>
-                        <bean:studyRef>
-                        <bean:identifier>{study_identifier}</bean:identifier>
-                        </bean:studyRef>
-                    </v1:studySubject>
-                </v1:createRequest>
-            </soapenv:Body>
-            </soapenv:Envelope>
-        '''
-        ret = requests.post(lc_endpoint + 'studySubject/v1/studySubjectWsdl.wsdl', data=create_data, headers={'Content-Type': 'text/xml'})
-        print(f'Status code {ret.status_code}')
-        if ret.status_code == 200:
-            retxml = et.fromstring(ret.text)
-            if retxml[1][0][0].text == 'Success':
-                # now get the actual ID...
-                check_data = f'''
-                    <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/studySubject/v1" xmlns:bean="http://openclinica.org/ws/beans">
+            create_data = f'''
+                <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/studySubject/v1" xmlns:bean="http://openclinica.org/ws/beans">
                     <soapenv:Header>
-                    <wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-                    <wsse:UsernameToken wsu:Id="UsernameToken-27777511" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+                    <wsse:Security soapenv:mustUnderstand="1"
+                    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+                    <wsse:UsernameToken wsu:Id="UsernameToken-27777511"
+                    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
                     <wsse:Username>{lc_user}</wsse:Username>
-                    <wsse:Password type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
+                    <wsse:Password
+                    type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
                     </wsse:UsernameToken>
                     </wsse:Security>
-                    </soapenv:Header>
-                    <soapenv:Body>
-                        <v1:isStudySubjectRequest>
-                            <v1:studySubject>
-                                <bean:label>{ss_label}</bean:label>
-                                <bean:studyRef>
-                                <bean:identifier>{study_identifier}</bean:identifier>
-                                </bean:studyRef>
-                            </v1:studySubject>
-                        </v1:isStudySubjectRequest>
-                    </soapenv:Body>
-                    </soapenv:Envelope>
-                '''
+                </soapenv:Header>
 
-                ret = requests.post(lc_endpoint + 'studySubject/v1/studySubjectWsdl.wsdl', data=check_data, headers={'Content-Type': 'text/xml'})
+                <soapenv:Body>
+                    <v1:createRequest>
+                        <v1:studySubject>
+                            <!--Optional:-->
+                            <bean:label>{ss_label}</bean:label>
+                            <bean:enrollmentDate>2021-08-31</bean:enrollmentDate>
+                            <bean:subject>
+                            <!--Optional:-->
+                            <bean:uniqueIdentifier>{ss_label}</bean:uniqueIdentifier>
+                            <bean:gender>m</bean:gender>
+                            <!--You have a CHOICE of the next 2 items at this level-->
+                            <bean:dateOfBirth>1994-09-21</bean:dateOfBirth>
+                            </bean:subject>
+                            <bean:studyRef>
+                            <bean:identifier>{study_identifier}</bean:identifier>
+                            </bean:studyRef>
+                        </v1:studySubject>
+                    </v1:createRequest>
+                </soapenv:Body>
+                </soapenv:Envelope>
+            '''
+            ret = requests.post(lc_endpoint + 'studySubject/v1/studySubjectWsdl.wsdl', data=create_data, headers={'Content-Type': 'text/xml'})
+            LOGGER.debug(f'Status code {ret.status_code} on creation')
+            if ret.status_code == 200:
+                LOGGER.info(f'Got return message {retval} on creation call')
                 retxml = et.fromstring(ret.text)
                 if retxml[1][0][0].text == 'Success':
-                    return retxml[1][0][1].text
+                    get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label, True)
+        else:
+            return None
 
 
 def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, study_oid, study_identifier, event_oid, form_oid, item_group_oid, identifier_colname, item_prefix, alternative_item_oids={}, **kwargs):
