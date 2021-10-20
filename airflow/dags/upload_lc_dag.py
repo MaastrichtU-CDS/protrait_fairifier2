@@ -181,7 +181,7 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
         LOGGER.debug(f'Got return code {ret.status_code} for scheduling the event')
 
         items = ''
-        for name in df.columns.names:
+        for name in df.columns:
             if name != identifier_colname:
                 if row[name] is not None:
                     items += f'<ItemData ItemOID="{item_prefix}{name}" Value="{row[name]}"/>\n'
