@@ -19,7 +19,7 @@ import yaml
 from sparql.query_engine import QueryEngine
 
 
-def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_oid, ss_label):
+def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label):
     LOGGER = logging.getLogger("airflow.task")
     LOGGER.info(f'Trying to get SS_OID for {ss_label}')
 
@@ -39,7 +39,7 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_oid, ss_label):
                 <v1:studySubject>
                     <bean:label>{ss_label}</bean:label>
                     <bean:studyRef>
-                    <bean:identifier>{study_oid}</bean:identifier>
+                    <bean:identifier>{study_identifier}</bean:identifier>
                     </bean:studyRef>
                 </v1:studySubject>
             </v1:isStudySubjectRequest>
@@ -86,7 +86,7 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_oid, ss_label):
                         <bean:dateOfBirth>1994-09-21</bean:dateOfBirth>
                         </bean:subject>
                         <bean:studyRef>
-                        <bean:identifier>{study_oid}</bean:identifier>
+                        <bean:identifier>{study_identifier}</bean:identifier>
                         </bean:studyRef>
                     </v1:studySubject>
                 </v1:createRequest>
@@ -114,7 +114,7 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_oid, ss_label):
                             <v1:studySubject>
                                 <bean:label>{ss_label}</bean:label>
                                 <bean:studyRef>
-                                <bean:identifier>{study_oid}</bean:identifier>
+                                <bean:identifier>{study_identifier}</bean:identifier>
                                 </bean:studyRef>
                             </v1:studySubject>
                         </v1:isStudySubjectRequest>
@@ -128,7 +128,7 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_oid, ss_label):
                     return retxml[1][0][1].text
 
 
-def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, study_oid, event_oid, form_oid, item_group_oid, identifier_colname, item_prefix, alternative_item_oids={}, **kwargs):
+def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, study_oid, study_identifier, event_oid, form_oid, item_group_oid, identifier_colname, item_prefix, alternative_item_oids={}, **kwargs):
     LOGGER = logging.getLogger("airflow.task")
     LOGGER.info(f'Retrieving triples from {sparql_endpoint}')
     sparql = QueryEngine(sparql_endpoint)
