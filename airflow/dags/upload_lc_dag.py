@@ -102,7 +102,10 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label,
                 retxml = et.fromstring(ret.text)
                 if retxml[1][0][0].text == 'Success':
                     get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label, True)
+                else:
+                    LOGGER.warning(f'Got this error when trying to create studysubject: {retxml[1][0][1].text}')
         else:
+            LOGGER.warning(f'Tried to get SS_OID again after creation, but still not getting one.')
             return None
 
 
