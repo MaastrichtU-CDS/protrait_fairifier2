@@ -54,7 +54,9 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label,
         }
     }
 
-    ret = client.service.isStudySubject(subject, _soapheaders=[header])
+    with client.settings(strict=False):
+        ret = client.service.isStudySubject(subject, _soapheaders=[header])
+        
     if ret['result'] == 'Success':
         # if yes return
         oid = ret['_raw_elements'].pop().text
