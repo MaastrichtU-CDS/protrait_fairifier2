@@ -15,6 +15,8 @@ import pandas as pd
 import rdflib as rdf
 import requests
 import yaml
+from zeep import Client
+import lxml
 
 from sparql.query_engine import QueryEngine
 
@@ -23,91 +25,69 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label,
     LOGGER = logging.getLogger("airflow.task")
     LOGGER.info(f'Trying to get SS_OID for {ss_label}')
 
-    # Check if subject exists
-    check_data = f'''
-        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/studySubject/v1" xmlns:bean="http://openclinica.org/ws/beans">
+    client = Client(lc_endpoint + 'studySubject/v1/studySubjectWsdl.wsdl')
+
+    header = f'''
+    <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/studySubject/v1" xmlns:bean="http://openclinica.org/ws/beans">
         <soapenv:Header>
-        <wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-        <wsse:UsernameToken wsu:Id="UsernameToken-27777511" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-        <wsse:Username>{lc_user}</wsse:Username>
-        <wsse:Password type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
-        </wsse:UsernameToken>
-        </wsse:Security>
+            <wsse:Security soapenv:mustUnderstand="1"
+            xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <wsse:UsernameToken wsu:Id="UsernameToken-27777511"
+            xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+            <wsse:Username>{lc_user}</wsse:Username>
+            <wsse:Password
+            type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
+            </wsse:UsernameToken>
+            </wsse:Security>
         </soapenv:Header>
-        <soapenv:Body>
-            <v1:isStudySubjectRequest>
-                <v1:studySubject>
-                    <bean:label>{ss_label}</bean:label>
-                    <bean:studyRef>
-                    <bean:identifier>{study_identifier}</bean:identifier>
-                    </bean:studyRef>
-                </v1:studySubject>
-            </v1:isStudySubjectRequest>
-        </soapenv:Body>
-        </soapenv:Envelope>
+    </soapenv:Envelope>
     '''
+    header = lxml.etree.fromstring(header)[0][0]
 
-    # Create the studysubject
-    ret = requests.post(lc_endpoint + 'studySubject/v1/studySubjectWsdl.wsdl', data=check_data, headers={'Content-Type': 'text/xml'})
-    LOGGER.debug(f'Status code {ret.status_code} on existence check')
-    if ret.status_code == 200:
-        retxml = et.fromstring(ret.text)
-        retval = retxml[1][0][0].text
-        LOGGER.info(f'Got return message {retval} on existence check')
-        if retval == 'Success':
-            LOGGER.info('Found existing SS_OID {retxml[1][0][1].text}')
-            return retxml[1][0][1].text
-        elif not rerun:
-            LOGGER.info('No existing SS_OID found, querying new one')
+    # Check if subject exists
+    subject = {
+        'label': ss_label,
+        'enrollmentDate': '1900-01-01',#This is ignored by LC but because bad soap implementation we have to supply it
+        'subject': {},
+        'studyRef': {
+            'identifier': study_identifier
+        }
+    }
 
-            create_data = f'''
-                <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/studySubject/v1" xmlns:bean="http://openclinica.org/ws/beans">
-                    <soapenv:Header>
-                    <wsse:Security soapenv:mustUnderstand="1"
-                    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-                    <wsse:UsernameToken wsu:Id="UsernameToken-27777511"
-                    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-                    <wsse:Username>{lc_user}</wsse:Username>
-                    <wsse:Password
-                    type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
-                    </wsse:UsernameToken>
-                    </wsse:Security>
-                </soapenv:Header>
+    ret = client.service.isStudySubject(subject, _soapheaders=[header])
+    if ret['result'] == 'Success':
+        # if yes return
+        oid = ret['_raw_elements'].pop().text
+        LOGGER.info(f'Found SS OID {oid}')
+        return oid
+    elif not rerun:
+        # Else create the SS
+        LOGGER.info("Couldn't find an OID, creating a new SS")
+        subject = {
+            'label': ss_label,
+            'enrollmentDate': '2021-08-31',
+            'subject': {
+                'uniqueIdentifier': ss_label,
+                'gender': 'm',
+                'dateOfBirth': '1994-09-21'
+            },
+            'studyRef': {
+                'identifier': study_identifier
+            }
+        }
 
-                <soapenv:Body>
-                    <v1:createRequest>
-                        <v1:studySubject>
-                            <!--Optional:-->
-                            <bean:label>{ss_label}</bean:label>
-                            <bean:enrollmentDate>2021-08-31</bean:enrollmentDate>
-                            <bean:subject>
-                            <!--Optional:-->
-                            <bean:uniqueIdentifier>{ss_label}</bean:uniqueIdentifier>
-                            <bean:gender>m</bean:gender>
-                            <!--You have a CHOICE of the next 2 items at this level-->
-                            <bean:dateOfBirth>1994-09-21</bean:dateOfBirth>
-                            </bean:subject>
-                            <bean:studyRef>
-                            <bean:identifier>{study_identifier}</bean:identifier>
-                            </bean:studyRef>
-                        </v1:studySubject>
-                    </v1:createRequest>
-                </soapenv:Body>
-                </soapenv:Envelope>
-            '''
-            ret = requests.post(lc_endpoint + 'studySubject/v1/studySubjectWsdl.wsdl', data=create_data, headers={'Content-Type': 'text/xml'})
-            LOGGER.debug(f'Status code {ret.status_code} on creation')
-            if ret.status_code == 200:
-                LOGGER.info(f'Got return message {retval} on creation call')
-                retxml = et.fromstring(ret.text)
-                if retxml[1][0][0].text == 'Success':
-                    get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label, True)
-                else:
-                    LOGGER.warning(f'Got this error when trying to create studysubject: {retxml[1][0][1].text}')
+        ret = client.service.isStudySubject(subject, _soapheaders=[header])
+        if ret['result'] == 'Success':
+            # Rerun this method because LC doesn't actaully give us back the OID
+            LOGGER.info('All went well, rerunning to fetch OID')
+            get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label, True)
         else:
-            LOGGER.warning(f'Tried to get SS_OID again after creation, but still not getting one.')
+            # Couldn't create user
+            LOGGER.warning('Could not create user')
             return None
-
+    else:
+        # we created a new user but it's still not here, great
+        return None
 
 def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, study_oid, study_identifier, event_oid, form_oid, item_group_oid, identifier_colname, item_prefix, alternative_item_oids={}, **kwargs):
     LOGGER = logging.getLogger("airflow.task")
@@ -120,46 +100,50 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
 
     LOGGER.info(f'Have columns {df.columns}')
 
+    header = f'''
+    <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/studySubject/v1" xmlns:bean="http://openclinica.org/ws/beans">
+        <soapenv:Header>
+            <wsse:Security soapenv:mustUnderstand="1"
+            xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <wsse:UsernameToken wsu:Id="UsernameToken-27777511"
+            xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+            <wsse:Username>{lc_user}</wsse:Username>
+            <wsse:Password
+            type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
+            </wsse:UsernameToken>
+            </wsse:Security>
+        </soapenv:Header>
+    </soapenv:Envelope>
+    '''
+    header = lxml.etree.fromstring(header)[0][0]
+
     subjects = []
 
     for _, row in df.iterrows():
-        id = row[identifier_colname]
+        ss_label = row[identifier_colname]
         LOGGER.debug(f'Adding subject {id}')
 
         # Get SS OID
-        ss_id = get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_oid, id)
-        LOGGER.debug(f'Got SS_OID {ss_id}')
+        ss_oid = get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_oid, ss_label)
+        LOGGER.debug(f'Got SS_OID {ss_label}')
+
+        event = {
+            'studySubjectRef': {
+                'label': ss_label
+            },
+            'studyRef': {
+                'identifier': study_identifier
+            },
+            'eventDefinitionOID': event_oid,
+            'startDate': '2000-01-01'
+        }
 
         # Make sure the event is scheduled
-        schedule_body = f'''
-            <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/event/v1" xmlns:bean="http://openclinica.org/ws/beans">
-            <soapenv:Header>
-                <wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-                <wsse:UsernameToken wsu:Id="UsernameToken-27777511" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-                <wsse:Username>{lc_user}</wsse:Username>
-                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
-                </wsse:UsernameToken>
-                </wsse:Security>
-            </soapenv:Header>
-            <soapenv:Body>
-                <v1:scheduleRequest>
-                    <v1:event>
-                        <bean:studySubjectRef>
-                        <bean:label>{ss_id}</bean:label>
-                        </bean:studySubjectRef>
-                        <bean:studyRef>
-                            <bean:identifier>{study_oid}</bean:identifier>
-                        </bean:studyRef>
-                        <bean:eventDefinitionOID>{event_oid}</bean:eventDefinitionOID>
-                        <bean:startDate>2020-01-01</bean:startDate>
-                    </v1:event>
-                </v1:scheduleRequest>
-            </soapenv:Body>
-            </soapenv:Envelope>
-        '''
+        client = Client(lc_endpoint + 'studySubject/v1/studySubjectWsdl.wsdl')
+        ret = client.service.schedule(event, _soapheaders=[header])
 
         ret = requests.post(lc_endpoint + 'event/v1/eventWsdl.wsdl', data=schedule_body, headers={'Content-Type': 'text/xml'})
-        LOGGER.debug(f'Got return code {ret.status_code} for scheduling the event')
+        LOGGER.debug(f'Got return code {ret["result"]} for scheduling the event')
 
         items = ''
         for name in df.columns:
@@ -168,7 +152,7 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
                     items += f'<ItemData ItemOID="{item_prefix}{name}" Value="{row[name]}"/>\n'
         
         subject = f'''
-            <SubjectData SubjectKey="{ss_id}">
+            <SubjectData SubjectKey="{ss_oid}">
                 <StudyEventData StudyEventOID="{event_oid}" StudyEventRepeatKey="1">
                     <FormData FormOID="{form_oid}" OpenClinica:Status="initial data entry">
                         <ItemGroupData ItemGroupOID="{item_group_oid}" ItemGroupRepeatKey="1" TransactionType="Insert">
@@ -209,7 +193,7 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
         </soapenv:Envelope>
     '''
 
-    ret = requests.post(lc_endpoint + 'data/v1/dataWsdl.wsdl', data=submit_data, headers={'Content-Type': 'text/xml'})
+    ret = requests.post(lc_endpoint + 'data/v1/dataWsdl.wsdl', data=submit_data, headers={'SOAPAction': '""', 'Content-Type': 'text/xml; charset=utf-8'})
     LOGGER.info(f'Got return code {ret.status_code} for upload')
 
 
