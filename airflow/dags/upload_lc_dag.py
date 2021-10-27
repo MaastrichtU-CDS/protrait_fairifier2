@@ -113,6 +113,14 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
         </soapenv:Header>
     </soapenv:Envelope>
     '''
+    '''<soapenv:Header>
+        <wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <wsse:UsernameToken wsu:Id="UsernameToken-27777511" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+                <wsse:Username>root</wsse:Username>
+                <wsse:Password type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{2ZImasZu1NDmnGY3c6KUe4RfcJvzAq6ZfBw7LeHMCR8=}f115289dc1ae06ab0d35d2502b4f26e5b203ce1e</wsse:Password>
+            </wsse:UsernameToken>
+        </wsse:Security>
+    </soapenv:Header>'''
     header = lxml.etree.fromstring(header)[0][0]
 
     subjects = []
@@ -122,7 +130,7 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
         LOGGER.debug(f'Adding subject {id}')
 
         # Get SS OID
-        ss_oid = get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_oid, ss_label)
+        ss_oid = get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label)
         LOGGER.debug(f'Got SS_OID {ss_label}')
 
         event = {
