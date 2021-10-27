@@ -3,3 +3,4 @@ sparqlwrapper
 pandas
 sqlalchemy
 zeep
+beautifulsoup4

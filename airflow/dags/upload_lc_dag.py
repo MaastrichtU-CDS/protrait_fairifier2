@@ -17,6 +17,7 @@ import requests
 import yaml
 from zeep import Client
 import lxml
+from bs4 import BeautifulSoup
 
 from sparql.query_engine import QueryEngine
 
@@ -200,7 +201,16 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
     '''
 
     ret = requests.post(lc_endpoint + 'data/v1/dataWsdl.wsdl', data=submit_data, headers={'SOAPAction': '""', 'Content-Type': 'text/xml; charset=utf-8'})
-    LOGGER.info(f'Got return code {ret.status_code} for upload')
+    LOGGER.debug(f'Got return code {ret.status_code} for upload')
+    ret = BeautifulSoup(ret.text)
+    ret_code = ret.find_all('result')[0].text
+    if ret_code == 'Success':
+        LOGGER.info('Succeeded in upload')
+        return 0
+    else:
+        LOGGER.warning(f'Got a non-success code back from LC: {ret.find_all("error")[0].text}')
+        return -1
+    
 
 
 def create_dag(dag_id,
