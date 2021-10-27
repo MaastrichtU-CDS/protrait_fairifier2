@@ -30,13 +30,10 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label,
     header = f'''
     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/studySubject/v1" xmlns:bean="http://openclinica.org/ws/beans">
         <soapenv:Header>
-            <wsse:Security soapenv:mustUnderstand="1"
-            xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-            <wsse:UsernameToken wsu:Id="UsernameToken-27777511"
-            xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-            <wsse:Username>{lc_user}</wsse:Username>
-            <wsse:Password
-            type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
+            <wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <wsse:UsernameToken wsu:Id="UsernameToken-27777511" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+                <wsse:Username>{lc_user}</wsse:Username>
+                <wsse:Password type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
             </wsse:UsernameToken>
             </wsse:Security>
         </soapenv:Header>
@@ -107,13 +104,10 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
     header = f'''
     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/studySubject/v1" xmlns:bean="http://openclinica.org/ws/beans">
         <soapenv:Header>
-            <wsse:Security soapenv:mustUnderstand="1"
-            xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-            <wsse:UsernameToken wsu:Id="UsernameToken-27777511"
-            xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-            <wsse:Username>{lc_user}</wsse:Username>
-            <wsse:Password
-            type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
+            <wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <wsse:UsernameToken wsu:Id="UsernameToken-27777511" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+                <wsse:Username>{lc_user}</wsse:Username>
+                <wsse:Password type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
             </wsse:UsernameToken>
             </wsse:Security>
         </soapenv:Header>
@@ -144,7 +138,8 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
 
         # Make sure the event is scheduled
         client = Client(lc_endpoint + 'event/v1/eventWsdl.wsdl')
-        ret = client.service.schedule(event, _soapheaders=[header])
+        with client.settings(strict=False):
+            ret = client.service.schedule(event, _soapheaders=[header])
 
         LOGGER.debug(f'Got return code {ret["result"]} for scheduling the event')
 
