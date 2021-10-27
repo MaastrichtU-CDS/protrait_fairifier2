@@ -76,7 +76,7 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label,
         }
 
         with client.settings(strict=False):
-            ret = client.service.isStudySubject(subject, _soapheaders=[header])
+            ret = client.service.create(subject, _soapheaders=[header])
 
         if ret['result'] == 'Success':
             # Rerun this method because LC doesn't actaully give us back the OID
