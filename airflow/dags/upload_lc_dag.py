@@ -56,7 +56,7 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label,
 
     with client.settings(strict=False):
         ret = client.service.isStudySubject(subject, _soapheaders=[header])
-        
+
     if ret['result'] == 'Success':
         # if yes return
         oid = ret['_raw_elements'].pop().text
@@ -78,7 +78,9 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label,
             }
         }
 
-        ret = client.service.isStudySubject(subject, _soapheaders=[header])
+        with client.settings(strict=False):
+            ret = client.service.isStudySubject(subject, _soapheaders=[header])
+            
         if ret['result'] == 'Success':
             # Rerun this method because LC doesn't actaully give us back the OID
             LOGGER.info('All went well, rerunning to fetch OID')
