@@ -2,3 +2,4 @@ rdflib==6.0.0
 sparqlwrapper
 pandas
 sqlalchemy
+zeep

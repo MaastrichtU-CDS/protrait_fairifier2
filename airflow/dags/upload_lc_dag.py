@@ -80,14 +80,14 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label,
 
         with client.settings(strict=False):
             ret = client.service.isStudySubject(subject, _soapheaders=[header])
-            
+
         if ret['result'] == 'Success':
             # Rerun this method because LC doesn't actaully give us back the OID
             LOGGER.info('All went well, rerunning to fetch OID')
             get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label, True)
         else:
             # Couldn't create user
-            LOGGER.warning('Could not create user')
+            LOGGER.warning(f'Could not create user: {ret["error"]}')
             return None
     else:
         # we created a new user but it's still not here, great
@@ -143,10 +143,9 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
         }
 
         # Make sure the event is scheduled
-        client = Client(lc_endpoint + 'studySubject/v1/studySubjectWsdl.wsdl')
+        client = Client(lc_endpoint + 'event/v1/eventWsdl.wsdl')
         ret = client.service.schedule(event, _soapheaders=[header])
 
-        ret = requests.post(lc_endpoint + 'event/v1/eventWsdl.wsdl', data=schedule_body, headers={'Content-Type': 'text/xml'})
         LOGGER.debug(f'Got return code {ret["result"]} for scheduling the event')
 
         items = ''
