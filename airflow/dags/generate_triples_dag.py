@@ -170,12 +170,12 @@ with DAG(
         repo_url='https://gitlab.com/UM-CDS/protrait/mapping-unifications.git',
         target_dir=Path(os.environ['R2RML_DATA_DIR']) / 'settings/r2rml/',
         sub_dir='GenericList2',
-        task_id='git',
+        task_id='get_r2rml_files',
     )
 
     # ./ontop materialize -m ../data/settings/mapping.ttl  -p ../data/settings/r2rml.properties.example -f ntriples -o ../data/output/triples.ttl
     generate_triples_op = BashOperator(
-        task_id="generate_triples",
+        task_id="generate_RDF_triples",
         bash_command= "if ls ${R2RML_DATA_DIR}/output/*.nt >/dev/null 2>&1; then rm ${R2RML_DATA_DIR}/output/*.nt; fi \n" +
         "for file in `basename ${R2RML_DATA_DIR}/settings/r2rml/*.ttl`; do \n" +
         "${R2RML_CLI_DIR}/ontop materialize " +
@@ -187,7 +187,7 @@ with DAG(
     )
 
     upload_triples_op = PythonOperator(
-        task_id='upload_triples',
+        task_id='upload_to_graphDB',
         python_callable=upload_triples_dir,
         op_kwargs={
             'input_path': Path(os.environ['R2RML_DATA_DIR']) / 'output', 
