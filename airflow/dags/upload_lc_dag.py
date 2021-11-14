@@ -196,8 +196,9 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
     LOGGER.debug(f'Got return code {ret.status_code} for upload')
     ret = BeautifulSoup(ret.text)
     ret_code = ret.find_all('result')[0].text
-    if ret_code == 'Success':
-        LOGGER.info('Succeeded in upload')
+    if 'Success' in ret_code:
+        LOGGER.info('Succeeded in upload:')
+        LOGGER.info(f'{ret_code}')
         return 0
     else:
         LOGGER.warning(f'Got a non-success code back from LC: {ret.find_all("error")[0].text}')
