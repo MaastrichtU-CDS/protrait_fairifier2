@@ -82,7 +82,7 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label,
         if ret['result'] == 'Success':
             # Rerun this method because LC doesn't actaully give us back the OID
             LOGGER.info('All went well, rerunning to fetch OID')
-            get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label, True)
+            return get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label, True)
         else:
             # Couldn't create user
             LOGGER.warning(f'Could not create user: {ret["error"]}')
