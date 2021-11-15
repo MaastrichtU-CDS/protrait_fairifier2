@@ -116,7 +116,7 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
     '''
     header = lxml.etree.fromstring(header)[0][0]
 
-    subjects = []
+    failed_subjects = []
 
     for _, row in df.iterrows():
         ss_label = row[identifier_colname]
@@ -161,49 +161,49 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
                 </StudyEventData>
             </SubjectData>
         '''
-        subjects.append(subject)
 
-    LOGGER.info(f'Starting upload for {len(subjects)} subjects')
+        LOGGER.info(f'Starting upload for {ss_label}')
 
-    newline='\n'
-    submit_data = f'''
-        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/data/v1" xmlns:OpenClinica="http://www.openclinica.org/ns/odm_ext_v130/v3.1">
-        <soapenv:Header>
-            <wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-                <wsse:UsernameToken wsu:Id="UsernameToken-27777511" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-                    <wsse:Username>{lc_user}</wsse:Username>
-                    <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
-                </wsse:UsernameToken>
-            </wsse:Security>
-        </soapenv:Header>
+        submit_data = f'''
+            <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/data/v1" xmlns:OpenClinica="http://www.openclinica.org/ns/odm_ext_v130/v3.1">
+            <soapenv:Header>
+                <wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+                    <wsse:UsernameToken wsu:Id="UsernameToken-27777511" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+                        <wsse:Username>{lc_user}</wsse:Username>
+                        <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{lc_password}</wsse:Password>
+                    </wsse:UsernameToken>
+                </wsse:Security>
+            </soapenv:Header>
 
-        <soapenv:Body>
-        <v1:importRequest>
-        <odm>
-        <ODM>
-        <ClinicalData StudyOID="{study_oid}" MetaDataVersionOID="v1.0.0">
-            <UpsertOn NotStarted="true" DataEntryStarted="true" DataEntryComplete="true"/>
-            {newline.join(subjects)}
-        </ClinicalData>
-        </ODM>
-        </odm>
-        </v1:importRequest>  
-        </soapenv:Body>
-        </soapenv:Envelope>
-    '''
+            <soapenv:Body>
+            <v1:importRequest>
+            <odm>
+            <ODM>
+            <ClinicalData StudyOID="{study_oid}" MetaDataVersionOID="v1.0.0">
+                <UpsertOn NotStarted="true" DataEntryStarted="true" DataEntryComplete="true"/>
+                {subject}
+            </ClinicalData>
+            </ODM>
+            </odm>
+            </v1:importRequest>  
+            </soapenv:Body>
+            </soapenv:Envelope>
+        '''
 
-    ret = requests.post(lc_endpoint + 'data/v1/dataWsdl.wsdl', data=submit_data, headers={'SOAPAction': '""', 'Content-Type': 'text/xml; charset=utf-8'})
-    LOGGER.debug(f'Got return code {ret.status_code} for upload')
-    ret = BeautifulSoup(ret.text)
-    ret_code = ret.find_all('result')[0].text
-    if 'Success' in ret_code:
-        LOGGER.info('Succeeded in upload:')
-        LOGGER.info(f'{ret_code}')
-        return 0
-    else:
-        LOGGER.warning(f'Got a non-success code back from LC: {ret.find_all("error")[0].text}')
-        return -1
-    
+        ret = requests.post(lc_endpoint + 'data/v1/dataWsdl.wsdl', data=submit_data, headers={'SOAPAction': '""', 'Content-Type': 'text/xml; charset=utf-8'})
+        LOGGER.debug(f'Got return code {ret.status_code} for upload')
+        ret = BeautifulSoup(ret.text)
+        ret_code = ret.find_all('result')[0].text
+        if 'Success' in ret_code:
+            LOGGER.info('Succeeded in upload:')
+            LOGGER.info(f'{ret_code}')
+        else:
+            error = ret.find_all("error")[0].text
+            LOGGER.warning(f'Got a non-success code back from LC: {error}')
+            failed_subjects.append({'subject': ss_label, 'error': error})
+
+    if failed_subjects:
+        LOGGER.warning(f'Failed to upload these study subjects: \n{failed_subjects}')
 
 
 def create_dag(dag_id,
