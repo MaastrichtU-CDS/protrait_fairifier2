@@ -2,6 +2,7 @@ import json
 
 from SPARQLWrapper import SPARQLWrapper, JSON
 import pandas as pd
+import numpy as np
 
 
 class QueryEngine:
@@ -40,9 +41,9 @@ class QueryEngine:
                 try:
                     tmp = cast_to(x)
                 except ValueError:
-                    tmp = pd.NA
+                    tmp = np.NaN
             else:
-                tmp = pd.NA
+                tmp = np.NaN
             return tmp
 
         if len(processed_results['results']['bindings']) > 0:
