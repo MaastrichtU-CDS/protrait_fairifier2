@@ -211,7 +211,7 @@ with DAG(
         "${R2RML_CLI_DIR}/ontop materialize " +
         "-m {{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}/ttl/$file " +
         "-f ntriples " +
-        "-p ${R2RML_DATA_DIR}/settings/r2rml.properties " +
+        "-p ${R2RML_CLI_DIR}/r2rml.properties " +
         "-o {{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}/output/$file \n" + 
         "done"
     )

@@ -22,7 +22,6 @@ services:
         volumes:
             - ./airflow/ontop-cli-4.1.0:${R2RML_CLI_DIR}
             - ./airflow/dags:/usr/local/airflow/dags
-            - ./airflow/r2rml:${R2RML_DATA_DIR}/settings
             - ./input:${R2RML_DATA_DIR}/input
             - ./upload_config.yaml:/usr/local/airflow/upload_config.yaml
         ports:
