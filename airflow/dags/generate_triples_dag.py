@@ -3,6 +3,7 @@ from pathlib import Path
 import os
 import logging
 import requests
+from uuid import uuid4
 
 from airflow import DAG
 from airflow.utils.decorators import apply_defaults
@@ -133,23 +134,9 @@ class GitBashOperator(BashOperator):
         sub_dir (str): the directory that contains the data to be copied, if not the root dir
     """
 
-    template_fields = ('repo_name', 'repo_url', 'sub_dir', 'target_dir')
-
+    # TODO: refactor back into standard BashOperator
     @apply_defaults
-    def __init__(
-            self,
-            repo_name,
-            repo_url,
-            target_dir,
-            sub_dir = '.',
-            *args, **kwargs):
-
-        self.repo_name = repo_name
-        self.repo_path = Path.home() / f'gitrepos/{self.repo_name}/'
-        self.repo_url = repo_url
-        self.target_dir = target_dir
-        self.sub_dir = sub_dir
-        
+    def __init__(self, *args, **kwargs):        
         super().__init__(bash_command='', *args, **kwargs)
 
     def execute(self, context):
@@ -159,30 +146,26 @@ class GitBashOperator(BashOperator):
         data from the repo
         """
         LOGGER = logging.getLogger("airflow.task")
-        LOGGER.info(f'preparing to pull {self.repo_url}')
 
-        command = ''
+        command = 'mkdir -p $repo_path ; mkdir -p $target_dir ; git clone $repo_url $repo_path && '
 
-        # Check if repo already exists and update command accordingly
-        if not (self.repo_path / '.git').exists():
-            LOGGER.info(f'repo does not exist yet - cloning it')
-            self.repo_path.mkdir(parents=True, exist_ok=True)
-            command = command + f'git clone {self.repo_url} {str(self.repo_path)} && '
-
-        # Check if target dir exists
-        if not self.target_dir.exists():
-            LOGGER.info(f'target dir {str(self.target_dir)} does not exist yet - creating it')
-            self.target_dir.mkdir(parents=True, exist_ok=True)
-
-        self.bash_command = command + f'cd {str(self.repo_path)} && ' \
+        self.bash_command = command + 'cd $repo_path && ' \
             'git checkout -- . && ' \
             'git pull && ' \
-            f'cd {self.sub_dir} && ' \
-            f'rm -rf {str(self.target_dir)}/* && ' \
-            f'cp -Rf * {str(self.target_dir)}'
+            'cd $sub_dir && ' \
+            'rm -rf ${target_dir}/* && ' \
+            'cp -Rf * $target_dir'
         
         # Have BashOperator actually execute the command
         return super().execute(context)
+
+def initialize(**kwargs):
+    ti = kwargs['task_instance']
+    dir_name = Path('/tmp/') / str(uuid4())
+    dir_name.mkdir(parents=True, exist_ok=False)
+
+    ti.xcom_push(key='working_dir', value=str(dir_name))
+
 
 default_args = {
     'owner': 'airflow',
@@ -200,24 +183,36 @@ with DAG(
     max_active_runs=1
 ) as dag:
 
+    setup_op = PythonOperator(
+        task_id='initialize',
+        python_callable=initialize,
+        provide_context=True
+    )
+
     fetch_r2rml_op = GitBashOperator(
-        repo_name='r2rml_files_git',
-        repo_url='https://gitlab.com/UM-CDS/protrait/mapping-unifications.git',
-        target_dir=Path(os.environ['R2RML_DATA_DIR']) / 'settings/r2rml/',
-        sub_dir='GenericList2',
         task_id='get_r2rml_files',
+        provide_context=True,
+        env={
+            'repo_name': 'r2rml_files_git',
+            'repo_url': 'https://github.com/jaspersnel/r2rml_tests.git',
+            'target_dir': '{{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}/ttl',
+            'repo_path': '{{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}/gitrepos/ttl',
+            'sub_dir': '.',
+        }
     )
 
     # ./ontop materialize -m ../data/settings/mapping.ttl  -p ../data/settings/r2rml.properties.example -f ntriples -o ../data/output/triples.ttl
+    # TODO: move r2rml.properties to  CLI_DIR
     generate_triples_op = BashOperator(
         task_id="generate_RDF_triples",
-        bash_command= "if ls ${R2RML_DATA_DIR}/output/*.nt >/dev/null 2>&1; then rm ${R2RML_DATA_DIR}/output/*.nt; fi \n" +
-        "for file in `basename ${R2RML_DATA_DIR}/settings/r2rml/*.ttl`; do \n" +
+        bash_command= "mkdir -p {{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}/output \n" +
+        "if ls {{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}/output/*.nt >/dev/null 2>&1; then rm {{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}/output/*.nt; fi \n" +
+        "for file in `basename {{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}/ttl/*.ttl`; do \n" +
         "${R2RML_CLI_DIR}/ontop materialize " +
-        "-m ${R2RML_DATA_DIR}/settings/r2rml/$file " +
+        "-m {{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}/ttl/$file " +
         "-f ntriples " +
         "-p ${R2RML_DATA_DIR}/settings/r2rml.properties " +
-        "-o ${R2RML_DATA_DIR}/output/$file \n" + 
+        "-o {{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}/output/$file \n" + 
         "done"
     )
 
@@ -225,15 +220,21 @@ with DAG(
         task_id='upload_to_graphDB',
         python_callable=upload_triples_dir,
         op_kwargs={
-            'input_path': Path(os.environ['R2RML_DATA_DIR']) / 'output', 
+            'input_path': '{{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}/output', 
             'sparql_endpoint': os.environ['SPARQL_ENDPOINT']
             }
     )
 
     ontologies = {
         'roo': 'https://data.bioontology.org/ontologies/ROO/submissions/8/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb',
-        'ncit': 'https://data.bioontology.org/ontologies/NCIT/submissions/111/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb',
+        #'ncit': 'https://data.bioontology.org/ontologies/NCIT/submissions/111/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb',
     }
+
+    finalize_op = BashOperator(
+        task_id='finalize',
+        bash_command='rm -rf {{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}'
+    )
+
 
     for key, url in ontologies.items():
         op = PythonOperator(
@@ -245,6 +246,6 @@ with DAG(
             }
         )
 
-        upload_triples_op >> op
+        upload_triples_op >> op >> finalize_op
 
-    fetch_r2rml_op >> generate_triples_op >> upload_triples_op
+    setup_op >> fetch_r2rml_op >> generate_triples_op >> upload_triples_op
