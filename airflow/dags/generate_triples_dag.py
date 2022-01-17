@@ -2,6 +2,7 @@ from datetime import timedelta, datetime
 from pathlib import Path
 import os
 import logging
+import requests
 
 from airflow import DAG
 from airflow.utils.decorators import apply_defaults
@@ -39,6 +40,40 @@ def upload_triples_dir(input_path, sparql_endpoint, empty_db=True, **kwargs):
     for file in input_path.glob('*.nt'):
         upload_triples_file(file, sparql_endpoint, empty_db=False)
 
+def upload_terminology(url, sparql_endpoint, **kwargs):
+    """Uploads a given ontology file to the SPARQL endpoint
+    
+    """
+    LOGGER = logging.getLogger("airflow.task")
+    LOGGER.info(f'downloading file {url}')
+
+    ret = requests.get(url)
+
+    LOGGER.debug(f'got return code {ret.status_code}')
+
+    if ret.status_code >= 200 and ret.status_code < 300:
+        sparql = SPARQLWrapper(sparql_endpoint)
+
+        LOGGER.info(f'starting upload to {sparql_endpoint}')
+        g = rdf.Graph()
+        g.parse(data=ret.text)
+        triples = g.serialize(format='nt')
+
+        for i in range(0, len(triples), 100000):
+            LOGGER.info(f'uploading {100000 if i + 100000 < len(triples) else len(triples) % 100000} triples')
+
+            query = """
+            INSERT DATA {
+                GRAPH <http://localhost/ontology> {
+                    %s
+                } 
+            }
+            """ % ('\n'.join(triples[i:(i + 100000 if (i+100000) < len(triples) else len(triples))]))
+
+            sparql.setRequestMethod(POSTDIRECTLY)
+            sparql.setQuery(query)
+            sparql.query()
+        
 def upload_triples_file(filename, sparql_endpoint, empty_db=True, **kwargs):
     """Uploads a single triples (.nt) file to a given sparql endpoint.
 
@@ -194,5 +229,22 @@ with DAG(
             'sparql_endpoint': os.environ['SPARQL_ENDPOINT']
             }
     )
+
+    ontologies = {
+        'roo': 'https://data.bioontology.org/ontologies/ROO/submissions/8/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb',
+        'ncit': 'https://data.bioontology.org/ontologies/NCIT/submissions/111/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb',
+    }
+
+    for key, url in ontologies.items():
+        op = PythonOperator(
+            task_id=f'upload_ontology_{key}',
+            python_callable=upload_terminology,
+            op_kwargs={
+                'url': url,
+                'sparql_endpoint': os.environ['SPARQL_ENDPOINT']
+            }
+        )
+
+        upload_triples_op >> op
 
     fetch_r2rml_op >> generate_triples_op >> upload_triples_op

@@ -2,6 +2,7 @@ import json
 
 from SPARQLWrapper import SPARQLWrapper, JSON
 import pandas as pd
+import numpy as np
 
 
 class QueryEngine:
@@ -34,21 +35,32 @@ class QueryEngine:
 
         df = pd.DataFrame(out, columns=cols)
 
+        def convert(x, cast_to):
+            # Getting a column to be one type is hard
+            if x is not None:
+                try:
+                    tmp = cast_to(x)
+                except ValueError:
+                    tmp = np.NaN
+            else:
+                tmp = np.NaN
+            return tmp
+
         if len(processed_results['results']['bindings']) > 0:
             firstRow = processed_results['results']['bindings'][0]
             for c in cols:
                 varType = firstRow.get(c,{}).get("type")
                 if varType == "uri":
-                    df[c] = df[c].astype("category")
+                    df[c] = df[c].astype('category')
                 if varType == "literal" or varType == "typed-literal":
                     dataType = firstRow.get(c,{}).get("datatype")
-                    if dataType=="http://www.w3.org/2001/XMLSchema#int":
-                        df[c] = pd.to_numeric(df[c], errors='coerce')
-                    if dataType=="http://www.w3.org/2001/XMLSchema#integer":
-                        df[c] = pd.to_numeric(df[c], errors='coerce')
+                    if dataType in ["http://www.w3.org/2001/XMLSchema#int", "http://www.w3.org/2001/XMLSchema#integer"]:
+                        df[c] = df[c].apply(lambda x: convert(x, int)).astype('Int64')
                     if dataType=="http://www.w3.org/2001/XMLSchema#double":
-                        df[c] = pd.to_numeric(df[c], errors='coerce')
+                        df[c] = df[c].apply(lambda x: convert(x, float)).astype('Float64')
                     if dataType=="http://www.w3.org/2001/XMLSchema#string":
-                        df[c] = df[c].astype("category")
+                        df[c] = df[c].astype('category')
+
+
         
         return df
