@@ -24,7 +24,6 @@ services:
             - ./airflow/dags:/usr/local/airflow/dags
             - ./airflow/r2rml:${R2RML_DATA_DIR}/settings
             - ./input:${R2RML_DATA_DIR}/input
-            - ./output:${R2RML_DATA_DIR}/output
             - ./upload_config.yaml:/usr/local/airflow/upload_config.yaml
         ports:
             - 8080:8080
