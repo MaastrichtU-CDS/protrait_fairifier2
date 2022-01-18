@@ -50,32 +50,27 @@ def upload_terminology(url, sparql_endpoint, **kwargs):
     LOGGER = logging.getLogger("airflow.task")
     LOGGER.info(f'downloading file {url}')
 
-    ret = requests.get(url)
+    sparql = SPARQLWrapper(sparql_endpoint + '/statements')
 
-    LOGGER.debug(f'got return code {ret.status_code}')
+    LOGGER.info(f'starting upload to {sparql_endpoint}')
+    g = rdf.Graph()
+    g.parse(url)
+    triples_lines = g.serialize(format='nt').split('\n')
 
-    if ret.status_code >= 200 and ret.status_code < 300:
-        sparql = SPARQLWrapper(sparql_endpoint + '/statements')
+    for i in range(0, len(triples_lines), 100000):
+        LOGGER.info(f'uploading {100000 if i + 100000 < len(triples_lines) else len(triples_lines) % 100000} triples')
 
-        LOGGER.info(f'starting upload to {sparql_endpoint}')
-        g = rdf.Graph()
-        g.parse(data=ret.text, format='xml')
-        triples = g.serialize(format='nt')
+        query = """
+        INSERT DATA {
+            GRAPH <http://localhost/ontology> {
+                %s
+            } 
+        }
+        """ % ('\n'.join(triples_lines[i:(i + 100000 if (i+100000) < len(triples_lines) else len(triples_lines))]))
 
-        for i in range(0, len(triples), 100000):
-            LOGGER.info(f'uploading {100000 if i + 100000 < len(triples) else len(triples) % 100000} triples')
-
-            query = """
-            INSERT DATA {
-                GRAPH <http://localhost/ontology> {
-                    %s
-                } 
-            }
-            """ % ('\n'.join(triples[i:(i + 100000 if (i+100000) < len(triples) else len(triples))]))
-
-            sparql.setRequestMethod(POSTDIRECTLY)
-            sparql.setQuery(query)
-            sparql.query()
+        sparql.setRequestMethod(POSTDIRECTLY)
+        sparql.setQuery(query)
+        sparql.query()
         
 def upload_triples_file(filename, sparql_endpoint, empty_db=True, **kwargs):
     """Uploads a single triples (.nt) file to a given sparql endpoint.
