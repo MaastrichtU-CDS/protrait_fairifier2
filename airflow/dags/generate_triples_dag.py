@@ -27,6 +27,8 @@ def upload_triples_dir(input_path, sparql_endpoint, empty_db=True, **kwargs):
     LOGGER = logging.getLogger("airflow.task")
     LOGGER.info(f'uploading dir {str(input_path)} to {sparql_endpoint}')
 
+    input_path = Path(input_path)
+
     sparql = SPARQLWrapper(sparql_endpoint + '/statements')
 
     if empty_db:
@@ -53,11 +55,11 @@ def upload_terminology(url, sparql_endpoint, **kwargs):
     LOGGER.debug(f'got return code {ret.status_code}')
 
     if ret.status_code >= 200 and ret.status_code < 300:
-        sparql = SPARQLWrapper(sparql_endpoint)
+        sparql = SPARQLWrapper(sparql_endpoint + '/statements')
 
         LOGGER.info(f'starting upload to {sparql_endpoint}')
         g = rdf.Graph()
-        g.parse(data=ret.text)
+        g.parse(data=ret.text, format='xml')
         triples = g.serialize(format='nt')
 
         for i in range(0, len(triples), 100000):
@@ -124,41 +126,6 @@ def upload_triples_file(filename, sparql_endpoint, empty_db=True, **kwargs):
         sparql.setQuery(query)
         sparql.query()
 
-class GitBashOperator(BashOperator):
-    """Clones/pulls a repo, extracts all/a subdir of the files, and copies them to a target dir.
-
-    Args:
-        repo_name (str): the name under which to store the repository data
-        repo_url (str): the URL for the repo to be cloned
-        target_dir (str): the directory to which data from the repo needs to be cloned
-        sub_dir (str): the directory that contains the data to be copied, if not the root dir
-    """
-
-    # TODO: refactor back into standard BashOperator
-    @apply_defaults
-    def __init__(self, *args, **kwargs):        
-        super().__init__(bash_command='', *args, **kwargs)
-
-    def execute(self, context):
-        """First checks that all the correct dirs are in place. Checks if cloning is necessary
-        or only (re-)pulling the existing repo. Then forms a bash command, handled by
-        BashOperator which updates the repo, clears out the target dir, and copied in the
-        data from the repo
-        """
-        LOGGER = logging.getLogger("airflow.task")
-
-        command = 'mkdir -p $repo_path ; mkdir -p $target_dir ; git clone $repo_url $repo_path && '
-
-        self.bash_command = command + 'cd $repo_path && ' \
-            'git checkout -- . && ' \
-            'git pull && ' \
-            'cd $sub_dir && ' \
-            'rm -rf ${target_dir}/* && ' \
-            'cp -Rf * $target_dir'
-        
-        # Have BashOperator actually execute the command
-        return super().execute(context)
-
 def initialize(**kwargs):
     ti = kwargs['task_instance']
     dir_name = Path('/tmp/') / str(uuid4())
@@ -189,9 +156,15 @@ with DAG(
         provide_context=True
     )
 
-    fetch_r2rml_op = GitBashOperator(
+    fetch_r2rml_op = BashOperator(
         task_id='get_r2rml_files',
-        provide_context=True,
+        bash_command = 'mkdir -p $repo_path ; ' \
+            'mkdir -p $target_dir ; ' \
+            'git clone $repo_url $repo_path && ' \
+            'cd $repo_path && ' \
+            'cd $sub_dir && ' \
+            'rm -rf ${target_dir}/* && ' \
+            'cp -Rf * $target_dir',
         env={
             'repo_name': 'r2rml_files_git',
             'repo_url': 'https://github.com/jaspersnel/r2rml_tests.git',
@@ -205,15 +178,22 @@ with DAG(
     # TODO: move r2rml.properties to  CLI_DIR
     generate_triples_op = BashOperator(
         task_id="generate_RDF_triples",
-        bash_command= "mkdir -p {{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}/output \n" +
-        "if ls {{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}/output/*.nt >/dev/null 2>&1; then rm {{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}/output/*.nt; fi \n" +
-        "for file in `basename {{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}/ttl/*.ttl`; do \n" +
-        "${R2RML_CLI_DIR}/ontop materialize " +
-        "-m {{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}/ttl/$file " +
-        "-f ntriples " +
-        "-p ${R2RML_CLI_DIR}/r2rml.properties " +
-        "-o {{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}/output/$file \n" + 
-        "done"
+        bash_command= "mkdir -p ${workdir}/output \n" +
+            "if ls ${workdir}/output/*.nt >/dev/null 2>&1; " + 
+            "then rm ${workdir}/output/*.nt; "+
+            "fi \n" +
+            "for file in `basename ${workdir}/ttl/*.ttl`; "+
+            "do \n" +
+            "${R2RML_CLI_DIR}/ontop materialize " +
+            "-m ${workdir}/ttl/$file " +
+            "-f ntriples " +
+            "-p ${R2RML_CLI_DIR}/r2rml.properties " +
+            "-o ${workdir}/output/$file \n" + 
+            "done",
+        env={
+            'workdir': "{{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}",
+            'R2RML_CLI_DIR': os.environ.get('R2RML_CLI_DIR')
+        }
     )
 
     upload_triples_op = PythonOperator(
@@ -232,7 +212,8 @@ with DAG(
 
     finalize_op = BashOperator(
         task_id='finalize',
-        bash_command='rm -rf {{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}'
+        bash_command='rm -rf {{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}',
+        trigger_rule='all_done',
     )
 
 
