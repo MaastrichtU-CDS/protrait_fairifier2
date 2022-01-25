@@ -162,10 +162,10 @@ with DAG(
             'cp -Rf * $target_dir',
         env={
             'repo_name': 'r2rml_files_git',
-            'repo_url': 'https://github.com/jaspersnel/r2rml_tests.git',
+            'repo_url': os.environ['R2RML_REPO'],
             'target_dir': '{{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}/ttl',
             'repo_path': '{{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}/gitrepos/ttl',
-            'sub_dir': '.',
+            'sub_dir': os.environ['R2RML_REPO_SUBDIR'],
         }
     )
 
