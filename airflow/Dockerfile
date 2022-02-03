@@ -1,4 +1,4 @@
-FROM puckel/docker-airflow
+FROM apache/airflow:2.2.3-python3.7
 
 # Install Java
 USER root
