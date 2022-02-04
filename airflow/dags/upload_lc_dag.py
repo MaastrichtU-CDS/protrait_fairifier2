@@ -9,6 +9,7 @@ from airflow.utils.decorators import apply_defaults
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.utils.dates import days_ago
+from airflow.models import Variable
 from airflow import settings
 
 import pandas as pd
@@ -221,10 +222,10 @@ def create_dag(dag_id,
     )
 
     op_kwargs = upload_kwargs
-    op_kwargs['sparql_endpoint'] = os.environ['SPARQL_ENDPOINT']
-    op_kwargs['lc_endpoint'] = os.environ['LC_ENDPOINT']
-    op_kwargs['lc_user'] = os.environ['LC_USER']
-    op_kwargs['lc_password'] = os.environ['LC_PASSWORD']
+    op_kwargs['sparql_endpoint'] = Variable.get('SPARQL_ENDPOINT')
+    op_kwargs['lc_endpoint'] = Variable.get('LC_ENDPOINT')
+    op_kwargs['lc_user'] = Variable.get('LC_USER')
+    op_kwargs['lc_password'] = Variable.get('LC_PASSWORD')
 
     with dag:
         t1 = PythonOperator(
@@ -234,7 +235,7 @@ def create_dag(dag_id,
 
     return dag
 
-filename = os.environ['LC_UPLOAD_CONFIG']
+filename = Variable.get('LC_UPLOAD_CONFIG')
 with open(filename) as f:
     upload_config = yaml.load(f)
 
