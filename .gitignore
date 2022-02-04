@@ -1,6 +1,9 @@
 # IDE
 .idea
 
+# Local conf
+.env
+
 # Python
 venv
 .venv
