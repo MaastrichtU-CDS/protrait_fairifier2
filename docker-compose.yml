@@ -58,6 +58,7 @@ x-airflow-common:
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
+    AIRFLOW_VAR_R2RML_DATA_DIR: /usr/local/airflow/R2RML/data
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./airflow/ontop-cli-4.1.0:${AIRFLOW_VAR_R2RML_CLI_DIR}
