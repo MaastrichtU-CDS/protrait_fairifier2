@@ -10,6 +10,7 @@ from airflow.sensors.base_sensor_operator import BaseSensorOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.dagrun_operator import TriggerDagRunOperator
 from airflow.utils.dates import days_ago
+from airflow.models import Variable
 
 import pandas as pd
 from sqlalchemy.engine import create_engine
@@ -39,9 +40,8 @@ class ZipSensor(BaseSensorOperator):
 
         return False
 
-def extract_and_upload(input_dir, success_dir, error_dir, append, **kwargs):
+def extract_and_upload(input_dir, success_dir, conn_str, append=True, **kwargs):
     """Take in a zip of CSV files and upload them to the database
-        TODO: implement error dir
 
     Args:
         input_dir (Path): Path to the directory containing incoming zips
@@ -52,12 +52,11 @@ def extract_and_upload(input_dir, success_dir, error_dir, append, **kwargs):
     file = list(input_dir.glob('*.zip'))[0]
 
     success_dir.mkdir(parents=True, exist_ok=True)
-    error_dir.mkdir(parents=True, exist_ok=True)
 
     archive = zipfile.ZipFile(file)
     csv_names = archive.namelist()
 
-    eng = create_engine(os.environ['R2RML_DB_URL'])
+    eng = create_engine(conn_str)
 
     # TODO better checking of filetypes
     for name in csv_names:
@@ -75,7 +74,7 @@ default_args = {
     'retries': 0,
 }
 
-r2rml_dir = Path(os.environ['R2RML_DATA_DIR'])
+r2rml_dir = Path(Variable.get('R2RML_DATA_DIR'))
 
 with DAG(
     'upload_csv',
@@ -103,8 +102,8 @@ with DAG(
         op_kwargs={
             'input_dir': r2rml_dir / 'input',
             'success_dir': r2rml_dir / 'input' / 'done',
-            'error_dir': r2rml_dir / 'input' / 'error',
-            'append': int(os.environ.get('APPEND_CSV', 0))
+            'conn_str': Variable.get('R2RML_DB_URL'),
+            'append': int(Variable.get('APPEND_CSV', 1))
         },
         provide_context=True
     )
