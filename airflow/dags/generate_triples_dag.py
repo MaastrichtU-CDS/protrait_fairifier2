@@ -1,7 +1,5 @@
-from datetime import timedelta, datetime
-from pathlib import Path
+from datetime import timedelta
 import os
-from uuid import uuid4
 
 from airflow import DAG
 from airflow.utils.decorators import apply_defaults
@@ -9,8 +7,8 @@ from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.utils.dates import days_ago
 
-from fairifier.rdf import upload_triples_dir, upload_terminology
-from fairifier.util import setup_tmp_dir
+from fairifier.rdf import upload_triples_dir, upload_terminology, OntOperator
+from fairifier.util import setup_tmp_dir, remove_tmp_dir, GitCloneOperator
 
 
 default_args = {
@@ -35,44 +33,19 @@ with DAG(
         provide_context=True
     )
 
-    fetch_r2rml_op = BashOperator(
+    fetch_r2rml_op = GitCloneOperator(
         task_id='get_r2rml_files',
-        bash_command = 'mkdir -p $repo_path ; ' \
-            'mkdir -p $target_dir ; ' \
-            'git clone $repo_url $repo_path && ' \
-            'cd $repo_path && ' \
-            'cd $sub_dir && ' \
-            'rm -rf ${target_dir}/* && ' \
-            'cp -Rf * $target_dir',
-        env={
-            'repo_name': 'r2rml_files_git',
-            'repo_url': os.environ['R2RML_REPO'],
-            'target_dir': '{{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}/ttl',
-            'repo_path': '{{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}/gitrepos/ttl',
-            'sub_dir': os.environ['R2RML_REPO_SUBDIR'],
-        }
+        repo_name = 'r2rml_files_git',
+        repo_url = os.environ['R2RML_REPO'],
+        target_dir = '{{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}/ttl',
+        repo_path = '{{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}/gitrepos/ttl',
+        sub_dir = os.environ['R2RML_REPO_SUBDIR'],
     )
 
-    # ./ontop materialize -m ../data/settings/mapping.ttl  -p ../data/settings/r2rml.properties.example -f ntriples -o ../data/output/triples.ttl
-    # TODO: move r2rml.properties to  CLI_DIR
-    generate_triples_op = BashOperator(
+    generate_triples_op = OntOperator(
         task_id="generate_RDF_triples",
-        bash_command= "mkdir -p ${workdir}/output \n" +
-            "if ls ${workdir}/output/*.nt >/dev/null 2>&1; " + 
-            "then rm ${workdir}/output/*.nt; "+
-            "fi \n" +
-            "for file in `basename ${workdir}/ttl/*.ttl`; "+
-            "do \n" +
-            "${R2RML_CLI_DIR}/ontop materialize " +
-            "-m ${workdir}/ttl/$file " +
-            "-f ntriples " +
-            "-p ${R2RML_CLI_DIR}/r2rml.properties " +
-            "-o ${workdir}/output/$file \n" + 
-            "done",
-        env={
-            'workdir': "{{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}",
-            'R2RML_CLI_DIR': os.environ.get('R2RML_CLI_DIR')
-        }
+        workdir = "{{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}",
+        r2rml_cli_dir = os.environ.get('R2RML_CLI_DIR')
     )
 
     upload_triples_op = PythonOperator(
@@ -89,9 +62,12 @@ with DAG(
         #'ncit': 'https://data.bioontology.org/ontologies/NCIT/submissions/111/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb',
     }
 
-    finalize_op = BashOperator(
+    finalize_op = PythonOperator(
         task_id='finalize',
-        bash_command='rm -rf {{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}',
+        python_callable=remove_tmp_dir,
+        op_kwargs={
+            'dir': '{{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}',
+        },
         trigger_rule='all_done',
     )
 

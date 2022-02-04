@@ -1,8 +1,11 @@
 from pathlib import Path
 import logging
+from typing import Optional, Dict
 
 import rdflib as rdf
 from SPARQLWrapper import SPARQLWrapper, POSTDIRECTLY
+
+from airflow.operators.bash_operator import BashOperator
 
 
 def upload_triples_dir(input_path, sparql_endpoint, empty_db=True, **kwargs):
@@ -110,3 +113,31 @@ def upload_triples_file(filename, sparql_endpoint, empty_db=True, **kwargs):
         sparql.setRequestMethod(POSTDIRECTLY)
         sparql.setQuery(query)
         sparql.query()
+
+class OntOperator(BashOperator):
+    template_fields = ('workdir', 'r2rml_cli_dir', 'env')
+    
+    def __init__(self,
+                 workdir,
+                 r2rml_cli_dir,
+                 env: Optional[Dict[str, str]] = {}, 
+                 skip_exit_code: int = 99, 
+                 **kwargs) -> None:
+
+        bash_command= "mkdir -p ${workdir}/output \n" +\
+            "if ls ${workdir}/output/*.nt >/dev/null 2>&1; " +\
+            "then rm ${workdir}/output/*.nt; " +\
+            "fi \n" +\
+            "for file in `basename ${workdir}/ttl/*.ttl`; " +\
+            "do \n" +\
+            "${R2RML_CLI_DIR}/ontop materialize " +\
+            "-m ${workdir}/ttl/$file " +\
+            "-f ntriples " +\
+            "-p ${R2RML_CLI_DIR}/r2rml.properties " +\
+            "-o ${workdir}/output/$file \n" +\
+            "done"
+        
+        env.setdefault('workdir', workdir)
+        env.setdefault('R2RML_CLI_DIR', r2rml_cli_dir)
+
+        super().__init__(bash_command=bash_command, env=env, skip_exit_code=skip_exit_code, **kwargs)
