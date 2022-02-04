@@ -6,6 +6,7 @@ from airflow.utils.decorators import apply_defaults
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.utils.dates import days_ago
+from airflow.models import Variable
 
 from fairifier.rdf import upload_triples_dir, upload_terminology, OntOperator
 from fairifier.util import setup_tmp_dir, remove_tmp_dir, GitCloneOperator
@@ -36,16 +37,16 @@ with DAG(
     fetch_r2rml_op = GitCloneOperator(
         task_id='get_r2rml_files',
         repo_name = 'r2rml_files_git',
-        repo_url = os.environ['R2RML_REPO'],
+        repo_url = Variable.get('R2RML_REPO'),
         target_dir = '{{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}/ttl',
         repo_path = '{{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}/gitrepos/ttl',
-        sub_dir = os.environ['R2RML_REPO_SUBDIR'],
+        sub_dir = Variable.get('R2RML_REPO_SUBDIR'),
     )
 
     generate_triples_op = OntOperator(
         task_id="generate_RDF_triples",
         workdir = "{{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}",
-        r2rml_cli_dir = os.environ.get('R2RML_CLI_DIR')
+        r2rml_cli_dir = Variable.get('R2RML_CLI_DIR')
     )
 
     upload_triples_op = PythonOperator(
@@ -53,7 +54,7 @@ with DAG(
         python_callable=upload_triples_dir,
         op_kwargs={
             'input_path': '{{ ti.xcom_pull(key="working_dir", task_ids="initialize") }}/output', 
-            'sparql_endpoint': os.environ['SPARQL_ENDPOINT']
+            'sparql_endpoint': Variable.get('SPARQL_ENDPOINT')
             }
     )
 
@@ -78,7 +79,7 @@ with DAG(
             python_callable=upload_terminology,
             op_kwargs={
                 'url': url,
-                'sparql_endpoint': os.environ['SPARQL_ENDPOINT']
+                'sparql_endpoint': Variable.get('SPARQL_ENDPOINT')
             }
         )
 
