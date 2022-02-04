@@ -1,9 +1,20 @@
 import os
 from datetime import datetime
 from glob import glob
+from pathlib import Path
+from uuid import uuid4
 
 from airflow.sensors.base_sensor_operator import BaseSensorOperator
 
+
+def setup_tmp_dir(**kwargs):
+    ti = kwargs['task_instance']
+    dir_name = Path('/tmp/') / str(uuid4())
+    dir_name.mkdir(parents=True, exist_ok=False)
+
+    ti.xcom_push(key='working_dir', value=str(dir_name))
+
+    return str(dir_name)
 
 class ZipSensor(BaseSensorOperator):
     """Waits for a zip to land in a filesystem.

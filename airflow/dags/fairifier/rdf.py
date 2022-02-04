@@ -1,0 +1,112 @@
+from pathlib import Path
+import logging
+
+import rdflib as rdf
+from SPARQLWrapper import SPARQLWrapper, POSTDIRECTLY
+
+
+def upload_triples_dir(input_path, sparql_endpoint, empty_db=True, **kwargs):
+    """Uploads all .nt files in a directory to the given sparql endpoint. 
+    All files will be assigned to a graph based on the filename of the triples file.
+
+    Args:
+        input_path (pathlib.Path): The location for the triples files
+        sparql_endpoint (str): The sparql endpoint (without /statements at the end)
+        empty_db (bool, optional): Indicates whether the db should be emptied before inserting. Defaults to True.
+    """   
+    LOGGER = logging.getLogger("airflow.task")
+    LOGGER.info(f'uploading dir {str(input_path)} to {sparql_endpoint}')
+
+    input_path = Path(input_path)
+
+    sparql = SPARQLWrapper(sparql_endpoint + '/statements')
+
+    if empty_db:
+        LOGGER.info("Dropping all existing graphs")
+        deleteQuery = """
+                DROP NAMED
+            """
+
+        sparql.setQuery(deleteQuery)
+        sparql.query()
+
+    for file in input_path.glob('*.nt'):
+        upload_triples_file(file, sparql_endpoint, empty_db=False)
+
+def upload_terminology(url, sparql_endpoint, **kwargs):
+    """Uploads a given ontology file to the SPARQL endpoint
+    
+    """
+    LOGGER = logging.getLogger("airflow.task")
+    LOGGER.info(f'downloading file {url}')
+
+    sparql = SPARQLWrapper(sparql_endpoint + '/statements')
+
+    LOGGER.info(f'starting upload to {sparql_endpoint}')
+    g = rdf.Graph()
+    g.parse(url)
+    triples_lines = g.serialize(format='nt').split('\n')
+
+    for i in range(0, len(triples_lines), 100000):
+        LOGGER.info(f'uploading {100000 if i + 100000 < len(triples_lines) else len(triples_lines) % 100000} triples')
+
+        query = """
+        INSERT DATA {
+            GRAPH <http://localhost/ontology> {
+                %s
+            } 
+        }
+        """ % ('\n'.join(triples_lines[i:(i + 100000 if (i+100000) < len(triples_lines) else len(triples_lines))]))
+
+        sparql.setRequestMethod(POSTDIRECTLY)
+        sparql.setQuery(query)
+        sparql.query()
+        
+def upload_triples_file(filename, sparql_endpoint, empty_db=True, **kwargs):
+    """Uploads a single triples (.nt) file to a given sparql endpoint.
+
+    Args:
+        filename (pathlib.Path): The input file
+        sparql_endpoint (str): The sparql endpoint (without /statements at the end) 
+        empty_db (bool, optional): Indicates whether the db should be emptied before inserting. Defaults to True.
+    """    
+    LOGGER = logging.getLogger("airflow.task")
+    LOGGER.info(f'uploading file {str(filename)} to {sparql_endpoint}')
+
+
+    sparql = SPARQLWrapper(sparql_endpoint + '/statements')
+
+    if empty_db:
+        LOGGER.info("Dropping all existing graphs")
+        deleteQuery = """
+                DROP NAMED
+            """
+
+        sparql.setQuery(deleteQuery)
+        sparql.query()
+
+    with open(filename, 'r') as f:
+        filedata = f.readlines()
+        LOGGER.info(f'Found {len(filedata)} lines (triples) in file {str(filename)}')
+
+
+    for i in range(0, len(filedata), 100000):
+        g = rdf.Graph()
+        g.parse(
+            data='\n'.join(filedata[i:(i + 100000 if (i+100000) < len(filedata) else len(filedata))]), 
+            format='nt'
+        )
+
+        LOGGER.info(f'uploading {100000 if i + 100000 < len(filedata) else len(filedata) % 100000} triples')
+
+        query = """
+        INSERT DATA {
+            GRAPH <http://localhost/%s> {
+                %s
+            } 
+        }
+        """ % (filename.with_suffix('').name ,g.serialize(format='nt'))
+
+        sparql.setRequestMethod(POSTDIRECTLY)
+        sparql.setQuery(query)
+        sparql.query()
