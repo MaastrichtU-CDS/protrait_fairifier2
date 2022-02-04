@@ -47,6 +47,8 @@ x-airflow-common:
   #image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.2.3}
   build: 
     context: ./airflow
+  env_file:
+    - .env
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
@@ -59,11 +61,12 @@ x-airflow-common:
     AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     AIRFLOW_VAR_R2RML_DATA_DIR: /usr/local/airflow/R2RML/data
+    AIRFLOW_VAR_LC_UPLOAD_CONFIG: /usr/local/airflow/upload_config.yaml
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./airflow/ontop-cli-4.1.0:${AIRFLOW_VAR_R2RML_CLI_DIR}
     - ./input:${AIRFLOW_VAR_R2RML_DATA_DIR}/input
-    - ./upload_config.yaml:/usr/local/airflow/upload_config.yaml
+    - ./upload_config.yaml:${AIRFLOW_VAR_LC_UPLOAD_CONFIG}
     # - ./logs:/opt/airflow/logs
     # - ./plugins:/opt/airflow/plugins
   user: "${AIRFLOW_UID:-50000}:0"
