@@ -6,7 +6,7 @@ RUN mkdir -p /usr/share/man/man1
 RUN apt-get update && apt-get install -y default-jdk && apt-get install -y git && apt-get clean
 USER airflow
 
-COPY ./airflow/ontop-cli-4.1.0/* /usr/local/airflow/R2RML/R2RML-cli
+COPY ./ontop-cli-4.1.0/* /usr/local/airflow/R2RML/R2RML-cli
 ENV AIRFLOW_VAR_R2RML_CLI_DIR=/usr/local/airflow/R2RML/R2RML-cli
 
 COPY ./requirements.txt ./requirements.txt
