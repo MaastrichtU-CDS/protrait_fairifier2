@@ -62,11 +62,12 @@ x-airflow-common:
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     AIRFLOW_VAR_R2RML_DATA_DIR: /usr/local/airflow/R2RML/data
     AIRFLOW_VAR_LC_UPLOAD_CONFIG: /usr/local/airflow/upload_config.yaml
+    AIRFLOW_VAR_R2RML_CLI_DIR: /usr/local/airflow/r2rml
   volumes:
     - ./airflow/dags:/opt/airflow/dags
-    - ./airflow/ontop-cli-4.1.0:${AIRFLOW_VAR_R2RML_CLI_DIR}
-    - ./input:${AIRFLOW_VAR_R2RML_DATA_DIR}/input
-    - ./upload_config.yaml:${AIRFLOW_VAR_LC_UPLOAD_CONFIG}
+    - ./airflow/ontop-cli-4.1.0:/usr/local/airflow/r2rml
+    - ./input:/usr/local/airflow/R2RML/data/input
+    - ./upload_config.yaml:/usr/local/airflow/upload_config.yaml
     # - ./logs:/opt/airflow/logs
     # - ./plugins:/opt/airflow/plugins
   user: "${AIRFLOW_UID:-50000}:0"
