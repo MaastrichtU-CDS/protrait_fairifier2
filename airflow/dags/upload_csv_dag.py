@@ -17,7 +17,7 @@ default_args = {
     'retries': 0,
 }
 
-r2rml_dir = Path(Variable.get('R2RML_DATA_DIR'))
+data_dir = Path(Variable.get('USER_DATA_DIR'))
 
 with DAG(
     'upload_csv',
@@ -32,7 +32,7 @@ with DAG(
 
     sense_input = ZipSensor(
         task_id="sense_input",
-        filepath=r2rml_dir / 'input',
+        filepath=data_dir / 'input',
         mode='poke',
         timeout=60,
         poke_interval=5,
@@ -43,8 +43,8 @@ with DAG(
         python_callable=extract_zip_and_upload_rdb,
         task_id="extract_and_upload",
         op_kwargs={
-            'input_dir': r2rml_dir / 'input',
-            'success_dir': r2rml_dir / 'input' / 'done',
+            'input_dir': data_dir / 'input',
+            'success_dir': data_dir / 'input' / 'done',
             'conn_str': Variable.get('R2RML_DB_URL'),
             'append': int(Variable.get('APPEND_CSV', 1))
         },
@@ -56,4 +56,10 @@ with DAG(
         trigger_dag_id='generate_triples'
     )
 
-    sense_input >> extract_and_upload_op >> trigger_triples_op
+    trigger_self_op = TriggerDagRunOperator(
+        task_id="reschedule",
+        reset_dag_run=True,
+        trigger_dag_id='upload_csv',
+    )
+
+    sense_input >> extract_and_upload_op >> trigger_triples_op >> trigger_self_op
