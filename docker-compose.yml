@@ -68,7 +68,7 @@ x-airflow-common:
     - ./airflow/ontop-cli-4.1.0:/usr/local/airflow/r2rml
     - ./input:/usr/local/airflow/R2RML/data/input
     - ./upload_config.yaml:/usr/local/airflow/upload_config.yaml
-    # - ./logs:/opt/airflow/logs
+    - airflow-logs-volume:/opt/airflow/logs
     # - ./plugins:/opt/airflow/plugins
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
@@ -290,3 +290,4 @@ services:
 
 volumes:
   postgres-db-volume:
+  airflow-logs-volume:
