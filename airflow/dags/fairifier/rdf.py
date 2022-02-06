@@ -118,11 +118,21 @@ class OntOperator(BashOperator):
     def __init__(self,
                  workdir,
                  r2rml_cli_dir,
+                 rdb_connstr,
+                 rdb_user,
+                 rdb_pass,
                  env: Optional[Dict[str, str]] = {}, 
                  skip_exit_code: int = 99, 
                  **kwargs) -> None:
 
-        bash_command= "mkdir -p ${workdir}/output \n" +\
+        rdb_connstr = rdb_connstr.replace(':', r'\:')
+
+        bash_command = 'echo "jdbc.name=r2rml" > ${workdir}/r2rml.properties ; ' +\
+            f'echo "jdbc.url={rdb_connstr}"' + ' >> ${workdir}/r2rml.properties ; ' +\
+            f'echo "jdbc.user={rdb_user}"' + ' >> ${workdir}/r2rml.properties ; ' +\
+            f'echo "jdbc.password={rdb_pass}"' + ' >> ${workdir}/r2rml.properties\n'
+
+        bash_command= bash_command + "mkdir -p ${workdir}/output \n" +\
             "if ls ${workdir}/output/*.nt >/dev/null 2>&1; " +\
             "then rm ${workdir}/output/*.nt; " +\
             "fi \n" +\
@@ -131,7 +141,7 @@ class OntOperator(BashOperator):
             "${R2RML_CLI_DIR}/ontop materialize " +\
             "-m ${workdir}/ttl/$file " +\
             "-f ntriples " +\
-            "-p ${R2RML_CLI_DIR}/r2rml.properties " +\
+            "-p ${workdir}/r2rml.properties " +\
             "-o ${workdir}/output/$file \n" +\
             "done"
         

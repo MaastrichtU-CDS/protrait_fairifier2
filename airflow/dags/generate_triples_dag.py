@@ -46,7 +46,10 @@ with DAG(
     generate_triples_op = OntOperator(
         task_id="generate_RDF_triples",
         workdir = "{{ ti.xcom_pull(key='working_dir', task_ids='initialize') }}",
-        r2rml_cli_dir = Variable.get('R2RML_CLI_DIR')
+        r2rml_cli_dir = Variable.get('R2RML_CLI_DIR'),
+        rdb_connstr = Variable.get('R2RML_RDB_CONNSTR'),
+        rdb_user=Variable.get('R2RML_RDB_USER'),
+        rdb_pass=Variable.get('R2RML_RDB_PASSWORD')
     )
 
     upload_triples_op = PythonOperator(
