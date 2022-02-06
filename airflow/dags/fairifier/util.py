@@ -49,9 +49,8 @@ class ZipSensor(BaseSensorOperator):
         return False
 
 class GitCloneOperator(BashOperator):
-    template_fields = ('repo_name', 'repo_url', 'target_dir', 'repo_path', 'sub_dir', 'env')
-
-    def __init__(self, 
+    def __init__(self,
+                *,
                  repo_name,
                  repo_url,
                  target_dir,
@@ -67,7 +66,7 @@ class GitCloneOperator(BashOperator):
             'cd $repo_path && ' \
             'cd $sub_dir && ' \
             'rm -rf ${target_dir}/* && ' \
-            'cp -Rf * $target_dir',
+            'cp -Rf * $target_dir'
         
         if not env:
             env = {}

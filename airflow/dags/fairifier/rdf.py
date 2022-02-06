@@ -114,9 +114,7 @@ def upload_triples_file(filename, sparql_endpoint, empty_db=True, **kwargs):
         sparql.setQuery(query)
         sparql.query()
 
-class OntOperator(BashOperator):
-    template_fields = ('workdir', 'r2rml_cli_dir', 'env')
-    
+class OntOperator(BashOperator):    
     def __init__(self,
                  workdir,
                  r2rml_cli_dir,
