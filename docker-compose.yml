@@ -87,6 +87,8 @@ services:
       POSTGRES_DB: airflow
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
+      - ./postgres/create_second_db.sql:/docker-entrypoint-initdb.d/create_second_db.sql
+
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "airflow"]
       interval: 5s
