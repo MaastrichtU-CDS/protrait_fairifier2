@@ -36,7 +36,7 @@ def upload_triples_dir(input_path, sparql_endpoint, empty_db=True, **kwargs):
     for file in input_path.glob('*.nt'):
         upload_triples_file(file, sparql_endpoint, empty_db=False)
 
-def upload_terminology(url, sparql_endpoint, **kwargs):
+def upload_terminology(url, sparql_endpoint, format='xml', **kwargs):
     """Uploads a given ontology file to the SPARQL endpoint
     
     """
@@ -47,7 +47,7 @@ def upload_terminology(url, sparql_endpoint, **kwargs):
 
     LOGGER.info(f'starting upload to {sparql_endpoint}')
     g = rdf.Graph()
-    g.parse(url)
+    g.parse(url, format=format)
     triples_lines = g.serialize(format='nt').split('\n')
 
     for i in range(0, len(triples_lines), 100000):
