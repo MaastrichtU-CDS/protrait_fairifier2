@@ -23,7 +23,7 @@ from bs4 import BeautifulSoup
 from sparql.query_engine import QueryEngine
 
 
-def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label, rerun=False):
+def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label, ss_gender, ss_birthdate=None, ss_birthyear=None, rerun=False):
     LOGGER = logging.getLogger("airflow.task")
     LOGGER.info(f'Trying to get SS_OID for {ss_label}')
 
@@ -69,13 +69,19 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label,
             'enrollmentDate': '2021-08-31',
             'subject': {
                 'uniqueIdentifier': ss_label,
-                'gender': 'm',
-                'dateOfBirth': '1994-09-21'
+                'gender': ss_gender,
             },
             'studyRef': {
                 'identifier': study_identifier
             }
         }
+
+        if ss_birthyear:
+            subject['subject']['yearOfBirth'] = ss_birthyear
+        elif ss_birthdate:
+            subject['subject']['dateOfBirth'] = ss_birthdate
+        else:
+            raise ValueError('Need a year or date of birth to create SS')
 
         with client.settings(strict=False):
             ret = client.service.create(subject, _soapheaders=[header])

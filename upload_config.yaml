@@ -5,6 +5,8 @@ generic_list:
   form_oid: F_PROTRAIT_GEN_2
   item_group_oid: IG_PROTR_GEN
   identifier_colname: GEN_IDNUMBER
+  birthdate_colname: GEN_YEAR_BIRTH
+  gender_colname: GEN_GENDER
   item_prefix: I_PROTR_
   query: |
     prefix rr: <http://www.w3.org/ns/r2rml#>
