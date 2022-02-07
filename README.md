@@ -37,7 +37,7 @@ This DAG does the following things:
 * Go into subdirectory of that repo defined by `R2RML_REPO_SUBDIR`, by default it stays at the root
 * Grab all `.ttl` files from that directory and assume they are R2RML files
 * For each of the R2RML files grabbed this way:
-    * Using database defined by `R2RML_DB_URL`
+    * Using database defined by `R2RML_RDB_CONNSTR`, `R2RML_RDB_PASSWORD`, and `R2RML_RDB_USER`
     * Using ontop
     * Generate a `.ttl` file containing RDF data. The file has the same filename as the input R2RML file
     * Upload this `.ttl` file to the GraphDB instance defined by `SPARQL_ENDPOINT` (in a graph with the same name as the .ttl file)
