@@ -6,6 +6,7 @@ generic_list:
   item_group_oid: IG_PROTR_GEN
   identifier_colname: GEN_IDNUMBER
   birthdate_colname: GEN_YEAR_BIRTH
+  birthdate_isyear: TRUE
   gender_colname: GEN_GENDER
   item_prefix: I_PROTR_
   query: |

@@ -98,7 +98,24 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label,
         # we created a new user but it's still not here, great
         return None
 
-def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, study_oid, study_identifier, event_oid, form_oid, item_group_oid, identifier_colname, item_prefix, alternative_item_oids={}, **kwargs):
+
+def upload_to_lc(
+        sparql_endpoint, query,
+        lc_endpoint,
+        lc_user,
+        lc_password,
+        study_oid,
+        study_identifier,
+        event_oid,
+        form_oid,
+        item_group_oid,
+        identifier_colname,
+        birthdate_colname,
+        birthdate_isyear,
+        gender_colname,
+        item_prefix,
+        alternative_item_oids={},
+        **kwargs):
     LOGGER = logging.getLogger("airflow.task")
     LOGGER.info(f'Retrieving triples from {sparql_endpoint}')
     sparql = QueryEngine(sparql_endpoint)
@@ -130,7 +147,17 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
         LOGGER.debug(f'Adding subject {id}')
 
         # Get SS OID
-        ss_oid = get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label)
+        ss_oid = get_lc_ss_oid(
+            lc_endpoint,
+            lc_user,
+            lc_password,
+            study_identifier,
+            ss_label,
+            row[gender_colname],
+            row[birthdate_colname] if not birthdate_isyear else None,
+            row[birthdate_colname] if birthdate_isyear else None,
+        )
+
         LOGGER.debug(f'Got SS_OID {ss_label}')
 
         event = {
@@ -156,7 +183,7 @@ def upload_to_lc(sparql_endpoint, query, lc_endpoint, lc_user, lc_password, stud
             if name != identifier_colname:
                 if row[name] is not None:
                     items += f'<ItemData ItemOID="{item_prefix}{name}" Value="{row[name]}"/>\n'
-        
+
         subject = f'''
             <SubjectData SubjectKey="{ss_oid}">
                 <StudyEventData StudyEventOID="{event_oid}" StudyEventRepeatKey="1">
