@@ -1,0 +1,3 @@
+[submodule "airflow/dags"]
+	path = airflow/dags
+	url = git@gitlab.com:UM-CDS/protrait/pipeline.git
