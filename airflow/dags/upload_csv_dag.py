@@ -45,7 +45,7 @@ with DAG(
         op_kwargs={
             'input_dir': data_dir / 'input',
             'success_dir': data_dir / 'input' / 'done',
-            'conn_str': Variable.get('R2RML_DB_URL'),
+            'conn_str': Variable.get('RDB_CONNSTR'),
             'append': int(Variable.get('APPEND_CSV', 1))
         },
         provide_context=True
