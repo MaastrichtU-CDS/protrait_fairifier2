@@ -1,7 +1,7 @@
 generic_list:
-  study_oid: S_DEFAULTS1
-  study_identifier: protrait_test
-  event_oid: SE_GENERIC_COLLECTION
+  study_oid: S_GENERICM
+  study_identifier: S_GENERICM
+  event_oid: SE_GENERIC
   form_oid: F_PROTRAIT_GEN_2
   item_group_oid: IG_PROTR_GEN
   identifier_colname: GEN_IDNUMBER
