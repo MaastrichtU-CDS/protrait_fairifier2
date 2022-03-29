@@ -10,106 +10,126 @@ generic_list:
   gender_colname: GEN_GENDER
   item_prefix: I_PROTR_
   query: |
-    prefix rr: <http://www.w3.org/ns/r2rml#>
-    prefix ex: <http://example.com/ns#>
-    prefix map: <http://mapping.local/>
-    prefix sty: <http://purl.bioontology.org/ontology/STY/>
-    prefix sio: <http://semanticscience.org/resource/SIO_>
-    prefix foaf: <http://xmlns.com/foaf/0.1/>
-    prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-    prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-    prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
-    prefix roo: <http://www.cancerdata.org/roo/>
-    prefix icd: <http://purl.bioontology.org/ontology/ICD10/>
-    prefix skos: <http://www.w3.org/2008/05/skos#>
-    prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-    prefix uo: <http://purl.obolibrary.org/obo/UO_>
-    prefix time: <http://www.w3.org/2006/time#>
-    
+   prefix rr: <http://www.w3.org/ns/r2rml#>
+prefix ex: <http://example.com/ns#>
+prefix map: <http://mapping.local/>
+prefix sty: <http://purl.bioontology.org/ontology/STY/>
+prefix sio: <http://semanticscience.org/resource/SIO_>
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+prefix roo: <http://www.cancerdata.org/roo/>
+prefix icd: <http://purl.bioontology.org/ontology/ICD10/>
+prefix skos: <http://www.w3.org/2008/05/skos#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix uo: <http://purl.obolibrary.org/obo/UO_>
+prefix time: <http://www.w3.org/2006/time#>
 
-    select  
-    ?GEN_IDNUMBER 
-    ?GEN_ALCOHOL 
-    ?GEN_ALCOHOL_GLASS 
-    ?GEN_ALCOHOL_DAYS
-    ?GEN_TREAT_CENTRE
-    ?GEN_DATE_REGISTR
-    ?GEN_REFER_CENTRE
-    ?GEN_GENDER
-    ?GEN_AGE
-    ?GEN_YEAR_BIRTH
-    ?GEN_HEIGHT
-    ?GEN_WEIGHT
-    ?GEN_EDUCATION
-    ?GEN_DATE_DIAGN
-    ?GEN_TUMOURSITE
-    ?GEN_RT_TREATMENT
-    
+SELECT DISTINCT
+?GEN_IDNUMBER
+?GEN_GENDER
+?GEN_AGE
+?GEN_TREAT_CENTER
+?GEN_PLAN_COMP
 
-    where {
-      #patient ID
-      ?Patient rdf:type ncit:C16960;
-          roo:P100061 ?id.
-      ?id roo:P100042 ?GEN_IDNUMBER.
+#GEN_PLAN_COMP_DATE
 
-      
-      #alcohol history
-      ?Patient rdf:type ncit:C16960;
-          roo:P100022 ?alcUseHist.
-      ?alcUseHist roo:local_value ?GEN_ALCOHOL.
-      ?alcUseHist roo:P100423 ?alcGlass.
-      ?alcUseHist roo:P100423 ?alcDays.
-      ?alcGlass rdf:type roo:numberOfGlasses;
-          roo:P100042 ?GEN_ALCOHOL_GLASS.
-      ?alcDays rdf:type roo:daysWithMoreThan1Glass;
-          roo:P100042 ?GEN_ALCOHOL_DAYS.
+WHERE{
 
-      #treating centre
-      ?Patient rdf:type ncit:C16960;
-          roo:P100039 ?treatCentre.
-      ?treatCentre roo:local_value ?GEN_TREAT_CENTRE.
-      ?treatCentre roo:has_registration_date ?regDate.
-      ?regDate roo:P100042 ?GEN_DATE_REGISTR.
-      ?treatCentre roo:referred_by ?refCentre.
-      ?refCentre roo:P100042 ?GEN_REFER_CENTRE.
 
-      #Gender
-      ?Patient rdf:type ncit:C16960;
-          roo:P100018 ?gender.
-      ?gender roo:P100042 ?GEN_GENDER.
+#gender
+OPTIONAL{
+?Patient rdf:type ncit:C16960;
+roo:P100061 ?id.
+?id roo:P100042 ?GEN_IDNUMBER.
+?Patient roo:P100018 ?gender.
+?gender roo:P100042 ?GenderValue.
 
-      #Age
-      ?Patient rdf:type ncit:C16960;
-          roo:P100016 ?age.
-      ?age roo:P100042 ?GEN_AGE.
+BIND(
+COALESCE(
+IF (?GenderValue = "V ", "2", 1/0),
+IF (?GenderValue = "M ", "1", 1/0),
+"9" )
+AS ?GEN_GENDER)
+}
 
-      #Birthyear
-      ?Patient rdf:type ncit:C16960;
-          roo:is_born ?bYear.
-      ?bYear roo:P100027 ?GEN_YEAR_BIRTH.   
+#age
+OPTIONAL{
+?Patient roo:P100016 ?age.
+?age roo:P100042 ?GEN_AGE.
+        FILTER (?GEN_AGE !=0)
+        FILTER (?GEN_AGE !=1)
+        FILTER (?GEN_AGE !=2)
+        FILTER (?GEN_AGE !=3)
+        FILTER (?GEN_AGE !=4)
+        FILTER (?GEN_AGE !=5)
+        FILTER (?GEN_AGE !=6)
+        FILTER (?GEN_AGE !=7)
+        FILTER (?GEN_AGE !=8)
+        FILTER (?GEN_AGE !=9)
+        FILTER (?GEN_AGE !=10)
+        FILTER (?GEN_AGE !=11)
+        FILTER (?GEN_AGE !=12)
+        FILTER (?GEN_AGE !=13)
+        FILTER (?GEN_AGE !=14)
+        FILTER (?GEN_AGE !=15)
+        FILTER (?GEN_AGE !=16)
+        FILTER (?GEN_AGE !=17)
+        FILTER (?GEN_AGE !=18)
+       #FILTER (?GEN_AGE !=16)
 
-      #height
-      ?Patient rdf:type ncit:C16960;
-          roo:P100248 ?height.
-      ?height roo:P100042 ?GEN_HEIGHT.   
-
-      #weight
-      ?Patient rdf:type ncit:C16960;
-          roo:P100249 ?weight.
-      ?weight roo:P100042 ?GEN_WEIGHT.   
-
-      #educational level
-      ?Patient rdf:type ncit:C16960;
-          roo:has_education_level ?educ.
-      ?educ roo:local_value ?GEN_EDUCATION.   
-
-      #neoplasm diagnosis
-      ?Patient rdf:type ncit:C16960;
-          roo:P100020 ?neoplasm.
-      ?neoplasm roo:P100251 ?dateOfDiag. 
-      ?dateOfDiag roo:P100042 ?GEN_DATE_DIAGN.
-      ?neoplasm roo:P100202 ?location.
-      ?location roo:local_value ?GEN_TUMOURSITE.
-      ?neoplasm roo:P100403 ?treatmentTech.
-      ?treatmentTech roo:local_value ?GEN_RT_TREATMENT.
+        
     }
+
+#treating centre
+OPTIONAL{
+?Patient roo:P100039 ?treatingCentre.
+?treatingCentre roo:local_value ?treatCentreValue.  } 
+    
+BIND(
+COALESCE(
+IF (?treatCentreValue = "Maastro Clinic", "3", 1/0),
+IF (?treatCentreValue = "met name cochlea rechts van 14.4 naar 38.4 Gy (acceptabel) en brain Dmax van 46.6 naar 60.1 Gy (acceptabel)", "3", 1/0),
+IF (?treatCentreValue = "null", "0", 1/0),
+"9" )
+AS ?GEN_TREAT_CENTER)
+
+    
+#referring centre
+#PTIONAL{
+#Patient roo:P100039 ?treatingCentre.
+#treatingCentre roo:referred_by ?refCentre.
+#refCentre roo:P100042 ?GEN_REFER_CENTER.  }
+    
+    
+#planning comparison
+OPTIONAL{
+?Patient roo:P100024 ?radiotherapy.
+?radiotherapy roo:has_planning_comparison ?plancomp. 
+?plancomp roo:P100042 ?genplancomp.
+        ?genplancomp roo:local_value ?GEN_PLAN_COMP1.}
+    
+OPTIONAL{  
+?Patient roo:P100024 ?radiotherapy.
+?radiotherapy roo:has_planning_comparison ?plancomp.         
+?plancomp roo:P100228 ?plancompdate.
+?plancompdate roo:P100042 ?GEN_PLAN_COMP_DATE.}
+        
+BIND(BOUND(?GEN_PLAN_COMP_DATE) as ?GEN_PLAN_COMP)  
+    
+    #IF(BOUND(?GEN_PLAN_COMP2), "?GEN_PLAN_COMP2", "unknown" as ?GEN_PLAN_COMP3)
+        #COALESCE(?GEN_PLAN_COMP2, "unknown")
+        #BIND(isBlank(?GEN_PLAN_COMP_DATE) AS ?GEN_PLAN_COMP3)     
+        
+#(COALESCE(?GEN_PLAN_COMP2, "0") as ?GEN_PLAN_COMP3)    
+BIND(
+COALESCE(
+IF (?GEN_PLAN_COMP = true, "1", 1/0),
+IF (?GEN_PLAN_COMP = false, "0", 1/0),
+"9" )
+AS ?GEN_PLAN_COMP)
+    
+   #FILTER regex(?GEN_AGE, "NULL").
+}
+
