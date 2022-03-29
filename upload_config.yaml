@@ -10,7 +10,7 @@ generic_list:
   gender_colname: GEN_GENDER
   item_prefix: I_PROTR_
   query: |
-   prefix rr: <http://www.w3.org/ns/r2rml#>
+prefix rr: <http://www.w3.org/ns/r2rml#>
 prefix ex: <http://example.com/ns#>
 prefix map: <http://mapping.local/>
 prefix sty: <http://purl.bioontology.org/ontology/STY/>
