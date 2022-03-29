@@ -32,10 +32,17 @@ generic_list:
     ?GEN_AGE
     ?GEN_TREAT_CENTER
     ?GEN_PLAN_COMP
+    ?GEN_YEAR_BIRTH
 #GEN_PLAN_COMP_DATE
 
     WHERE{
-
+#year of birth
+      #Birthyear
+     
+    ?Patient rdf:type ncit:C16960;
+   
+    roo:is_born ?bYear.
+    ?bYear roo:P100027 ?GEN_YEAR_BIRTH. 
 
 #gender
     OPTIONAL{
