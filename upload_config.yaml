@@ -33,109 +33,87 @@ generic_list:
     ?GEN_TREAT_CENTER
     ?GEN_PLAN_COMP
     ?GEN_YEAR_BIRTH
-#GEN_PLAN_COMP_DATE
 
-    WHERE{
-#year of birth
-      #Birthyear
+    WHERE {
      
-    ?Patient rdf:type ncit:C16960;
+      ?Patient rdf:type ncit:C16960;
    
-    roo:is_born ?bYear.
-    ?bYear roo:P100027 ?GEN_YEAR_BIRTH. 
+      roo:is_born ?bYear.
+      ?bYear roo:P100027 ?GEN_YEAR_BIRTH. 
 
-#gender
+      OPTIONAL{
+      ?Patient rdf:type ncit:C16960;
+      roo:P100061 ?id.
+      ?id roo:P100042 ?GEN_IDNUMBER.
+      ?Patient roo:P100018 ?gender.
+      ?gender roo:P100042 ?GenderValue.
+
+      BIND(
+      COALESCE(
+      IF (?GenderValue = "V ", "2", 1/0),
+      IF (?GenderValue = "M ", "1", 1/0),
+      "9" )
+      AS ?GEN_GENDER)
+      }
+
+      OPTIONAL{
+      ?Patient roo:P100016 ?age.
+      ?age roo:P100042 ?GEN_AGE.
+      FILTER (?GEN_AGE !=0)
+      FILTER (?GEN_AGE !=1)
+      FILTER (?GEN_AGE !=2)
+      FILTER (?GEN_AGE !=3)
+      FILTER (?GEN_AGE !=4)
+      FILTER (?GEN_AGE !=5)
+      FILTER (?GEN_AGE !=6)
+      FILTER (?GEN_AGE !=7)
+      FILTER (?GEN_AGE !=8)
+      FILTER (?GEN_AGE !=9)
+      FILTER (?GEN_AGE !=10)
+      FILTER (?GEN_AGE !=11)
+      FILTER (?GEN_AGE !=12)
+      FILTER (?GEN_AGE !=13)
+      FILTER (?GEN_AGE !=14)
+      FILTER (?GEN_AGE !=15)
+      FILTER (?GEN_AGE !=16)
+      FILTER (?GEN_AGE !=17)
+      FILTER (?GEN_AGE !=18)
+
+        
+    }
+
     OPTIONAL{
-    ?Patient rdf:type ncit:C16960;
-    roo:P100061 ?id.
-    ?id roo:P100042 ?GEN_IDNUMBER.
-    ?Patient roo:P100018 ?gender.
-    ?gender roo:P100042 ?GenderValue.
-
+    ?Patient roo:P100039 ?treatingCentre.
+    ?treatingCentre roo:local_value ?treatCentreValue.  } 
+     
     BIND(
     COALESCE(
-    IF (?GenderValue = "V ", "2", 1/0),
-    IF (?GenderValue = "M ", "1", 1/0),
+    IF (?treatCentreValue = "Maastro Clinic", "3", 1/0),
+    IF (?treatCentreValue = "met name cochlea rechts van 14.4 naar 38.4 Gy (acceptabel) en brain Dmax van 46.6 naar 60.1 Gy (acceptabel)", "3", 1/0),
+    IF (?treatCentreValue = "null", "0", 1/0),
     "9" )
-    AS ?GEN_GENDER)
-    }
+    AS ?GEN_TREAT_CENTER)
 
-#age
     OPTIONAL{
-    ?Patient roo:P100016 ?age.
-    ?age roo:P100042 ?GEN_AGE.
-    FILTER (?GEN_AGE !=0)
-    FILTER (?GEN_AGE !=1)
-    FILTER (?GEN_AGE !=2)
-    FILTER (?GEN_AGE !=3)
-    FILTER (?GEN_AGE !=4)
-    FILTER (?GEN_AGE !=5)
-    FILTER (?GEN_AGE !=6)
-    FILTER (?GEN_AGE !=7)
-    FILTER (?GEN_AGE !=8)
-    FILTER (?GEN_AGE !=9)
-    FILTER (?GEN_AGE !=10)
-    FILTER (?GEN_AGE !=11)
-    FILTER (?GEN_AGE !=12)
-    FILTER (?GEN_AGE !=13)
-    FILTER (?GEN_AGE !=14)
-    FILTER (?GEN_AGE !=15)
-    FILTER (?GEN_AGE !=16)
-    FILTER (?GEN_AGE !=17)
-    FILTER (?GEN_AGE !=18)
-       #FILTER (?GEN_AGE !=16)
-
-        
+    ?Patient roo:P100024 ?radiotherapy.
+    ?radiotherapy roo:has_planning_comparison ?plancomp. 
+    ?plancomp roo:P100042 ?genplancomp.
+    ?genplancomp roo:local_value ?GEN_PLAN_COMP1.}
+     
+    OPTIONAL{  
+    ?Patient roo:P100024 ?radiotherapy.
+    ?radiotherapy roo:has_planning_comparison ?plancomp.         
+    ?plancomp roo:P100228 ?plancompdate.
+    ?plancompdate roo:P100042 ?GEN_PLAN_COMP_DATE.}
+         
+    BIND(BOUND(?GEN_PLAN_COMP_DATE) as ?GEN_PLAN_COMP)  
+     
+    BIND(
+    COALESCE(
+    IF (?GEN_PLAN_COMP = true, "1", 1/0),
+    IF (?GEN_PLAN_COMP = false, "0", 1/0),
+    "9" )
+    AS ?GEN_PLAN_COMP)
+     
     }
-
-#treating centre
-   OPTIONAL{
-   ?Patient roo:P100039 ?treatingCentre.
-   ?treatingCentre roo:local_value ?treatCentreValue.  } 
-    
-   BIND(
-   COALESCE(
-   IF (?treatCentreValue = "Maastro Clinic", "3", 1/0),
-   IF (?treatCentreValue = "met name cochlea rechts van 14.4 naar 38.4 Gy (acceptabel) en brain Dmax van 46.6 naar 60.1 Gy (acceptabel)", "3", 1/0),
-   IF (?treatCentreValue = "null", "0", 1/0),
-   "9" )
-   AS ?GEN_TREAT_CENTER)
-
-    
-#referring centre
-#PTIONAL{
-#Patient roo:P100039 ?treatingCentre.
-#treatingCentre roo:referred_by ?refCentre.
-#refCentre roo:P100042 ?GEN_REFER_CENTER.  }
-    
-    
-#planning comparison
-   OPTIONAL{
-   ?Patient roo:P100024 ?radiotherapy.
-   ?radiotherapy roo:has_planning_comparison ?plancomp. 
-   ?plancomp roo:P100042 ?genplancomp.
-   ?genplancomp roo:local_value ?GEN_PLAN_COMP1.}
-    
-   OPTIONAL{  
-   ?Patient roo:P100024 ?radiotherapy.
-   ?radiotherapy roo:has_planning_comparison ?plancomp.         
-   ?plancomp roo:P100228 ?plancompdate.
-   ?plancompdate roo:P100042 ?GEN_PLAN_COMP_DATE.}
-        
-   BIND(BOUND(?GEN_PLAN_COMP_DATE) as ?GEN_PLAN_COMP)  
-    
-    #IF(BOUND(?GEN_PLAN_COMP2), "?GEN_PLAN_COMP2", "unknown" as ?GEN_PLAN_COMP3)
-        #COALESCE(?GEN_PLAN_COMP2, "unknown")
-        #BIND(isBlank(?GEN_PLAN_COMP_DATE) AS ?GEN_PLAN_COMP3)     
-        
-#(COALESCE(?GEN_PLAN_COMP2, "0") as ?GEN_PLAN_COMP3)    
-   BIND(
-   COALESCE(
-   IF (?GEN_PLAN_COMP = true, "1", 1/0),
-   IF (?GEN_PLAN_COMP = false, "0", 1/0),
-   "9" )
-   AS ?GEN_PLAN_COMP)
-    
-   #FILTER regex(?GEN_AGE, "NULL").
-   }
 
