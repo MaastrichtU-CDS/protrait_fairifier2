@@ -30,8 +30,8 @@ generic_list:
     ?GEN_IDNUMBER
     ?GEN_GENDER
     ?GEN_AGE
-    ?GEN_TREAT_CENTER
-    ?GEN_PLAN_COMP
+    ?GEN_TREAT_CENTRE
+    ?GEN_PLAN_COMPARISON
     ?GEN_YEAR_BIRTH
 
     WHERE {
@@ -92,7 +92,7 @@ generic_list:
     IF (?treatCentreValue = "met name cochlea rechts van 14.4 naar 38.4 Gy (acceptabel) en brain Dmax van 46.6 naar 60.1 Gy (acceptabel)", "3", 1/0),
     IF (?treatCentreValue = "null", "0", 1/0),
     "9" )
-    AS ?GEN_TREAT_CENTER)
+    AS ?GEN_TREAT_CENTRE)
 
     OPTIONAL{
     ?Patient roo:P100024 ?radiotherapy.
@@ -106,14 +106,14 @@ generic_list:
     ?plancomp roo:P100228 ?plancompdate.
     ?plancompdate roo:P100042 ?GEN_PLAN_COMP_DATE.}
          
-    BIND(BOUND(?GEN_PLAN_COMP_DATE) as ?GEN_PLAN_COMP)  
+    BIND(BOUND(?GEN_PLAN_COMP_DATE) as ?GEN_PLAN_COMPARISON)  
      
     BIND(
     COALESCE(
-    IF (?GEN_PLAN_COMP = true, "1", 1/0),
-    IF (?GEN_PLAN_COMP = false, "0", 1/0),
+    IF (?GEN_PLAN_COMPARISON = true, "1", 1/0),
+    IF (?GEN_PLAN_COMPARISON = false, "0", 1/0),
     "9" )
-    AS ?GEN_PLAN_COMP)
+    AS ?GEN_PLAN_COMPARISON)
      
     }
 
