@@ -173,7 +173,7 @@ def upload_to_lc(
         items = ''
         for name in df.columns:
             if name != identifier_colname and name != gender_colname:
-                    if row[name] is not None:
+                if row[name] is not None:
                     items += f'<ItemData ItemOID="{item_prefix}{name}" Value="{row[name]}"/>\n'
 
         subject = f'''
