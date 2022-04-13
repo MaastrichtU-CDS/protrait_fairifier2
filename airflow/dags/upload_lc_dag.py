@@ -27,7 +27,7 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label,
     LOGGER = logging.getLogger("airflow.task")
     LOGGER.info(f'Trying to get SS_OID for {ss_label}')
 
-    client = Client(lc_endpoint + 'studySubject/v1/studySubjectWsdl.wsdl')
+    client = Client(lc_endpoint + 'study/v1/studySubjectWsdl.wsdl')
 
     header = f'''
     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://openclinica.org/ws/studySubject/v1" xmlns:bean="http://openclinica.org/ws/beans">
@@ -66,22 +66,14 @@ def get_lc_ss_oid(lc_endpoint, lc_user, lc_password, study_identifier, ss_label,
         LOGGER.info("Couldn't find an OID, creating a new SS")
         subject = {
             'label': ss_label,
-            'enrollmentDate': '2021-08-31',
+            'enrollmentDate': datetime.now().strftime('%Y-%m-%d'),
             'subject': {
-                'uniqueIdentifier': ss_label,
                 'gender': ss_gender,
             },
             'studyRef': {
                 'identifier': study_identifier
             }
         }
-
-        if ss_birthyear:
-            subject['subject']['yearOfBirth'] = ss_birthyear
-        elif ss_birthdate:
-            subject['subject']['dateOfBirth'] = ss_birthdate
-        else:
-            raise ValueError('Need a year or date of birth to create SS')
 
         with client.settings(strict=False):
             ret = client.service.create(subject, _soapheaders=[header])
