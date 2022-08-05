@@ -184,6 +184,13 @@ services:
       airflow-init:
         condition: service_completed_successfully
 
+  term-mapper:
+    image: jvsoest/term-mapper
+    ports:
+        - 5001:5000
+    environment:
+        - ENDPOINT_URL=http://graphdb:7200/repositories/data
+
   airflow-init:
     <<: *airflow-common
     entrypoint: /bin/bash
