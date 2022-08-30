@@ -85,6 +85,9 @@ x-airflow-common:
 services:
   postgres:
     image: postgres:13
+    # enable ports if pgadmin needs to access postgres
+    #ports:
+    #  - 5432:5432
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
