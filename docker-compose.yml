@@ -70,6 +70,10 @@ x-airflow-common:
     - ./upload_config.yaml:/usr/local/airflow/upload_config.yaml
     - airflow-logs-volume:/opt/airflow/logs
     # - ./plugins:/opt/airflow/plugins
+    # !! READ ME!! 
+    # There seems to be an file permission issue with RHEL 8.6.
+    # File permissions between the host and container isn't automatically resolved during docker compose up.
+    # To mitigate that, replace 50000 (uid) below with the uid of your host system which can be obtained with 'id -u' command.
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
