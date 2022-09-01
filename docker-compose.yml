@@ -91,6 +91,9 @@ services:
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
+      # change the database name as per your need. If changes are made here,
+      # changes need to be made here as https://gitlab.com/UM-CDS/protrait/fairifier2/-/blob/main/postgres/create_second_db.sql#L1
+      # If database does not exists is an issue, change here to "data" or change in postgres sql.
       POSTGRES_DB: airflow
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
