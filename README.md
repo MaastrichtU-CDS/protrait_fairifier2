@@ -6,6 +6,19 @@ This tooling focuses on the I and R of FAIR, and achieves this by turning tabula
 The tool is based on a few pipelines defined in python files (under `airflow/dags`), which are responsible for different parts of the transformation.
 These pipelines include one to upload data to a LibreClinica instance.
 
+## Setup
+The script `fairstation_setup.sh` contains code to setup all services of FAIRifier (Airflow, Postgres, triplifer, GraphDB, term-mapper) as docker containers.
+Based on the server you are running, the methods will have to be commented out in the script. 
+
+Here are the recommended steps:
+* Copy the script to your machine.
+* Avoid running the script as root user as docker containers might start throwing issues with file permissions.
+* Run the command `chmod +x fairstation_setup.sh`.
+* Update the `.env.example` with the necessary variables and values.
+* Some commands might require `sudo` access, if password is required, the prompt will ask you for the same.
+* Once the script is successfully executed, check if all the docker containers are running as expected.
+* Airflow can be accessed on port [](https://localhost:5000), GraphDb on [](http://localhost:7200), Term-Mapper on [](https://localhost:5001)
+
 ## Configuration
 
 Configuration is mostly done through environment variables, which are loaded into the Airflow workers.
