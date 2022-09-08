@@ -17,7 +17,7 @@ Here are the recommended steps:
 * Update the `.env.example` with the necessary variables and values.
 * Some commands might require `sudo` access, if password is required, the prompt will ask you for the same.
 * Once the script is successfully executed, check if all the docker containers are running as expected.
-* Airflow can be accessed on port [](https://localhost:5000), GraphDb on [](http://localhost:7200), Term-Mapper on [](https://localhost:5001)
+* Airflow can be accessed on port [https://localhost:5000](https://localhost:5000), GraphDb on [http://localhost:7200](http://localhost:7200), Term-Mapper on [http://localhost:5001](https://localhost:5001)
 
 ## Configuration
 
