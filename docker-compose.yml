@@ -194,12 +194,27 @@ services:
       airflow-init:
         condition: service_completed_successfully
 
-  term-mapper:
-    image: jvsoest/term-mapper
+  #term-mapper:
+  #  image: jvsoest/term-mapper
+  #  ports:
+  #      - 5001:5000
+  #  environment:
+  #      - ENDPOINT_URL=http://graphdb:7200/repositories/data
+
+  dashapp:
+    image: aiaragomes/fairifier-app:1.0.8
     ports:
-        - 5001:5000
+      - 5050:5050
+    links:
+      - graphdb:graphdb
+    volumes:
+      - shared-data:/input
     environment:
-        - ENDPOINT_URL=http://graphdb:7200/repositories/data
+      - TRIPLE_STORE_ADDR=http://graphdb:7200
+    depends_on:
+      <<: *airflow-common-depends-on
+      airflow-init:
+        condition: service_completed_successfully
 
   airflow-init:
     <<: *airflow-common
@@ -310,3 +325,4 @@ services:
 volumes:
   postgres-db-volume:
   airflow-logs-volume:
+  shared-data:
