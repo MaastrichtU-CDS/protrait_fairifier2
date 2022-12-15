@@ -194,17 +194,17 @@ services:
       airflow-init:
         condition: service_completed_successfully
 
-  #term-mapper:
-  #  image: jvsoest/term-mapper
-  #  ports:
-  #      - 5001:5000
-  #  environment:
-  #      - ENDPOINT_URL=http://graphdb:7200/repositories/data
+  term-mapper:
+    image: jvsoest/term-mapper
+    ports:
+        - 5001:5000
+    environment:
+        - ENDPOINT_URL=http://graphdb:7200/repositories/data
 
   dashapp:
-    image: aiaragomes/fairifier-app:1.0.8
+    image: aiaragomes/fairifier-app:latest
     ports:
-      - 5050:5050
+      - 5005:5050
     links:
       - graphdb:graphdb
     volumes:
