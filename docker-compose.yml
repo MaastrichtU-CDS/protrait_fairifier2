@@ -202,7 +202,7 @@ services:
         - ENDPOINT_URL=http://graphdb:7200/repositories/data
 
   dashapp:
-    image: aiaragomes/fairifier-app:latest
+    image: ghcr.io/maastrichtu-cds/fairifier2-app:latest
     ports:
       - 5005:5050
     links:
