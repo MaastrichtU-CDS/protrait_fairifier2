@@ -66,7 +66,7 @@ x-airflow-common:
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./airflow/ontop-cli-4.1.0:/usr/local/airflow/r2rml
-    - ./input:/usr/local/airflow/user/data/input
+    - shared-data:/usr/local/airflow/user/data/input
     - ./upload_config.yaml:/usr/local/airflow/upload_config.yaml
     - airflow-logs-volume:/opt/airflow/logs
     # - ./plugins:/opt/airflow/plugins
