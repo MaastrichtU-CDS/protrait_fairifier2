@@ -1,0 +1,2 @@
+Owlready2==0.40
+git+https://github.com/aiaragomes/ontologies.git
