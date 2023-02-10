@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl"
+         xmlns="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#">
+
+<owl:Ontology rdf:about="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl"/>
+
+<owl:Class rdf:about="#C20181">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Conceptual Entity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C20188">
+  <rdfs:subClassOf rdf:resource="#C20181"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Social Circumstances</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C17468">
+  <rdfs:subClassOf rdf:resource="#C20188"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Socioeconomic Factors</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C17953">
+  <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17468"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Education Level</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C159746">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">College Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C168094">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">504 Plan</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C168223">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Grade School Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C168226">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Graduate Studies Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C168270">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Individualized Education Plan</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C173723">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Less than High School Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C179907">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Technical School Attendance</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67122">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">No Formal Schooling</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67123">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1st Grade Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67124">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2nd Grade Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67125">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3rd Grade Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67126">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4th Grade Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67127">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5th Grade Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67128">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6th Grade Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67129">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7th Grade Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67130">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8th Grade Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67131">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9th Grade Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67132">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10th Grade Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67133">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11th Grade Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67134">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12th Grade Completion, No Diploma</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67135">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">General Equivalency Diploma Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67136">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">High School Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67137">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Some College Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67140">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Associate Academic Degree Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C67141">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vocational Program Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C70432">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kindergarten Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C70433">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Preschool Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C70434">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Home School Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C70555">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bachelor's Degree Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C70556">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Master's Degree Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C70557">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Academic Doctorate Degree Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C70558">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Professional Doctorate Degree Completion</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C76123">
+  <rdfs:subClassOf rdf:resource="#C17953"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Not High School Graduate</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C7057">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Disease, Disorder or Finding</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C2991">
+  <rdfs:subClassOf rdf:resource="#C7057"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Disease or Disorder</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C3262">
+  <rdfs:subClassOf rdf:resource="#C2991"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Neoplasm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C3263">
+  <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3262"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Neoplasm by Site</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C54625">
+  <rdfs:subClassOf rdf:resource="#C20181"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">History</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C18772">
+  <rdfs:subClassOf rdf:resource="#C54625"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Personal Medical History</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C81229">
+  <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C18772"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alcohol Use History</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C168296">
+  <rdfs:subClassOf rdf:resource="#C81229"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Known History of Alcohol Use</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C168352">
+  <rdfs:subClassOf rdf:resource="#C81229"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">No Known History of Alcohol Use</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C168464">
+  <rdfs:subClassOf rdf:resource="#C81229"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Unknown History of Alcohol Use</rdfs:label>
+</owl:Class>
+
+
+</rdf:RDF>
