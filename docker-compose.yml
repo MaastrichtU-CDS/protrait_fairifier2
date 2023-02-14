@@ -209,6 +209,7 @@ services:
       - graphdb:graphdb
     volumes:
       - shared-data:/input
+      - ./backup:/backup
     environment:
       - TRIPLE_STORE_ADDR=http://graphdb:7200
     depends_on:
