@@ -212,6 +212,9 @@ services:
       - ./backup:/backup
     environment:
       - TRIPLE_STORE_ADDR=http://graphdb:7200
+      - DATA_GRAPH_ADDR=http://localhost/GenericList2_stagingDB
+      - ONTOLOGY_GRAPH_ADDR=http://localhost/ontology
+      - ANNOTATIONS_GRAPH_ADDR=http://data.local/mapping
     depends_on:
       <<: *airflow-common-depends-on
       airflow-init:
