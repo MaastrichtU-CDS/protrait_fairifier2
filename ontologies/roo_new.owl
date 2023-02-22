@@ -13874,6 +13874,11 @@ For more information: http://dx.doi.org/10.1093/jicru/ndq001</core:definition>
   <core:definition>Lymph nodes outside the mesorectum.</core:definition>
 </owl:Class>
 
+<owl:Class rdf:about="MaastroClinic">
+  <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19326"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maastro Clinic</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="planningComparisonOutcome">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Planning Comparison Outcome</rdfs:label>
