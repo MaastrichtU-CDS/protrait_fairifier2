@@ -213,6 +213,81 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Neoplasm by Site</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#C4784">
+  <rdfs:subClassOf rdf:resource="#C3263"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cardiovascular Neoplasm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C156482">
+  <rdfs:subClassOf rdf:resource="#C3263"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Genitourinary System Neoplasm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C7337">
+  <rdfs:subClassOf rdf:resource="#C3263"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Peritoneal and Retroperitoneal Neoplasm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C3810">
+  <rdfs:subClassOf rdf:resource="#C3263"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Connective and Soft Tissue Neoplasm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C168693">
+  <rdfs:subClassOf rdf:resource="#C3263"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spinal Neoplasm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C3372">
+  <rdfs:subClassOf rdf:resource="#C3263"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Skin Neoplasm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C3052">
+  <rdfs:subClassOf rdf:resource="#C3263"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Digestive System Neoplasm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C3077">
+  <rdfs:subClassOf rdf:resource="#C3263"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Head and Neck Neoplasm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C3268">
+  <rdfs:subClassOf rdf:resource="#C3263"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nervous System Neoplasm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C2910">
+  <rdfs:subClassOf rdf:resource="#C3263"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Breast Neoplasm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C3010">
+  <rdfs:subClassOf rdf:resource="#C3263"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Endocrine Neoplasm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C3406">
+  <rdfs:subClassOf rdf:resource="#C3263"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Thoracic Neoplasm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C3355">
+  <rdfs:subClassOf rdf:resource="#C3263"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Respiratory System Neoplasm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C35813">
+  <rdfs:subClassOf rdf:resource="#C3263"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hematopoietic and Lymphoid System Neoplasm</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C3030">
+  <rdfs:subClassOf rdf:resource="#C3263"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Eye Neoplasm</rdfs:label>
+</owl:Class>
+
 <owl:Class rdf:about="#C54625">
   <rdfs:subClassOf rdf:resource="#C20181"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">History</rdfs:label>
