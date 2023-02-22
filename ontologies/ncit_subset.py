@@ -21,7 +21,7 @@ if __name__ == '__main__':
     concepts_list = [
         'Education Level', 'Neoplasm by Site', 'Alcohol Use History'
     ]
-    subonto.add_concepts_list(concepts_list)
+    subonto.add_concepts_list(concepts_list, True)
 
     # Save sub-ontology extracted
     output_file = os.path.join(path, 'subncit.owl')

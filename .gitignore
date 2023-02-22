@@ -14,5 +14,6 @@ __pycache__/
 
 # Data
 data/
+backup/
 ncit.owl
 roo.owl
