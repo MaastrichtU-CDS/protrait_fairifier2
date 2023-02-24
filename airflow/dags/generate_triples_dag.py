@@ -63,7 +63,7 @@ with DAG(
 
     ontologies = {
         'roo': 'https://raw.githubusercontent.com/MaastrichtU-CDS/protrait_fairifier2/ontologies/ontologies/roo_new.owl',
-        'ncit': 'https://raw.githubusercontent.com/MaastrichtU-CDS/protrait_fairifier2/ontologies/ontologies/subncit.owl',
+        'protrait': 'https://raw.githubusercontent.com/MaastrichtU-CDS/protrait_term-mapper/main/proTRAITTermmapperValueTriples.ttl',
     }
 
     finalize_op = PythonOperator(
