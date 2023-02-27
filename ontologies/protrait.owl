@@ -4,126 +4,35 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 >
-  <rdf:Description rdf:about="http://www.protrait.nl/1974">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1974</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1928">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1928</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Widowed">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25188"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/71">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">71</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2006">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2006</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/19">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">19</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/92">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">92</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/22">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">22</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1978">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1978</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2016">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2016</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2007">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2007</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/HollandPTC_Delft">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19326"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Divorced">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25188"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/57">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">57</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/60">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">60</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Yes_current_smoker">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19796"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/50">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2005">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2005</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/32">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">32</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/44">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">44</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Not_applicable_in_case_of_photon_RT">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19326"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2021">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2021</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2022">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2022</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2004">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2004</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/85">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">85</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/87">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">87</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Instituut_Verbeeten_-_Breda">
+  <rdf:Description rdf:about="http://www.protrait.nl/VUmc_-_Dijklander_ziekenhuis">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">71</protrait:LC_Code>
+    <rdfs:label>VUmc - Dijklander ziekenhuis</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Yes">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C81229"/>
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/personalHistoryOfMalignantNeoplasm"/>
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/previousRadiotherapy"/>
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/reirradiation"/>
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/planningComparison"/>
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C66897"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
+  <rdf:Description rdf:about="http://www.protrait.nl/Haga_Radiotherapie">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Haga Radiotherapie</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/43">
+  <rdf:Description rdf:about="http://www.protrait.nl/2000">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2000</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2000</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1988">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1988</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1988</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1953">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1953</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1953</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/14">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">43</protrait:LC_Code>
+    <rdfs:label>14</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">14</protrait:LC_Code>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.protrait.nl/No">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19796"/>
@@ -133,1148 +42,1554 @@
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/reirradiation"/>
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/planningComparison"/>
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C66897"/>
+    <rdfs:label>No</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1958">
+  <rdf:Description rdf:about="http://www.protrait.nl/Tumour_progression">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/reasonNegativeProtonTherapyWithPositivePlanningComparison"/>
+    <rdfs:label>Tumour progression</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/22">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>22</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">22</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1912">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1958</protrait:LC_Code>
+    <rdfs:label>1912</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1912</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Indication_for_proton_therapy">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/planningComparisonOutcome"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/45">
+  <rdf:Description rdf:about="http://www.protrait.nl/7">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/24">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">24</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/40">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/49">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">49</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/97">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">97</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/10">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/59">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">59</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/21">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">21</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1994">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1994</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/28">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">28</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1924">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1924</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/70">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">70</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1939">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1939</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Head_and_neck">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
+    <rdfs:label>7</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1925">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1925</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Radiotherapiegroep_-_Ede">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">27</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/73">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">73</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1975">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1975</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Noordwest_ziekenhuisgroep_-_Alkmaar">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/27">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">27</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2010">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2010</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/81">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">81</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Referral_from_abroad">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">96</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Prostate">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Other_tumour_site">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">17</protrait:LC_Code>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.protrait.nl/36">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>36</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">36</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Long_distance_relationship__In_a_relationship_but_not_living_together">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25188"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/48">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">48</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1920">
+  <rdf:Description rdf:about="http://www.protrait.nl/1954">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1920</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/46">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">46</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/6">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1983">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1983</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Intra_Operative">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15313"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2023">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2023</protrait:LC_Code>
+    <rdfs:label>1954</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1954</protrait:LC_Code>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.protrait.nl/1917">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1917</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1917</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/39">
+  <rdf:Description rdf:about="http://www.protrait.nl/40">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">39</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/67">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">67</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1919">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1919</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Other_treatment_team">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/reasonNegativeProtonTherapyWithPositivePlanningComparison"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/LUMC">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/AMC_-_Flevoziekenhuis">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Central_nervous_system_-_Other_tumour_sites">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/104">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">104</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1969">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1969</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/53">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">53</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1921">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1921</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1984">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1984</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Zuidwest_Radiotherapeutisch_Instituut_-_Vlissingen">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">85</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/52">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">52</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/23">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">23</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Instituut_Verbeeten_-_Tilburg">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">70</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Scientific_education_WOUniversiteit">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Haga_Radiotherapie">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2014">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2014</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Photons">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15313"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/12">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/3">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Radiotherapiegroep_-_Arnhem">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">26</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/83">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">83</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1946">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1946</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1982">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1982</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/UMCG">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>40</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1922">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1922</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Lymphoma">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1936">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1936</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2026">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2026</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1935">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1935</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1923">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1923</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/54">
+  <rdf:Description rdf:about="http://www.protrait.nl/59">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">54</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Paediatric_-_Craniospinal_axis">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">14</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1990">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1990</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/26">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">26</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2020">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2020</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2002">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2002</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2015">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2015</protrait:LC_Code>
+    <rdfs:label>59</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">59</protrait:LC_Code>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.protrait.nl/1971">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1971</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1971</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1949">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1949</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/UMCU">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">80</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/VUmc">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/98">
+  <rdf:Description rdf:about="http://www.protrait.nl/45">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">98</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1918">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1918</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1986">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1986</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/89">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">89</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/62">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">62</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1933">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1933</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/75">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">75</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/31">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">31</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/80">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">80</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/103">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">103</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Reinier_de_Graaf_groep">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/29">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">29</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Undifferentiated">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28421"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/47">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">47</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1948">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1948</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Primary_education_basisschool__lagere_school">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1956">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1956</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/37">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">37</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1981">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1981</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/17">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">17</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/18">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/41">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">41</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/25">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2029">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2029</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Brachy">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15313"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1916">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1916</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Single">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25188"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Preparatory_vocational_education_LBO_LTS_LEAO_LHNO_huishoudschool_VMBO-B_VMBO-K">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Electrons">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15313"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/51">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">51</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Radiotherapeutisch_Instituut_Friesland">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>45</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1952">
+  <rdf:Description rdf:about="http://www.protrait.nl/1957">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1952</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/86">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">86</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/55">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">55</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/96">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">96</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1970">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1970</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1972">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1972</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/20">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1913">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1913</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Other_namely">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/reasonNegativeProtonTherapyWithPositivePlanningComparison"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2008">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2008</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Yes_in_the_past_ex-smoker">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19796"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Erasmus_MC_-_Dordrecht">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">66</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1963">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1963</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Noordwest_ziekenhuisgroep_-_Den_Helder">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Radiotherapiegroep_-_Deventer">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1996">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1996</protrait:LC_Code>
+    <rdfs:label>1957</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1957</protrait:LC_Code>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.protrait.nl/84">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>84</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">84</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Radboud_UMC">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">60</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1910">
+  <rdf:Description rdf:about="http://www.protrait.nl/2013">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1910</protrait:LC_Code>
+    <rdfs:label>2013</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2013</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1945">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1945</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/4">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1944">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1944</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1989">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1989</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Catharina_ziekenhuis">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1985">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1985</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Paediatric_-_Other_tumour_sites">
+  <rdf:Description rdf:about="http://www.protrait.nl/Esophageal">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</protrait:LC_Code>
+    <rdfs:label>Esophageal</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1913">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1913</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1913</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/34">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>34</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">34</protrait:LC_Code>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.protrait.nl/Prinses_Maxima_Centrum">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Prinses Maxima Centrum</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">81</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1961">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1961</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1976">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1976</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/14">
+  <rdf:Description rdf:about="http://www.protrait.nl/78">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">14</protrait:LC_Code>
+    <rdfs:label>78</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">78</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1914">
+  <rdf:Description rdf:about="http://www.protrait.nl/76">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>76</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">76</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1975">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1914</protrait:LC_Code>
+    <rdfs:label>1975</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1975</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Zuidwest_Radiotherapeutisch_instituut_-_Roosendaal">
+  <rdf:Description rdf:about="http://www.protrait.nl/2014">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2014</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2014</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Radiotherapiegroep_-_Deventer">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Radiotherapiegroep - Deventer</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/86">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>86</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">86</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2011">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2011</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2011</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/MST">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>MST</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/61">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>61</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">61</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Central_nervous_system_-_Base_of_skull">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
+    <rdfs:label>Central nervous system - Base of skull</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1951">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1951</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1951</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/68">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>68</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">68</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2028">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2028</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2028</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1956">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1956</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1956</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Referral_from_abroad">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Referral from abroad</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">96</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/10">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>10</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1958">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1958</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1958</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/69">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>69</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">69</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/63">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>63</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">63</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Primary_education_basisschool__lagere_school">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
+    <rdfs:label>Primary education basisschool  lagere school</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/4">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>4</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/66">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>66</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">66</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1962">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1962</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1962</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Paediatric_-_Other_tumour_sites">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
+    <rdfs:label>Paediatric - Other tumour sites</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2022">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2022</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2022</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1984">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1984</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1984</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Secondary_vocational_education_MBO-lang_MTS_MEAO">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
+    <rdfs:label>Secondary vocational education MBO-lang MTS MEAO</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/90">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>90</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/25">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>25</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">25</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2025">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2025</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Radboud_UMC">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Radboud UMC</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">60</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Intra_Operative">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15313"/>
+    <rdfs:label>Intra Operative</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/UMCU">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>UMCU</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">80</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/44">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>44</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">44</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/9">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>9</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1918">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1918</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1918</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1952">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1952</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1952</protrait:LC_Code>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.protrait.nl/Unknown">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28421"/>
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
+    <rdfs:label>Unknown</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</protrait:LC_Code>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">999</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/MAASTRO">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">55</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2024">
+  <rdf:Description rdf:about="http://www.protrait.nl/1991">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2024</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1979">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1979</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/76">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">76</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/General_secondary_education_MAVO_MULO_MBO-kort_VMBO-TL">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2019">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/77">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">77</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/65">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">65</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Higher_general_and_preparatory_scientific_education_HAVO_VWO_HBS">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Female">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28421"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1962">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1962</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Esophageal">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Married">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25188"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/94">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">94</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1959">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1959</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1999">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1999</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/58">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">58</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1955">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1955</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1997">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1997</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/105">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">105</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1957">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1957</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/MST">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Erasmus_MC">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">65</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/7">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Domestic_partner">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25188"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2001">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2001</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/GPTC_Groningen">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19326"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1929">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1929</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Central_nervous_system_-_Craniospinal_axis">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1934">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1934</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Institiuut_Verbeeten_-_s_Hertogenbosch">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">72</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1954">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1954</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/102">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">102</protrait:LC_Code>
+    <rdfs:label>1991</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1991</protrait:LC_Code>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.protrait.nl/1995">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1995</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1995</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2011">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2011</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/5">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2013">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2013</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/RCWestRadiotherapiecentrum_West">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/99">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">99</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1991">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1991</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/95">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">95</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1912">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1912</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/100">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/8">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1988">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1988</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Benefit_proton_therapy_considered_too_limited">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/reasonNegativeProtonTherapyWithPositivePlanningComparison"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1966">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1966</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/56">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">56</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/74">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">74</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2030">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2030</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1980">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1980</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1967">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1967</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Tumour_progression">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/reasonNegativeProtonTherapyWithPositivePlanningComparison"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1927">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1927</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/VUmc_-_Dijklander_ziekenhuis">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1973">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1973</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Het_Nederlands_Kankerinstituut_-_Antoni_van_Leeuwenhoek_ziekenhuis">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Eye_melanoma">
+  <rdf:Description rdf:about="http://www.protrait.nl/Central_nervous_system_-_Other_tumour_sites">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</protrait:LC_Code>
+    <rdfs:label>Central nervous system - Other tumour sites</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Distance_to_proton_centre">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/reasonNegativeProtonTherapyWithPositivePlanningComparison"/>
+  <rdf:Description rdf:about="http://www.protrait.nl/Yes">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C81229"/>
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/personalHistoryOfMalignantNeoplasm"/>
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/previousRadiotherapy"/>
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/reirradiation"/>
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/planningComparison"/>
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C66897"/>
+    <rdfs:label>Yes</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Radiotherapeutisch_Centrum_Zwolle">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1915">
+  <rdf:Description rdf:about="http://www.protrait.nl/1963">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1915</protrait:LC_Code>
+    <rdfs:label>1963</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1963</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/33">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">33</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1943">
+  <rdf:Description rdf:about="http://www.protrait.nl/2015">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1943</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/16">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2009">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2009</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1937">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1937</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1911">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1911</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Male">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28421"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Referral_from_a_non_radiotherapy_centre_in_the_Netherlands">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">95</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/38">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">38</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2027">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2027</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/68">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">68</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1951">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1951</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1941">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1941</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/101">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Higher_professional_education_HBO_HTS_HEAO">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1960">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1960</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/61">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">61</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1940">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1940</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/72">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">72</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/91">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">91</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1931">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1931</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/79">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">79</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1977">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1977</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1987">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1987</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/69">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">69</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2025">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2025</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/90">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1942">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1942</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/78">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">78</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1993">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1993</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1938">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1938</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Secondary_vocational_education_MBO-lang_MTS_MEAO">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/APTC_Amsterdam">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19326"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</protrait:LC_Code>
+    <rdfs:label>2015</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2015</protrait:LC_Code>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.protrait.nl/35">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>35</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">35</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/30">
+  <rdf:Description rdf:about="http://www.protrait.nl/62">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</protrait:LC_Code>
+    <rdfs:label>62</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">62</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1964">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1964</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1947">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1947</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1998">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1998</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Central_nervous_system_-_Meningeoma">
+  <rdf:Description rdf:about="http://www.protrait.nl/Central_nervous_system_-_Craniospinal_axis">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</protrait:LC_Code>
+    <rdfs:label>Central nervous system - Craniospinal axis</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Other">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Sarcoma">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/82">
+  <rdf:Description rdf:about="http://www.protrait.nl/102">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">82</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Central_nervous_system_-_Low_grade_glioma">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/No_education_did_not_finish_primary_education">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/13">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">13</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Protons">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15313"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/42">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">42</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/88">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">88</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1992">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1992</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2017">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2017</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/34">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">34</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1930">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1930</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/66">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">66</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2003">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2003</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1965">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1965</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1950">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1950</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/64">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">64</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1968">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1968</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Lung">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1932">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1932</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2012">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2012</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1926">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1926</protrait:LC_Code>
+    <rdfs:label>102</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">102</protrait:LC_Code>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.protrait.nl/MAASTRO_protonen">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19326"/>
+    <rdfs:label>MAASTRO protonen</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>1</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/30">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>30</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Erasmus_MC_-_Dordrecht">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Erasmus MC - Dordrecht</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">66</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/99">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>99</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">99</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1955">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1955</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1955</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/74">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>74</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">74</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1934">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1934</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1934</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Higher_general_and_preparatory_scientific_education_HAVO_VWO_HBS">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
+    <rdfs:label>Higher general and preparatory scientific education HAVO VWO HBS</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Breast">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
+    <rdfs:label>Breast</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/54">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>54</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">54</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1948">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1948</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1948</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1940">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1940</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1940</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/82">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>82</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">82</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1936">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1936</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1936</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/12">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>12</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/MAASTRO">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>MAASTRO</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">55</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/16">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>16</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/64">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>64</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">64</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/UMCG">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>UMCG</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/57">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>57</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">57</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1928">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1928</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1928</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/42">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>42</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">42</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1935">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1935</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1935</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1965">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1965</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1965</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1960">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1960</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1960</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1939">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1939</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1939</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Not_applicable_in_case_of_photon_RT">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19326"/>
+    <rdfs:label>Not applicable in case of photon RT</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1923">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1923</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1923</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2016">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2016</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2016</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1972">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1972</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1972</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1932">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1932</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1932</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/8">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>8</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1911">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1911</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1911</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1941">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1941</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1941</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1924">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1924</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1924</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Paediatric_-_Central_nervous_system">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
+    <rdfs:label>Paediatric - Central nervous system</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">13</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/73">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>73</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">73</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/58">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>58</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">58</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Undifferentiated">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28421"/>
+    <rdfs:label>Undifferentiated</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/49">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>49</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">49</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/101">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>101</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/91">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>91</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">91</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1990">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1990</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1990</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/85">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>85</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">85</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1969">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1969</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1969</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Distance_to_proton_centre">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/reasonNegativeProtonTherapyWithPositivePlanningComparison"/>
+    <rdfs:label>Distance to proton centre</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Radiotherapiegroep_-_Arnhem">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Radiotherapiegroep - Arnhem</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">26</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/31">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>31</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">31</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/52">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>52</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">52</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/24">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>24</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">24</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1986">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1986</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1986</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/79">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>79</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">79</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/26">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>26</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">26</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1950">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1950</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1950</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/92">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>92</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">92</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1998">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1998</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1998</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Other">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
+    <rdfs:label>Other</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1959">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1959</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1959</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/81">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>81</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">81</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/LUMC">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>LUMC</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/95">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>95</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">95</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1996">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1996</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1996</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/19">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>19</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">19</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Electrons">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15313"/>
+    <rdfs:label>Electrons</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/100">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>100</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/88">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>88</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">88</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1976">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1976</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1976</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/3">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>3</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1921">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1921</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1921</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1922">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1922</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1922</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Central_nervous_system_-_Meningeoma">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
+    <rdfs:label>Central nervous system - Meningeoma</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1910">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1910</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1910</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/47">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>47</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">47</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Erasmus_MC">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Erasmus MC</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">65</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Male">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28421"/>
+    <rdfs:label>Male</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Noordwest_ziekenhuisgroep_-_Den_Helder">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Noordwest ziekenhuisgroep - Den Helder</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1931">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1931</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1931</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2001">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2001</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2001</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Referral_from_a_non_radiotherapy_centre_in_the_Netherlands">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Referral from a non radiotherapy centre in the Netherlands</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">95</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Benefit_proton_therapy_considered_too_limited">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/reasonNegativeProtonTherapyWithPositivePlanningComparison"/>
+    <rdfs:label>Benefit proton therapy considered too limited</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2024">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2024</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2024</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/55">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>55</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">55</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1938">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1938</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1938</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Radiotherapeutisch_Centrum_Zwolle">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Radiotherapeutisch Centrum Zwolle</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2023">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2023</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2023</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/96">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>96</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">96</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2003">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2003</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2003</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1937">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1937</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1937</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1945">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1945</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1945</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1943">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1943</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1943</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1974">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1974</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1974</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Photons">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15313"/>
+    <rdfs:label>Photons</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/33">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>33</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">33</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/13">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>13</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">13</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1914">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1914</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1914</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Yes_in_the_past_ex-smoker">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19796"/>
+    <rdfs:label>Yes in the past ex-smoker</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1916">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1916</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1916</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Central_nervous_system_-_Low_grade_glioma">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
+    <rdfs:label>Central nervous system - Low grade glioma</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/83">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>83</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">83</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Eye_melanoma">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
+    <rdfs:label>Eye melanoma</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/104">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>104</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">104</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Higher_professional_education_HBO_HTS_HEAO">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
+    <rdfs:label>Higher professional education HBO HTS HEAO</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</protrait:LC_Code>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.protrait.nl/15">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>15</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/11">
+  <rdf:Description rdf:about="http://www.protrait.nl/1920">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1920</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1920</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/17">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>17</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">17</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2020">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2020</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2020</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/39">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>39</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">39</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Reinier_de_Graaf_groep">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Reinier de Graaf groep</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1949">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1949</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1949</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1925">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1925</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1925</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/103">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>103</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">103</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1947">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1947</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1947</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2027">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2027</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2027</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1999">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1999</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1999</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/60">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>60</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">60</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1964">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1964</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1964</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1981">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1981</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1981</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/71">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>71</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">71</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/87">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>87</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">87</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/50">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>50</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/65">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>65</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">65</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1926">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1926</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1926</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Yes_current_smoker">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19796"/>
+    <rdfs:label>Yes current smoker</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/38">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>38</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">38</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/80">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>80</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">80</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Other_treatment_team">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/reasonNegativeProtonTherapyWithPositivePlanningComparison"/>
+    <rdfs:label>Other treatment team</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/18">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>18</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1970">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1970</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1970</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1982">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1982</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1982</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/43">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>43</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">43</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1919">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1919</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1919</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/56">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>56</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">56</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Radiotherapiegroep_-_Ede">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Radiotherapiegroep - Ede</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">27</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/28">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>28</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">28</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Noordwest_ziekenhuisgroep_-_Alkmaar">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Noordwest ziekenhuisgroep - Alkmaar</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Other_tumour_site">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
+    <rdfs:label>Other tumour site</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">17</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/51">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>51</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">51</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>2</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/5">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>5</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Paediatric_-_Craniospinal_axis">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
+    <rdfs:label>Paediatric - Craniospinal axis</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">14</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Single">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25188"/>
+    <rdfs:label>Single</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1946">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1946</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1946</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/98">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>98</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">98</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/46">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>46</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">46</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1993">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1993</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1993</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1989">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1989</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1989</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/97">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>97</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">97</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1994">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1994</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1994</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/HollandPTC_Delft">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19326"/>
+    <rdfs:label>HollandPTC Delft</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Protons">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15313"/>
+    <rdfs:label>Protons</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Indication_for_proton_therapy">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/planningComparisonOutcome"/>
+    <rdfs:label>Indication for proton therapy</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Female">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C28421"/>
+    <rdfs:label>Female</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2026">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2026</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2026</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2002">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2002</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2002</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Preparatory_vocational_education_LBO_LTS_LEAO_LHNO_huishoudschool_VMBO-B_VMBO-K">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
+    <rdfs:label>Preparatory vocational education LBO LTS LEAO LHNO huishoudschool VMBO-B VMBO-K</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/94">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>94</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">94</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/General_secondary_education_MAVO_MULO_MBO-kort_VMBO-TL">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
+    <rdfs:label>General secondary education MAVO MULO MBO-kort VMBO-TL</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/48">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>48</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">48</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/No_indication_for_proton_therapy">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/planningComparisonOutcome"/>
+    <rdfs:label>No indication for proton therapy</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1983">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1983</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1983</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/No_education_did_not_finish_primary_education">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
+    <rdfs:label>No education did not finish primary education</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Catharina_ziekenhuis">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Catharina ziekenhuis</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2021">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2021</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2021</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Scientific_education_WOUniversiteit">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17953"/>
+    <rdfs:label>Scientific education WOUniversiteit</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1973">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1973</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1973</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Sarcoma">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
+    <rdfs:label>Sarcoma</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</protrait:LC_Code>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.protrait.nl/AMC">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>AMC</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/1953">
+  <rdf:Description rdf:about="http://www.protrait.nl/1961">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1953</protrait:LC_Code>
+    <rdfs:label>1961</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1961</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/93">
+  <rdf:Description rdf:about="http://www.protrait.nl/Divorced">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25188"/>
+    <rdfs:label>Divorced</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Institiuut_Verbeeten_-_s_Hertogenbosch">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Institiuut Verbeeten - s Hertogenbosch</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">72</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1929">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1929</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1929</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/11">
     <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">93</protrait:LC_Code>
+    <rdfs:label>11</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">11</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Central_nervous_system_-_Base_of_skull">
+  <rdf:Description rdf:about="http://www.protrait.nl/1987">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1987</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1987</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1968">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1968</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1968</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1977">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1977</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1977</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2007">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2007</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2007</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/29">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>29</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">29</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Instituut_Verbeeten_-_Tilburg">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Instituut Verbeeten - Tilburg</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">70</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1966">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1966</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1966</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2017">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2017</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2017</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Zuidwest_Radiotherapeutisch_instituut_-_Roosendaal">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Zuidwest Radiotherapeutisch instituut - Roosendaal</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">86</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/20">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>20</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">20</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1978">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1978</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1978</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1967">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1967</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1967</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1980">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1980</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1980</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/41">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>41</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">41</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/67">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>67</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">67</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/AMC_-_Flevoziekenhuis">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>AMC - Flevoziekenhuis</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1927">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1927</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1927</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1985">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1985</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1985</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1992">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1992</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1992</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2006">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2006</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2006</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/27">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>27</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">27</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Other_namely">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/reasonNegativeProtonTherapyWithPositivePlanningComparison"/>
+    <rdfs:label>Other namely</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Zuidwest_Radiotherapeutisch_Instituut_-_Vlissingen">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Zuidwest Radiotherapeutisch Instituut - Vlissingen</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">85</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Head_and_neck">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
+    <rdfs:label>Head and neck</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1933">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1933</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1933</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Lymphoma">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
+    <rdfs:label>Lymphoma</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">12</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/23">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>23</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">23</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/70">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>70</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">70</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/75">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>75</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">75</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2012">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2012</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2012</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2019">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2019</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2019</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Radiotherapeutisch_Instituut_Friesland">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Radiotherapeutisch Instituut Friesland</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1944">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1944</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1944</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1979">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1979</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1979</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/21">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>21</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">21</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Instituut_Verbeeten_-_Breda">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Instituut Verbeeten - Breda</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">71</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Widowed">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25188"/>
+    <rdfs:label>Widowed</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/63">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">63</protrait:LC_Code>
+  <rdf:Description rdf:about="http://www.protrait.nl/RCWestRadiotherapiecentrum_West">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>RCWestRadiotherapiecentrum West</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/9">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</protrait:LC_Code>
+  <rdf:Description rdf:about="http://www.protrait.nl/1930">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1930</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1930</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2029">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2029</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2029</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/VUmc">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>VUmc</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</protrait:LC_Code>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.protrait.nl/2018">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2018</rdfs:label>
     <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2018</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Breast">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/Paediatric_-_Central_nervous_system">
-    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">13</protrait:LC_Code>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2028">
+  <rdf:Description rdf:about="http://www.protrait.nl/2009">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2028</protrait:LC_Code>
+    <rdfs:label>2009</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2009</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/2000">
+  <rdf:Description rdf:about="http://www.protrait.nl/2010">
     <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2000</protrait:LC_Code>
+    <rdfs:label>2010</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2010</protrait:LC_Code>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.protrait.nl/No_indication_for_proton_therapy">
-    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/planningComparisonOutcome"/>
-    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</protrait:LC_Code>
+  <rdf:Description rdf:about="http://www.protrait.nl/Brachy">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15313"/>
+    <rdfs:label>Brachy</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Domestic_partner">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25188"/>
+    <rdfs:label>Domestic partner</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Long_distance_relationship__In_a_relationship_but_not_living_together">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25188"/>
+    <rdfs:label>Long distance relationship  In a relationship but not living together</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/GPTC_Groningen">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19326"/>
+    <rdfs:label>GPTC Groningen</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1997">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1997</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1997</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2004">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2004</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2004</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/32">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>32</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">32</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Het_Nederlands_Kankerinstituut_-_Antoni_van_Leeuwenhoek_ziekenhuis">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/referralCentre"/>
+    <rdfs:label>Het Nederlands Kankerinstituut - Antoni van Leeuwenhoek ziekenhuis</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/37">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>37</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">37</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/72">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>72</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">72</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1942">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1942</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1942</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/77">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>77</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">77</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2008">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2008</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2008</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/89">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>89</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">89</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Married">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25188"/>
+    <rdfs:label>Married</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2030">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2030</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2030</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/APTC_Amsterdam">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19326"/>
+    <rdfs:label>APTC Amsterdam</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/105">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>105</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">105</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/6">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>6</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/2005">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>2005</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2005</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Lung">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
+    <rdfs:label>Lung</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/93">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>93</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">93</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/1915">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25155"/>
+    <rdfs:label>1915</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1915</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/53">
+    <rdfs:subClassOf rdf:resource="http://www.cancerdata.org/roo/C100002"/>
+    <rdfs:label>53</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">53</protrait:LC_Code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.protrait.nl/Prostate">
+    <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C3263"/>
+    <rdfs:label>Prostate</rdfs:label>
+    <protrait:LC_Code rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</protrait:LC_Code>
   </rdf:Description>
 </rdf:RDF>

@@ -68,12 +68,17 @@ class CreateTermMappingValueTriples:
 
         #create triples     
         for string, integer in zip(stringList, integerList):
+            label = string.replace('_', ' ')
             triple_content = """
 protrait:${string}
     rdfs:subClassOf ${ontologyClass};
+    rdfs:label '${label}';
     protrait:LC_Code "${integer}"^^xsd:integer.
 """
-            triples = Template(triple_content).substitute(string=string, ontologyClass=self.OntologyClass, integer=integer)
+            triples = Template(triple_content).substitute(
+                string=string, ontologyClass=self.OntologyClass,
+                label=label, integer=integer
+            )
         
             ValueTriples += triples
 
@@ -139,13 +144,14 @@ for key, value in ontologyDict.items():
     df2['ontologyClass'] = df2['ontologyClass'].str.replace(key,value, regex=False)
     
     
-print(tabulate(df2, headers = 'keys', tablefmt = 'github'))
+#print(tabulate(df2, headers = 'keys', tablefmt = 'github'))
 
 
 #create a proTRAITTermmapperValueTriples.ttl file  with utf-8 encoding
 f = codecs.open("proTRAITTermmapperValueTriples.ttl", "w", "utf-8")
 
 prefixes = """
+prefix owl: <http://www.w3.org/2002/07/owl#>
 prefix rr: <http://www.w3.org/ns/r2rml#>
 prefix ex: <http://example.com/ns#>
 prefix map: <http://mapping.local/>
