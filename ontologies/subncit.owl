@@ -63,5 +63,75 @@
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alcohol Use History</rdfs:label>
 </owl:Class>
 
+<owl:Class rdf:about="#C20189">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Property or Attribute</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C171087">
+  <rdfs:subClassOf rdf:resource="#C20189"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Person/Individual Attribute</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C19332">
+  <rdfs:subClassOf rdf:resource="#C171087"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Personal Attribute</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C25188">
+  <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19332"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Marital Status</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C19796">
+  <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19332"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Smoking Status</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C43431">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Activity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C16203">
+  <rdfs:subClassOf rdf:resource="#C43431"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clinical or Research Activity</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C25218">
+  <rdfs:subClassOf rdf:resource="#C16203"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Intervention or Procedure</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C49236">
+  <rdfs:subClassOf rdf:resource="#C25218"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Therapeutic Procedure</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C15313">
+  <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49236"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Radiation Therapy</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C16632">
+  <rdfs:subClassOf rdf:resource="#C20181"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Geographic Area</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C19696">
+  <rdfs:subClassOf rdf:resource="#C16632"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sites of Care Delivery</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C21541">
+  <rdfs:subClassOf rdf:resource="#C19696"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Healthcare Facility</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C19326">
+  <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C21541"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clinics and Hospitals</rdfs:label>
+</owl:Class>
+
 
 </rdf:RDF>

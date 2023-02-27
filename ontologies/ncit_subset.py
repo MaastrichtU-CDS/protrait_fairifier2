@@ -19,7 +19,9 @@ if __name__ == '__main__':
 
     # Extract concepts from main ontology and add to sub-ontology
     concepts_list = [
-        'Education Level', 'Neoplasm by Site', 'Alcohol Use History'
+        'Education Level', 'Neoplasm by Site', 'Alcohol Use History',
+        'Marital Status', 'Smoking Status', 'Radiation Therapy',
+        'Clinics and Hospitals'
     ]
     subonto.add_concepts_list(concepts_list, children=False)
 

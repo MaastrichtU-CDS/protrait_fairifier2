@@ -3,114 +3,24 @@
          xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
          xmlns:owl="http://www.w3.org/2002/07/owl#"
-         xml:base="http://www.cancerdata.org/roo"
-         xmlns="http://www.cancerdata.org/roo#">
+         xml:base="http://www.cancerdata.org/roo/"
+         xmlns="http://www.cancerdata.org/roo/">
 
-<owl:Ontology rdf:about="http://www.cancerdata.org/roo"/>
+<owl:Ontology rdf:about="http://test.org"/>
 
-<owl:Class rdf:about="#T071">
-  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  <rdfs:label xml:lang="en">Entity</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#T077">
-  <rdfs:subClassOf rdf:resource="#T071"/>
-  <rdfs:label xml:lang="en">Conceptual Entity</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#T032">
-  <rdfs:subClassOf rdf:resource="#T077"/>
-  <rdfs:label xml:lang="en">Organism Attribute</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#C25188">
-  <rdfs:subClassOf rdf:resource="http://purl.bioontology.org/ontology/STY/T032"/>
-  <rdfs:label xml:lang="en">Marital Status</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#T201">
-  <rdfs:subClassOf rdf:resource="#T032"/>
-  <rdfs:label xml:lang="en">Clinical Attribute</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#C19796">
-  <rdfs:subClassOf rdf:resource="http://purl.bioontology.org/ontology/STY/T201"/>
-  <rdfs:label xml:lang="en">Smoking Status</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#T051">
-  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  <rdfs:label xml:lang="en">Event</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#T052">
-  <rdfs:subClassOf rdf:resource="#T051"/>
-  <rdfs:label xml:lang="en">Activity</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#T057">
-  <rdfs:subClassOf rdf:resource="#T052"/>
-  <rdfs:label xml:lang="en">Occupational Activity</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#T058">
-  <rdfs:subClassOf rdf:resource="#T057"/>
-  <rdfs:label xml:lang="en">Health Care Activity</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#T061">
-  <rdfs:subClassOf rdf:resource="#T058"/>
-  <rdfs:label xml:lang="en">Therapeutic or Preventive Procedure</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#C25218">
-  <rdfs:subClassOf rdf:resource="#T061"/>
-  <rdfs:label xml:lang="en">Intervention or Procedure</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#C49236">
-  <rdfs:subClassOf rdf:resource="#C25218"/>
-  <rdfs:label xml:lang="en">Therapeutic Procedure</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#C15313">
-  <rdfs:subClassOf rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49236"/>
-  <rdfs:label xml:lang="en">Radiation Therapy</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#T092">
-  <rdfs:subClassOf rdf:resource="#T077"/>
-  <rdfs:label xml:lang="en">Organization</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#T093">
-  <rdfs:subClassOf rdf:resource="#T092"/>
-  <rdfs:label xml:lang="en">Health Care Related Organization</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#C19326">
-  <rdfs:subClassOf rdf:resource="http://purl.bioontology.org/ontology/STY/T093"/>
-  <rdfs:label xml:lang="en">Clinics and Hospitals</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#planningComparisonOutcome">
+<owl:Class rdf:about="planningComparisonOutcome">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Planning Comparison Outcome</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#reasonNegativeProtonTherapyWithPositivePlanningComparison">
+<owl:Class rdf:about="reasonNegativeProtonTherapyWithPositivePlanningComparison">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Reason Negative Proton Therapy With Positive Planning Comparison</rdfs:label>
 </owl:Class>
 
-<owl:Class rdf:about="#reasonProtonOther">
+<owl:Class rdf:about="reasonProtonOther">
   <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Reason Proton Other</rdfs:label>
-</owl:Class>
-
-<owl:Class rdf:about="#timeStoppedSmoking">
-  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Time Stopped Smoking</rdfs:label>
 </owl:Class>
 
 
