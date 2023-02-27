@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="https://raw.githubusercontent.com/MaastrichtU-CDS/protrait_term-mapper/main/proTRAITTermmapperValueTriples.ttl"
+         xmlns="https://raw.githubusercontent.com/MaastrichtU-CDS/protrait_term-mapper/main/proTRAITTermmapperValueTriples.ttl#">
+
+<owl:Ontology rdf:about="https://raw.githubusercontent.com/MaastrichtU-CDS/protrait_term-mapper/main/proTRAITTermmapperValueTriples.ttl"/>
+
+<rdf:Description rdf:about="prefix">
+  <r rdf:resource="http://www.w3.org/ns/r2rm"/>
+  <x rdf:resource="http://example.com/n"/>
+  <ap rdf:resource="http://mapping.loca"/>
+  <ty rdf:resource="http://purl.bioontology.org/ontology/ST"/>
+  <io rdf:resource="http://semanticscience.org/resource/SI"/>
+  <oaf rdf:resource="http://xmlns.com/foaf/0."/>
+  <df rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-n"/>
+  <dfs rdf:resource="http://www.w3.org/2000/01/rdf-schem"/>
+  <sd rdf:resource="http://www.w3.org/2001/XMLSchem"/>
+  <cit rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.ow"/>
+  <oo rdf:resource="http://www.cancerdata.org/ro"/>
+  <cd rdf:resource="http://purl.bioontology.org/ontology/ICD1"/>
+  <kos rdf:resource="http://www.w3.org/2008/05/sko"/>
+  <o rdf:resource="http://purl.obolibrary.org/obo/U"/>
+  <ime rdf:resource="http://www.w3.org/2006/tim"/>
+  <rotrait rdf:resource="http://www.protrait.nl"/>
+</rdf:Description>
+
+
+</rdf:RDF>
