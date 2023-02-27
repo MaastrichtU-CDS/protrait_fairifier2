@@ -1,31 +1,3921 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-         xmlns:owl="http://www.w3.org/2002/07/owl#"
-         xml:base="https://raw.githubusercontent.com/MaastrichtU-CDS/protrait_term-mapper/main/proTRAITTermmapperValueTriples.ttl"
-         xmlns="https://raw.githubusercontent.com/MaastrichtU-CDS/protrait_term-mapper/main/proTRAITTermmapperValueTriples.ttl#">
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <Prefix name="ex" IRI="http://example.com/ns#"/>
+    <Prefix name="rr" IRI="http://www.w3.org/ns/r2rml#"/>
+    <Prefix name="uo" IRI="http://purl.obolibrary.org/obo/UO_"/>
+    <Prefix name="icd" IRI="http://purl.bioontology.org/ontology/ICD10/"/>
+    <Prefix name="map" IRI="http://mapping.local/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="roo" IRI="http://www.cancerdata.org/roo/"/>
+    <Prefix name="sio" IRI="http://semanticscience.org/resource/SIO_"/>
+    <Prefix name="sty" IRI="http://purl.bioontology.org/ontology/STY/"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="foaf" IRI="http://xmlns.com/foaf/0.1/"/>
+    <Prefix name="ncit" IRI="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="skos" IRI="http://www.w3.org/2008/05/skos#"/>
+    <Prefix name="time" IRI="http://www.w3.org/2006/time#"/>
+    <Prefix name="protrait" IRI="http://www.protrait.nl/"/>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:No_indication_for_proton_therapy"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Central_nervous_system_-_Low_grade_glioma"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Intra_Operative"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Referral_from_abroad"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/39"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/38"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/37"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/36"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:MST"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/35"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/34"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/33"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/32"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/31"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/30"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Higher_professional_education_HBO_HTS_HEAO"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:MAASTRO_protonen"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1999"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/49"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/48"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/47"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/46"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/45"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/44"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/43"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="roo:previousRadiotherapy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/42"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/41"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/40"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1989"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1988"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1998"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1997"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1996"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1995"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/59"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1994"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/58"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1993"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/57"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1992"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/56"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Prostate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1991"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/55"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1990"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/54"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/53"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/52"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:MAASTRO"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/51"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/50"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Eye_melanoma"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Photons"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Head_and_neck"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1979"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1978"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1977"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1987"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1986"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1985"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:APTC_Amsterdam"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1984"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="ncit:C28421"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1983"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/69"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1982"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/68"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Instituut_Verbeeten_-_Tilburg"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1981"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/67"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1980"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/66"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/65"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/64"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/63"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/62"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2030"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/61"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/60"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Other_treatment_team"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Other_tumour_site"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Central_nervous_system_-_Base_of_skull"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Lung"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1969"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1968"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1967"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1966"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1976"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1975"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:VUmc_-_Dijklander_ziekenhuis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1974"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2029"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1973"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2028"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1972"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2027"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1971"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2026"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/79"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1970"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2025"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/78"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2024"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/77"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Prinses_Maxima_Centrum"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:UMCU"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2023"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/76"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2022"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/75"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2021"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/74"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2020"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/73"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/72"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/71"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/70"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:GPTC_Groningen"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:HollandPTC_Delft"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:No"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1959"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1958"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1957"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1956"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Sarcoma"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1955"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1965"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1964"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2019"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1963"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2018"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1962"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2017"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1961"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2016"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1960"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2015"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2014"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/89"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2013"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/88"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2012"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/87"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2011"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/86"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2010"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/85"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/84"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/83"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/82"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/81"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/80"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/90"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1949"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1948"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1947"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1946"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1945"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1944"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1954"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2009"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="ncit:C25188"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1953"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2008"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1952"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2007"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1951"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2006"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1950"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2005"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2004"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2003"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2002"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/99"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2001"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/98"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2000"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/97"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/96"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Higher_general_and_preparatory_scientific_education_HAVO_VWO_HBS"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/95"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/94"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Radiotherapiegroep_-_Deventer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/93"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Yes_current_smoker"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/92"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/91"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/100"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1939"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Other"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1938"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Radboud_UMC"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1937"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1936"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Breast"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1935"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1934"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1933"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1943"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1942"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1941"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1940"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Paediatric_-_Craniospinal_axis"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Divorced"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/105"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:AMC"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/103"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/104"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/101"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/102"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Scientific_education_WOUniversiteit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1929"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1928"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1927"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1926"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1925"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Het_Nederlands_Kankerinstituut_-_Antoni_van_Leeuwenhoek_ziekenhuis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1924"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1923"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1922"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1932"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1931"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1930"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:VUmc"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Zuidwest_Radiotherapeutisch_instituut_-_Roosendaal"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Erasmus_MC"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Noordwest_ziekenhuisgroep_-_Alkmaar"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Not_applicable_in_case_of_photon_RT"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1919"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1918"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1917"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Noordwest_ziekenhuisgroep_-_Den_Helder"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1916"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1915"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1914"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Secondary_vocational_education_MBO-lang_MTS_MEAO"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1913"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1912"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1911"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Preparatory_vocational_education_LBO_LTS_LEAO_LHNO_huishoudschool_VMBO-B_VMBO-K"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1921"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1920"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="ncit:C81229"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Catharina_ziekenhuis"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Erasmus_MC_-_Dordrecht"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Referral_from_a_non_radiotherapy_centre_in_the_Netherlands"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:LUMC"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Central_nervous_system_-_Craniospinal_axis"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Central_nervous_system_-_Meningeoma"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:No_education_did_not_finish_primary_education"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1910"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Primary_education_basisschool__lagere_school"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Zuidwest_Radiotherapeutisch_Instituut_-_Vlissingen"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:AMC_-_Flevoziekenhuis"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Radiotherapiegroep_-_Ede"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="ncit:C19796"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:RCWestRadiotherapiecentrum_West"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Distance_to_proton_centre"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:UMCG"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Single"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Domestic_partner"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Central_nervous_system_-_Other_tumour_sites"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="roo:planningComparisonOutcome"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Institiuut_Verbeeten_-_s_Hertogenbosch"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="ncit:C19326"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="roo:reirradiation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/9"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/8"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Radiotherapiegroep_-_Arnhem"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/7"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/6"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/5"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/4"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/3"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/2"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/1"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Tumour_progression"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Unknown"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Yes_in_the_past_ex-smoker"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="roo:reasonNegativeProtonTherapyWithPositivePlanningComparison"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Indication_for_proton_therapy"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Lymphoma"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Brachy"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Widowed"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="ncit:C17953"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Instituut_Verbeeten_-_Breda"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Radiotherapeutisch_Instituut_Friesland"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Male"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Esophageal"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Protons"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="ncit:C66897"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Female"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Haga_Radiotherapie"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Yes"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Other_namely"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Long_distance_relationship__In_a_relationship_but_not_living_together"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/18"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/17"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/16"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/15"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/14"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/13"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/12"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/11"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Radiotherapeutisch_Centrum_Zwolle"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/10"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Undifferentiated"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="roo:personalHistoryOfMalignantNeoplasm"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="ncit:C15313"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Benefit_proton_therapy_considered_too_limited"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:General_secondary_education_MAVO_MULO_MBO-kort_VMBO-TL"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Electrons"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Reinier_de_Graaf_groep"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="roo:planningComparison"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/19"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/29"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/28"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/27"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/26"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Paediatric_-_Central_nervous_system"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/25"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/24"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/23"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Paediatric_-_Other_tumour_sites"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/22"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="protrait:Married"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/21"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.protrait.nl/20"/>
+    </Declaration>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:AMC"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:AMC_-_Flevoziekenhuis"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:APTC_Amsterdam"/>
+        <Class abbreviatedIRI="ncit:C19326"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Benefit_proton_therapy_considered_too_limited"/>
+        <Class abbreviatedIRI="roo:reasonNegativeProtonTherapyWithPositivePlanningComparison"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Brachy"/>
+        <Class abbreviatedIRI="ncit:C15313"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Breast"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Catharina_ziekenhuis"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Central_nervous_system_-_Base_of_skull"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Central_nervous_system_-_Craniospinal_axis"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Central_nervous_system_-_Low_grade_glioma"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Central_nervous_system_-_Meningeoma"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Central_nervous_system_-_Other_tumour_sites"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Distance_to_proton_centre"/>
+        <Class abbreviatedIRI="roo:reasonNegativeProtonTherapyWithPositivePlanningComparison"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Divorced"/>
+        <Class abbreviatedIRI="ncit:C25188"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Domestic_partner"/>
+        <Class abbreviatedIRI="ncit:C25188"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Electrons"/>
+        <Class abbreviatedIRI="ncit:C15313"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Erasmus_MC"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Erasmus_MC_-_Dordrecht"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Esophageal"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Eye_melanoma"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Female"/>
+        <Class abbreviatedIRI="ncit:C28421"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:GPTC_Groningen"/>
+        <Class abbreviatedIRI="ncit:C19326"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:General_secondary_education_MAVO_MULO_MBO-kort_VMBO-TL"/>
+        <Class abbreviatedIRI="ncit:C17953"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Haga_Radiotherapie"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Head_and_neck"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Het_Nederlands_Kankerinstituut_-_Antoni_van_Leeuwenhoek_ziekenhuis"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Higher_general_and_preparatory_scientific_education_HAVO_VWO_HBS"/>
+        <Class abbreviatedIRI="ncit:C17953"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Higher_professional_education_HBO_HTS_HEAO"/>
+        <Class abbreviatedIRI="ncit:C17953"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:HollandPTC_Delft"/>
+        <Class abbreviatedIRI="ncit:C19326"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Indication_for_proton_therapy"/>
+        <Class abbreviatedIRI="roo:planningComparisonOutcome"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Institiuut_Verbeeten_-_s_Hertogenbosch"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Instituut_Verbeeten_-_Breda"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Instituut_Verbeeten_-_Tilburg"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Intra_Operative"/>
+        <Class abbreviatedIRI="ncit:C15313"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:LUMC"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Long_distance_relationship__In_a_relationship_but_not_living_together"/>
+        <Class abbreviatedIRI="ncit:C25188"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Lung"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Lymphoma"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:MAASTRO"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:MAASTRO_protonen"/>
+        <Class abbreviatedIRI="ncit:C19326"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:MST"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Male"/>
+        <Class abbreviatedIRI="ncit:C28421"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Married"/>
+        <Class abbreviatedIRI="ncit:C25188"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:No"/>
+        <Class abbreviatedIRI="ncit:C19796"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:No"/>
+        <Class abbreviatedIRI="ncit:C66897"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:No"/>
+        <Class abbreviatedIRI="ncit:C81229"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:No"/>
+        <Class abbreviatedIRI="roo:personalHistoryOfMalignantNeoplasm"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:No"/>
+        <Class abbreviatedIRI="roo:planningComparison"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:No"/>
+        <Class abbreviatedIRI="roo:previousRadiotherapy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:No"/>
+        <Class abbreviatedIRI="roo:reirradiation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:No_education_did_not_finish_primary_education"/>
+        <Class abbreviatedIRI="ncit:C17953"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:No_indication_for_proton_therapy"/>
+        <Class abbreviatedIRI="roo:planningComparisonOutcome"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Noordwest_ziekenhuisgroep_-_Alkmaar"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Noordwest_ziekenhuisgroep_-_Den_Helder"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Not_applicable_in_case_of_photon_RT"/>
+        <Class abbreviatedIRI="ncit:C19326"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Other"/>
+        <Class abbreviatedIRI="ncit:C17953"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Other_namely"/>
+        <Class abbreviatedIRI="roo:reasonNegativeProtonTherapyWithPositivePlanningComparison"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Other_treatment_team"/>
+        <Class abbreviatedIRI="roo:reasonNegativeProtonTherapyWithPositivePlanningComparison"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Other_tumour_site"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Paediatric_-_Central_nervous_system"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Paediatric_-_Craniospinal_axis"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Paediatric_-_Other_tumour_sites"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Photons"/>
+        <Class abbreviatedIRI="ncit:C15313"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Preparatory_vocational_education_LBO_LTS_LEAO_LHNO_huishoudschool_VMBO-B_VMBO-K"/>
+        <Class abbreviatedIRI="ncit:C17953"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Primary_education_basisschool__lagere_school"/>
+        <Class abbreviatedIRI="ncit:C17953"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Prinses_Maxima_Centrum"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Prostate"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Protons"/>
+        <Class abbreviatedIRI="ncit:C15313"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:RCWestRadiotherapiecentrum_West"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Radboud_UMC"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Radiotherapeutisch_Centrum_Zwolle"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Radiotherapeutisch_Instituut_Friesland"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Radiotherapiegroep_-_Arnhem"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Radiotherapiegroep_-_Deventer"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Radiotherapiegroep_-_Ede"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Referral_from_a_non_radiotherapy_centre_in_the_Netherlands"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Referral_from_abroad"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Reinier_de_Graaf_groep"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Sarcoma"/>
+        <Class abbreviatedIRI="ncit:C3263"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Scientific_education_WOUniversiteit"/>
+        <Class abbreviatedIRI="ncit:C17953"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Secondary_vocational_education_MBO-lang_MTS_MEAO"/>
+        <Class abbreviatedIRI="ncit:C17953"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Single"/>
+        <Class abbreviatedIRI="ncit:C25188"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Tumour_progression"/>
+        <Class abbreviatedIRI="roo:reasonNegativeProtonTherapyWithPositivePlanningComparison"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:UMCG"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:UMCU"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Undifferentiated"/>
+        <Class abbreviatedIRI="ncit:C28421"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Unknown"/>
+        <Class abbreviatedIRI="ncit:C17953"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Unknown"/>
+        <Class abbreviatedIRI="ncit:C28421"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:VUmc"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:VUmc_-_Dijklander_ziekenhuis"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Widowed"/>
+        <Class abbreviatedIRI="ncit:C25188"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Yes"/>
+        <Class abbreviatedIRI="ncit:C66897"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Yes"/>
+        <Class abbreviatedIRI="ncit:C81229"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Yes"/>
+        <Class abbreviatedIRI="roo:personalHistoryOfMalignantNeoplasm"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Yes"/>
+        <Class abbreviatedIRI="roo:planningComparison"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Yes"/>
+        <Class abbreviatedIRI="roo:previousRadiotherapy"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Yes"/>
+        <Class abbreviatedIRI="roo:reirradiation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Yes_current_smoker"/>
+        <Class abbreviatedIRI="ncit:C19796"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Yes_in_the_past_ex-smoker"/>
+        <Class abbreviatedIRI="ncit:C19796"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Zuidwest_Radiotherapeutisch_Instituut_-_Vlissingen"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="protrait:Zuidwest_Radiotherapeutisch_instituut_-_Roosendaal"/>
+        <Class abbreviatedIRI="roo:referralCentre"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/10"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/100"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/101"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/102"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/103"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/104"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/105"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/11"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/12"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/13"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/14"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/15"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/16"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/17"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/18"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/19"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1910"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1911"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1912"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1913"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1914"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1915"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1916"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1917"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1918"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1919"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1920"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1921"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1922"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1923"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1924"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1925"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1926"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1927"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1928"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1929"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1930"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1931"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1932"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1933"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1934"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1935"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1936"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1937"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1938"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1939"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1940"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1941"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1942"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1943"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1944"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1945"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1946"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1947"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1948"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1949"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1950"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1951"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1952"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1953"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1954"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1955"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1956"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1957"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1958"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1959"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1960"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1961"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1962"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1963"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1964"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1965"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1966"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1967"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1968"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1969"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1970"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1971"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1972"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1973"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1974"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1975"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1976"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1977"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1978"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1979"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1980"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1981"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1982"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1983"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1984"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1985"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1986"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1987"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1988"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1989"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1990"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1991"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1992"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1993"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1994"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1995"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1996"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1997"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1998"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/1999"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/20"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2000"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2001"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2002"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2003"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2004"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2005"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2006"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2007"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2008"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2009"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2010"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2011"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2012"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2013"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2014"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2015"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2016"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2017"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2018"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2019"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2020"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2021"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2022"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2023"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2024"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2025"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2026"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2027"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2028"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2029"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/2030"/>
+        <Class abbreviatedIRI="ncit:C25155"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/21"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/22"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/23"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/24"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/25"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/26"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/27"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/28"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/29"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/3"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/30"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/31"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/32"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/33"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/34"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/35"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/36"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/37"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/38"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/39"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/4"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/40"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/41"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/42"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/43"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/44"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/45"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/46"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/47"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/48"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/49"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/5"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/50"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/51"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/52"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/53"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/54"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/55"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/56"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/57"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/58"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/59"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/6"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/60"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/61"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/62"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/63"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/64"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/65"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/66"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/67"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/68"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/69"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/7"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/70"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/71"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/72"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/73"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/74"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/75"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/76"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/77"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/78"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/79"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/8"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/80"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/81"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/82"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/83"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/84"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/85"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/86"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/87"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/88"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/89"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/9"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/90"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/91"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/92"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/93"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/94"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/95"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/96"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/97"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/98"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://www.protrait.nl/99"/>
+        <Class abbreviatedIRI="roo:C100002"/>
+    </SubClassOf>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:AMC</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">8</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:AMC_-_Flevoziekenhuis</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">9</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:APTC_Amsterdam</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">4</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Benefit_proton_therapy_considered_too_limited</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Brachy</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Breast</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">8</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Catharina_ziekenhuis</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">30</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Central_nervous_system_-_Base_of_skull</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">4</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Central_nervous_system_-_Craniospinal_axis</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Central_nervous_system_-_Low_grade_glioma</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Central_nervous_system_-_Meningeoma</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Central_nervous_system_-_Other_tumour_sites</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">6</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Distance_to_proton_centre</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Divorced</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Domestic_partner</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Electrons</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Erasmus_MC</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">65</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Erasmus_MC_-_Dordrecht</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">66</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Esophageal</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">10</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Eye_melanoma</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">16</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Female</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:GPTC_Groningen</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:General_secondary_education_MAVO_MULO_MBO-kort_VMBO-TL</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">4</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Haga_Radiotherapie</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">20</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Head_and_neck</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">7</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Het_Nederlands_Kankerinstituut_-_Antoni_van_Leeuwenhoek_ziekenhuis</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Higher_general_and_preparatory_scientific_education_HAVO_VWO_HBS</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">8</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Higher_professional_education_HBO_HTS_HEAO</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">9</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:HollandPTC_Delft</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Indication_for_proton_therapy</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Institiuut_Verbeeten_-_s_Hertogenbosch</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">72</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Instituut_Verbeeten_-_Breda</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">71</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Instituut_Verbeeten_-_Tilburg</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">70</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Intra_Operative</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">4</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:LUMC</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">50</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Long_distance_relationship__In_a_relationship_but_not_living_together</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Lung</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">9</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Lymphoma</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">12</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:MAASTRO</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">55</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:MAASTRO_protonen</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:MST</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">35</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Male</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Married</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:No</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:No_education_did_not_finish_primary_education</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:No_indication_for_proton_therapy</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Noordwest_ziekenhuisgroep_-_Alkmaar</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Noordwest_ziekenhuisgroep_-_Den_Helder</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Not_applicable_in_case_of_photon_RT</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Other</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">11</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Other_namely</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Other_treatment_team</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Other_tumour_site</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">17</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Paediatric_-_Central_nervous_system</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">13</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Paediatric_-_Craniospinal_axis</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">14</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Paediatric_-_Other_tumour_sites</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">15</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Photons</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Preparatory_vocational_education_LBO_LTS_LEAO_LHNO_huishoudschool_VMBO-B_VMBO-K</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Primary_education_basisschool__lagere_school</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Prinses_Maxima_Centrum</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">81</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Prostate</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Protons</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:RCWestRadiotherapiecentrum_West</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">15</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Radboud_UMC</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">60</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Radiotherapeutisch_Centrum_Zwolle</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">90</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Radiotherapeutisch_Instituut_Friesland</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">45</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Radiotherapiegroep_-_Arnhem</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">26</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Radiotherapiegroep_-_Deventer</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">25</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Radiotherapiegroep_-_Ede</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">27</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Referral_from_a_non_radiotherapy_centre_in_the_Netherlands</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">95</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Referral_from_abroad</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">96</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Reinier_de_Graaf_groep</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">10</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Sarcoma</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">11</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Scientific_education_WOUniversiteit</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">10</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Secondary_vocational_education_MBO-lang_MTS_MEAO</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Single</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">6</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Tumour_progression</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">4</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:UMCG</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">40</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:UMCU</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">80</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Undifferentiated</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Unknown</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">9</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Unknown</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">999</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:VUmc</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">6</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:VUmc_-_Dijklander_ziekenhuis</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">7</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Widowed</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">4</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Yes</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Yes_current_smoker</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Yes_in_the_past_ex-smoker</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Zuidwest_Radiotherapeutisch_Instituut_-_Vlissingen</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">85</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <AbbreviatedIRI>protrait:Zuidwest_Radiotherapeutisch_instituut_-_Roosendaal</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">86</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/10</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">10</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/100</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">100</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/101</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">101</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/102</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">102</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/103</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">103</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/104</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">104</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/105</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">105</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/11</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">11</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/12</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">12</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/13</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">13</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/14</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">14</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/15</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">15</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/16</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">16</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/17</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">17</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/18</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">18</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/19</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">19</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1910</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1910</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1911</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1911</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1912</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1912</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1913</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1913</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1914</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1914</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1915</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1915</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1916</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1916</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1917</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1917</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1918</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1918</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1919</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1919</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1920</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1920</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1921</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1921</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1922</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1922</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1923</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1923</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1924</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1924</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1925</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1925</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1926</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1926</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1927</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1927</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1928</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1928</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1929</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1929</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1930</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1930</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1931</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1931</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1932</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1932</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1933</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1933</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1934</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1934</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1935</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1935</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1936</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1936</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1937</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1937</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1938</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1938</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1939</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1939</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1940</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1940</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1941</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1941</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1942</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1942</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1943</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1943</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1944</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1944</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1945</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1945</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1946</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1946</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1947</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1947</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1948</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1948</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1949</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1949</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1950</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1950</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1951</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1951</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1952</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1952</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1953</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1953</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1954</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1954</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1955</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1955</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1956</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1956</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1957</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1957</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1958</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1958</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1959</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1959</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1960</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1960</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1961</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1961</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1962</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1962</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1963</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1963</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1964</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1964</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1965</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1965</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1966</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1966</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1967</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1967</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1968</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1968</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1969</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1969</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1970</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1970</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1971</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1971</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1972</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1972</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1973</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1973</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1974</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1974</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1975</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1975</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1976</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1976</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1977</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1977</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1978</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1978</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1979</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1979</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1980</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1980</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1981</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1981</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1982</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1982</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1983</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1983</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1984</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1984</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1985</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1985</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1986</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1986</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1987</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1987</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1988</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1988</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1989</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1989</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1990</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1990</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1991</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1991</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1992</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1992</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1993</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1993</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1994</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1994</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1995</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1995</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1996</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1996</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1997</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1997</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1998</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1998</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/1999</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1999</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/20</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">20</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2000</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2000</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2001</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2001</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2002</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2002</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2003</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2003</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2004</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2004</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2005</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2005</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2006</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2006</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2007</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2007</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2008</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2008</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2009</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2009</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2010</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2010</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2011</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2011</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2012</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2012</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2013</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2013</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2014</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2014</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2015</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2015</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2016</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2016</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2017</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2017</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2018</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2018</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2019</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2019</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2020</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2020</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2021</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2021</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2022</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2022</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2023</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2023</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2024</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2024</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2025</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2025</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2026</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2026</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2027</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2027</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2028</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2028</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2029</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2029</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/2030</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2030</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/21</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">21</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/22</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">22</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/23</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">23</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/24</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">24</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/25</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">25</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/26</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">26</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/27</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">27</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/28</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">28</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/29</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">29</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/3</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/30</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">30</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/31</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">31</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/32</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">32</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/33</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">33</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/34</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">34</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/35</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">35</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/36</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">36</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/37</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">37</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/38</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">38</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/39</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">39</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/4</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">4</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/40</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">40</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/41</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">41</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/42</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">42</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/43</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">43</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/44</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">44</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/45</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">45</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/46</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">46</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/47</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">47</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/48</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">48</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/49</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">49</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/5</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/50</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">50</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/51</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">51</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/52</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">52</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/53</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">53</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/54</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">54</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/55</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">55</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/56</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">56</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/57</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">57</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/58</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">58</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/59</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">59</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/6</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">6</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/60</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">60</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/61</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">61</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/62</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">62</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/63</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">63</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/64</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">64</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/65</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">65</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/66</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">66</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/67</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">67</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/68</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">68</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/69</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">69</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/7</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">7</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/70</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">70</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/71</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">71</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/72</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">72</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/73</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">73</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/74</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">74</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/75</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">75</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/76</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">76</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/77</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">77</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/78</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">78</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/79</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">79</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/8</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">8</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/80</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">80</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/81</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">81</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/82</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">82</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/83</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">83</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/84</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">84</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/85</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">85</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/86</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">86</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/87</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">87</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/88</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">88</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/89</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">89</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/9</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">9</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/90</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">90</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/91</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">91</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/92</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">92</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/93</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">93</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/94</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">94</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/95</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">95</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/96</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">96</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/97</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">97</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/98</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">98</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="protrait:LC_Code"/>
+        <IRI>http://www.protrait.nl/99</IRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">99</Literal>
+    </AnnotationAssertion>
+</Ontology>
 
-<owl:Ontology rdf:about="https://raw.githubusercontent.com/MaastrichtU-CDS/protrait_term-mapper/main/proTRAITTermmapperValueTriples.ttl"/>
-
-<rdf:Description rdf:about="prefix">
-  <r rdf:resource="http://www.w3.org/ns/r2rm"/>
-  <x rdf:resource="http://example.com/n"/>
-  <ap rdf:resource="http://mapping.loca"/>
-  <ty rdf:resource="http://purl.bioontology.org/ontology/ST"/>
-  <io rdf:resource="http://semanticscience.org/resource/SI"/>
-  <oaf rdf:resource="http://xmlns.com/foaf/0."/>
-  <df rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-n"/>
-  <dfs rdf:resource="http://www.w3.org/2000/01/rdf-schem"/>
-  <sd rdf:resource="http://www.w3.org/2001/XMLSchem"/>
-  <cit rdf:resource="http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.ow"/>
-  <oo rdf:resource="http://www.cancerdata.org/ro"/>
-  <cd rdf:resource="http://purl.bioontology.org/ontology/ICD1"/>
-  <kos rdf:resource="http://www.w3.org/2008/05/sko"/>
-  <o rdf:resource="http://purl.obolibrary.org/obo/U"/>
-  <ime rdf:resource="http://www.w3.org/2006/tim"/>
-  <rotrait rdf:resource="http://www.protrait.nl"/>
-</rdf:Description>
 
 
-</rdf:RDF>
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
