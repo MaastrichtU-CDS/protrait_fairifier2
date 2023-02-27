@@ -14,15 +14,6 @@ if __name__ == '__main__':
     roo = get_ontology('roo.owl')
     roo.load()
 
-    # Adding Maastro Clinic as a concept
-    parent_label = 'Clinics and Hospitals'
-    parent_concept = roo.search(label=parent_label)[0]
-    concept = 'MaastroClinic'
-    concept_label = 'Maastro Clinic'
-    with roo:
-        types.new_class(concept, (parent_concept,))
-        roo[concept].label = concept_label
-
     # Add extra concepts
     # TODO: do these concepts have children? what are the parents?
     concepts_list = [
