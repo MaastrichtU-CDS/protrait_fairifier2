@@ -1,0 +1,1161 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix ex: <http://example.com/ns#>.
+@prefix map: <http://mapping.local/>.
+@prefix sty: <http://purl.bioontology.org/ontology/STY/>.
+@prefix sio: <http://semanticscience.org/resource/SIO_>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>.
+@prefix roo: <http://www.cancerdata.org/roo/>.
+@prefix icd: <http://purl.bioontology.org/ontology/ICD10/>.
+@prefix skos: <http://www.w3.org/2008/05/skos#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix uo: <http://purl.obolibrary.org/obo/UO_>.
+@prefix time: <http://www.w3.org/2006/time#>.
+ 
+
+###########################################
+# Add patient 
+###########################################
+map:patientQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    gen_idnumber as id 
+        FROM gen_patient""";
+    rdfs:label "";
+    skos:definition "".
+
+map:patient a rr:TriplesMap;
+    rr:logicalTable map:patientQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}";
+        rr:class ncit:C16960; #patient
+    ].
+
+###########################################
+# Add identifier                                
+###########################################
+map:identifier a rr:TriplesMap;
+    rr:logicalTable map:patientQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/";
+        rr:class ncit:C25364; #identifier
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "id"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:P100061; #has_person_identifier
+        rr:objectMap [
+            rr:parentTriplesMap map:identifier;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+
+###########################################
+# Add treating centre
+###########################################
+map:treatingCentreQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    gen_idnumber as id, 
+    gen_treat_centre, 
+    gen_date_registr, 
+    gen_refer_centre 
+        FROM gen_patient""";
+    rdfs:label "";
+    skos:definition "".
+
+map:treatingCentre a rr:TriplesMap;
+    rr:logicalTable map:treatingCentreQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/treatingCentre/{gen_treat_centre}";
+        rr:class ncit:C19326;  #clinics and hospitals
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "gen_treat_centre"; 
+            rr:datatype xsd:string;
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_registration_date; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:registrationDate;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:referred_by; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:referringCentre;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+map:registrationDate a rr:TriplesMap;
+    rr:logicalTable map:treatingCentreQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/registration/{gen_date_registr}";
+        rr:class ncit:C25646; #registration
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "gen_date_registr"; 
+            rr:datatype xsd:date;
+        ];
+    ].     
+
+map:referringCentre a rr:TriplesMap;
+    rr:logicalTable map:treatingCentreQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/registration/{gen_refer_centre}";
+        rr:class roo:referralCentre; #referral centre
+    ];    
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "gen_refer_centre"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:P100039; #is_treated_in
+        rr:objectMap [
+            rr:parentTriplesMap map:treatingCentre;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+
+###########################################
+# Add gender / biological Sex 
+###########################################    
+map:sexQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    gen_idnumber as id, 
+    gen_gender 
+        FROM gen_patient""";
+    rdfs:label "";
+    skos:definition "".
+
+map:biologicalSex a rr:TriplesMap;
+    rr:logicalTable map:sexQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/biologicalSex/{gen_gender}";
+        rr:class ncit:C28421; #sex
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "gen_gender";
+            rr:datatype xsd:string;
+        ];
+    ].  
+
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:P100018; #has_biological_sex
+        rr:objectMap [
+            rr:parentTriplesMap map:biologicalSex;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+###########################################
+# Add age at diagnosis 
+###########################################    
+map:ageAtDiagnosisQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    gen_idnumber as id, 
+    gen_age  
+        FROM gen_patient""";
+    rdfs:label "";
+    skos:definition "".
+    
+map:ageAtDiagnosis a rr:TriplesMap;
+    rr:logicalTable map:ageAtDiagnosisQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/ageAtDiagnosis/{gen_age}";
+        rr:class roo:C100002; #age_at_diagnosis
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042;  #has_value
+        rr:objectMap [
+            rr:column "gen_age"; 
+            rr:datatype xsd:integer;
+        ];
+    # ];                                                            
+    # rr:predicateObjectMap [
+    #     rr:predicate roo:P100029; #is_diagnosed_with
+    #     rr:objectMap [
+    #         rr:parentTriplesMap map:neoplasm;
+    #         rr:joinCondition [
+    #             rr:child "id";
+    #             rr:parent "id";
+    #         ];
+    #     ];
+    ]. 
+
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:P100016; #has_age_at_diagnosis
+        rr:objectMap [
+            rr:parentTriplesMap map:ageAtDiagnosis;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+###########################################
+# Add birth year 
+###########################################   
+map:birthYearQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    gen_idnumber as id, 
+    gen_year_birth  
+        FROM gen_patient""";
+    rdfs:label "";
+    skos:definition "".
+
+map:birthYear a rr:TriplesMap;
+    rr:logicalTable map:birthYearQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/birthYear/{gen_year_birth}";
+        rr:class ncit:C25155; #birth
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100027; #has_unit
+        rr:objectMap [
+            rr:column "gen_year_birth";
+            rr:datatype xsd:gYear;
+        ];
+    ].
+
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:is_born; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:birthYear;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+###########################################
+# Add educationlevel 
+###########################################  
+map:educationLevelQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    gen_idnumber as id, 
+    gen_education  
+        FROM gen_patient""";
+    rdfs:label "";
+    skos:definition "".
+
+map:educationLevel a rr:TriplesMap;
+    rr:logicalTable map:educationLevelQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/educationLevel/{gen_education}";
+        rr:class ncit:C17953; #education level
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "gen_education";
+            rr:datatype xsd:string;
+        ];
+    ].
+
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:has_education_level; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:educationLevel;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+
+###########################################
+# Add relationship status 
+########################################### 
+map:relationshipStatusQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    gen_idnumber as id, 
+    gen_relation  
+        FROM gen_patient""";
+    rdfs:label "";
+    skos:definition "".
+
+map:relationshipStatus a rr:TriplesMap;
+    rr:logicalTable map:relationshipStatusQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/relationshipStatus/{gen_relation}";
+        rr:class ncit:C25188; #marital status
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "gen_relation";
+            rr:datatype xsd:string;
+        ];
+    ].
+
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:has_relationship_status; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:relationshipStatus;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+###########################################
+# Add smoking status 
+###########################################  
+map:smokingStatusQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    gen_idnumber as id,
+    gen_smoking_id, 
+    gen_smoking, 
+    gen_sm_packyears, 
+    gen_sm_stopmonths 
+        FROM gen_smoking""";
+    rdfs:label "";
+    skos:definition "".
+
+map:smokingStatus a rr:TriplesMap;
+    rr:logicalTable map:smokingStatusQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_smoking_id/{gen_smoking_id}/smokingStatus/{gen_smoking}";
+        rr:class ncit:C19796; #smoking status
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "gen_smoking"; 
+            rr:datatype xsd:string;
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100306; #has_smoking_status
+        rr:objectMap [
+            rr:parentTriplesMap map:formerSmoker;
+            rr:joinCondition [
+                rr:child "gen_smoking_id";
+                rr:parent "gen_smoking_id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100306; #has_smoking_status
+        rr:objectMap [
+            rr:parentTriplesMap map:currentSmoker;
+            rr:joinCondition [
+                rr:child "gen_smoking_id";
+                rr:parent "gen_smoking_id";
+            ];
+        ];
+    ].
+
+map:formerSmoker a rr:TriplesMap;
+    rr:logicalTable map:smokingStatusQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_smoking_id/{gen_smoking_id}/smokingStatus/formerSmoker/{gen_sm_packyears}";
+        rr:class ncit:C67148; #former smoker
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "gen_sm_packyears";
+            rr:datatype xsd:integer;
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100027; #has_unit
+        rr:objectMap [
+            rr:parentTriplesMap map:packYears;                                      
+            rr:joinCondition [ 
+                rr:child "gen_smoking_id";
+                rr:parent "gen_smoking_id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_time_period; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:timeStoppedSmoking;
+            rr:joinCondition [
+                rr:child "gen_smoking_id";
+                rr:parent "gen_smoking_id";
+            ];
+        ];
+    ].
+
+map:timeStoppedSmoking a rr:TriplesMap;
+    rr:logicalTable map:smokingStatusQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_smoking_id/{gen_smoking_id}/smokingStatus/formerSmoker/timeStoppedSmoking/{gen_sm_stopmonths}";
+        rr:class roo:timeStoppedSmoking;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value 
+        rr:objectMap [
+            rr:column "gen_sm_stopmonths";
+            rr:datatype xsd:integer;
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100027; #has_unit
+        rr:objectMap [
+            rr:parentTriplesMap map:month;
+            rr:joinCondition [
+                rr:child "gen_smoking_id"; 
+                rr:parent "gen_smoking_id";
+            ];
+        ];
+    ].
+
+map:currentSmoker a rr:TriplesMap;
+    rr:logicalTable map:smokingStatusQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_smoking_id/{gen_smoking_id}smokingStatus/currentSmoker/{gen_sm_packyears}";
+        rr:class ncit:C67147;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "gen_sm_packyears";
+            rr:datatype xsd:integer;
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100027; #has_unit
+        rr:objectMap [
+            rr:parentTriplesMap map:packYears;
+            rr:joinCondition [
+                rr:child "gen_smoking_id";      
+                rr:parent "gen_smoking_id";
+            ];
+        ];
+    ].
+
+map:packYears a rr:TriplesMap;
+    rr:logicalTable map:smokingStatusQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/packyears";
+        rr:class ncit:C73993; #pack year
+    ].
+
+map:month a rr:TriplesMap;
+    rr:logicalTable map:smokingStatusQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/month";             
+        rr:class uo:0000035; #month
+    ].
+
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:P100306; #has smoking status
+        rr:objectMap [
+            rr:parentTriplesMap map:smokingStatus;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+###########################################
+# Add alcohol use history 
+########################################### 
+map:alcoholUseHistoryQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    gen_idnumber as id, 
+    gen_alcohol_id,
+    gen_alcohol, 
+    gen_alcohol_days, 
+    gen_alcohol_glass 
+        FROM gen_alcohol""";
+    rdfs:label "";
+    skos:definition "".
+
+map:alcoholUseHistory a rr:TriplesMap;
+    rr:logicalTable map:alcoholUseHistoryQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_alcohol_id/{gen_alcohol_id}/personalHistory/alcoholUseHistory/{gen_alcohol}";
+        rr:class ncit:C81229; #alcohol use history
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "gen_alcohol";
+            rr:datatype xsd:string;
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100423; #consists_of
+        rr:objectMap [
+            rr:parentTriplesMap map:daysWithMoreThan1Glass;
+            rr:joinCondition [
+                rr:child "gen_alcohol_id";
+                rr:parent "gen_alcohol_id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100423; #consists_of
+        rr:objectMap [
+            rr:parentTriplesMap map:numberOfGlasses;
+            rr:joinCondition [
+                rr:child "gen_alcohol_id";
+                rr:parent "gen_alcohol_id";
+            ];
+        ];
+    ].
+
+map:daysWithMoreThan1Glass a rr:TriplesMap;
+    rr:logicalTable map:alcoholUseHistoryQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_alcohol_id/{gen_alcohol_id}/personalHistory/alcoholUseHistory/daysWithMoreThan1Glass/{gen_alcohol_days}";
+        rr:class roo:daysWithMoreThan1Glass; #new roo class
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "gen_alcohol_days"; 
+            rr:datatype xsd:integer;
+        ];
+    ].
+
+map:numberOfGlasses a rr:TriplesMap;
+    rr:logicalTable map:alcoholUseHistoryQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_alcohol_id/{gen_alcohol_id}/personalHistory/alcoholUseHistory/numberOfGlasses/{gen_alcohol_glass}";
+        rr:class roo:numberOfGlasses; #new roo class
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "gen_alcohol_glass"; 
+            rr:datatype xsd:integer;
+        ];
+    ].
+
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:P100022; #has_finding
+        rr:objectMap [
+            rr:parentTriplesMap map:alcoholUseHistory;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+
+###########################################
+# Add bodyweight 
+########################################### 
+map:bodyWeightQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    gen_idnumber as id, 
+    gen_weight 
+        FROM gen_patient""";
+    rdfs:label "";
+    skos:definition "".
+
+map:bodyWeight a rr:TriplesMap;
+    rr:logicalTable map:bodyWeightQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/bodyWeight/{gen_weight}";
+        rr:class ncit:C81328; #bodyweight
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042;  #has_value
+        rr:objectMap [
+            rr:column "gen_weight"; 
+            rr:datatype xsd:integer;
+        ];
+    ];  
+    rr:predicateObjectMap [
+        rr:predicate roo:P100027; #has_unit
+        rr:objectMap [
+            rr:parentTriplesMap map:kilogram;
+            rr:joinCondition [
+                rr:child "id";  
+                rr:parent "id";
+            ];
+        ];       
+    ].
+
+map:kilogram a rr:TriplesMap;
+    rr:logicalTable map:bodyWeightQuery; #what query do units get?   
+    rr:subjectMap [
+        rr:template "patient/{id}/kilogram";
+        rr:class uo:0000009; #kilogram
+    ].  
+
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:P100249; #has_body_weight
+        rr:objectMap [
+            rr:parentTriplesMap map:bodyWeight;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+
+###########################################
+# Add bodyheight
+########################################### 
+map:bodyHeightQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    gen_idnumber as id, 
+    gen_height  
+        FROM gen_patient""";
+    rdfs:label "";
+    skos:definition "".
+
+map:bodyHeight a rr:TriplesMap;
+    rr:logicalTable map:bodyHeightQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/bodyHeight/{gen_height}";
+        rr:class ncit:C94488; #stature
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042;  #has_value
+        rr:objectMap [
+            rr:column "gen_height"; 
+            rr:datatype xsd:integer;
+        ];
+    ];  
+    rr:predicateObjectMap [
+        rr:predicate roo:P100027; #has_unit
+        rr:objectMap [
+            rr:parentTriplesMap map:centimeter;
+            rr:joinCondition [
+                rr:child "id";      
+                rr:parent "id";
+            ];
+        ];       
+    ].
+
+map:centimeter a rr:TriplesMap;
+    rr:logicalTable map:bodyHeightQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/centimeter";
+        rr:class uo:0000015; #centimeter
+    ].  
+
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:P100248; #has_body_height
+        rr:objectMap [
+            rr:parentTriplesMap map:bodyHeight;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+
+###########################################
+# Add neoplasm diagnosis 
+###########################################    
+map:neoplasmDiagnosisQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    gen_idnumber as id, 
+    gen_date_diag, 
+    gen_tumoursite, 
+    gen_rt_treatment,
+    gen_oth_c_rt_reirr 
+        FROM gen_patient""";
+    rdfs:label "";
+    skos:definition "".
+    
+map:neoplasm a rr:TriplesMap;
+    rr:logicalTable map:neoplasmDiagnosisQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/neoplasm";
+        rr:class ncit:C3262; #neoplasm
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100251; #has_date_of_diagnosis
+        rr:objectMap [
+            rr:parentTriplesMap map:dateOfFirstDiagnosis;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100202; #has_location 
+        rr:objectMap [          
+            rr:parentTriplesMap map:tumourSite;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100403; #treated_by
+        rr:objectMap [
+            rr:parentTriplesMap map:radiotherapyTreatmentTechnique;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:is_reirridiated; #new roo predicate  
+        rr:objectMap [
+            rr:parentTriplesMap map:reirradiation;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+map:dateOfFirstDiagnosis a rr:TriplesMap;
+    rr:logicalTable map:neoplasmDiagnosisQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/neoplasm/dateOfFirstDiagnosis/{gen_date_diag}";
+        rr:class roo:dateOfFirstDiagnosis; #new roo class
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "gen_date_diag"; 
+            rr:datatype xsd:date;
+        ];
+    ].
+
+map:tumourSite a rr:TriplesMap;
+    rr:logicalTable map:neoplasmDiagnosisQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/neoplasm/tumourSite/{gen_tumoursite}";
+        rr:class ncit:C3263; #neoplasm by site
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "gen_tumoursite";
+            rr:datatype xsd:string;
+        ];
+    ].
+
+map:radiotherapyTreatmentTechnique a rr:TriplesMap;
+    rr:logicalTable map:neoplasmDiagnosisQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/treatment/radiotherapyTreatmentTechnique/{gen_rt_treatment}";
+        rr:class ncit:C15313; #radiation therapy
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "gen_rt_treatment";
+            rr:datatype xsd:string;
+        ];
+    ].
+
+map:reirradiation a rr:TriplesMap;
+    rr:logicalTable map:neoplasmDiagnosisQuery; 
+    rr:subjectMap [
+        rr:template "patient/{id}/radiotherapy/reirradiation/{gen_oth_c_rt_reirr}";
+        rr:class roo:reirradiation; #new roo class
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "gen_oth_c_rt_reirr"; 
+            rr:datatype xsd:boulean;
+        ];
+    ].
+    
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:P100020; #has_disease
+        rr:objectMap [
+            rr:parentTriplesMap map:neoplasm;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+
+##########################################
+# Add previous neoplasm  Needs neoplasm
+##########################################    
+map:previousNeoplasmDiagnosisQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    gen_idnumber as id, 
+    gen_other_cancer_id,
+    gen_othercancer, 
+    gen_oth_c_site, 
+    gen_oth_c_icd,
+    gen_oth_c_date, 
+    gen_oth_c_rt
+        FROM gen_other_cancer""";
+    rdfs:label "";
+    skos:definition "".
+
+map:previousNeoplasm a rr:TriplesMap;
+    rr:logicalTable map:previousNeoplasmDiagnosisQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_other_cancer_id/{gen_other_cancer_id}/neoplasm/previousNeoplasm/{gen_othercancer}";
+        rr:class roo:personalHistoryOfMalignantNeoplasm; #new roo class
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "gen_othercancer"; 
+            rr:datatype xsd:boulean;                                                                 
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100202; #has_location 
+        rr:objectMap [
+            rr:parentTriplesMap map:othTumourSite;
+            rr:joinCondition [
+                rr:child "gen_other_cancer_id";
+                rr:parent "gen_other_cancer_id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100251; #has_date_of_diagnosis
+        rr:objectMap [
+            rr:parentTriplesMap map:dateOfDiagnosis;
+            rr:joinCondition [
+                rr:child "gen_other_cancer_id";
+                rr:parent "gen_other_cancer_id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_ICD_code; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:ICD_Code;
+            rr:joinCondition [
+                rr:child "gen_other_cancer_id";
+                rr:parent "gen_other_cancer_id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_previous_RT; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:previousRadiotherapy;
+            rr:joinCondition [
+                rr:child "gen_other_cancer_id";
+                rr:parent "gen_other_cancer_id";
+            ];
+        ];
+    ].
+
+map:othTumourSite a rr:TriplesMap;
+    rr:logicalTable map:previousNeoplasmDiagnosisQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_other_cancer_id/{gen_other_cancer_id}/neoplasm/tumourSite/{gen_oth_c_site}";
+        rr:class ncit:C3263; #neoplasm by site
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "gen_oth_c_site";
+            rr:datatype xsd:string;
+        ];
+    ].
+
+map:dateOfDiagnosis a rr:TriplesMap;
+    rr:logicalTable map:previousNeoplasmDiagnosisQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_other_cancer_id/{gen_other_cancer_id}/neoplasm/dateOfDiagnosis/{gen_oth_c_date}";
+        rr:class roo:dateOfDiagnosis; #new roo predicate?
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "gen_oth_c_date"; 
+            rr:datatype xsd:gYear;
+        ];
+    ].
+
+map:ICD_Code a rr:TriplesMap;
+    rr:logicalTable map:previousNeoplasmDiagnosisQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_other_cancer_id/{gen_other_cancer_id}/neoplasm/ICDcode/{gen_oth_c_icd}";
+        rr:class ncit:C66766; #ICD-O-3_Code
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "gen_oth_c_icd";
+            rr:datatype xsd:string;
+        ];
+    ].
+
+map:previousRadiotherapy a rr:TriplesMap;
+    rr:logicalTable map:previousNeoplasmDiagnosisQuery; 
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_other_cancer_id/{gen_other_cancer_id}/radiotherapy/previousRadiotherapy/{gen_oth_c_rt}";
+        rr:class roo:previousRadiotherapy; #new roo class
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042;
+        rr:objectMap [
+            rr:column "gen_oth_c_rt"; 
+            rr:datatype xsd:boulean;
+        ];
+    ].
+
+map:neoplasm rr:predicateObjectMap [
+        rr:predicate roo:previousNeoplasm; #new roo class
+        rr:objectMap [
+            rr:parentTriplesMap map:previousNeoplasm;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+###########################################
+# Add planning comparison 
+###########################################
+map:planningComparisonQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    gen_idnumber as id, 
+    gen_plan_comparison_id,
+    gen_plan_comparison, 
+    gen_plan_comp_date, 
+    gen_plan_comp_version, 
+    gen_comp_outcome, 
+    gen_dec_protons, 
+    gen_reason_protons, 
+    gen_reason_prot_other
+        FROM gen_plan_comparison""";
+    rdfs:label "";
+    skos:definition "".
+
+map:radiotherapy a rr:TriplesMap;
+    rr:logicalTable map:planningComparisonQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/radiotherapy";
+        rr:class ncit:C15313; #radiation therapy
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_planning_comparison; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:planningComparison;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+map:planningComparison a rr:TriplesMap;
+    rr:logicalTable map:planningComparisonQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_plan_comparison_id/{gen_plan_comparison_id}/radiotherapy/planningComparison/PlanningComparisonYesNo/{gen_plan_comparison}";
+        rr:class roo:planningComparison; #new roo class
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "gen_plan_comparison"; 
+            rr:datatype xsd:boolean;
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100228; #has_date
+        rr:objectMap [
+            rr:parentTriplesMap map:PlanningComparisonDate;
+            rr:joinCondition [
+                rr:child "gen_plan_comparison_id";
+                rr:parent "gen_plan_comparison_id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_version; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:PlanningComparisonVersion;
+            rr:joinCondition [
+                rr:child "gen_plan_comparison_id";
+                rr:parent "gen_plan_comparison_id";
+            ];
+        ];
+    ]; 
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:parentTriplesMap map:planningComparisonOutcome;
+            rr:joinCondition [
+                rr:child "gen_plan_comparison_id";
+                rr:parent "gen_plan_comparison_id";
+            ];
+        ];
+    ]; 
+    rr:predicateObjectMap [
+        rr:predicate roo:P100397; #has_result
+        rr:objectMap [
+            rr:parentTriplesMap map:protonTherapy;
+            rr:joinCondition [
+                rr:child "gen_plan_comparison_id";
+                rr:parent "gen_plan_comparison_id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:parentTriplesMap map:reasonNegativeProtonTherapyWithPositiveDSS;
+            rr:joinCondition [
+                rr:child "gen_plan_comparison_id";
+                rr:parent "gen_plan_comparison_id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:parentTriplesMap map:reasonProtonOther;
+            rr:joinCondition [
+                rr:child "gen_plan_comparison_id";
+                rr:parent "gen_plan_comparison_id";
+            ];
+        ];
+    ].
+
+map:PlanningComparisonDate a rr:TriplesMap;
+    rr:logicalTable map:planningComparisonQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_plan_comparison_id/{gen_plan_comparison_id}/radiotherapy/planningComparison/PlanningComparisonDate/{gen_plan_comp_date}";
+        rr:class roo:PlanningComparisonDate; #new roo class
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "gen_plan_comp_date"; 
+            rr:datatype xsd:date;
+        ];
+    ]. 
+
+map:PlanningComparisonVersion a rr:TriplesMap;
+    rr:logicalTable map:planningComparisonQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_plan_comparison_id/{gen_plan_comparison_id}/radiotherapy/planningComparison/PlanningComparisonVersion/{gen_plan_comp_version}";
+        rr:class roo:PlanningComparisonVersion; #new roo class
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "gen_plan_comp_version"; 
+            rr:datatype xsd:float;
+        ];
+    ].
+
+map:planningComparisonOutcome a rr:TriplesMap;
+    rr:logicalTable map:planningComparisonQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_plan_comparison_id/{gen_plan_comparison_id}/radiotherapy/planningComparison/planningComparisonOutcome/{gen_comp_outcome}";
+        rr:class roo:planningComparisonOutcome; #new roo class
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "gen_comp_outcome"; 
+            rr:datatype xsd:string;                                                      
+        ];
+    ].
+
+map:protonTherapy a rr:TriplesMap;
+    rr:logicalTable map:planningComparisonQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_plan_comparison_id/{gen_plan_comparison_id}/radiotherapyradiotherapy/protonTherapy/{gen_dec_protons}";
+        rr:class ncit:C66897; #proton beam radiation therapy
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value 
+        rr:objectMap [
+            rr:column "gen_dec_protons";
+            rr:datatype xsd:boulean;
+        ];
+    ].
+
+map:reasonNegativeProtonTherapyWithPositiveDSS a rr:TriplesMap;
+    rr:logicalTable map:planningComparisonQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_plan_comparison_id/{gen_plan_comparison_id}/radiotherapy/planningComparison/reasonNegativeProtonTherapyWithPositivePlanningComparison/{gen_reason_protons}";
+        rr:class roo:reasonNegativeProtonTherapyWithPositivePlanningComparison; #new roo class
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:local_value; 
+        rr:objectMap [
+            rr:column "gen_reason_protons"; 
+            rr:datatype xsd:string;  
+        ];
+    ].
+
+map:reasonProtonOther a rr:TriplesMap;
+    rr:logicalTable map:planningComparisonQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/gen_plan_comparison_id/{gen_plan_comparison_id}/radiotherapy/planningComparison/PlanningComparisonYesNo/reasonProtonOther/{gen_reason_prot_other}";
+        rr:class roo:reasonProtonOther; #new roo class
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:local_value; 
+        rr:objectMap [
+            rr:column "gen_reason_prot_other"; 
+            rr:datatype xsd:string;  
+        ];
+    ].
+
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:P100024; #has_procedure
+        rr:objectMap [
+            rr:parentTriplesMap map:radiotherapy;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
