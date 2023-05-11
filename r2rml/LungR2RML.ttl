@@ -1,0 +1,1382 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix ex: <http://example.com/ns#>.
+@prefix map: <http://mapping.local/>.
+@prefix sty: <http://purl.bioontology.org/ontology/STY/>.
+@prefix sio: <http://semanticscience.org/resource/SIO_>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>.
+@prefix roo: <http://www.cancerdata.org/roo/>.
+@prefix icd: <http://purl.bioontology.org/ontology/ICD10/>.
+@prefix skos: <http://www.w3.org/2008/05/skos#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix uo: <http://purl.obolibrary.org/obo/UO_>.
+@prefix time: <http://www.w3.org/2006/time#>.
+ 
+
+###########################################
+# SQL: Baseline Factor - WHO Performance
+###########################################
+map:whoQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+            gen_idnumber as id,
+            ln_bf_who
+        FROM public.ln_data
+        WHERE ln_timepoint = '1. Baseline'""";
+    rdfs:label "";
+    skos:definition "".
+
+###########################################
+# Add patient 
+###########################################
+map:patient a rr:TriplesMap;
+    rr:logicalTable map:whoQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}";
+        rr:class ncit:C16960; #patient
+    ].
+
+###########################################
+# Map patient to identifier & WHO Permance status                              
+###########################################
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:P100061; #has_person_identifier
+        rr:objectMap [
+            rr:parentTriplesMap map:identifier;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100218; #has_performance_status 
+        rr:objectMap [
+            rr:parentTriplesMap map:whoPerformance;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ].
+
+###########################################
+# Add identifier and value                                 
+###########################################
+map:identifier a rr:TriplesMap;
+    rr:logicalTable map:whoQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/";
+        rr:class ncit:C25364; #identifier
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "id"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add WHO Performance and value                                 
+###########################################
+map:whoPerformance a rr:TriplesMap;
+    rr:logicalTable map:whoQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/whoPerformance/{ln_bf_who}";
+        rr:class ncit:C20641; #Performance Status 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_bf_who"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+###########################################
+# SQL: Baseline Factor
+###########################################
+map:baselineFactorQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT
+           gen_idnumber AS id,
+           ln_bf_weightloss, 
+           ln_bf_tum_loc, 
+           ln_bf_central_peripheral, 
+           ln_bf_histology, 
+           ln_bf_ctstage, 
+           ln_bf_cnstage, 
+           ln_bf_cmstage, 
+           ln_bf_uiccstage
+       FROM public.ln_data
+       WHERE ln_timepoint = '1. Baseline'""";
+    rdfs:label "";
+    skos:definition "".
+
+###########################################
+# Map patient to baseline factors                              
+###########################################
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:has_weightloss; #new
+        rr:objectMap [
+            rr:parentTriplesMap map:weightLoss;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_tumor_location; #new  
+        rr:objectMap [
+            rr:parentTriplesMap map:tumorLocation;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100343; #has_laterality   
+        rr:objectMap [
+            rr:parentTriplesMap map:laterality;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100021; #has_histology   
+        rr:objectMap [
+            rr:parentTriplesMap map:histology;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100244; #has_clinical_t_stage   
+        rr:objectMap [
+            rr:parentTriplesMap map:cTStage;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100242; #has_clinical_n_stage   
+        rr:objectMap [
+            rr:parentTriplesMap map:cNStage;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100241; #has_clinical_m_stage   
+        rr:objectMap [
+            rr:parentTriplesMap map:cMStage;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_uicc_stage; #has_uicc_stage   
+        rr:objectMap [
+            rr:parentTriplesMap map:uiccStage;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ].
+###########################################
+# Add Weight Loss and value                                 
+###########################################
+map:weightLoss a rr:TriplesMap;
+    rr:logicalTable map:baselineFactorQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/weightLoss/{ln_bf_weightloss}";
+        rr:class ncit:C3445; #Weight Loss
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_bf_weightloss"; 
+            rr:datatype xsd:int;
+        ];
+    ].
+###########################################
+# Add Tumor Location and value                                 
+###########################################
+map:tumorLocation a rr:TriplesMap;
+    rr:logicalTable map:baselineFactorQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/tumorLocation/{ln_bf_tum_loc}";
+        rr:class ncit:tumor_location; #new
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_bf_tum_loc"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Central/ Peripheral (Laterality) and value                                 
+###########################################
+map:laterality a rr:TriplesMap;
+    rr:logicalTable map:baselineFactorQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/laterality/{ln_bf_central_peripheral}";
+        rr:class ncit:central_peripheral; #new
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_bf_central_peripheral"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Histology and value                                 
+###########################################
+map:histology a rr:TriplesMap;
+    rr:logicalTable map:baselineFactorQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/histology/{ln_bf_histology}";
+        rr:class ncit:C16681; #Histology
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_bf_histology"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add cT Stage and value                                 
+###########################################
+map:cTStage a rr:TriplesMap;
+    rr:logicalTable map:baselineFactorQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/cTStage/{ln_bf_ctstage}";
+        rr:class ncit:C25728; #T Category
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_bf_ctstage"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add cN Stage and value                                 
+###########################################
+map:cNStage a rr:TriplesMap;
+    rr:logicalTable map:baselineFactorQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/cNStage/{ln_bf_cnstage}";
+        rr:class ncit:C25580; #N Category
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_bf_cnstage"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add cM Stage and value                                 
+###########################################
+map:cMStage a rr:TriplesMap;
+    rr:logicalTable map:baselineFactorQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/cMStage/{ln_bf_cmstage}";
+        rr:class ncit:C25727; #M Category
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_bf_cmstage"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add UICC Stage and value                                 
+###########################################
+map:uiccStage a rr:TriplesMap;
+    rr:logicalTable map:baselineFactorQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/uiccStage/{ln_bf_uiccstage}";
+        rr:class ncit:C188404; #UICC Stage
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_bf_uiccstage"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# SQL: Diagnostic procedures and results
+###########################################
+map:diagnosticProcedureResults a rr:LogicalTable;
+    rr:sqlQuery """SELECT
+           gen_idnumber AS id,
+           ln_dpr_ct_thorax,
+           --ln_dpr_ct_thorax_dt,
+           ln_dpr_pet_petct,
+           --ln_dpr_pet_petct_dt,
+           ln_dpr_bronchoscopy,
+           ln_dpr_mediastinoscopy,
+           ln_dpr_eus_ebus,
+           ln_dpr_lung_fn_test,
+           ln_dpr_lung_fn_fev1,
+           ln_dpr_lung_fn_dlco
+       FROM public.ln_data
+       WHERE ln_timepoint = '1. Baseline'""";
+    rdfs:label "";
+    skos:definition "".
+
+###########################################
+# Map patient to Diagnostic procedures and results                          
+###########################################
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:has_ct_thorax; #new
+        rr:objectMap [
+            rr:parentTriplesMap map:ctThorax;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_pet_petct; #new  
+        rr:objectMap [
+            rr:parentTriplesMap map:petPETCT;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_bronchoscopy; #new   
+        rr:objectMap [
+            rr:parentTriplesMap map:bronchoscopy;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_mediastinoscopy; #new  
+        rr:objectMap [
+            rr:parentTriplesMap map:mediastinoscopy;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_eus_ebus; #new   
+        rr:objectMap [
+            rr:parentTriplesMap map:eusEBUS;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_lung_fn_test; #new   
+        rr:objectMap [
+            rr:parentTriplesMap map:lungFnTest;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100265; #has_fev1_test    
+        rr:objectMap [
+            rr:parentTriplesMap map:LungFnFEV1;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_dlco_test; #new   
+        rr:objectMap [
+            rr:parentTriplesMap map:LungFnDLCO;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ].
+###########################################
+# Add CT Thorax and value                                 
+###########################################
+map:ctThorax a rr:TriplesMap;
+    rr:logicalTable map:diagnosticProcedureResults;
+    rr:subjectMap [
+        rr:template "patient/{id}/ctThorax/{ln_dpr_ct_thorax}";
+        rr:class ncit:C17204; #Computed Tomography
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_dpr_ct_thorax"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add PET PETCT and value                                 
+###########################################
+map:petPETCT a rr:TriplesMap;
+    rr:logicalTable map:diagnosticProcedureResults;
+    rr:subjectMap [
+        rr:template "patient/{id}/petPETCT/{ln_dpr_pet_petct}";
+        rr:class ncit:C103512; #Positron Emission Tomography and Computed Tomography Scan
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_dpr_pet_petct"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Brochoscopy and value                                 
+###########################################
+map:bronchoscopy a rr:TriplesMap;
+    rr:logicalTable map:diagnosticProcedureResults;
+    rr:subjectMap [
+        rr:template "patient/{id}/bronchoscopy/{ln_dpr_bronchoscopy}";
+        rr:class ncit:C16366; #Bronchoscopy
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_dpr_bronchoscopy"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Mediastinoscopy and value                                 
+###########################################
+map:mediastinoscopy a rr:TriplesMap;
+    rr:logicalTable map:diagnosticProcedureResults;
+    rr:subjectMap [
+        rr:template "patient/{id}/mediastinoscopy/{ln_dpr_mediastinoscopy}";
+        rr:class ncit:C16829; #Mediastinoscopy
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_dpr_mediastinoscopy"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Endoscopic Ultrasound or Endobronchial Ultrasound Bronchoscopy and value                                 
+###########################################
+map:eusEBUS a rr:TriplesMap;
+    rr:logicalTable map:diagnosticProcedureResults;
+    rr:subjectMap [
+        rr:template "patient/{id}/eusEBUS/{ln_dpr_eus_ebus }";
+        rr:class ncit:eus_ebus; #new #Endoscopic Ultrasound or Endobronchial Ultrasound Bronchoscopy
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_dpr_eus_ebus"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Lung Function Test and value                                 
+###########################################
+map:lungFnTest a rr:TriplesMap;
+    rr:logicalTable map:diagnosticProcedureResults;
+    rr:subjectMap [
+        rr:template "patient/{id}/lungFnTest/{ln_dpr_lung_fn_test}";
+        rr:class ncit:C38081; #Pulmonary Function Test
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_dpr_lung_fn_test"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Lung Function Test FEV1 and value                                 
+###########################################
+map:LungFnFEV1 a rr:TriplesMap;
+    rr:logicalTable map:diagnosticProcedureResults;
+    rr:subjectMap [
+        rr:template "patient/{id}/lungFnTest/LungFnFEV1/{ln_dpr_lung_fn_fev1}";
+        rr:class ncit:C159315; #FEV1% REF Pre-Bronchodilator
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100264; #has_fev1_percentage
+        rr:objectMap [
+            rr:column "ln_dpr_lung_fn_fev1"; 
+            rr:datatype xsd:int;
+        ];
+    ].
+###########################################
+# Add Lung Function Test DLCO and value                                 
+###########################################
+map:LungFnDLCO a rr:TriplesMap;
+    rr:logicalTable map:diagnosticProcedureResults;
+    rr:subjectMap [
+        rr:template "patient/{id}/lungFnTest/LungFnDLCO/{ln_dpr_lung_fn_dlco}";
+        rr:class ncit:C159319; #DLCO%REF
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_dlco_percentage; #new
+        rr:objectMap [
+            rr:column "ln_dpr_lung_fn_dlco"; 
+            rr:datatype xsd:int;
+        ];
+    ].
+
+###########################################
+# SQL: Pathology Report
+###########################################
+map:pathologyReport a rr:LogicalTable;
+    rr:sqlQuery """SELECT
+           gen_idnumber AS id,
+           ln_pr_pri_tum_resected,
+           ln_pr_final_histology,
+           ln_pr_final_grade_diffr,
+           ln_pr_yptstage,
+           ln_pr_ypnstage,
+           ln_pr_complete_resection,
+           ln_ot_chemo_seq
+       FROM public.ln_data
+       WHERE ln_timepoint = '1. Baseline'""";
+    rdfs:label "";
+    skos:definition "".
+
+###########################################
+# Map patient to Pathology report                         
+###########################################
+map:patient rr:predicateObjectMap [
+        rr:predicateObjectMap [
+        rr:predicate roo:has_ln_pr_pri_tum_resected; #has_Tumor Resected Indicator 
+        rr:objectMap [
+            rr:parentTriplesMap map:priTumResected;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_ln_pr_final_histology; #has Final Histology
+        rr:objectMap [
+            rr:parentTriplesMap map:finalHistology;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_ln_pr_final_grade_diffr; #has Cellular Differentiation Grade Code
+        rr:objectMap [
+            rr:parentTriplesMap map:finalGradeDiffr;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_ln_pr_yptstage; #has UICC Pathologic T Category
+        rr:objectMap [
+            rr:parentTriplesMap map:yptstage;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_ln_pr_yptstage; #has UICC Pathologic N Category
+        rr:objectMap [
+            rr:parentTriplesMap map:ypnstage;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_ln_pr_complete_resection; #has Complete Resection
+        rr:objectMap [
+            rr:parentTriplesMap map:completeResection;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_ln_ot_chemo_seq; #has Chemoradiotherapy
+        rr:objectMap [
+            rr:parentTriplesMap map:chemoSeq;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ].
+###########################################
+# Add Tumor Resected Indicator and value                            
+###########################################
+map:priTumResected a rr:TriplesMap;
+    rr:logicalTable map:pathologyReport;
+    rr:subjectMap [
+        rr:template "patient/{id}/priTumResected/{ln_pr_pri_tum_resected}";
+        rr:class ncit:C154861; #Tumor Resected Indicator 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_pr_pri_tum_resected"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+###########################################
+# Add final histology and value                            
+###########################################
+map:finalHistology a rr:TriplesMap;
+    rr:logicalTable map:pathologyReport;
+    rr:subjectMap [
+        rr:template "patient/{id}/finalHistology/{ln_pr_final_histology}";
+        rr:class ncit:final_histology; #final histology 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_pr_final_histology"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+###########################################
+# Add Cellular Differentiation Grade Code and value                            
+###########################################
+map:finalGradeDiffr a rr:TriplesMap;
+    rr:logicalTable map:pathologyReport;
+    rr:subjectMap [
+        rr:template "patient/{id}/finalGradeDiffr/{ln_pr_final_grade_diffr}";
+        rr:class ncit:C93526; #final histology 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_pr_final_grade_diffr"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add UICC Pathologic T Category and value                            
+###########################################
+map:yptstage a rr:TriplesMap;
+    rr:logicalTable map:pathologyReport;
+    rr:subjectMap [
+        rr:template "patient/{id}/yptstage/{ln_pr_yptstage}";
+        rr:class ncit:C188448; #UICC Pathologic T Category
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_pr_yptstage"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+###########################################
+# Add UICC Pathologic T Category and value                            
+###########################################
+map:ypnstage a rr:TriplesMap;
+    rr:logicalTable map:pathologyReport;
+    rr:subjectMap [
+        rr:template "patient/{id}/ypnstage/{ln_pr_ypnstage}";
+        rr:class ncit:C188429; #UICC Pathologic N Category
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_pr_ypnstage"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add UICC Pathologic T Category and value                            
+###########################################
+map:completeResection a rr:TriplesMap;
+    rr:logicalTable map:pathologyReport;
+    rr:subjectMap [
+        rr:template "patient/{id}/completeResection/{ln_pr_complete_resection}";
+        rr:class ncit:C175027; #UICC Pathologic N Category
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_pr_complete_resection"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add chemo                           
+###########################################
+map:chemoSeq a rr:TriplesMap;
+    rr:logicalTable map:pathologyReport;
+    rr:subjectMap [
+        rr:template "patient/{id}/chemoSeq/{ln_ot_chemo_seq}";
+        rr:class ncit:C94626; #chemotherapy
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_ot_chemo_seq"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+#-------------------------------------------------------------------
+
+###########################################
+# SQL: Radiation induced side effects
+###########################################
+map:radSideEffects a rr:LogicalTable;
+    rr:sqlQuery """SELECT
+           gen_idnumber AS id
+           ,ln_rise_dysphagia
+           ,ln_rise_weight
+           ,ln_rise_dermatitis_radiation
+           ,ln_rise_dyspnoea
+           ,ln_rise_pneumonitis
+           ,ln_rise_myocardial_infarction
+           ,ln_rise_heart_failure
+           ,ln_rise_claudication_intermittens
+           ,ln_rise_aortic_aneurysm
+           ,ln_rise_cva
+           ,ln_rise_tia
+           ,ln_rise_diabetes_mellitus
+           ,ln_rise_diabetes_mellitus_status
+           ,ln_rise_dementia
+           ,ln_rise_copd
+           ,ln_rise_ctd
+           ,ln_rise_pud
+           ,ln_rise_liver
+           ,ln_rise_hemiplegia
+           ,ln_rise_ckd
+           ,ln_rise_prev_solid_tum
+           ,ln_rise_prev_leukaemia
+           ,ln_rise_prev_lymphoma
+       FROM public.ln_data
+       WHERE ln_timepoint = '1. Baseline'""";
+    rdfs:label "";
+    skos:definition "".
+
+###########################################
+# Map patient to RISE                         
+###########################################
+map:patient rr:predicateObjectMap [
+        rr:predicateObjectMap [
+        rr:predicate roo:P100262; #has_dysphagia 
+        rr:objectMap [
+            rr:parentTriplesMap map:dysphagia;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:P100249; #has_body_weight 
+        rr:objectMap [
+            rr:parentTriplesMap map:weight;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_dermatitis_radiation; #new
+        rr:objectMap [
+            rr:parentTriplesMap map:dermatitis;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:P100263; #has_dyspnea 
+        rr:objectMap [
+            rr:parentTriplesMap map:dyspnoea;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_pneumonitis; #new
+        rr:objectMap [
+            rr:parentTriplesMap map:pneumonitis;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_myocardial_infarction; #new
+        rr:objectMap [
+            rr:parentTriplesMap map:myocardialInfarction;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_heart_failure; #new
+        rr:objectMap [
+            rr:parentTriplesMap map:heartFailure;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_claudication_intermittens;#new
+        rr:objectMap [
+            rr:parentTriplesMap map:claudicationIntermittenstFailure;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_aortic_aneurysm; #new
+        rr:objectMap [
+            rr:parentTriplesMap map:aorticAneurysm;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+
+     rr:predicateObjectMap [
+        rr:predicate roo:has_cva; #new
+        rr:objectMap [
+            rr:parentTriplesMap map:cva;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_tia; #new
+        rr:objectMap [
+            rr:parentTriplesMap map:tia;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_diabetes_mellitus; #new
+        rr:objectMap [
+            rr:parentTriplesMap map:diabetesMellitus;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_copd ; #new
+        rr:objectMap [
+            rr:parentTriplesMap map:copd;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_ctd; #new
+        rr:objectMap [
+            rr:parentTriplesMap map:ctd;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+
+     rr:predicateObjectMap [
+        rr:predicate roo:has_pud ; #new
+        rr:objectMap [
+            rr:parentTriplesMap map:pud;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_liver_disease ; #new 
+        rr:objectMap [
+            rr:parentTriplesMap map:liverDisease;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_hemiplegia ; #new 
+        rr:objectMap [
+            rr:parentTriplesMap map:hemiplegia;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_ckd ; #new 
+        rr:objectMap [
+            rr:parentTriplesMap map:ckd;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_previous_solid_tumor; #new 
+        rr:objectMap [
+            rr:parentTriplesMap map:prevSolidTumor;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_previous_lymphoma; #new 
+        rr:objectMap [
+            rr:parentTriplesMap map:prevLymphoma;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:has_previous_leukaemia ; #new 
+        rr:objectMap [
+            rr:parentTriplesMap map:prevLeukaemia;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];        
+        ];
+    ].
+###########################################
+# Add dysphagia                        
+###########################################
+map:dysphagia a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/dysphagia/{ln_rise_dysphagia}";
+        rr:class ncit:C57795; #Dysphagia, CTCAE
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_dysphagia"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add weight                        
+###########################################
+map:weight a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/weight/{ln_rise_weight}";
+        rr:class ncit:C25208; #Weight
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_weight"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+###########################################
+# Add dermatitis                        
+###########################################
+map:dermatitis a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/dermatitis/{ln_rise_dermatitis_radiation}";
+        rr:class ncit:C143405; #Dermatitis Radiation, CTCAE
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_dermatitis_radiation"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+###########################################
+# Add dyspnoea                        
+###########################################
+map:dyspnoea a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/dyspnoea/{ln_rise_dyspnoea}";
+        rr:class ncit:C58185; #Dyspnea, CTCAE
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_dyspnoea"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add pneumonitis                        
+###########################################
+map:pneumonitis a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/pneumonitis/{ln_rise_pneumonitis}";
+        rr:class ncit:C143767; #Pneumonitis, CTCAE
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_pneumonitis"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add pneumonitis                        
+###########################################
+map:myocardialInfarction a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/myocardialInfarction/{ln_rise_myocardial_infarction}";
+        rr:class ncit:C27996; #Myocardial Infarction
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_myocardial_infarction"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+###########################################
+# Add Heart Failure                        
+###########################################
+map:heartFailure a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/heartFailure/{ln_rise_heart_failure}";
+        rr:class ncit:C50577; #Heart Failure
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_heart_failure"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add claudicationIntermittenstFailure
+###########################################
+map:claudicationIntermittenstFailure a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/claudicationIntermittenstFailure/{ln_rise_claudication_intermittens}";
+        rr:class ncit:C50495; #Claudication
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_claudication_intermittens"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+###########################################
+# Add Aortic Aneurysm
+###########################################
+map:aorticAneurysm a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/aorticAneurysm/{ln_rise_aortic_aneurysm}";
+        rr:class ncit:C26697; #Aortic Aneurysm
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_aortic_aneurysm"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add cva
+###########################################
+map:cva a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/cva/{ln_rise_cva}";
+        rr:class ncit:C3390; #Stroke
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_cva"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Transient Ischemic Attack
+###########################################
+map:tia a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/tia/{ln_rise_tia}";
+        rr:class ncit:C50781; #Transient Ischemic Attack
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_tia"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Diabetes Mellitus
+###########################################
+map:diabetesMellitus a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/diabetesMellitus/{ln_rise_diabetes_mellitus}";
+        rr:class ncit:C2985; #Diabetes Mellitus
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_diabetes_mellitus"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Dementia
+###########################################
+map:dementia a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/dementia/{ln_rise_dementia}";
+        rr:class ncit:C4786; #Dementia
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_dementia"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+###########################################
+# Add Chronic Obstructive Pulmonary Disease
+###########################################
+map:copd a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/copd/{ln_rise_copd}";
+        rr:class ncit:C3199; #Chronic Obstructive Pulmonary Disease
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_copd"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Connective Tissue Disorder
+###########################################
+map:ctd a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/ctd/{ln_rise_ctd}";
+        rr:class ncit:C26729; #Connective Tissue Disorder
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_ctd"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Peptic Ulcer
+###########################################
+map:pud a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/pud/{ln_rise_pud}";
+        rr:class ncit:C3318; #Peptic Ulcer
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_pud"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Peptic Ulcer
+###########################################
+map:liver a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/ln_rise_liver/{ln_rise_liver}";
+        rr:class ncit:liver_disease; #new
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_liver"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Hemiplegia
+###########################################
+map:hemiplegia a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/hemiplegia/{ln_rise_hemiplegia}";
+        rr:class ncit:C64329; #Hemiplegia
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_hemiplegia"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Chronic Kidney Disease
+###########################################
+map:ckd a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/ckd/{ln_rise_ckd}";
+        rr:class ncit:C80078; #Chronic Kidney Disease
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_ckd"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Previous Solid Tumor
+###########################################
+map:prevSolidTum a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/prevSolidTum/{ln_rise_prev_solid_tum}";
+        rr:class ncit:previous_solid_tumor; #new
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_prev_solid_tum"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+###########################################
+# Add Previous Leukaemia
+###########################################
+map:prevLeukaemia a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/prevLeukaemia/{ln_rise_prev_leukaemia}";
+        rr:class ncit:previous_leukaemia; #new
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_prev_leukaemia"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+###########################################
+# Add Previous Lymphoma
+###########################################
+map:prevLymphoma a rr:TriplesMap;
+    rr:logicalTable map:radSideEffects;
+    rr:subjectMap [
+        rr:template "patient/{id}/prevLymphoma/{ln_rise_prev_lymphoma}";
+        rr:class ncit:previous_lymphoma; #new
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "ln_rise_prev_lymphoma"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+
+
+
