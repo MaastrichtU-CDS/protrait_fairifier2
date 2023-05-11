@@ -34,6 +34,7 @@ def upload_triples_dir(input_path, sparql_endpoint, empty_db=True, **kwargs):
         sparql.query()
 
     for file in input_path.glob('*.nt'):
+        LOGGER.info(f'uploading file {str(file)}')
         upload_triples_file(file, sparql_endpoint, empty_db=False)
 
 def upload_terminology(url, sparql_endpoint, format='xml', **kwargs):
@@ -133,17 +134,20 @@ class OntOperator(BashOperator):
             f'echo "jdbc.password={rdb_pass}"' + ' >> ${workdir}/r2rml.properties\n'
 
         bash_command= bash_command + "mkdir -p ${workdir}/output \n" +\
-            "if ls ${workdir}/output/*.nt >/dev/null 2>&1; " +\
-            "then rm ${workdir}/output/*.nt; " +\
-            "fi \n" +\
-            "for file in `basename ${workdir}/ttl/*.ttl`; " +\
-            "do \n" +\
-            "${R2RML_CLI_DIR}/ontop materialize " +\
-            "-m ${workdir}/ttl/$file " +\
-            "-f ntriples " +\
-            "-p ${workdir}/r2rml.properties " +\
-            "-o ${workdir}/output/$file \n" +\
-            "done"
+        "if ls ${workdir}/output/*.nt >/dev/null 2>&1; " +\
+        "then rm ${workdir}/output/*.nt; " +\
+        "fi \n" + \
+        "FILES=(${workdir}/ttl/*.ttl) \n" +\
+        "for file in ${FILES[@]}; " +\
+        "do \n" + \
+        "echo $file \n" + \
+        "output=`basename $file` \n" +\
+        "${R2RML_CLI_DIR}/ontop materialize " +\
+        "-m $file " +\
+        "-f ntriples " +\
+        "-p ${workdir}/r2rml.properties " +\
+        "-o ${workdir}/output/$output \n" +\
+        "done"
         
         env.setdefault('workdir', workdir)
         env.setdefault('R2RML_CLI_DIR', r2rml_cli_dir)
