@@ -1,0 +1,371 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix ex: <http://example.com/ns#>.
+@prefix map: <http://mapping.local/>.
+@prefix sty: <http://purl.bioontology.org/ontology/STY/>.
+@prefix sio: <http://semanticscience.org/resource/SIO_>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>.
+@prefix roo: <http://www.cancerdata.org/roo/>.
+@prefix icd: <http://purl.bioontology.org/ontology/ICD10/>.
+@prefix skos: <http://www.w3.org/2008/05/skos#>.
+@prefix uo: <http://purl.obolibrary.org/obo/UO_>.
+@prefix time: <http://www.w3.org/2006/time#>.
+
+
+ 
+###########################################
+# Add patient 
+###########################################
+map:patientQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    GEN_IDNUMBER as id 
+        FROM hn_data;""";
+    rdfs:label "";
+    skos:definition "".
+
+map:patient a rr:TriplesMap;
+    rr:logicalTable map:patientQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}";
+        rr:class ncit:C16960; #patient
+    ].
+
+###########################################
+# Add identifier                                
+###########################################
+map:identifier a rr:TriplesMap;
+    rr:logicalTable map:patientQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/";
+        rr:class ncit:C25364; #identifier
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "id"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:P100061; #has_person_identifier
+        rr:objectMap [
+            rr:parentTriplesMap map:identifier;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+########################################## 
+# Add radiation induced side effects        
+########################################## 
+map:radiationInducedSideEffectsQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    GEN_IDNUMBER as id, 
+    HN_TOX_DATE_CONSULT as dateConsultation,
+    HN_TOX_WEIGHT as weight,
+    HN_TOX_XEROSTOMIA as xerostomia,
+    HN_TOX_DYSPH as dysphagia,
+    HN_TOX_DYSPH_UMCG as dysphagiaUMCG,
+    HN_TOX_MUCOSITIS as oralMucositis,
+    HN_TOX_DERMATITIS as dermatitisRadiation
+        FROM hn_data;""";
+    rdfs:label "";
+    skos:definition "".
+
+map:radiationInducedSideEffects a rr:TriplesMap;
+    rr:logicalTable map:radiationInducedSideEffectsQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/cancerTreatment/radiotherapy/radiationInducedSideEffects";
+        rr:class roo:radiationInducedSideEffects; #new roo class                                                         
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100423; #consists_of
+        rr:objectMap [
+            rr:parentTriplesMap map:dateConsultation; 
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];                                                        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100423; #consists_of
+        rr:objectMap [
+            rr:parentTriplesMap map:weightloss; 
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];                                                        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100423; #consists_of
+        rr:objectMap [
+            rr:parentTriplesMap map:xerostomia; 
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];                                                        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100423; #consists_of
+        rr:objectMap [
+            rr:parentTriplesMap map:dysphagia; 
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];                                                        
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100423; #consists_of
+        rr:objectMap [
+            rr:parentTriplesMap map:dysphagiaUMCG;  
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];                                                   
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100423; #consists_of
+        rr:objectMap [
+            rr:parentTriplesMap map:oralMucositis;    
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];                                                     
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100423; #consists_of
+        rr:objectMap [
+            rr:parentTriplesMap map:dermatitisRadiation; 
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];                                                        
+        ];
+    ].
+
+map:dateConsultation a rr:TriplesMap;
+    rr:logicalTable map:radiationInducedSideEffectsQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/radiationInducedSideEffects/dateConsultation/{dateConsultation}";
+        rr:class roo:dateConsultation; #new roo class 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042;  #has_value
+        rr:objectMap [
+            rr:column "dateConsultation"; 
+            rr:datatype xsd:date;
+        ];
+    ].
+
+map:weightloss a rr:TriplesMap;
+    rr:logicalTable map:radiationInducedSideEffectsQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/radiationInducedSideEffects/weightloss/{weight}";
+        rr:class ncit:C3445; #weightloss 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042;  #has_value
+        rr:objectMap [
+            rr:column "weight"; 
+            rr:datatype xsd:float; 
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100027;  #has unit
+        rr:objectMap [
+            rr:parentTriplesMap map:kilogram;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];                                                       
+        ]; 
+    ].
+
+map:xerostomia a rr:TriplesMap;
+    rr:logicalTable map:radiationInducedSideEffectsQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/radiationInducedSideEffects/xerostomia/{xerostomia}";
+        rr:class ncit:C26917; #xerostomia 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "xerostomia"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+map:dysphagia a rr:TriplesMap;
+    rr:logicalTable map:radiationInducedSideEffectsQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/radiationInducedSideEffects/dysphagia/{dysphagia}";
+        rr:class ncit:C2980; #dysphagia 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "dysphagia"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+map:dysphagiaUMCG a rr:TriplesMap;
+    rr:logicalTable map:radiationInducedSideEffectsQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/radiationInducedSideEffects/dysphagiaUMCG/{dysphagiaUMCG}";                                                                    
+        rr:class roo:dysphagiaUMCG; #new roo class 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "dysphagiaUMCG"; 
+            rr:datatype xsd:string; 
+        ];
+    ].
+
+map:oralMucositis a rr:TriplesMap;
+    rr:logicalTable map:radiationInducedSideEffectsQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/radiationInducedSideEffects/oralMucositis/{oralMucositis}";
+        rr:class ncit:C26887; #stomatitis 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "oralMucositis"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+map:dermatitisRadiation a rr:TriplesMap;
+    rr:logicalTable map:radiationInducedSideEffectsQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/radiationInducedSideEffects/dermatitisRadiation/{dermatitisRadiation}";
+        rr:class ncit:C26887; #dermatitis radiation CTCAE
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "dermatitisRadiation"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+map:kilogram a rr:TriplesMap;
+    rr:logicalTable map:radiationInducedSideEffectsQuery;
+    rr:subjectMap [
+        rr:template "kilogram";
+        rr:class uo:0000009; #kilogram
+    ].
+
+map:radiotherapy rr:predicateObjectMap [
+        rr:predicate roo:P100258; # has_disease_finding
+        rr:objectMap [
+            rr:parentTriplesMap map:radiationInducedSideEffects;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+########################################## 
+# Add radiotherapy                           
+########################################## 
+map:radiotherapyQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+    GEN_IDNUMBER as id, 
+    HN_TOX_DOSE_SO_FAR as doseSoFar,
+    HN_TIMEPOINT as timepoint
+        FROM hn_data;""";
+    rdfs:label "";
+    skos:definition "".
+
+map:radiotherapy a rr:TriplesMap;
+    rr:logicalTable map:radiotherapyQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/cancerTreatment/radiotherapy";
+        rr:class ncit:C15313; #radiation therapy
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_subtype; #new roo predicate  
+        rr:objectMap [
+            rr:parentTriplesMap map:doseSoFar;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:parentTriplesMap map:timePoint;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+map:doseSoFar a rr:TriplesMap;
+    rr:logicalTable map:radiotherapyQuery; 
+    rr:subjectMap [
+        rr:template "patient/{id}/cancerTreatment/radiotherapy/doseSoFar/{doseSoFar}";
+        rr:class roo:doseSoFar; #new roo class
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "doseSoFar"; 
+            rr:datatype xsd:integer;
+        ];
+    ].
+
+map:timePoint a rr:TriplesMap;
+    rr:logicalTable map:radiotherapyQuery; 
+    rr:subjectMap [
+        rr:template "patient/{id}/cancerTreatment/radiotherapy/timepoint/{timepoint}";
+        rr:class roo:doseSoFar; #new roo class
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "timepoint"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+map:cancerTreatment rr:predicateObjectMap [
+        rr:predicate roo:P100024; #has_procedure
+        rr:objectMap [
+            rr:parentTriplesMap map:radiotherapy;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].   
+
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:has_cancer_treatment; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:cancerTreatment;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
