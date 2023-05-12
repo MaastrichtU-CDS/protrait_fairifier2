@@ -67,7 +67,7 @@ map:patient rr:predicateObjectMap [
 map:radiationInducedSideEffectsQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     GEN_IDNUMBER as id, 
-    HN_TOX_DATE_CONSULT as dateConsultation,
+    HN_DATA_ENTRY_DT as dateConsultation,
     HN_TOX_WEIGHT as weight,
     HN_TOX_XEROSTOMIA as xerostomia,
     HN_TOX_DYSPH as dysphagia,
