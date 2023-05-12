@@ -348,7 +348,13 @@ map:timePoint a rr:TriplesMap;
         ];
     ].
 
-map:cancerTreatment rr:predicateObjectMap [
+map:cancerTreatment a rr:TriplesMap;
+    rr:logicalTable map:radiotherapyQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/cancerTreatment/radiotherapy";
+        rr:class roo:cancerTreatment; #new roo class
+    ];
+    rr:predicateObjectMap [
         rr:predicate roo:P100024; #has_procedure
         rr:objectMap [
             rr:parentTriplesMap map:radiotherapy;

@@ -17,4 +17,4 @@ data/
 backup/
 ncit.owl
 roo.owl
-
+*.ttl
