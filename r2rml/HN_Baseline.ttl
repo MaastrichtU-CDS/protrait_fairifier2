@@ -1103,7 +1103,7 @@ map:pathologicalTNMStagingQuery a rr:LogicalTable;
         HN_SURG_PTSTAGE as pathologicalTStage,
         HN_SURG_NECK_NSTAGE as pathologicalNStage
     FROM hn_data
-    WHERE hn_timepoint = '1. Baseline';""";
+    WHERE hn_timepoint = '1. Baseline'""";
     rdfs:label "";
     skos:definition "".
 
