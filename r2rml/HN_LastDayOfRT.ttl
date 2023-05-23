@@ -280,25 +280,23 @@ map:radiotherapy rr:predicateObjectMap [
     ].
 
 ########################################## 
-# Add radiotherapy                           
-#what to do with treated plan 2,3,4??????????????
-    #HN_LD_DOSE_HIGH_START as therapeuticTargetRTHighStartDate,
-    #HN_LD_DOSE_HIGH_STOP as therapeuticTargetRTHighStopDate,
-    #HN_LD_DOSE_INTER_START as therapeuticTargetRTInterStartDate,
-    #HN_LD_DOSE_INTER_STOP as therapeuticTargetRTInterStopDate,
-    #HN_LD_DOSE_LOW_START as profilacticTargetRTStartDate,
-    #HN_LD_DOSE_LOW_STOP as profilacticTargetRTStopDate,
-    #HN_LD_TRT_PLANNAME as treatedPlanXnatPlanName,
-    #HN_LD_TRT_TOTDOSE as treatedPlanTotalDose,
-    #HN_LD_TRT_FRACT as treatedPlanFractions,
-    #HN_LD_TRT_TECHN as treatedPlanTechnique
+# Add radiotherapy                           #what to do with treated plan 2,3,4??????????????
 ########################################## 
 map:radiotherapyQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     GEN_IDNUMBER as id, 
     HN_TOX_DOSE_SO_FAR as doseSoFar,
     HN_TIMEPOINT as timepoint
-    
+    --HN_LD_DOSE_HIGH_START as therapeuticTargetRTHighStartDate,
+    --HN_LD_DOSE_HIGH_STOP as therapeuticTargetRTHighStopDate,
+    --HN_LD_DOSE_INTER_START as therapeuticTargetRTInterStartDate,
+    --HN_LD_DOSE_INTER_STOP as therapeuticTargetRTInterStopDate,
+    --HN_LD_DOSE_LOW_START as profilacticTargetRTStartDate,
+    --HN_LD_DOSE_LOW_STOP as profilacticTargetRTStopDate,
+    --HN_LD_TRT_PLANNAME as treatedPlanXnatPlanName,
+    --HN_LD_TRT_TOTDOSE as treatedPlanTotalDose,
+    --HN_LD_TRT_FRACT as treatedPlanFractions,
+    --HN_LD_TRT_TECHN as treatedPlanTechnique
         FROM hn_data""";
     rdfs:label "";
     skos:definition "".
@@ -675,25 +673,25 @@ map:patient rr:predicateObjectMap [
     ].
 
 ########################################## 
-# Add systemic treatment                            syst is last day of rt   # HN_SYSTTR_TYPE_OTH_INDUCT as systemicTreatmentOthDrugs, HN_SYSTTR_TYPE_OTH_CONCUR as concurrentSystemicTreatmentOthDrugs, HN_SYSTTR_TYPE_OTH_CONCURADJUV_A as adjuvantSystemicTreatmentOthDrugs,      
+# Add systemic treatment                            syst is last day of rt       
 ########################################## 
 map:systemicTreatmentQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     GEN_IDNUMBER as id, 
     HN_SYSTTR_TYPE_INDUCT as systemicTreatmentDrugs,
-    
+    --HN_SYSTTR_TYPE_OTH_INDUCT as systemicTreatmentOthDrugs, 
     HN_SYSTTR_CYCL_INDUCT as systemicTreatmentCycles,
     HN_SYSTTR_START_INDUCT as systemicTreatmentStartDate,
     HN_SYSTTR_STOP_INDUCT as systemicTreatmentEndDate,
     HN_SYSTTR_DOSE_RED_INDUCT as systemicTreatmentDoseReduc,
     HN_SYSTTR_TYPE_CONCUR as concurrentSystemicTreatmentDrugs,
-    
+    --HN_SYSTTR_TYPE_OTH_CONCUR as concurrentSystemicTreatmentOthDrugs, 
     HN_SYSTTR_CYCL_CONCUR as concurrentSystemicTreatmentCycles,
     HN_SYSTTR_START_CONCUR as concurrentSystemicTreatmentStartDate,
     HN_SYSTTR_STOP_CONCUR as concurrentSystemicTreatmentStopDate,
     HN_SYSTTR_DOSE_RED_CONCUR as concurrentSystemicTreatmentDoseReduc,
     HN_SYSTTR_TYPE_CONCURADJUV_A as adjuvantSystemicTreatmentDrugs,
-    
+    --HN_SYSTTR_TYPE_OTH_CONCURADJUV_A as adjuvantSystemicTreatmentOthDrugs,
     HN_SYSTTR_CYCL_CONCURADJUV_A as adjuvantSystemicTreatmentCycles,
     HN_SYSTTR_START_CONCURADJUV_A as adjuvantSystemicTreatmentStartDate,
     HN_SYSTTR_STOP_CONCURADJUV_A as adjuvantSystemicTreatmentStopDate,
