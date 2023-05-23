@@ -1102,7 +1102,7 @@ map:pathologicalTNMStagingQuery a rr:LogicalTable;
         GEN_IDNUMBER as id, 
         HN_SURG_PTSTAGE as pathologicalTStage,
         HN_SURG_NECK_NSTAGE as pathologicalNStage
-    FROM public.hn_data
+    FROM hn_data
     WHERE hn_timepoint = '1. Baseline';""";
     rdfs:label "";
     skos:definition "".
