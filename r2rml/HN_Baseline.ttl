@@ -1004,7 +1004,7 @@ map:histology a rr:TriplesMap;
 map:histologyReport a rr:TriplesMap;
     rr:logicalTable map:histologyQuery;    
     rr:subjectMap [
-        rr:template "patient/{id}/neoplasm/histology/histologyReport/{histologyReport]";
+        rr:template "patient/{id}/neoplasm/histology/histologyReport/{histologyReport}";
         rr:class ncit:C28277; #Pathology Report
     ];
     rr:predicateObjectMap [
