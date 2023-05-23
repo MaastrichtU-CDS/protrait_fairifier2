@@ -285,10 +285,24 @@ map:dermatitisRadiation a rr:TriplesMap;
         ];
     ].
 
+map:osteoRadioNecrosis a rr:TriplesMap;
+    rr:logicalTable map:radiationInducedSideEffectsQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/radiationInducedSideEffects/dermatitisRadiation/{osteoRadioNecrosis}";
+        rr:class roo:osteoRadioNecrosis; #new roo class
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "osteoRadioNecrosis"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
 map:softTissueNecrosis a rr:TriplesMap;
     rr:logicalTable map:radiationInducedSideEffectsQuery;
     rr:subjectMap [
-        rr:template "patient/{id}/radiationInducedSideEffects/dermatitisRadiation/{dermatitisRadiation}";
+        rr:template "patient/{id}/radiationInducedSideEffects/dermatitisRadiation/{softTissueNecrosis}";
         rr:class roo:softTissueNecrosis; #new roo class
     ];
     rr:predicateObjectMap [
