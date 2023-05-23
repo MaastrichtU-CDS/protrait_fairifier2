@@ -673,13 +673,13 @@ map:patient rr:predicateObjectMap [
     ].
 
 ########################################## 
-# Add systemic treatment                            syst is last day of rt           
+# Add systemic treatment                            syst is last day of rt   # HN_SYSTTR_TYPE_OTH_INDUCT as systemicTreatmentOthDrugs,        
 ########################################## 
 map:systemicTreatmentQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     GEN_IDNUMBER as id, 
     HN_SYSTTR_TYPE_INDUCT as systemicTreatmentDrugs,
-    #HN_SYSTTR_TYPE_OTH_INDUCT as systemicTreatmentOthDrugs,
+    
     HN_SYSTTR_CYCL_INDUCT as systemicTreatmentCycles,
     HN_SYSTTR_START_INDUCT as systemicTreatmentStartDate,
     HN_SYSTTR_STOP_INDUCT as systemicTreatmentEndDate,
@@ -897,7 +897,7 @@ map:systemicTreatmentDrugs a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:local_value;
         rr:objectMap [
-            rr:column "systemicTreatmentDrugs}"; 
+            rr:column "systemicTreatmentDrugs"; 
             rr:datatype xsd:string;
         ];
     ].
@@ -911,7 +911,7 @@ map:systemicTreatmentDrugs a rr:TriplesMap;
 #    rr:predicateObjectMap [
 #        rr:predicate roo:local_value;
 #        rr:objectMap [
-#            rr:column "systemicTreatmentOthDrugs}"; 
+#            rr:column "systemicTreatmentOthDrugs"; 
 #            rr:datatype xsd:string;
 #        ];
 #    ].
@@ -925,7 +925,7 @@ map:systemicTreatmentCycles a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:p100042; #has_value
         rr:objectMap [
-            rr:column "systemicTreatmentCycles}"; 
+            rr:column "systemicTreatmentCycles"; 
             rr:datatype xsd:string;
         ];
     ].
@@ -939,7 +939,7 @@ map:systemicTreatmentStartDate a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:p100042; #has_value
         rr:objectMap [
-            rr:column "systemicTreatmentStartDate}"; 
+            rr:column "systemicTreatmentStartDate"; 
             rr:datatype xsd:string;
         ];
     ].
@@ -953,7 +953,7 @@ map:systemicTreatmentEndDate a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:p100042; #has_value
         rr:objectMap [
-            rr:column "systemicTreatmentEndDate}"; 
+            rr:column "systemicTreatmentEndDate"; 
             rr:datatype xsd:date;
         ];
     ].
@@ -967,7 +967,7 @@ map:systemicTreatmentDoseReduc a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:p100042; #has_value
         rr:objectMap [
-            rr:column "systemicTreatmentDoseReduc}"; 
+            rr:column "systemicTreatmentDoseReduc"; 
             rr:datatype xsd:date;
         ];
     ].
@@ -981,7 +981,7 @@ map:concurrentSystemicTreatmentDrugs a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:local_value;
         rr:objectMap [
-            rr:column "concurrentSystemicTreatmentDrugs}"; 
+            rr:column "concurrentSystemicTreatmentDrugs"; 
             rr:datatype xsd:string;
         ];
     ].
@@ -995,7 +995,7 @@ map:concurrentSystemicTreatmentOthDrugs a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:local_value;
         rr:objectMap [
-            rr:column "concurrentSystemicTreatmentOthDrugs}"; 
+            rr:column "concurrentSystemicTreatmentOthDrugs"; 
             rr:datatype xsd:string;
         ];
     ].
@@ -1009,7 +1009,7 @@ map:concurrentSystemicTreatmentCycles a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:p100042; #has_value
         rr:objectMap [
-            rr:column "concurrentSystemicTreatmentCycles}"; 
+            rr:column "concurrentSystemicTreatmentCycles"; 
             rr:datatype xsd:string;
         ];
     ].
@@ -1023,7 +1023,7 @@ map:concurrentSystemicTreatmentStartDate a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:p100042; #has_value
         rr:objectMap [
-            rr:column "concurrentSystemicTreatmentStartDate}"; 
+            rr:column "concurrentSystemicTreatmentStartDate"; 
             rr:datatype xsd:string;
         ];
     ].
@@ -1037,7 +1037,7 @@ map:concurrentSystemicTreatmentStopDate a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:p100042; #has_value
         rr:objectMap [
-            rr:column "concurrentSystemicTreatmentStopDate}"; 
+            rr:column "concurrentSystemicTreatmentStopDate"; 
             rr:datatype xsd:string;
         ];
     ].
@@ -1051,7 +1051,7 @@ map:concurrentSystemicTreatmentDoseReduc a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:local_value;
         rr:objectMap [
-            rr:column "concurrentSystemicTreatmentDoseReduc}"; 
+            rr:column "concurrentSystemicTreatmentDoseReduc"; 
             rr:datatype xsd:string;
         ];
     ].
@@ -1065,7 +1065,7 @@ map:adjuvantSystemicTreatmentDrugs a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:local_value;
         rr:objectMap [
-            rr:column "adjuvantSystemicTreatmentDrugs}"; 
+            rr:column "adjuvantSystemicTreatmentDrugs"; 
             rr:datatype xsd:string;
         ];
     ].
@@ -1079,7 +1079,7 @@ map:adjuvantSystemicTreatmentOthDrugs a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:local_value;
         rr:objectMap [
-            rr:column "adjuvantSystemicTreatmentOthDrugs}"; 
+            rr:column "adjuvantSystemicTreatmentOthDrugs"; 
             rr:datatype xsd:string;
         ];
     ].
@@ -1093,7 +1093,7 @@ map:adjuvantSystemicTreatmentCycles a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:p100042; #has_value
         rr:objectMap [
-            rr:column "adjuvantSystemicTreatmentCycles}"; 
+            rr:column "adjuvantSystemicTreatmentCycles"; 
             rr:datatype xsd:string;
         ];
     ].
@@ -1107,7 +1107,7 @@ map:adjuvantSystemicTreatmentStartDate a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:p100042; #has_value
         rr:objectMap [
-            rr:column "adjuvantSystemicTreatmentStartDate}"; 
+            rr:column "adjuvantSystemicTreatmentStartDate"; 
             rr:datatype xsd:string;
         ];
     ].
@@ -1121,7 +1121,7 @@ map:adjuvantSystemicTreatmentStopDate a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:p100042; #has_value
         rr:objectMap [
-            rr:column "adjuvantSystemicTreatmentStopDate}"; 
+            rr:column "adjuvantSystemicTreatmentStopDate"; 
             rr:datatype xsd:string;
         ];
     ].
@@ -1135,7 +1135,7 @@ map:adjuvantSystemicTreatmentDoseReduc a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:local_value;
         rr:objectMap [
-            rr:column "adjuvantSystemicTreatmentDoseReduc}"; 
+            rr:column "adjuvantSystemicTreatmentDoseReduc"; 
             rr:datatype xsd:string;
         ];
     ].
