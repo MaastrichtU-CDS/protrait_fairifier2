@@ -673,7 +673,7 @@ map:patient rr:predicateObjectMap [
     ].
 
 ########################################## 
-# Add systemic treatment                            syst is last day of rt   # HN_SYSTTR_TYPE_OTH_INDUCT as systemicTreatmentOthDrugs, HN_SYSTTR_TYPE_OTH_CONCUR as concurrentSystemicTreatmentOthDrugs,       
+# Add systemic treatment                            syst is last day of rt   # HN_SYSTTR_TYPE_OTH_INDUCT as systemicTreatmentOthDrugs, HN_SYSTTR_TYPE_OTH_CONCUR as concurrentSystemicTreatmentOthDrugs, HN_SYSTTR_TYPE_OTH_CONCURADJUV_A as adjuvantSystemicTreatmentOthDrugs,      
 ########################################## 
 map:systemicTreatmentQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
@@ -691,7 +691,7 @@ map:systemicTreatmentQuery a rr:LogicalTable;
     HN_SYSTTR_STOP_CONCUR as concurrentSystemicTreatmentStopDate,
     HN_SYSTTR_DOSE_RED_CONCUR as concurrentSystemicTreatmentDoseReduc,
     HN_SYSTTR_TYPE_CONCURADJUV_A as adjuvantSystemicTreatmentDrugs,
-    HN_SYSTTR_TYPE_OTH_CONCURADJUV_A as adjuvantSystemicTreatmentOthDrugs,
+    
     HN_SYSTTR_CYCL_CONCURADJUV_A as adjuvantSystemicTreatmentCycles,
     HN_SYSTTR_START_CONCURADJUV_A as adjuvantSystemicTreatmentStartDate,
     HN_SYSTTR_STOP_CONCURADJUV_A as adjuvantSystemicTreatmentStopDate,
@@ -836,16 +836,16 @@ map:systemicTreatment a rr:TriplesMap;
             ]; 
         ];
     ];
-    rr:predicateObjectMap [
-        rr:predicate roo:P100423; #consists_of
-        rr:objectMap [
-            rr:parentTriplesMap map:adjuvantSystemicTreatmentOthDrugs;
-            rr:joinCondition [
-                rr:child "id";
-                rr:parent "id";
-            ]; 
-        ];
-    ];
+    #rr:predicateObjectMap [
+    #    rr:predicate roo:P100423; #consists_of
+    #    rr:objectMap [
+    #        rr:parentTriplesMap map:adjuvantSystemicTreatmentOthDrugs;
+    #        rr:joinCondition [
+    #            rr:child "id";
+    #            rr:parent "id";
+    #        ]; 
+    #    ];
+    #];
     rr:predicateObjectMap [
         rr:predicate roo:P100423; #consists_of
         rr:objectMap [
@@ -1070,19 +1070,19 @@ map:adjuvantSystemicTreatmentDrugs a rr:TriplesMap;
         ];
     ].
 
-map:adjuvantSystemicTreatmentOthDrugs a rr:TriplesMap;
-    rr:logicalTable map:systemicTreatmentQuery;
-    rr:subjectMap [
-        rr:template "patient/{id}/cancerTreatment/systemicTreatment/adjuvantSystemicTreatmentOthDrugs/{adjuvantSystemicTreatmentOthDrugs}";
-        rr:class roo:adjuvantSystemicTreatmentOthDrugs; #new roo class
-    ];
-    rr:predicateObjectMap [
-        rr:predicate roo:local_value;
-        rr:objectMap [
-            rr:column "adjuvantSystemicTreatmentOthDrugs"; 
-            rr:datatype xsd:string;
-        ];
-    ].
+#map:adjuvantSystemicTreatmentOthDrugs a rr:TriplesMap;
+#    rr:logicalTable map:systemicTreatmentQuery;
+#    rr:subjectMap [
+#        rr:template "patient/{id}/cancerTreatment/systemicTreatment/adjuvantSystemicTreatmentOthDrugs/{adjuvantSystemicTreatmentOthDrugs}";
+#        rr:class roo:adjuvantSystemicTreatmentOthDrugs; #new roo class
+#    ];
+#    rr:predicateObjectMap [
+#        rr:predicate roo:local_value;
+#        rr:objectMap [
+#            rr:column "adjuvantSystemicTreatmentOthDrugs"; 
+#            rr:datatype xsd:string;
+#        ];
+#    ].
 
 map:adjuvantSystemicTreatmentCycles a rr:TriplesMap;
     rr:logicalTable map:systemicTreatmentQuery;
