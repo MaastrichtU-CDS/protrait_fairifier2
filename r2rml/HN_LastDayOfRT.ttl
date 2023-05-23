@@ -297,7 +297,7 @@ map:radiotherapyQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     GEN_IDNUMBER as id, 
     HN_TOX_DOSE_SO_FAR as doseSoFar,
-    HN_TIMEPOINT as timepoint,
+    HN_TIMEPOINT as timepoint
     
         FROM hn_data""";
     rdfs:label "";
