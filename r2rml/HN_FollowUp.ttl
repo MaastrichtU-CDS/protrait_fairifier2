@@ -285,6 +285,20 @@ map:dermatitisRadiation a rr:TriplesMap;
         ];
     ].
 
+map:softTissueNecrosis a rr:TriplesMap;
+    rr:logicalTable map:radiationInducedSideEffectsQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/radiationInducedSideEffects/dermatitisRadiation/{dermatitisRadiation}";
+        rr:class roo:softTissueNecrosis; #new roo class
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "softTissueNecrosis"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
 map:kilogram a rr:TriplesMap;
     rr:logicalTable map:radiationInducedSideEffectsQuery;
     rr:subjectMap [
