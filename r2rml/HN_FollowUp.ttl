@@ -75,7 +75,7 @@ map:radiationInducedSideEffectsQuery a rr:LogicalTable;
     HN_TOX_MUCOSITIS as oralMucositis,
     HN_TOX_DERMATITIS as dermatitisRadiation,
     HN_TOX_OSTEORADION as osteoRadioNecrosis,
-    HN_TOX_SOFTNECR as softTissueNecrosis
+    HN_TOX_SOFTTNECR as softTissueNecrosis
         FROM hn_data""";
     rdfs:label "";
     skos:definition "".
