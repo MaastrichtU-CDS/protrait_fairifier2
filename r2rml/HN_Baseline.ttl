@@ -857,7 +857,7 @@ map:patient rr:predicateObjectMap [
 ########################################## same ontologies as v7!
 # Add TNM staging pathological                                       
 ########################################## 
-map:pathologicalTNMStagingQuery a rr:LogicalTable;
+map:pathologicalTNMQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
         GEN_IDNUMBER as id, 
         HN_SURG_PTSTAGE as pathologicalTStage,
@@ -868,7 +868,7 @@ map:pathologicalTNMStagingQuery a rr:LogicalTable;
     skos:definition "".
 
 map:pathologicalTNMStaging a rr:TriplesMap;
-    rr:logicalTable map:PathologicalTNMStagingQuery;    
+    rr:logicalTable map:PathologicalTNMQuery;    
     rr:subjectMap [
         rr:template "patient/{id}/neoplasm/tnmStaging/pathologicalTNMStaging";
         rr:class ncit:C38027; #stage grouping (TNM stage grouping)
@@ -895,7 +895,7 @@ map:pathologicalTNMStaging a rr:TriplesMap;
     ].
 
 map:pathologicalTStage a rr:TriplesMap;
-    rr:logicalTable map:PathologicalTNMStagingQuery;
+    rr:logicalTable map:PathologicalTNMQuery;
     rr:subjectMap [
         rr:template "patient/{id}/neoplasm/tnmStaging/pathologicalTNMStaging/pathologicalTStage/{pathologicalTStage}";
         rr:class ncit:C25728; #T Category (T Stage)
@@ -909,7 +909,7 @@ map:pathologicalTStage a rr:TriplesMap;
     ].
 
 map:pathologicalNStage a rr:TriplesMap;
-    rr:logicalTable map:PathologicalTNMStagingQuery;
+    rr:logicalTable map:PathologicalTNMQuery;
     rr:subjectMap [
         rr:template "patient/{id}/neoplasm/tnmStaging/pathologicalTNMStaging/pathologicalNStage/{pathologicalNStage}";
         rr:class ncit:C25580; #N Category (N Stage)
