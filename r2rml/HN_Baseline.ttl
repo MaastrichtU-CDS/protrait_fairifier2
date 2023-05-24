@@ -821,7 +821,7 @@ map:neoplasm a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:has_type; #new roo predicate
         rr:objectMap [
-            rr:parentTriplesMap map:primaryTumour; 
+            rr:parentTriplesMap map:primaryTumourSite; 
             rr:joinCondition [
                 rr:child "id";
                 rr:parent "id";
