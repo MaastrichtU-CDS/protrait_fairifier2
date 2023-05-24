@@ -1517,134 +1517,6 @@ map:tnmStaging rr:predicateObjectMap [
         ];
     ].
 ##########################################
-# Add TNM staging                                          
-########################################## 
-map:tnmstagingQuery a rr:LogicalTable;
-    rr:sqlQuery """SELECT 
-        GEN_IDNUMBER as id, 
-        hn_btf_tstage_7 as clinicalTStage,
-        hn_btf_nstage_7 as clinicalNStage,
-        hn_btf_mstage_7 as clinicalMStage,
-        hn_btf_tstage_7_add as additionalTStage
-    FROM public.hn_data
-    WHERE hn_timepoint = '1. Baseline'""";
-    rdfs:label "";
-    skos:definition "".
-
-map:tnmStaging a rr:TriplesMap;
-    rr:logicalTable map:tnmstagingQuery;    
-    rr:subjectMap [
-        rr:template "patient/{id}/neoplasm/tnmStaging";
-        rr:class ncit:C38027; #stage grouping (TNM stage grouping)
-    ];
-    rr:predicateObjectMap [
-        rr:predicate roo:P100244; #has_clinical_T_stage             
-        rr:objectMap [
-            rr:parentTriplesMap map:clinicalTStage;
-            rr:joinCondition [
-                rr:child "id";
-                rr:parent "id";
-            ];
-        ];
-    ];
-    rr:predicateObjectMap [
-        rr:predicate roo:P100242; #has_clinical_N_stage           
-        rr:objectMap [
-            rr:parentTriplesMap map:clinicalNStage;
-            rr:joinCondition [
-                rr:child "id";
-                rr:parent "id";
-            ];
-        ];
-    ];
-    rr:predicateObjectMap [
-        rr:predicate roo:P100241; #has_clinical_M_stage 
-        rr:objectMap [
-            rr:parentTriplesMap map:clinicalMStage;
-            rr:joinCondition [
-                rr:child "id";
-                rr:parent "id";
-            ];
-        ];
-    ];
-    rr:predicateObjectMap [
-        rr:predicate roo:has_additional_T_stage; #new roo predicate 
-        rr:objectMap [
-            rr:parentTriplesMap map:additionalTStage;
-            rr:joinCondition [
-                rr:child "id";
-                rr:parent "id";
-            ];
-        ];
-    ].
-
-map:clinicalTStage a rr:TriplesMap;
-    rr:logicalTable map:tnmstagingQuery; 
-    rr:subjectMap [
-        rr:template "patient/{id}/neoplasm/tnmStaging/clinicalTStage/{clinicalTStage}";
-        rr:class roo:clinicalTStage; #new roo class
-    ];
-    rr:predicateObjectMap [
-        rr:predicate roo:P100042; #has_value
-        rr:objectMap [
-            rr:column "clinicalTStage"; 
-            rr:datatype xsd:string;
-        ];
-    ].
-
-map:clinicalNStage a rr:TriplesMap;
-    rr:logicalTable map:tnmstagingQuery; 
-    rr:subjectMap [
-        rr:template "patient/{id}/neoplasm/tnmStaging/clinicalNStage/{clinicalNStage}";
-        rr:class roo:clinicalNStage; #new roo class
-    ];
-    rr:predicateObjectMap [
-        rr:predicate roo:P100042; #has_value
-        rr:objectMap [
-            rr:column "clinicalNStage"; 
-            rr:datatype xsd:string;
-        ];
-    ].
- 
-map:clinicalMStage a rr:TriplesMap;
-    rr:logicalTable map:tnmstagingQuery; 
-    rr:subjectMap [
-        rr:template "patient/{id}/neoplasm/tnmStaging/clinicalMStage/{clinicalMStage}";
-        rr:class roo:clinicalMStage; #new roo class
-    ];
-    rr:predicateObjectMap [
-        rr:predicate roo:P100042; #has_value
-        rr:objectMap [
-            rr:column "clinicalMStage"; 
-            rr:datatype xsd:string;
-        ];
-    ].
- 
-map:additionalTStage a rr:TriplesMap;
-    rr:logicalTable map:tnmstagingQuery; 
-    rr:subjectMap [
-        rr:template "patient/{id}/neoplasm/tnmStaging/additionalTStage/{additionalTStage}";
-        rr:class roo:additionalTStage; #new roo class
-    ];
-    rr:predicateObjectMap [
-        rr:predicate roo:P100042; #has_value
-        rr:objectMap [
-            rr:column "additionalTStage"; 
-            rr:datatype xsd:string;
-        ];
-    ].
-    
-map:neoplasm rr:predicateObjectMap [
-        rr:predicate roo:has_tnm_staging; #new roo predicate                                                          
-        rr:objectMap [
-            rr:parentTriplesMap map:tnmStaging;
-            rr:joinCondition [
-                rr:child "id";
-                rr:parent "id";
-            ];
-        ];
-    ].
-##########################################
 # Add TNM staging   V7                                       
 ########################################## 
 map:tnmstagingV7Query a rr:LogicalTable;
@@ -2051,7 +1923,7 @@ map:hpvResult a rr:TriplesMap;
     rr:predicateObjectMap [
         rr:predicate roo:local_value;
         rr:objectMap [
-            rr:column "hpvStatus";
+            rr:column "hpvResult";
             rr:datatype xsd:string;
         ];
     ].
