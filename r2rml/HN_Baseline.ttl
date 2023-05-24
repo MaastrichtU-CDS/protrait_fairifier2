@@ -2085,6 +2085,24 @@ map:tnmStaging rr:predicateObjectMap [
             ];
         ];
     ]. 
+
+map:tnmStaging a rr:TriplesMap;
+    rr:logicalTable map:pathologicalTNMQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/neoplasm/tnmStaging";
+        rr:class ncit:C38027; #stage grouping (TNM stage grouping)
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_pathological_tnm_staging; #new roo predicate            
+        rr:objectMap [
+            rr:parentTriplesMap map:pathologicalTNMStaging;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+    
 map:neoplasm rr:predicateObjectMap [
         rr:predicate roo:has_tnm_staging; #new roo predicate
         rr:objectMap [
