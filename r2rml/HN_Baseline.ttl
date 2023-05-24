@@ -1352,3 +1352,39 @@ map:cancerTreatment rr:predicateObjectMap [
             ];
         ];
     ].
+########################################## 
+# Add systemic treatment                            syst is last day of rt           
+########################################## 
+map:systemicTreatmentQuery a rr:LogicalTable;   #Nibin - Need to check
+    rr:sqlQuery """SELECT 
+        GEN_IDNUMBER as id, 
+        hn_systtr_type_induct as systemicTreatment
+    FROM public.hn_data
+    WHERE hn_timepoint = '1. Baseline'""";
+    rdfs:label "";
+    skos:definition "".
+
+map:systemicTreatment a rr:TriplesMap;
+    rr:logicalTable map:systemicTreatmentQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/cancerTreatment/systemicTreatment/{systemicTreatment}";
+        rr:class roo:systemicTreatment; #new roo class
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "systemicTreatment"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+map:cancerTreatment rr:predicateObjectMap [
+        rr:predicate roo:has_systemic_treatment; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:systemicTreatment;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
