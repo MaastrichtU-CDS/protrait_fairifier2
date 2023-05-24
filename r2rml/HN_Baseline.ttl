@@ -1000,7 +1000,7 @@ map:cTScan a rr:TriplesMap;
 map:patient rr:predicateObjectMap [
         rr:predicate roo:has_preparation_procedures; #new roo predicate
         rr:objectMap [
-            rr:parentTriplesMap map:preparationProceduresQuery;
+            rr:parentTriplesMap map:preparationProcedure;
             rr:joinCondition [
                 rr:child "id";
                 rr:parent "id";
