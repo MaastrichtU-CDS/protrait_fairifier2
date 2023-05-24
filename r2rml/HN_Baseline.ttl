@@ -1664,7 +1664,7 @@ map:tumourPropertiesQuery a rr:LogicalTable;
 map:tumourProperties a rr:TriplesMap;
     rr:logicalTable map:tumourPropertiesQuery;    
     rr:subjectMap [
-        rr:template "patient/neoplasm/tumourProperties";
+        rr:template "patient/{id}/neoplasm/tumourProperties";
         rr:class roo:tumourProperties; #new roo class
     ];
      rr:predicateObjectMap [
@@ -1867,7 +1867,7 @@ map:viralStatusQuery a rr:LogicalTable;
 map:viralStatus a rr:TriplesMap;
     rr:logicalTable map:viralStatusQuery;    
     rr:subjectMap [
-        rr:template "patient/neoplasm/viralStatus";
+        rr:template "patient/{id}/neoplasm/viralStatus";
         rr:class roo:viralStatus; #new roo class
     ];
     rr:predicateObjectMap [
@@ -1894,7 +1894,7 @@ map:viralStatus a rr:TriplesMap;
 map:p16Status a rr:TriplesMap;
     rr:logicalTable map:viralStatusQuery;    
     rr:subjectMap [
-        rr:template "patient/neoplasm/viralStatus/{p16Status}";
+        rr:template "patient/{id}/neoplasm/viralStatus/p16Status/{p16Status}";
         rr:class ncit:C95990; #p16 Positive Neoplastic Cells Present
     ];
     rr:predicateObjectMap [
@@ -1918,7 +1918,7 @@ map:p16Status a rr:TriplesMap;
 map:hpvResult a rr:TriplesMap;
     rr:logicalTable map:viralStatusQuery; 
     rr:subjectMap [
-        rr:template "patient/neoplasm/viralStatus/p16Status/hpvResult/{hpvResult}";
+        rr:template "patient/{id}/neoplasm/viralStatus/p16Status/hpvResult/{hpvResult}";
         rr:class roo:hpv_pcr_result; #new roo class
     ];
     rr:predicateObjectMap [
@@ -2023,7 +2023,7 @@ map:pathologicalTNMQuery a rr:LogicalTable;
 map:pathologicalTNMStaging a rr:TriplesMap;
     rr:logicalTable map:pathologicalTNMQuery;    
     rr:subjectMap [
-        rr:template "patient/neoplasm/tnmStaging/pathologicalTNMStaging";
+        rr:template "patient/{id}/neoplasm/tnmStaging/pathologicalTNMStaging";
         rr:class ncit:C38027; #stage grouping (TNM stage grouping)
     ];
     rr:predicateObjectMap [
