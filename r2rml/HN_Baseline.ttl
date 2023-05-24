@@ -2085,3 +2085,13 @@ map:tnmStaging rr:predicateObjectMap [
             ];
         ];
     ]. 
+map:neoplasm rr:predicateObjectMap [
+        rr:predicate roo:has_tnm_staging; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:tnmStaging;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
