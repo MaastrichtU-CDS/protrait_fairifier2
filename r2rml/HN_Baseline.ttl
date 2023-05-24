@@ -799,3 +799,58 @@ map:neoplasm rr:predicateObjectMap [
             ];
         ];
     ].
+##########################################
+# Add neoplasm                                    #weird excel construction, does this work same ontology?            oth tumour site gone   
+########################################## 
+map:neoplasmQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+        GEN_IDNUMBER as id, 
+        hn_btf_tumour_site as primaryTumourSite
+        --HN_TUMOUR_SITE_OTH as otherTumourSite
+    FROM public.hn_data
+    WHERE hn_timepoint = '1. Baseline'""";
+    rdfs:label "";
+    skos:definition "".
+    
+map:neoplasm a rr:TriplesMap;
+    rr:logicalTable map:neoplasmQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/neoplasm";
+        rr:class ncit:C3262; #neoplasm
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_type; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:primaryTumour; 
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+map:primaryTumourSite a rr:TriplesMap;
+    rr:logicalTable map:neoplasmQuery;    
+    rr:subjectMap [
+        rr:template "patient/{id}/neoplasm/primaryTumourSite/{primaryTumourSite}";
+        rr:class roo:primaryNeoplasmSite; #new roo class
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "primaryTumourSite";
+            rr:datatype xsd:string;
+        ];
+    ].
+
+
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:has_neoplasm; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:neoplasm;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
