@@ -1342,7 +1342,7 @@ map:procedureDate a rr:TriplesMap;
         ];
     ].
 
-map:systemicTreatment rr:predicateObjectMap [
+map:cancerTreatment rr:predicateObjectMap [
         rr:predicate roo:has_surgery; #new roo predicate
         rr:objectMap [
             rr:parentTriplesMap map:surgery;
