@@ -597,7 +597,7 @@ map:headAndNeckSurgeryQuery a rr:LogicalTable;
         hn_surg_neck_lnmeta AS numberOfLymphNodesMetastases, 
         hn_surg_neck_ln_ecs AS numberOfLymphNodesMetastasesECS
     FROM public.hn_data
-    WHERE hn_timepoint = '1. Baseline';""";
+    WHERE hn_timepoint = '1. Baseline'""";
     rdfs:label "";
     skos:definition "".
 
@@ -730,7 +730,7 @@ map:histologyQuery a rr:LogicalTable;
         hn_btf_histo as histologyReport,
         hn_btf_histo_date as histologyDate
     FROM public.hn_data
-    WHERE hn_timepoint = '1. Baseline';""";
+    WHERE hn_timepoint = '1. Baseline'""";
     rdfs:label "";
     skos:definition "".
 
