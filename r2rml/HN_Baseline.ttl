@@ -22,7 +22,7 @@
 map:patientQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT gen_idnumber as id
         FROM public.hn_data
-        WHERE hn_timepoint = '1. Baseline';""";
+        WHERE hn_timepoint = '1. Baseline'""";
     rdfs:label "";
     skos:definition "".
 
@@ -69,7 +69,7 @@ map:cancerTreatmentQuery a rr:LogicalTable;
         hn_bcf_treatm_loc_recur AS localRecurrenceTreatment,
         hn_bcf_treatm_reg_recur AS regionalRecurrenceTreatment
     FROM public.hn_data
-    WHERE hn_timepoint = '1. Baseline';""";
+    WHERE hn_timepoint = '1. Baseline'""";
     rdfs:label "";
     skos:definition "".
 
@@ -180,7 +180,7 @@ map:headAndNeckCharlsonComorbidityIndexQuery a rr:LogicalTable;
         HN_TOX_PREV_LYMPH as previousLymphoma
         --HN_TOX_AID as aids
     FROM public.hn_data
-    WHERE hn_timepoint = '1. Baseline';""";
+    WHERE hn_timepoint = '1. Baseline'""";
     rdfs:label "";
     skos:definition "".
 
