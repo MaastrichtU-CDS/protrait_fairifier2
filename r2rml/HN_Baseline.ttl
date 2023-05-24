@@ -1772,3 +1772,364 @@ map:tnmStaging rr:predicateObjectMap [
             ];
         ];
     ].
+##########################################
+# Add tumour properties                                         
+########################################## 
+map:tumourPropertiesQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+        GEN_IDNUMBER as id, 
+        HN_SURG_SURG_MARG as surgicalMargins,
+        HN_SURG_MAX_DIAM as maximumTumourDiameter,
+        HN_SURG_DEPTH_INFIL as depthOfInfiltration,
+        HN_SURG_ANGIO as angioinvasion,
+        HN_SURG_PERING as periNeuralGrowth,
+        HN_SURG_INFLTR_GR as infiltrativeGrowth
+    FROM public.hn_data
+    WHERE hn_timepoint = '1. Baseline'""";
+    rdfs:label "";
+    skos:definition "".
+
+map:tumourProperties a rr:TriplesMap;
+    rr:logicalTable map:tumourPropertiesQuery;    
+    rr:subjectMap [
+        rr:template "patient/neoplasm/tumourProperties";
+        rr:class roo:tumourProperties; #new roo class
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:P100212; #has_property 
+        rr:objectMap [
+            rr:parentTriplesMap map:surgicalMargins; 
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:P100212; #has_property                                        
+        rr:objectMap [
+            rr:parentTriplesMap map:maximumTumourDiameter;  
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];                               
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:P100212; #has_property                                      
+        rr:objectMap [
+            rr:parentTriplesMap map:depthOfInfiltration; 
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];                    
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:P100212; #has_property                                        
+        rr:objectMap [
+            rr:parentTriplesMap map:angioinvasion; 
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];                                  
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:P100212; #has_property                                        
+        rr:objectMap [
+            rr:parentTriplesMap map:periNeuralGrowth;  
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];                                  
+        ];
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:P100212; #has_property                                        
+        rr:objectMap [
+            rr:parentTriplesMap map:infiltrativeGrowth;  
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];                               
+        ];
+    ].
+
+map:surgicalMargins a rr:TriplesMap;
+    rr:logicalTable map:tumourPropertiesQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/neoplasm/tumourProperties/surgicalMargins/{surgicalMargins}";
+        rr:class ncit:C41227; #surgical margins
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;  
+        rr:objectMap [
+            rr:column "surgicalMargins"; 
+            rr:datatype xsd:string; 
+        ];
+     ].
+
+map:maximumTumourDiameter a rr:TriplesMap;
+    rr:logicalTable map:tumourPropertiesQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/neoplasm/tumourProperties/maximumTumourDiameter/{maximumTumourDiameter}";
+        rr:class ncit:C96684; #longest diameter
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "maximumTumourDiameter"; 
+            rr:datatype xsd:integer; 
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100027; #has_unit
+        rr:objectMap [
+            rr:parentTriplesMap map:millimetreTumour;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];       
+    ].
+
+map:depthOfInfiltration a rr:TriplesMap;
+    rr:logicalTable map:tumourPropertiesQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/neoplasm/tumourProperties/depthOfInfiltration/{depthOfInfiltration}";
+        rr:class ncit:C28491; #cellular infiltration
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "depthOfInfiltration"; 
+            rr:datatype xsd:integer; 
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100027; #has unit
+        rr:objectMap [
+            rr:parentTriplesMap map:millimetreTumour;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];       
+    ].
+
+map:angioinvasion a rr:TriplesMap;
+    rr:logicalTable map:tumourPropertiesQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/neoplasm/tumourProperties/angioinvasion/{angioinvasion}";
+        rr:class ncit:C39589; #angioinvasion
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "angioinvasion"; 
+            rr:datatype xsd:boolean; 
+        ];
+    ].
+
+map:periNeuralGrowth a rr:TriplesMap;
+    rr:logicalTable map:tumourPropertiesQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/neoplasm/tumourProperties/periNeuralGrowth/{periNeuralGrowth}";
+        rr:class ncit:C48260; #perineural invasion  
+    ];                                                   
+     rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "periNeuralGrowth"; 
+            rr:datatype xsd:boolean; 
+        ];
+    ].
+
+map:infiltrativeGrowth a rr:TriplesMap;
+    rr:logicalTable map:tumourPropertiesQuery;
+    rr:subjectMap [
+        rr:template "patient/{id}/neoplasm/tumourProperties/infiltrativeGrowth/{infiltrativeGrowth}";
+        rr:class ncit:C41453; #infiltrative growth pattern                                       
+    ];
+     rr:predicateObjectMap [
+        rr:predicate roo:P100042; #has_value
+        rr:objectMap [
+            rr:column "infiltrativeGrowth"; 
+            rr:datatype xsd:boolean; 
+        ];
+    ].
+
+map:millimetreTumour a rr:TriplesMap;
+    rr:logicalTable map:tumourPropertiesQuery;    
+    rr:subjectMap [
+        rr:template "millimetre";
+        rr:class uo:0000016;
+    ].  
+
+map:neoplasm rr:predicateObjectMap [
+        rr:predicate roo:has_tumour_properties; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:tumourProperties;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+##########################################
+# Add viral status                                         
+########################################## 
+map:viralStatusQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+        GEN_IDNUMBER as id, 
+        hn_btf_p16 as p16Status,
+        hn_btf_hpv as hpvResult,
+        hn_btf_ebv as ebvStatus
+    FROM public.hn_data
+    WHERE hn_timepoint = '1. Baseline'""";
+    rdfs:label "";
+    skos:definition "".
+
+map:viralStatus a rr:TriplesMap;
+    rr:logicalTable map:viralStatusQuery;    
+    rr:subjectMap [
+        rr:template "patient/neoplasm/viralStatus";
+        rr:class roo:viralStatus; #new roo class
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_p16; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:p16Status;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:has_ebv; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:ebvStatus;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+map:p16Status a rr:TriplesMap;
+    rr:logicalTable map:viralStatusQuery;    
+    rr:subjectMap [
+        rr:template "patient/neoplasm/viralStatus/{p16Status}";
+        rr:class ncit:C95990; #p16 Positive Neoplastic Cells Present
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "p16Status";
+            rr:datatype xsd:string;
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100291; #has_patient_finding
+        rr:objectMap [
+            rr:parentTriplesMap map:hpvResult;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+
+map:hpvResult a rr:TriplesMap;
+    rr:logicalTable map:viralStatusQuery; 
+    rr:subjectMap [
+        rr:template "patient/neoplasm/viralStatus/p16Status/hpvResult/{hpvResult}";
+        rr:class roo:hpv_pcr_result; #new roo class
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "hpvStatus";
+            rr:datatype xsd:string;
+        ];
+    ].
+    
+map:ebvStatus a rr:TriplesMap;
+    rr:logicalTable map:viralStatusQuery; 
+    rr:subjectMap [
+        rr:template "patient/neoplasm/viralStatus/ebvStatus/{ebvStatus}";
+        rr:class ncit:C157444; #epstein-barr viral status
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "ebvStatus";
+            rr:datatype xsd:string;
+        ];
+    ].
+
+map:neoplasm rr:predicateObjectMap [
+        rr:predicate roo:has_viral_status; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:viralStatus;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
+##########################################
+# Add weight loss over the past 3 months                                    #caps?               
+########################################## 
+map:clinicalVariablesQuery a rr:LogicalTable;
+    rr:sqlQuery """SELECT 
+        GEN_IDNUMBER as id, 
+        hn_bcf_weight_loss as weightLoss3MonthsBeforeRt 
+    FROM public.hn_data
+    WHERE hn_timepoint = '1. Baseline'""";
+    rdfs:label "";
+    skos:definition "".
+
+map:clinicalVariables a rr:TriplesMap;
+    rr:logicalTable map:clinicalVariablesQuery; 
+    rr:subjectMap [
+        rr:template "patient/{id}/clinicalVariables";
+        rr:class roo:clinicalVariables; #new 
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:P100022; #has_finding
+        rr:objectMap [
+            rr:parentTriplesMap map:weightLoss3months;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+         ];
+    ].
+
+map:weightLoss3months a rr:TriplesMap;
+    rr:logicalTable map:clinicalVariablesQuery; 
+    rr:subjectMap [
+        rr:template "patient/{id}/clinicalVariables/weightLoss3MonthsBeforeRt/{weightLoss3MonthsBeforeRt}";
+        rr:class ncit:C138908; #Weight Loss over Past 3 Months
+    ];
+    rr:predicateObjectMap [
+        rr:predicate roo:local_value;
+        rr:objectMap [
+            rr:column "weightLoss3MonthsBeforeRt"; 
+            rr:datatype xsd:string;
+        ];
+    ].
+
+map:patient rr:predicateObjectMap [
+        rr:predicate roo:has_clinical_variables; #new roo predicate
+        rr:objectMap [
+            rr:parentTriplesMap map:clinicalVariables;
+            rr:joinCondition [
+                rr:child "id";
+                rr:parent "id";
+            ];
+        ];
+    ].
