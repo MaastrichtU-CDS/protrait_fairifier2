@@ -19,7 +19,7 @@
 ###########################################
 # Add patient 
 ###########################################
-ncit:C16960 rdfs:label "Patient"
+ncit:C16960 rdfs:label "Patient".
 
 map:patientQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
@@ -38,8 +38,8 @@ map:patient a rr:TriplesMap;
 ###########################################
 # Add identifier                                
 ###########################################
-ncit:C25364 rdfs:label "Identifier"
-ncit:C25364 protrait:protrait_label "gen_idnumber"
+ncit:C25364 rdfs:label "Identifier".
+ncit:C25364 protrait:protrait_label "gen_idnumber".
 
 map:identifier a rr:TriplesMap;
     rr:logicalTable map:patientQuery;
@@ -69,12 +69,12 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add treating centre
 ###########################################
-ncit:C19326 rdfs:label "Clinics and hospitals"
-ncit:C19326 protrait:protrait_label "gen_treat_centre"
-roo:registrationDate rdfs:label "Date of registration"
-roo:registrationDate protrait:protrait_label "gen_date_registr"
-roo:referralCentre rdfs:label "Referring clinic or hospital"
-roo:referralCentre protrait:protrait_label "gen_refer_centre"
+ncit:C19326 rdfs:label "Clinics and hospitals".
+ncit:C19326 protrait:protrait_label "gen_treat_centre".
+roo:registrationDate rdfs:label "Date of registration".
+roo:registrationDate protrait:protrait_label "gen_date_registr".
+roo:referralCentre rdfs:label "Referring clinic or hospital".
+roo:referralCentre protrait:protrait_label "gen_refer_centre".
 
 map:treatingCentreQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
@@ -162,8 +162,8 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add gender / biological Sex 
 ###########################################    
-ncit:C124436 rdfs:label "Sex at birth"
-ncit:C124436 protrait:protrait_label "gen_gender"        
+ncit:C124436 rdfs:label "Sex at birth".
+ncit:C124436 protrait:protrait_label "gen_gender".
 
 map:sexQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
@@ -201,8 +201,8 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add age at diagnosis 
 ###########################################    
-roo:C100002 rdfs:label "Age at diagnosis"
-roo:C100002 protrait:protrait_label "gen_age"
+roo:C100002 rdfs:label "Age at diagnosis".
+roo:C100002 protrait:protrait_label "gen_age".
 
 map:ageAtDiagnosisQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
@@ -240,8 +240,8 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add birth year 
 ###########################################   
-ncit:C83164 rdfs:label "Birth Year"
-ncit:C83164 protrait:protrait_label "gen_year_birth"
+ncit:C83164 rdfs:label "Birth Year".
+ncit:C83164 protrait:protrait_label "gen_year_birth".
 
 map:birthYearQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
@@ -279,8 +279,8 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add educationlevel 
 ###########################################  
-ncit:C17953 rdfs:label "Education level"
-ncit:C17953 protrait:protrait_label "gen_education"
+ncit:C17953 rdfs:label "Education level".
+ncit:C17953 protrait:protrait_label "gen_education".
 
 map:educationLevelQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
@@ -319,8 +319,8 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add relationship status 
 ########################################### 
-ncit:C25188 rdfs:label "Marital status"
-ncit:C25188 protrait:protrait_label "gen_relation"
+ncit:C25188 rdfs:label "Marital status".
+ncit:C25188 protrait:protrait_label "gen_relation".
 
 map:relationshipStatusQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
@@ -358,13 +358,13 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add smoking status 
 ###########################################  
-ncit:C19796 rdfs:label "Smoking status"
-ncit:C19796 protrait:protrait_label "gen_smoking"
-ncit:C67148 rdfs:label "Former smoker"
-ncit:C73993 rdfs:label "Pack years"
-ncit:C73993 protrait:protrait_label "gen_sm_packyears"
-roo:timeStoppedSmoking rdfs:label "Time stopped smoking"
-roo:timeStoppedSmoking protrait:protrait_label "gen_sm_stopmonths" 
+ncit:C19796 rdfs:label "Smoking status".
+ncit:C19796 protrait:protrait_label "gen_smoking".
+ncit:C67148 rdfs:label "Former smoker".
+ncit:C73993 rdfs:label "Pack years".
+ncit:C73993 protrait:protrait_label "gen_sm_packyears".
+roo:timeStoppedSmoking rdfs:label "Time stopped smoking".
+roo:timeStoppedSmoking protrait:protrait_label "gen_sm_stopmonths".
 
 map:smokingStatusQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
@@ -470,12 +470,12 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add alcohol use history 
 ########################################### 
-ncit:C81229 rdfs:label "Alcohol use history"
-ncit:C81229 protrait:protrait_label "gen_alcohol"
-roo:daysWithMoreThan1Glass rdfs:label "Amount of days with more than 1 unit of alcohol"
-roo:daysWithMoreThan1Glass protrait:protrait_label "gen_alcohol_days"
-roo:numberOfGlasses rdfs:label "Number of alcohol units"
-roo:numberOfGlasses protrait:protrait_label "gen_alcohol_glass"
+ncit:C81229 rdfs:label "Alcohol use history".
+ncit:C81229 protrait:protrait_label "gen_alcohol".
+roo:daysWithMoreThan1Glass rdfs:label "Amount of days with more than 1 unit of alcohol".
+roo:daysWithMoreThan1Glass protrait:protrait_label "gen_alcohol_days".
+roo:numberOfGlasses rdfs:label "Number of alcohol units".
+roo:numberOfGlasses protrait:protrait_label "gen_alcohol_glass".
 
 map:alcoholUseHistoryQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
@@ -565,8 +565,8 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add bodyweight 
 ########################################### 
-ncit:C81328 rdfs:label "Bodyweight"
-ncit:C81328 protrait:protrait_label "gen_weight"
+ncit:C81328 rdfs:label "Bodyweight".
+ncit:C81328 protrait:protrait_label "gen_weight".
 
 map:bodyWeightQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
@@ -622,8 +622,8 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add bodyheight
 ########################################### 
-ncit:C94488 rdfs:label "Stature"
-ncit:C94488 protrait:protrait_label "gen_height"
+ncit:C94488 rdfs:label "Stature".
+ncit:C94488 protrait:protrait_label "gen_height".
 
 map:bodyHeightQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
@@ -679,14 +679,14 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add neoplasm diagnosis 
 ###########################################    
-roo:dateOfFirstDiagnosis rdfs:label "Date of the first diagnosis of the tumour"
-roo:dateOfFirstDiagnosis protrait:protrait_label "gen_date_diag"
-ncit:C3263 rdfs:label "Neoplasm by site"
-ncit:C3263 protrait:protrait_label "gen_tumoursite"
-ncit:C15313 rdfs:label "Radiation therapy"
-ncit:C15313 protrait:protrait_label "gen_rt_treatment"
-roo:reirradiation rdfs:label "Reirridiation of tumoursite"
-roo:reirradiation protrait:protrait_label "gen_oth_c_rt_reirr"
+roo:dateOfFirstDiagnosis rdfs:label "Date of the first diagnosis of the tumour".
+roo:dateOfFirstDiagnosis protrait:protrait_label "gen_date_diag".
+ncit:C3263 rdfs:label "Neoplasm by site".
+ncit:C3263 protrait:protrait_label "gen_tumoursite".
+ncit:C15313 rdfs:label "Radiation therapy".
+ncit:C15313 protrait:protrait_label "gen_rt_treatment".
+roo:reirradiation rdfs:label "Reirridiation of tumoursite".
+roo:reirradiation protrait:protrait_label "gen_oth_c_rt_reirr".
 
 map:neoplasmDiagnosisQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
@@ -817,16 +817,16 @@ map:patient rr:predicateObjectMap [
 ##########################################
 # Add previous neoplasm  Needs neoplasm
 ##########################################    
-roo:otherTumourSite rdfs:label "Other neoplasm by site"
-roo:otherTumourSite protrait:protrait_label "gen_oth_c_site"
-roo:historyOfMalignantNeoplasm rdfs:label "History of malignant neoplasms"
-roo:historyOfMalignantNeoplasm protrait:protrait_label "gen_othercancer"
-ncit:C66766 rdfs:label "ICD-O-3_Code"
-ncit:C66766 protrait:protrait_label "gen_oth_c_icd"
-ncit:C164339 rdfs:label "Date of diagnosis"
-ncit:C164339 protrait:protrait_label "gen_oth_c_date"
-roo:previousRadiotherapy rdfs:label "Previous treatment with radiotherapy" 
-roo:previousRadiotherapy protrait:protrait_label "gen_oth_c_rt"
+roo:otherTumourSite rdfs:label "Other neoplasm by site".
+roo:otherTumourSite protrait:protrait_label "gen_oth_c_site".
+roo:historyOfMalignantNeoplasm rdfs:label "History of malignant neoplasms".
+roo:historyOfMalignantNeoplasm protrait:protrait_label "gen_othercancer".
+ncit:C66766 rdfs:label "ICD-O-3_Code".
+ncit:C66766 protrait:protrait_label "gen_oth_c_icd".
+ncit:C164339 rdfs:label "Date of diagnosis".
+ncit:C164339 protrait:protrait_label "gen_oth_c_date".
+roo:previousRadiotherapy rdfs:label "Previous treatment with radiotherapy" .
+roo:previousRadiotherapy protrait:protrait_label "gen_oth_c_rt".
 
 map:previousNeoplasmDiagnosisQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
@@ -965,20 +965,20 @@ map:neoplasm rr:predicateObjectMap [
 ###########################################
 # Add planning comparison 
 ###########################################
-roo:planningComparison rdfs:label "Comparison of proton and photon treatment plans"
-roo:planningComparison protrait:protrait_label "gen_plan_comparison"
-roo:PlanningComparisonDate rdfs:label "Date of planning comparison"
-roo:PlanningComparisonDate protrait:protrait_label "gen_plan_comp_date" 
-roo:PlanningComparisonVersion rdfs:label "Version of planning comparison"
-roo:PlanningComparisonVersion protrait:protrait_label "gen_plan_comp_version" 
-roo:planningComparisonOutcome rdfs:label "Outcome of planning comparison"
-roo:planningComparisonOutcome protrait:protrait_label "gen_comp_outcome" 
-ncit:C66897 rdfs:label "Proton therapy"
-ncit:C66897 protrait:protrait_label "gen_dec_protons" 
-roo:reasonNegativeProtonTherapyWithPositivePlanningComparison rdfs:label "Reason no proton therapy was done, with a positive planning comparison"
-roo:reasonNegativeProtonTherapyWithPositivePlanningComparison protrait:protrait_label "gen_reason_protons"
-roo:reasonProtonOther rdfs:label "Other reason for not starting proton therapy"
-roo:reasonProtonOther protrait:protrait_label "gen_reason_prot_other"
+roo:planningComparison rdfs:label "Comparison of proton and photon treatment plans".
+roo:planningComparison protrait:protrait_label "gen_plan_comparison".
+roo:PlanningComparisonDate rdfs:label "Date of planning comparison".
+roo:PlanningComparisonDate protrait:protrait_label "gen_plan_comp_date" .
+roo:PlanningComparisonVersion rdfs:label "Version of planning comparison".
+roo:PlanningComparisonVersion protrait:protrait_label "gen_plan_comp_version" .
+roo:planningComparisonOutcome rdfs:label "Outcome of planning comparison".
+roo:planningComparisonOutcome protrait:protrait_label "gen_comp_outcome" .
+ncit:C66897 rdfs:label "Proton therapy".
+ncit:C66897 protrait:protrait_label "gen_dec_protons" .
+roo:reasonNegativeProtonTherapyWithPositivePlanningComparison rdfs:label "Reason no proton therapy was done, with a positive planning comparison".
+roo:reasonNegativeProtonTherapyWithPositivePlanningComparison protrait:protrait_label "gen_reason_protons".
+roo:reasonProtonOther rdfs:label "Other reason for not starting proton therapy".
+roo:reasonProtonOther protrait:protrait_label "gen_reason_prot_other".
 
 map:planningComparisonQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 

@@ -19,6 +19,9 @@
 ###########################################
 # Add patient 
 ###########################################
+ncit:C16960 rdfs:label "Patient".
+
+
 map:patientQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT gen_idnumber as id
         FROM public.hn_data
@@ -33,11 +36,12 @@ map:patient a rr:TriplesMap;
         rr:class ncit:C16960; #patient
     ].
 
-ncit:C16960 rdfs:label "patient"
-
 ###########################################
 # Add identifier                                
 ###########################################
+ncit:C25364 rdfs:label "identifier".
+ncit:C25364 protrait:protrait_label "gen_idnumber".
+
 map:identifier a rr:TriplesMap;
     rr:logicalTable map:patientQuery;
     rr:subjectMap [
@@ -63,7 +67,6 @@ map:patient rr:predicateObjectMap [
         ];
     ].
 
-ncit:C25364 rdfs:label "identifier"
 
 ########################################## 
 # Add cancer treatment                                      
