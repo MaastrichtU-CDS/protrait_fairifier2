@@ -255,7 +255,7 @@ map:birthYear a rr:TriplesMap;
     rr:logicalTable map:birthYearQuery;
     rr:subjectMap [
         rr:template "patient/{id}/birthYear/{gen_year_birth}";
-        rr:class C83164; #Birth Year
+        rr:class ncit:C83164; #Birth Year
     ];
     rr:predicateObjectMap [
         rr:predicate roo:P100027; #has_unit
