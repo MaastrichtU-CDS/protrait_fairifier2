@@ -549,10 +549,10 @@ map:daysWithMoreThan1Glass a rr:TriplesMap;
         rr:class roo:daysWithMoreThan1Glass; #new roo class
     ];
      rr:predicateObjectMap [
-        rr:predicate roo:P100042; #has_value
+        rr:predicate roo:local_value; #has_value
         rr:objectMap [
             rr:column "gen_alcohol_days"; 
-            rr:datatype xsd:integer;
+            rr:datatype xsd:string;
         ];
     ].
 
@@ -563,10 +563,10 @@ map:numberOfGlasses a rr:TriplesMap;
         rr:class roo:numberOfGlasses; #new roo class
     ];
      rr:predicateObjectMap [
-        rr:predicate roo:P100042; #has_value
+        rr:predicate roo:local_value; #has_value
         rr:objectMap [
             rr:column "gen_alcohol_glass"; 
-            rr:datatype xsd:integer;
+            rr:datatype xsd:string;
         ];
     ].
 
