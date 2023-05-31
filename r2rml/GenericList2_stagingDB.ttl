@@ -893,10 +893,10 @@ map:othTumourSite a rr:TriplesMap;
     rr:logicalTable map:previousNeoplasmDiagnosisQuery;    
     rr:subjectMap [
         rr:template "patient/{id}/gen_other_cancer_id/{gen_other_cancer_id}/neoplasm/tumourSite/{gen_oth_c_site}";
-        rr:class ncit:C3263; #neoplasm by site
+        rr:class roo:otherTumourSite; #neoplasm by site
     ];
     rr:predicateObjectMap [
-        rr:predicate roo:P100042; #has_value
+        rr:predicate roo:local_value; #has_value
         rr:objectMap [
             rr:column "gen_oth_c_site";
             rr:datatype xsd:string;
