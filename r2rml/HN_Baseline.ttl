@@ -13,6 +13,7 @@
 @prefix skos: <http://www.w3.org/2008/05/skos#>.
 @prefix uo: <http://purl.obolibrary.org/obo/UO_>.
 @prefix time: <http://www.w3.org/2006/time#>.
+@prefix protrait:<http://www.protrait.nl/>.
 
 
  
