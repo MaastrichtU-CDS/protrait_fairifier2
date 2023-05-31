@@ -19,6 +19,8 @@
 ###########################################
 # Add patient 
 ###########################################
+ncit:C16960 rdfs:label "Patient"
+
 map:patientQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     gen_idnumber as id 
@@ -36,6 +38,9 @@ map:patient a rr:TriplesMap;
 ###########################################
 # Add identifier                                
 ###########################################
+ncit:C25364 rdfs:label "Identifier"
+ncit:C25364 protrait:protrait_label "gen_idnumber"
+
 map:identifier a rr:TriplesMap;
     rr:logicalTable map:patientQuery;
     rr:subjectMap [
@@ -61,10 +66,16 @@ map:patient rr:predicateObjectMap [
         ];
     ].
 
-
 ###########################################
 # Add treating centre
 ###########################################
+ncit:C19326 rdfs:label "Clinics and hospitals"
+ncit:C19326 protrait:protrait_label "gen_treat_centre"
+roo:registrationDate rdfs:label "Date of registration"
+roo:registrationDate protrait:protrait_label "gen_date_registr"
+roo:referralCentre rdfs:label "Referring clinic or hospital"
+roo:referralCentre protrait:protrait_label "gen_refer_centre"
+
 map:treatingCentreQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     gen_idnumber as id, 
@@ -113,7 +124,7 @@ map:registrationDate a rr:TriplesMap;
     rr:logicalTable map:treatingCentreQuery;
     rr:subjectMap [
         rr:template "patient/{id}/registration/{gen_date_registr}";
-        rr:class ncit:C25646; #registration
+        rr:class roo:registrationDate; #new roo class
     ];
     rr:predicateObjectMap [
         rr:predicate roo:P100042; #has_value
@@ -130,7 +141,7 @@ map:referringCentre a rr:TriplesMap;
         rr:class roo:referralCentre; #referral centre
     ];    
     rr:predicateObjectMap [
-        rr:predicate roo:P100042; #has_value
+        rr:predicate roo:local_value; #has_value
         rr:objectMap [
             rr:column "gen_refer_centre"; 
             rr:datatype xsd:string;
@@ -151,6 +162,9 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add gender / biological Sex 
 ###########################################    
+ncit:C124436 rdfs:label "Sex at birth"
+ncit:C124436 protrait:protrait_label "gen_gender"        
+
 map:sexQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     gen_idnumber as id, 
@@ -163,7 +177,7 @@ map:biologicalSex a rr:TriplesMap;
     rr:logicalTable map:sexQuery;
     rr:subjectMap [
         rr:template "patient/{id}/biologicalSex/{gen_gender}";
-        rr:class ncit:C28421; #sex
+        rr:class ncit:C124436; #sex at birth
     ];
     rr:predicateObjectMap [
         rr:predicate roo:P100042; #has_value
@@ -187,6 +201,9 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add age at diagnosis 
 ###########################################    
+roo:C100002 rdfs:label "Age at diagnosis"
+roo:C100002 protrait:protrait_label "gen_age"
+
 map:ageAtDiagnosisQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     gen_idnumber as id, 
@@ -207,16 +224,6 @@ map:ageAtDiagnosis a rr:TriplesMap;
             rr:column "gen_age"; 
             rr:datatype xsd:integer;
         ];
-    # ];                                                            
-    # rr:predicateObjectMap [
-    #     rr:predicate roo:P100029; #is_diagnosed_with
-    #     rr:objectMap [
-    #         rr:parentTriplesMap map:neoplasm;
-    #         rr:joinCondition [
-    #             rr:child "id";
-    #             rr:parent "id";
-    #         ];
-    #     ];
     ]. 
 
 map:patient rr:predicateObjectMap [
@@ -233,6 +240,9 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add birth year 
 ###########################################   
+ncit:C83164 rdfs:label "Birth Year"
+ncit:C83164 protrait:protrait_label "gen_year_birth"
+
 map:birthYearQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     gen_idnumber as id, 
@@ -245,7 +255,7 @@ map:birthYear a rr:TriplesMap;
     rr:logicalTable map:birthYearQuery;
     rr:subjectMap [
         rr:template "patient/{id}/birthYear/{gen_year_birth}";
-        rr:class ncit:C25155; #birth
+        rr:class C83164; #Birth Year
     ];
     rr:predicateObjectMap [
         rr:predicate roo:P100027; #has_unit
@@ -269,6 +279,9 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add educationlevel 
 ###########################################  
+ncit:C17953 rdfs:label "Education level"
+ncit:C17953 protrait:protrait_label "gen_education"
+
 map:educationLevelQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     gen_idnumber as id, 
@@ -306,6 +319,9 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add relationship status 
 ########################################### 
+ncit:C25188 rdfs:label "Marital status"
+ncit:C25188 protrait:protrait_label "gen_relation"
+
 map:relationshipStatusQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     gen_idnumber as id, 
@@ -342,6 +358,14 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add smoking status 
 ###########################################  
+ncit:C19796 rdfs:label "Smoking status"
+ncit:C19796 protrait:protrait_label "gen_smoking"
+ncit:C67148 rdfs:label "Former smoker"
+ncit:C73993 rdfs:label "Pack years"
+ncit:C73993 protrait:protrait_label "gen_sm_packyears"
+roo:timeStoppedSmoking rdfs:label "Time stopped smoking"
+roo:timeStoppedSmoking protrait:protrait_label "gen_sm_stopmonths" 
+
 map:smokingStatusQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     gen_idnumber as id,
@@ -367,19 +391,19 @@ map:smokingStatus a rr:TriplesMap;
         ];
     ];
     rr:predicateObjectMap [
-        rr:predicate roo:P100306; #has_smoking_status
+        rr:predicate roo:has_time_stopped_smoking; #new roo predicate
         rr:objectMap [
-            rr:parentTriplesMap map:formerSmoker;
+            rr:parentTriplesMap map:timeStoppedSmoking;
             rr:joinCondition [
                 rr:child "gen_smoking_id";
                 rr:parent "gen_smoking_id";
             ];
-        ];
-    ];
+        ];    
+    ];    
     rr:predicateObjectMap [
-        rr:predicate roo:P100306; #has_smoking_status
+        rr:predicate roo:has_packyears; #new roo class
         rr:objectMap [
-            rr:parentTriplesMap map:currentSmoker;
+            rr:parentTriplesMap map:packYears;
             rr:joinCondition [
                 rr:child "gen_smoking_id";
                 rr:parent "gen_smoking_id";
@@ -387,11 +411,11 @@ map:smokingStatus a rr:TriplesMap;
         ];
     ].
 
-map:formerSmoker a rr:TriplesMap;
+map:packYears a rr:TriplesMap;
     rr:logicalTable map:smokingStatusQuery;    
     rr:subjectMap [
-        rr:template "patient/{id}/gen_smoking_id/{gen_smoking_id}/smokingStatus/formerSmoker/{gen_sm_packyears}";
-        rr:class ncit:C67148; #former smoker
+        rr:template "patient/{id}/gen_smoking_id/{gen_smoking_id}/smokingStatus/packYears/{gen_sm_packyears}";
+        rr:class ncit:C73993; #pack years
     ];
     rr:predicateObjectMap [
         rr:predicate roo:P100042; #has_value
@@ -399,33 +423,13 @@ map:formerSmoker a rr:TriplesMap;
             rr:column "gen_sm_packyears";
             rr:datatype xsd:integer;
         ];
-    ];
-    rr:predicateObjectMap [
-        rr:predicate roo:P100027; #has_unit
-        rr:objectMap [
-            rr:parentTriplesMap map:packYears;                                      
-            rr:joinCondition [ 
-                rr:child "gen_smoking_id";
-                rr:parent "gen_smoking_id";
-            ];
-        ];
-    ];
-    rr:predicateObjectMap [
-        rr:predicate roo:has_time_period; #new roo predicate
-        rr:objectMap [
-            rr:parentTriplesMap map:timeStoppedSmoking;
-            rr:joinCondition [
-                rr:child "gen_smoking_id";
-                rr:parent "gen_smoking_id";
-            ];
-        ];
     ].
 
 map:timeStoppedSmoking a rr:TriplesMap;
     rr:logicalTable map:smokingStatusQuery;    
     rr:subjectMap [
         rr:template "patient/{id}/gen_smoking_id/{gen_smoking_id}/smokingStatus/formerSmoker/timeStoppedSmoking/{gen_sm_stopmonths}";
-        rr:class roo:timeStoppedSmoking;
+        rr:class roo:timeStoppedSmoking; "new roo class"
     ];
     rr:predicateObjectMap [
         rr:predicate roo:P100042; #has_value 
@@ -443,37 +447,6 @@ map:timeStoppedSmoking a rr:TriplesMap;
                 rr:parent "gen_smoking_id";
             ];
         ];
-    ].
-
-map:currentSmoker a rr:TriplesMap;
-    rr:logicalTable map:smokingStatusQuery;    
-    rr:subjectMap [
-        rr:template "patient/{id}/gen_smoking_id/{gen_smoking_id}smokingStatus/currentSmoker/{gen_sm_packyears}";
-        rr:class ncit:C67147;
-    ];
-    rr:predicateObjectMap [
-        rr:predicate roo:P100042; #has_value
-        rr:objectMap [
-            rr:column "gen_sm_packyears";
-            rr:datatype xsd:integer;
-        ];
-    ];
-    rr:predicateObjectMap [
-        rr:predicate roo:P100027; #has_unit
-        rr:objectMap [
-            rr:parentTriplesMap map:packYears;
-            rr:joinCondition [
-                rr:child "gen_smoking_id";      
-                rr:parent "gen_smoking_id";
-            ];
-        ];
-    ].
-
-map:packYears a rr:TriplesMap;
-    rr:logicalTable map:smokingStatusQuery;    
-    rr:subjectMap [
-        rr:template "patient/{id}/packyears";
-        rr:class ncit:C73993; #pack year
     ].
 
 map:month a rr:TriplesMap;
@@ -497,6 +470,13 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add alcohol use history 
 ########################################### 
+ncit:C81229 rdfs:label "Alcohol use history"
+ncit:C81229 protrait:protrait_label "gen_alcohol"
+roo:daysWithMoreThan1Glass rdfs:label "Amount of days with more than 1 unit of alcohol"
+roo:daysWithMoreThan1Glass protrait:protrait_label "gen_alcohol_days"
+roo:numberOfGlasses rdfs:label "Number of alcohol units"
+roo:numberOfGlasses protrait:protrait_label "gen_alcohol_glass"
+
 map:alcoholUseHistoryQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     gen_idnumber as id, 
@@ -585,6 +565,9 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add bodyweight 
 ########################################### 
+ncit:C81328 rdfs:label "Bodyweight"
+ncit:C81328 protrait:protrait_label "gen_weight"
+
 map:bodyWeightQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     gen_idnumber as id, 
@@ -639,6 +622,9 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add bodyheight
 ########################################### 
+ncit:C94488 rdfs:label "Stature"
+ncit:C94488 protrait:protrait_label "gen_height"
+
 map:bodyHeightQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     gen_idnumber as id, 
@@ -693,6 +679,15 @@ map:patient rr:predicateObjectMap [
 ###########################################
 # Add neoplasm diagnosis 
 ###########################################    
+roo:dateOfFirstDiagnosis rdfs:label "Date of the first diagnosis of the tumour"
+roo:dateOfFirstDiagnosis protrait:protrait_label "gen_date_diag"
+ncit:C3263 rdfs:label "Neoplasm by site"
+ncit:C3263 protrait:protrait_label "gen_tumoursite"
+ncit:C15313 rdfs:label "Radiation therapy"
+ncit:C15313 protrait:protrait_label "gen_rt_treatment"
+roo:reirradiation rdfs:label "Reirridiation of tumoursite"
+roo:reirradiation protrait:protrait_label "gen_oth_c_rt_reirr"
+
 map:neoplasmDiagnosisQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     gen_idnumber as id, 
@@ -822,6 +817,17 @@ map:patient rr:predicateObjectMap [
 ##########################################
 # Add previous neoplasm  Needs neoplasm
 ##########################################    
+roo:otherTumourSite rdfs:label "Other neoplasm by site"
+roo:otherTumourSite protrait:protrait_label "gen_oth_c_site"
+roo:historyOfMalignantNeoplasm rdfs:label "History of malignant neoplasms"
+roo:historyOfMalignantNeoplasm protrait:protrait_label "gen_othercancer"
+ncit:C66766 rdfs:label "ICD-O-3_Code"
+ncit:C66766 protrait:protrait_label "gen_oth_c_icd"
+ncit:C164339 rdfs:label "Date of diagnosis"
+ncit:C164339 protrait:protrait_label "gen_oth_c_date"
+roo:previousRadiotherapy rdfs:label "Previous treatment with radiotherapy" 
+roo:previousRadiotherapy protrait:protrait_label "gen_oth_c_rt"
+
 map:previousNeoplasmDiagnosisQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     gen_idnumber as id, 
@@ -839,7 +845,7 @@ map:previousNeoplasm a rr:TriplesMap;
     rr:logicalTable map:previousNeoplasmDiagnosisQuery;
     rr:subjectMap [
         rr:template "patient/{id}/gen_other_cancer_id/{gen_other_cancer_id}/neoplasm/previousNeoplasm/{gen_othercancer}";
-        rr:class roo:personalHistoryOfMalignantNeoplasm; #new roo class
+        rr:class roo:historyOfMalignantNeoplasm; #new roo class
     ];
      rr:predicateObjectMap [
         rr:predicate roo:P100042; #has_value
@@ -907,7 +913,7 @@ map:dateOfDiagnosis a rr:TriplesMap;
     rr:logicalTable map:previousNeoplasmDiagnosisQuery;    
     rr:subjectMap [
         rr:template "patient/{id}/gen_other_cancer_id/{gen_other_cancer_id}/neoplasm/dateOfDiagnosis/{gen_oth_c_date}";
-        rr:class roo:dateOfDiagnosis; #new roo predicate?
+        rr:class ncit:C164339; #date of diagnosis
     ];
     rr:predicateObjectMap [
         rr:predicate roo:P100042; #has_value
@@ -959,6 +965,21 @@ map:neoplasm rr:predicateObjectMap [
 ###########################################
 # Add planning comparison 
 ###########################################
+roo:planningComparison rdfs:label "Comparison of proton and photon treatment plans"
+roo:planningComparison protrait:protrait_label "gen_plan_comparison"
+roo:PlanningComparisonDate rdfs:label "Date of planning comparison"
+roo:PlanningComparisonDate protrait:protrait_label "gen_plan_comp_date" 
+roo:PlanningComparisonVersion rdfs:label "Version of planning comparison"
+roo:PlanningComparisonVersion protrait:protrait_label "gen_plan_comp_version" 
+roo:planningComparisonOutcome rdfs:label "Outcome of planning comparison"
+roo:planningComparisonOutcome protrait:protrait_label "gen_comp_outcome" 
+ncit:C66897 rdfs:label "Proton therapy"
+ncit:C66897 protrait:protrait_label "gen_dec_protons" 
+roo:reasonNegativeProtonTherapyWithPositivePlanningComparison rdfs:label "Reason no proton therapy was done, with a positive planning comparison"
+roo:reasonNegativeProtonTherapyWithPositivePlanningComparison protrait:protrait_label "gen_reason_protons"
+roo:reasonProtonOther rdfs:label "Other reason for not starting proton therapy"
+roo:reasonProtonOther protrait:protrait_label "gen_reason_prot_other"
+
 map:planningComparisonQuery a rr:LogicalTable;
     rr:sqlQuery """SELECT 
     gen_idnumber as id, 
