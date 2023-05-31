@@ -429,7 +429,7 @@ map:timeStoppedSmoking a rr:TriplesMap;
     rr:logicalTable map:smokingStatusQuery;    
     rr:subjectMap [
         rr:template "patient/{id}/gen_smoking_id/{gen_smoking_id}/smokingStatus/formerSmoker/timeStoppedSmoking/{gen_sm_stopmonths}";
-        rr:class roo:timeStoppedSmoking; "new roo class"
+        rr:class roo:timeStoppedSmoking; #new roo class
     ];
     rr:predicateObjectMap [
         rr:predicate roo:P100042; #has_value 
