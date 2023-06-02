@@ -20,6 +20,8 @@ SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
+CREATE DATABASE data;
+
 --
 -- Name: br_data; Type: TABLE; Schema: public; Owner: postgres
 --
