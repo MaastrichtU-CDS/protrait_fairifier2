@@ -952,7 +952,7 @@ map:previousRadiotherapy a rr:TriplesMap;
     ].
 
 map:neoplasm rr:predicateObjectMap [
-        rr:predicate roo:previousNeoplasm; #new roo class
+        rr:predicate roo:has_previous_neoplasm; #new roo class
         rr:objectMap [
             rr:parentTriplesMap map:previousNeoplasm;
             rr:joinCondition [
@@ -1046,7 +1046,7 @@ map:planningComparison a rr:TriplesMap;
         ];
     ]; 
     rr:predicateObjectMap [
-        rr:predicate roo:P100042; #has_value
+        rr:predicate roo:has_planning_comparison_outcome; #new roo predicate
         rr:objectMap [
             rr:parentTriplesMap map:planningComparisonOutcome;
             rr:joinCondition [
@@ -1066,7 +1066,7 @@ map:planningComparison a rr:TriplesMap;
         ];
     ];
     rr:predicateObjectMap [
-        rr:predicate roo:P100042; #has_value
+        rr:predicate roo:has_reason_for_proton_therapy_rejection; #new roo predicate
         rr:objectMap [
             rr:parentTriplesMap map:reasonNegativeProtonTherapyWithPositiveDSS;
             rr:joinCondition [
@@ -1076,7 +1076,7 @@ map:planningComparison a rr:TriplesMap;
         ];
     ];
     rr:predicateObjectMap [
-        rr:predicate roo:P100042; #has_value
+        rr:predicate roo:has_reason_for_proton_therapy_rejection_other; #new roo predicate
         rr:objectMap [
             rr:parentTriplesMap map:reasonProtonOther;
             rr:joinCondition [
