@@ -1022,7 +1022,7 @@ map:planningComparison a rr:TriplesMap;
         rr:predicate roo:P100042; #has_value
         rr:objectMap [
             rr:column "gen_plan_comparison"; 
-            rr:datatype xsd:boolean;
+            rr:datatype xsd:string;
         ];
     ];
     rr:predicateObjectMap [
